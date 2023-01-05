@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 // eslint-env node
 import { readFileSync } from 'fs';
-import { resolve } from 'path';
 
 import { defineConfig, type UserConfig } from 'vitest/config';
 import { loadEnv } from 'vite';
@@ -30,11 +29,12 @@ export default defineConfig(({ mode }) => {
 		APP_THEME_COLOR: '#0080ff',
 		APP_BACKGROUND_COLOR: '#252525',
 
-		APP_APPLE_ICON: 'icons/maskable/apple-icon-180.png',
-		APP_SMALL_ICON: 'icons/transparent/manifest-icon-192.png',
-		APP_SMALL_ICON_BG: 'icons/maskable/manifest-icon-192.png',
-		APP_LARGE_ICON: 'icons/transparent/manifest-icon-512.png',
-		APP_LARGE_ICON_BG: 'icons/maskable/manifest-icon-512.png',
+		APP_APPLE_ICON: '/icons/maskable/apple-icon-180.png',
+		APP_SMALL_ICON: '/icons/transparent/manifest-icon-192.png',
+		APP_SMALL_ICON_BG: '/icons/maskable/manifest-icon-192.png',
+		APP_LARGE_ICON: '/icons/transparent/manifest-icon-512.png',
+		APP_LARGE_ICON_BG: '/icons/maskable/manifest-icon-512.png',
+		APP_SOCIAL_IMAGE: 'images/me.jpg',
 		...loadEnv(mode, process.cwd(), 'APP_')
 	};
 
