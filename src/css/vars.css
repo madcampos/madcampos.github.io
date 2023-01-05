@@ -1,0 +1,58 @@
+:root {
+	/* Sizes */
+	--body-text: 16px;
+	--small-text: 0.8rem;
+
+	--border-width: 0.1rem;
+	--border-radius: 0.3rem;
+	--pill-border-radius: 100vmax;
+
+	--scrollbar-size: 0.5rem;
+
+	/* Padding */
+	--padding-inline: 0.5rem;
+	--padding-block: 0.3rem;
+	--padding-small: 0.1rem;
+
+	/* Margin */
+	--margin-inline: 0.5rem;
+	--margin-block: 0.3rem;
+	--margin-small: 0.1rem;
+
+	/* Theme colors */
+	--theme-color: #0080ff;
+	--secondary-color: #ff8000;
+	--accent-color: orangered;
+	--complementary-color: darkslateblue;
+
+	/* Base colors */
+	--bg-color: lightgray;
+	--dark-bg-color: whitesmoke;
+	--border-color: silver;
+	--dark-border-color: #444444;
+	--text-color: black;
+	--scrollbar-bg: rgba(255, 255, 255, 0.1);
+
+	color-scheme: light;
+	accent-color: var(--theme-color);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* Theme colors */
+		--theme-color: #0080ff;
+		--secondary-color: #ff8000;
+		--accent-color: orangered;
+		--complementary-color: darkslateblue;
+
+		/* Base colors */
+		--bg-color: #3c3c3c;
+		--dark-bg-color: #252525;
+		--border-color: #505050;
+		--dark-border-color: #444444;
+		--text-color: whitesmoke;
+		--scrollbar-bg: rgba(255, 255, 255, 0.1);
+
+		color-scheme: dark;
+	}
+}

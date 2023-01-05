@@ -1,0 +1,45 @@
+@import './vars.css';
+
+::-webkit-scrollbar {
+	width: var(--scrollbar-size);
+	height: var(--scrollbar-size);
+}
+
+::-webkit-scrollbar-track {
+	border-radius: var(--pill-border-radius);
+	background-color: var(--scrollbar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: var(--pill-border-radius);
+	background-color: var(--theme-color);
+}
+
+:not(:defined) { display: none; }
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+
+	font-family: system-ui, 'Segoe UI', 'Segoe UI Emoji', emoji, sans-serif;
+	font-size: var(--body-text);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	align-items: stretch;
+
+	background: var(--dark-bg-color);
+	color: var(--text-color);
+
+	scrollbar-width: thin;
+	scrollbar-color: var(--theme-color) var(--scrollbar-bg);
+}
+
+body *, body *::after, body *::before {
+	box-sizing: inherit;
+	font-family: inherit;
+}
