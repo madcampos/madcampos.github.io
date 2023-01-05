@@ -5,21 +5,21 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 
-		<title>{{ APP_NAME }}</title>
+		<title>Marco Campos</title>
 
 		<!-- App Metadata -->
 		<link rel="icon" href="/icons/favicon.svg" />
-		<meta name="theme-color" content="{{ APP_THEME_COLOR }}">
+		<meta name="theme-color" content="#0080ff">
 
 		<!-- Social metadata -->
-		<meta name="keywords" content="{{ APP_KEYWORDS }}" />
+		<meta name="keywords" content="personal, website, developer, node.js, typescript, webdev" />
 
-		<meta property="og:title" name="twitter:title" itemprop="name" content="{{ APP_NAME }}" />
-		<meta property="og:description" name="description" itemprop="description" content="{{ APP_DESCRIPTION }}" />
-		<meta property="og:image" name="twitter:image" itemprop="image" content="{{ APP_PUBLIC_URL }}{{ APP_SOCIAL_IMAGE }}" />
+		<meta property="og:title" name="twitter:title" itemprop="name" content="Marco Campos" />
+		<meta property="og:description" name="description" itemprop="description" content="Personal website for Marco Campos" />
+		<meta property="og:image" name="twitter:image" itemprop="image" content="https://madcampos.dev/images/me.jpg" />
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="en_US" />
-		<meta property="og:url" content="{{ APP_PUBLIC_URL }}" />
+		<meta property="og:url" content="https://madcampos.dev/" />
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:dnt" content="on">
 
@@ -27,7 +27,7 @@
 
 		<!-- Apple icons -->
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-		<link rel="apple-touch-icon" href="{{ APP_APPLE_ICON }}">
+		<link rel="apple-touch-icon" href="/icons/maskable/apple-icon-180.png">
 
 		<link rel="apple-touch-startup-image" href="/splash/apple-splash-2048-2732.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
 		<link rel="apple-touch-startup-image" href="/splash/apple-splash-2732-2048.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
@@ -57,9 +57,32 @@
 		<link rel="apple-touch-startup-image" href="/splash/apple-splash-1136-640.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
 
 		<!-- Styles -->
-		<link rel="stylesheet" href="/css/base.css" />
-	</head>
+		
+		<link rel="stylesheet" href="/assets/index-e78e5211.css">
+	<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
 
 	<body>
+		<main>
+			<h1>Marco Campos</h1>
+			<section id="about">
+				<aside>
+					<picture>
+						<img src="/images/me.jpg" alt="A picture of me smiling for the camera, dresed up in a warm hat and a bright orange scarf."/>
+					</picture>
+				</aside>
+				<article>
+					<p>Hi there! I'm Marco, a Toronto based developer.</p>
+					<p>I've worked in both frontend and backend development, with focus on responsive and accessible design, typescript and node.js.</p>
+
+					<p>You can find my projects and personal work on:</p>
+					<ul>
+						<li><a href="https://github.com/madcampos" rel="noreferrer noopener">GitHub</a></li>
+						<li><a href="https://codepen.io/madcampos" rel="noreferrer noopener">CodePen</a></li>
+					</ul>
+
+					<p>You can reach me on <a href="https://www.linkedin.com/in/madcampos/" rel="noreferrer noopener">LinkedIn</a></p>
+				</article>
+			</section>
+		</main>
 	</body>
 </html>
