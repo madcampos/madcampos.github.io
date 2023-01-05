@@ -1,6 +1,6 @@
 :root {
 	/* Sizes */
-	--body-text: 16px;
+	--body-text: 20px;
 	--small-text: 0.8rem;
 
 	--border-width: 0.1rem;
@@ -21,9 +21,9 @@
 
 	/* Theme colors */
 	--theme-color: #0080ff;
-	--secondary-color: #ff8000;
-	--accent-color: orangered;
-	--complementary-color: darkslateblue;
+	--secondary-color: lightblue;
+	--accent-color: #ff8000;
+	--complementary-color: orangered;
 
 	/* Base colors */
 	--bg-color: lightgray;
@@ -41,9 +41,9 @@
 	:root {
 		/* Theme colors */
 		--theme-color: #0080ff;
-		--secondary-color: #ff8000;
-		--accent-color: orangered;
-		--complementary-color: darkslateblue;
+		--secondary-color: lightblue;
+		--accent-color: #ff8000;
+		--complementary-color: orangered;
 
 		/* Base colors */
 		--bg-color: #3c3c3c;

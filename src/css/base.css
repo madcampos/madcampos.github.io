@@ -1,4 +1,5 @@
 @import './vars.css';
+@import './fonts.css';
 
 ::-webkit-scrollbar {
 	width: var(--scrollbar-size);
@@ -24,7 +25,7 @@ html, body {
 	width: 100%;
 	box-sizing: border-box;
 
-	font-family: system-ui, 'Segoe UI', 'Segoe UI Emoji', emoji, sans-serif;
+	font-family: 'Fira Code', 'Cascadia Code', 'Roboto Mono', Monaco, monospace;
 	font-size: var(--body-text);
 
 	display: flex;
@@ -42,4 +43,101 @@ html, body {
 body *, body *::after, body *::before {
 	box-sizing: inherit;
 	font-family: inherit;
+}
+
+body {
+	background-image: radial-gradient(
+		circle at bottom,
+		var(--bg-color),
+		transparent 50%
+	);
+}
+
+::selection {
+	background-color: var(--theme-color);
+	color: var(--bg-color);
+}
+
+a { color: var(--theme-color); }
+a:visited { color: var(--secondary-color); }
+a:hover { color: var(--accent-color); }
+a:active { color: var(--complementary-color); }
+
+a:focus {
+	outline: none;
+	background-color: var(--theme-color);
+	color: var(--bg-color);
+	border-radius: var(--border-radius);
+}
+
+h1 {
+	font-size: clamp(4rem, 60vw, 6rem);
+	font-family: 'Caveat Brush', 'Comic Sans MS', cursive;
+	text-align: center;
+	color: var(--theme-color);
+	margin: 1rem;
+}
+
+nav ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	list-style: none;
+	padding: 0;
+	margin-block: 2rem;
+	margin-inline: auto;
+	width: clamp(10rem, 50vw, 20rem);
+}
+
+section {
+	width: clamp(10rem, 80vw, 50rem);
+	margin-inline: auto;
+}
+
+#about {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 2rem;
+}
+
+#about picture {
+	display: block;
+	width: clamp(5rem, 30vw, 20rem);
+	height: clamp(5rem, 30vw, 20rem);
+	border-radius: var(--pill-border-radius);
+	overflow: hidden;
+	border: var(--border-width) solid var(--secondary-color);
+	position: relative;
+
+	/* -webkit-mask: url('/images/mask.svg');
+	mask: url('/images/mask.svg'); */
+}
+
+#about picture img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+#about picture::after {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background: radial-gradient(
+		circle at bottom,
+		var(--accent-color),
+		var(--theme-color)
+	);
+	top: 0;
+	opacity: 0.2;
+	transition: all 0.2s ease-in-out;
+}
+
+#about picture:hover::after {
+	opacity: 0.4;
 }
