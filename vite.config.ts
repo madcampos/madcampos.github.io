@@ -99,23 +99,11 @@ export default defineConfig(({ mode }) => {
 				workbox: {
 					cleanupOutdatedCaches: true,
 					clientsClaim: true,
-					navigationPreload: false,
+					navigationPreload: true,
 					runtimeCaching: [
 						{
-							urlPattern: new RegExp(`^${env.APP_PUBLIC_URL}.*`, 'iu'),
-							handler: 'CacheFirst',
-							options: {
-								cacheName: 'app-cache',
-								expiration: {
-									// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-									maxAgeSeconds: 60 * 60 * 24 * 30,
-									maxEntries: 100
-								}
-							}
-						},
-						{
-							urlPattern: new RegExp(`^(?!${env.APP_PUBLIC_URL}).*`, 'iu'),
-							handler: 'NetworkOnly'
+							urlPattern: /^.*$/iu,
+							handler: 'NetworkFirst'
 						}
 					]
 				},
