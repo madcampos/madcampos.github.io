@@ -92,10 +92,8 @@ export default defineConfig(({ mode }) => {
 				...env
 			}),
 			vitePWA({
-				registerType: 'prompt',
-				minify: true,
-				includeAssets: ['/icons/favicon.svg'],
 				manifest: manifest as Partial<ManifestOptions>,
+				scope: '/',
 				workbox: {
 					cleanupOutdatedCaches: true,
 					clientsClaim: true,
