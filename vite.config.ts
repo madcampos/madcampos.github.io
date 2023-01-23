@@ -94,39 +94,7 @@ export default defineConfig(({ mode }) => {
 			vitePWA({
 				manifest: manifest as Partial<ManifestOptions>,
 				scope: '/',
-				workbox: {
-					cleanupOutdatedCaches: true,
-					clientsClaim: true,
-					navigationPreload: true,
-					runtimeCaching: [
-						{
-							urlPattern: /\.(?:png|jpg|jpeg|svg)$/iu,
-							handler: 'CacheFirst',
-							options: {
-								cacheName: 'images',
-								expiration: {
-									maxEntries: 100,
-									// 365 days
-									maxAgeSeconds: 365 * 24 * 60 * 60
-								},
-								cacheableResponse: { statuses: [0, 200] }
-							}
-						},
-						{
-							urlPattern: /\.(?:js|css|json|html|txt|xml)$/iu,
-							handler: 'StaleWhileRevalidate',
-							options: {
-								cacheName: 'assets',
-								expiration: {
-									maxEntries: 100,
-									// 30 days
-									maxAgeSeconds: 30 * 24 * 60 * 60
-								},
-								cacheableResponse: { statuses: [0, 200] }
-							}
-						}
-					]
-				},
+				injectRegister: null,
 				devOptions: {
 					enabled: false
 				}
