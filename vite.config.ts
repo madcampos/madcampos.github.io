@@ -1,4 +1,4 @@
-/* eslint-disable camelcase */
+/* eslint-disable camelcase, @typescript-eslint/no-magic-numbers */
 // eslint-env node
 import { readFileSync } from 'fs';
 
@@ -102,8 +102,30 @@ export default defineConfig(({ mode }) => {
 					navigationPreload: true,
 					runtimeCaching: [
 						{
-							urlPattern: /^.*$/iu,
-							handler: 'NetworkFirst'
+							urlPattern: /\.(?:png|jpg|jpeg|svg)$/iu,
+							handler: 'CacheFirst',
+							options: {
+								cacheName: 'images',
+								expiration: {
+									maxEntries: 100,
+									// 365 days
+									maxAgeSeconds: 365 * 24 * 60 * 60
+								},
+								cacheableResponse: { statuses: [0, 200] }
+							}
+						},
+						{
+							urlPattern: /\.(?:js|css|json|html|txt|xml)$/iu,
+							handler: 'StaleWhileRevalidate',
+							options: {
+								cacheName: 'assets',
+								expiration: {
+									maxEntries: 100,
+									// 30 days
+									maxAgeSeconds: 30 * 24 * 60 * 60
+								},
+								cacheableResponse: { statuses: [0, 200] }
+							}
 						}
 					]
 				},
