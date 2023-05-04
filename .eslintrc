@@ -66,7 +66,7 @@
 		"no-unsafe-negation": "error",
 		"no-unsafe-optional-chaining": ["error", { "disallowArithmeticOperators": true }],
 		"no-useless-backreference": "error",
-		"require-atomic-updates": "warn",
+		"require-atomic-updates": "off",
 		"use-isnan": "error",
 		"valid-typeof": "warn",
 
@@ -173,7 +173,7 @@
 		// Stylistic rules
 		"array-bracket-newline": "warn",
 		"array-bracket-spacing": "warn",
-		"array-element-newline": ["error", "consistent"],
+		"array-element-newline": ["warn", "consistent"],
 		"block-spacing": "warn",
 		"brace-style": "off",
 		"camelcase": "warn",
@@ -214,7 +214,9 @@
 			{
 				"code": 180,
 				"tabWidth": 4,
+				"ignorePattern": "",
 				"ignoreComments": true,
+				"ignoreTrailingComments": true,
 				"ignoreUrls": true,
 				"ignoreStrings": true,
 				"ignoreTemplateLiterals": true,
@@ -234,8 +236,8 @@
 		"newline-per-chained-call": ["warn", { "ignoreChainWithDepth": 6 }],
 		"no-array-constructor": "off",
 		"no-bitwise": "error",
-		"no-continue": "error",
-		"no-inline-comments": "warn",
+		"no-continue": "off",
+		"no-inline-comments": ["warn", { "ignorePattern": "(?:@vite-ignore|@ts-expect-error).+" }],
 		"no-lonely-if": "warn",
 		"no-mixed-operators": ["warn", { "allowSamePrecedence": true }],
 		"no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
@@ -259,7 +261,7 @@
 		"one-var": ["warn", "never"],
 		"one-var-declaration-per-line": "warn",
 		"operator-assignment": "warn",
-		"operator-linebreak": ["error", "none"],
+		"operator-linebreak": ["error", "none", { "overrides": { "?": "before", ":": "before" } }],
 		"padded-blocks": ["warn", "never"],
 		"padding-line-between-statements": "off",
 		"prefer-exponentiation-operator": "warn",
@@ -313,7 +315,7 @@
 		"rest-spread-spacing": "error",
 		"sort-imports": ["warn", { "ignoreCase": true, "ignoreDeclarationSort": true }],
 		"symbol-description": "error",
-		"template-curly-spacing": "error",
+		"template-curly-spacing": "warn",
 		"yield-star-spacing": "error",
 
 		// Typescript
@@ -515,7 +517,7 @@
 		"@typescript-eslint/triple-slash-reference": "off",
 		"@typescript-eslint/type-annotation-spacing": "error",
 		"@typescript-eslint/typedef": "off",
-		"@typescript-eslint/unbound-method": "error",
+		"@typescript-eslint/unbound-method": ["error", { "ignoreStatic": true }],
 		"@typescript-eslint/unified-signatures": "error",
 		"@typescript-eslint/parameter-properties": ["error"],
 
@@ -595,7 +597,7 @@
 		"@typescript-eslint/no-shadow": ["warn", {
 			"builtinGlobals": true,
 			"hoist": "all",
-			"allow": ["name", "status", "event", "prompt", "alert", "top", "origin", "self", "length", "close", "open", "stop"],
+			"allow": ["name", "status", "event", "prompt", "alert", "top", "origin", "self", "length", "close", "open", "stop", "focus", "blur"],
 			"ignoreTypeValueShadow": true,
 			"ignoreFunctionTypeParameterNameValueShadow": false
 		}],
