@@ -4,6 +4,9 @@ import { readFileSync } from 'fs';
 
 import { defineConfig, type UserConfig } from 'vitest/config';
 import { type ManifestOptions, VitePWA as vitePWA } from 'vite-plugin-pwa';
+import htmlMinifier from 'vite-plugin-html-minifier';
+import { resolve } from 'path';
+import { createBlogPages } from './build/blog';
 
 const sslOptions = {
 	cert: readFileSync('./certs/server.crt'),
@@ -12,11 +15,28 @@ const sslOptions = {
 
 const manifest: Partial<ManifestOptions> = JSON.parse(readFileSync('./src/manifest.json', { encoding: 'utf8' }));
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(async ({ mode }) => {
 	const baseUrl = mode === 'production' ? 'https://madcampos.dev/' : 'https://localhost:3000/';
+
+	const blogPages = await createBlogPages();
 
 	const config: UserConfig = {
 		plugins: [
+			htmlMinifier({
+				minify: {
+					collapseWhitespace: true,
+					keepClosingSlash: false,
+					removeComments: true,
+					removeRedundantAttributes: true,
+					removeScriptTypeAttributes: false,
+					removeStyleLinkTypeAttributes: true,
+					removeEmptyAttributes: true,
+					useShortDoctype: true,
+					minifyCSS: false,
+					minifyJS: false,
+					minifyURLs: false
+				}
+			}),
 			vitePWA({
 				registerType: 'prompt',
 				minify: true,
@@ -48,6 +68,10 @@ export default defineConfig(({ mode }) => {
 			emptyOutDir: true,
 			outDir: '../dist',
 			rollupOptions: {
+				input: {
+					main: resolve('src/index.html'),
+					...blogPages
+				},
 				output: {
 					generatedCode: 'es2015',
 					inlineDynamicImports: false

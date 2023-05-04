@@ -4,23 +4,23 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<link rel="canonical" href="https://madcampos.dev/" />
+		<link rel="canonical" href="https://madcampos.dev/{{ BLOG_PATH }}" />
 
-		<title>Marco Campos | Web developer</title>
+		<title>Marco Campos | Blog</title>
 
 		<!-- App Metadata -->
 		<link rel="icon" href="/icons/favicon.svg" />
 		<meta name="theme-color" content="#0080ff">
 
 		<!-- Social metadata -->
-		<meta name="keywords" itemprop="keywords" content="senior web developer, web developer, vue.js, vue, node.js, javascript, typescript, webdev" />
+		<meta name="keywords" itemprop="keywords" content="blog, senior web developer, web developer, vue.js, vue, node.js, javascript, typescript, webdev" />
 
-		<meta property="og:title" name="twitter:title" itemprop="name" content="Marco Campos | Web developer" />
-		<meta property="og:description" name="description" itemprop="abstract" content="Marco Campos - Senior Web Developer - Vue.js, Node.js, TypeScript, JavaScript" />
+		<meta property="og:title" name="twitter:title" itemprop="name" content="Marco Campos | Blog" />
+		<meta property="og:description" name="description" itemprop="abstract" content="Marco Campos' Blog - A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript" />
 		<meta property="og:image" name="twitter:image" itemprop="image" content="https://madcampos.dev/images/me.jpg" />
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" itemprop="inLanguage" content="en_US" />
-		<meta property="og:url" itemprop="url" content="https://madcampos.dev/" />
+		<meta property="og:url" itemprop="url" content="https://madcampos.dev/{{ BLOG_PATH }}" />
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:dnt" content="on">
 
@@ -63,25 +63,9 @@
 
 	<body>
 		<main>
-			<h1>Marco Campos</h1>
-			<section id="about">
-				<aside>
-					<picture>
-						<img src="/images/me.jpg" alt="A picture of me smiling for the camera, dresed up in a warm hat and a bright orange scarf."/>
-					</picture>
-				</aside>
-				<article>
-					<p>Hi there! I'm Marco, a Toronto based developer.</p>
-					<p>I've worked in both frontend and backend development, with focus on responsive and accessible design, typescript and node.js.</p>
-
-					<p>You can find my projects and personal work on:</p>
-					<ul>
-						<li><a href="https://github.com/madcampos" rel="noreferrer noopener">GitHub</a></li>
-						<li><a href="https://codepen.io/madcampos" rel="noreferrer noopener">CodePen</a></li>
-					</ul>
-
-					<p>You can reach me on <a href="https://www.linkedin.com/in/madcampos/" rel="noreferrer noopener">LinkedIn</a></p>
-				</article>
+			<h1>Marco Campos - {{ BLOG_PATH }}</h1>
+			<section>
+				{{ POSTS }}
 			</section>
 		</main>
 	</body>
