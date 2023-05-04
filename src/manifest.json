@@ -1,0 +1,46 @@
+{
+	"id": "https://madcampos.dev/?id=a51d10e1-ffc3-4214-b4bd-b33691d1cdb1",
+	"scope": "https://madcampos.dev/",
+	"name": "Marco Campos",
+	"short_name": "MADCampos",
+	"lang": "en-US",
+	"dir": "ltr",
+	"description": "Marco Campos - Senior Web Developer - Vue.js, Node.js, TypeScript, JavaScript",
+	"categories": ["personal", "web developer", "senior web developer", "vue.js", "vue", "node.js", "javascript", "typescript", "webdev"],
+	"display": "standalone",
+	"orientation": "portrait",
+	"display_override": ["window-controls-overlay"],
+	"background_color": "#252525",
+	"theme_color": "#0080ff",
+	"prefer_related_applications": false,
+	"icons": [
+		{
+			"src": "icons/transparent/manifest-icon-192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/maskable/manifest-icon-192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{
+			"src": "icons/transparent/manifest-icon-512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/maskable/manifest-icon-512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
+		}
+	],
+	"handle_links": "preffered",
+	"launch_handler": {
+		"client_mode": "navigate-existing"
+	}
+}
