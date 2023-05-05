@@ -76,11 +76,17 @@ a:focus {
 main { overflow: auto; }
 
 h1 {
-	font-size: clamp(4rem, 60vw, 6rem);
+	height: clamp(4rem, 60vmin, 10rem);
 	font-family: 'Caveat Brush', 'Comic Sans MS', cursive;
 	text-align: center;
 	color: var(--theme-color);
 	margin: 1rem;
+}
+
+h1 img {
+	height: 100%;
+	object-fit: contain;
+	width: auto;
 }
 
 nav ul {

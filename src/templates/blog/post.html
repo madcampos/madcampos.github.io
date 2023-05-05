@@ -60,13 +60,23 @@
 
 		<!-- Styles -->
 		<link rel="stylesheet" href="/css/base.css" />
+		<link rel="stylesheet" href="/css/blog.css" />
 	</head>
 
 	<body>
 		<main>
-			<h1>{{ TITLE }}</h1>
-			<aside>Published at: {{ DATE }}</aside>
-			<article>
+			<div id="post-header">
+				<nav id="back-to-blog">
+					<a href="{{ BLOG_PATH }}" title="Back to blog">
+						<img src="/icons/favicon.svg" alt="" role="presentation" />
+					</a>
+				</nav>
+				<header>
+					<h1>{{ TITLE }}</h1>
+					<aside>Published: {{ DATE }}</aside>
+				</header>
+			</div>
+			<article id="post-contents">
 				{{ CONTENT }}
 			</article>
 		</main>

@@ -60,14 +60,20 @@
 
 		<!-- Styles -->
 		<link rel="stylesheet" href="/css/base.css" />
+		<link rel="stylesheet" href="/css/blog.css" />
 	</head>
 
 	<body>
-		<main>
-			<h1>Marco Campos - {{ BLOG_PATH }}</h1>
-			<section>
-				{{ POSTS }}
-			</section>
+		<header class="blog-page-header">
+			<h1>
+				<a href="{{ BLOG_PATH }}"><img src="/images/logo-blog.svg" alt="My moniker, &quot;madcampos&quot;, written between curly braces on a monospaced font. With the word &quot;blog&quot; written to it's lower right side." /></a>
+			</h1>
+		</header>
+		<main id="blog-posts">
+			{{ POSTS }}
 		</main>
+		<footer>
+			{{ PAGINATION }}
+		</footer>
 	</body>
 </html>
