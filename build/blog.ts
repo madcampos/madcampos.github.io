@@ -1,4 +1,4 @@
-import { copyFile, mkdir, readdir, readFile, writeFile } from 'fs/promises';
+import { copyFile, mkdir, readdir, readFile, rmdir, writeFile } from 'fs/promises';
 import { marked } from 'marked';
 
 interface BlogConfig {
@@ -299,6 +299,12 @@ export async function createBlogPages(config: Partial<BlogConfig> = {}) {
 		...config
 	};
 
+	try {
+		await rmdir(`src/${parsedConfig.blogPath}`, { recursive: true });
+	} catch {
+		// Silently ignore errors
+	}
+
 	const posts = await getBlogPosts(parsedConfig, parsedConfig.postsDir);
 
 	await mkdir('public/blog', { recursive: true });
@@ -377,8 +383,6 @@ export async function createBlogPages(config: Partial<BlogConfig> = {}) {
 
 		Object.assign(pages, tagPages);
 	}
-
-	console.log(pages);
 
 	return pages;
 }
