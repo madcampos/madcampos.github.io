@@ -73,20 +73,28 @@ a:focus {
 	border-radius: var(--border-radius);
 }
 
+a:has(img) {
+	display: inline-flex;
+}
+
+a:focus:has(img) {
+	background-color: var(--secondary-color);
+}
+
 main { overflow: auto; }
 
 h1 {
-	height: clamp(4rem, 60vmin, 10rem);
-	font-family: 'Caveat Brush', 'Comic Sans MS', cursive;
+	font-family: 'Courier New', Courier, monospace;
 	text-align: center;
 	color: var(--theme-color);
-	margin: 1rem;
+	margin-block: 1rem;
+	margin-inline: auto;
 }
 
 h1 img {
 	height: 100%;
 	object-fit: contain;
-	width: auto;
+	width: clamp(10rem, 70vmin, 30rem);
 }
 
 nav ul {
@@ -154,8 +162,6 @@ section {
 }
 
 @media (max-width: 650px) {
-	h1 { font-size: clamp(2rem, 60vw, 4rem); }
-
 	#about {
 		flex-direction: column;
 		align-items: center;
