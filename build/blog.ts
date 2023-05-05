@@ -145,14 +145,14 @@ async function createFile(partialPath: string, contents: string) {
 }
 
 async function generateBlogPostPage(config: BlogConfig, { title, slug, year, month, date, content, excerpt, tags, image, imageAlt, images }: BlogPost) {
-	const postDir = `${config.blogPath}/${year}/${month}/${slug}`;
+	const postDir = `${config.blogPath}/${year}/${month}/${slug}/`;
 
 	const templateContents = await readFile(config.postsPageTemplate, { encoding: 'utf8' });
 
 	const post = templateContents
 		.replaceAll('{{ TITLE }}', title)
 		.replaceAll('{{ SLUG }}', slug)
-		.replaceAll('{{ BLOG_PATH }}', config.blogPath)
+		.replaceAll('{{ BLOG_PATH }}', `/${config.blogPath}/`)
 		.replaceAll('{{ POST_PATH }}', postDir)
 		.replaceAll('{{ IMAGE }}', image ?? '')
 		.replaceAll('{{ IMAGE_ALT }}', imageAlt ?? '')
@@ -176,18 +176,18 @@ async function generateBlogPostPage(config: BlogConfig, { title, slug, year, mon
 }
 
 function generateBlogPostCard({ title, slug, date, year, month, excerpt }: BlogPost, blogPath: string, template: string) {
-	const postDir = `${blogPath}/${year}/${month}/${slug}`;
+	const postDir = `${blogPath}/${year}/${month}/${slug}/`;
 
 	return template
 		.replaceAll('{{ TITLE }}', title)
 		.replaceAll('{{ SLUG }}', slug)
-		.replaceAll('{{ BLOG_PATH }}', blogPath)
+		.replaceAll('{{ BLOG_PATH }}', `/${blogPath}/`)
 		.replaceAll('{{ POST_PATH }}', postDir)
 		.replaceAll('{{ DATE }}', date)
 		.replaceAll('{{ EXCERPT }}', excerpt);
 }
 
-function generatePaginationHtml(config: BlogConfig, pageMetadata: PageMetadata, length: number, selectedPage: number) {
+function generatePaginationHtml(_config: BlogConfig, _pageMetadata: PageMetadata, _length: number, _selectedPage: number) {
 	// TODO: implement
 
 	return '';
@@ -205,10 +205,10 @@ async function generatePaginatedList(config: BlogConfig, pageMetadata: PageMetad
 		const start = (page - 1) * config.pagination;
 		const end = page * config.pagination;
 		const postsOnPage = posts.slice(start, end);
-		const pagePath = page === 1 ? pageMetadata.basePath : `${pageMetadata.basePath}/page-${page}`;
+		const pagePath = page === 1 ? `${pageMetadata.basePath}/` : `${pageMetadata.basePath}/page-${page}/`;
 
 		const content = templateContents
-			.replaceAll('{{ BLOG_PATH }}', config.blogPath)
+			.replaceAll('{{ BLOG_PATH }}', `/${config.blogPath}/`)
 			.replaceAll('{{ TITLE }}', pageMetadata.title)
 			.replaceAll('{{ DESCRIPTION }}', pageMetadata.description ?? '')
 			.replaceAll('{{ PAGE_PATH }}', pagePath)
@@ -250,8 +250,8 @@ function generateRssFeed(config: BlogConfig, posts: BlogPost[]) {
 		rssString += `
 		<item>
 			<title>${post.title}</title>
-			<link>${config.blogMetadata.url}/${post.year}/${post.month}/${post.slug}</link>
-			<guid>${config.blogMetadata.url}/${post.year}/${post.month}/${post.slug}</guid>
+			<link>${config.blogMetadata.url}/${post.year}/${post.month}/${post.slug}/</link>
+			<guid>${config.blogMetadata.url}/${post.year}/${post.month}/${post.slug}/</guid>
 			<pubDate>${new Date(post.date).toUTCString()}</pubDate>
 			<description><![CDATA[${post.excerpt}]]></description>`;
 
