@@ -1,4 +1,4 @@
-import { mkdir, readdir, readFile, writeFile } from 'fs/promises';
+import { copyFile, mkdir, readdir, readFile, writeFile } from 'fs/promises';
 import { marked } from 'marked';
 
 interface BlogConfig {
@@ -28,7 +28,8 @@ interface BlogPost {
 	content: string,
 	tags?: string[],
 	image?: string,
-	imageAlt?: string
+	imageAlt?: string,
+	images: string[]
 }
 
 interface PageMetadata {
@@ -45,6 +46,14 @@ async function getFiles(dir: string) {
 	const files: string[] = [];
 
 	for await (const entry of entries) {
+		if (!entry.isDirectory() && entry.name.startsWith('.')) {
+			continue;
+		}
+
+		if (!entry.isDirectory() && !entry.name.endsWith('.md')) {
+			continue;
+		}
+
 		const path = `${dir}/${entry.name}`;
 
 		if (entry.isDirectory()) {
@@ -67,6 +76,7 @@ async function getBlogPosts(config: BlogConfig, postsDir: string) {
 
 		const lex = marked.lexer(post, config.markedOptions);
 		const content = marked.parser(lex, config.markedOptions);
+		const images: string[] = [];
 
 		let title = slug;
 		let image: string | undefined;
@@ -81,12 +91,12 @@ async function getBlogPosts(config: BlogConfig, postsDir: string) {
 			}
 
 			if (token.type === 'image' && !image) {
-				image = token.text;
-				imageAlt = token.title;
+				image = token.href;
+				imageAlt = token.title ?? token.text;
 			}
 
 			if (token.type === 'image') {
-				images.push(token.text);
+				images.push(token.href);
 			}
 
 			if (token.type === 'html' && token.text.startsWith('<!--') && !hasMetadata) {
@@ -115,6 +125,8 @@ async function getBlogPosts(config: BlogConfig, postsDir: string) {
 			excerpt,
 			content,
 			image,
+			imageAlt,
+			images,
 			tags
 		};
 
@@ -132,9 +144,8 @@ async function createFile(partialPath: string, contents: string) {
 	return filePath;
 }
 
-async function generateBlogPostPage(config: BlogConfig, { title, slug, year, month, date, content, excerpt, tags, image, imageAlt }: BlogPost) {
+async function generateBlogPostPage(config: BlogConfig, { title, slug, year, month, date, content, excerpt, tags, image, imageAlt, images }: BlogPost) {
 	const postDir = `${config.blogPath}/${year}/${month}/${slug}`;
-	const filePath = `${postDir}/index.html`;
 
 	const templateContents = await readFile(config.postsPageTemplate, { encoding: 'utf8' });
 
@@ -152,7 +163,16 @@ async function generateBlogPostPage(config: BlogConfig, { title, slug, year, mon
 
 	const postPath = await createFile(postDir, post);
 
-	return [`${date}-${slug}`, `src/${filePath}`];
+	await Promise.all(images.map(async (imagePath) => {
+		if (imagePath.startsWith('./')) {
+			const normalizedPath = decodeURI(imagePath.replace(/^.\//iu, ''));
+
+			await mkdir(`src/${postDir}`, { recursive: true });
+			await copyFile(`${config.postsDir}/${date}/${normalizedPath}`, `src/${postDir}/${normalizedPath}`);
+		}
+	}));
+
+	return [`${date}-${slug}`, postPath];
 }
 
 function generateBlogPostCard({ title, slug, date, year, month, excerpt }: BlogPost, blogPath: string, template: string) {
@@ -357,6 +377,8 @@ export async function createBlogPages(config: Partial<BlogConfig> = {}) {
 
 		Object.assign(pages, tagPages);
 	}
+
+	console.log(pages);
 
 	return pages;
 }
