@@ -5,36 +5,10 @@
 logs
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
 # Dependency directories
 node_modules/
-jspm_packages/
-dist
-dev-dist
-dist-ssr
-coverage
-*.local
-/cypress/videos/
-/cypress/screenshots/
-
-# Typescript v1 declaration files
-typings/
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# Optional REPL history
-.node_repl_history
-
-# Output of 'npm pack'
-*.tgz
 
 # dotenv environment variables file
 .env
@@ -45,13 +19,20 @@ typings/
 .vscode/
 
 # Build artifacts
-public/images/covers/
-public/images/thumbs/
-images/covers/
-images/thumbs/
+dist
+dev-dist
+dist-ssr
+coverage
 
-# server certificates
+# Blog
+src/blog/**
+public/blog/*.xml
+
+# Server certificates
 certs
 *.pem
 *.crt
 *.key
+
+# Typescript build info
+*.tsbuildinfo
