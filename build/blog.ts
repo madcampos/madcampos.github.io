@@ -72,7 +72,8 @@ async function getBlogPosts(config: BlogConfig, postsDir: string) {
 		let image: string | undefined;
 		let imageAlt: string | undefined;
 		let excerpt = '';
-		let hasExcerpt = false;
+		let tags: string[] = [];
+		let hasMetadata = false;
 
 		marked.walkTokens(lex, (token) => {
 			if (token.type === 'heading' && token.depth === 1 && title === slug) {
@@ -84,11 +85,24 @@ async function getBlogPosts(config: BlogConfig, postsDir: string) {
 				imageAlt = token.title;
 			}
 
-			if (token.type === 'html' && token.text.startsWith('<!--') && !hasExcerpt) {
-				const excerptLex = marked.lexer(token.text.replace(/\s*?-->\s*?$/ui, '').replace(/^<!--\s*?/ui, ''), config.markedOptions);
+			if (token.type === 'image') {
+				images.push(token.text);
+			}
+
+			if (token.type === 'html' && token.text.startsWith('<!--') && !hasMetadata) {
+				const metadata = token.text.replace(/\s*?-->\s*?$/ui, '').replace(/^\s*?<!--\s*?/ui, '');
+				const [, descriptionMatch] = (/^\s*?description:\s*(.*?)\s*$/uim).exec(metadata) ?? [];
+				const [, excerptMatch] = (/^\s*?excerpt:\s*(.*?)\s*$/uim).exec(metadata) ?? [];
+				const [, tagsMatch] = (/^\s*?tags:\s*(.*?)\s*$/uim).exec(metadata) ?? [];
+				const excerptLex = marked.lexer(descriptionMatch ?? excerptMatch ?? '', config.markedOptions);
 
 				excerpt = marked.parser(excerptLex, config.markedOptions);
-				hasExcerpt = true;
+
+				if (tagsMatch) {
+					tags = tagsMatch.split(',').map((tag) => tag.trim());
+				}
+
+				hasMetadata = true;
 			}
 		});
 
@@ -101,7 +115,7 @@ async function getBlogPosts(config: BlogConfig, postsDir: string) {
 			excerpt,
 			content,
 			image,
-			imageAlt
+			tags
 		};
 
 		return postContent;
@@ -136,8 +150,7 @@ async function generateBlogPostPage(config: BlogConfig, { title, slug, year, mon
 		.replaceAll('{{ EXCERPT }}', excerpt)
 		.replaceAll('{{ CONTENT }}', content);
 
-	await mkdir(`src/${postDir}`, { recursive: true });
-	await writeFile(`src/${filePath}`, post, { encoding: 'utf8' });
+	const postPath = await createFile(postDir, post);
 
 	return [`${date}-${slug}`, `src/${filePath}`];
 }
@@ -169,7 +182,9 @@ async function generatePaginatedList(config: BlogConfig, pageMetadata: PageMetad
 
 	for (let page = 1; page <= maxPages; page += 1) {
 		const paginationHtml = posts.length > config.pagination ? generatePaginationHtml(config, pageMetadata, maxPages, page) : '';
-		const postsOnPage = posts.slice(page, page + config.pagination);
+		const start = (page - 1) * config.pagination;
+		const end = page * config.pagination;
+		const postsOnPage = posts.slice(start, end);
 		const pagePath = page === 1 ? pageMetadata.basePath : `${pageMetadata.basePath}/page-${page}`;
 
 		const content = templateContents
