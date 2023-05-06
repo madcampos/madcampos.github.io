@@ -187,10 +187,38 @@ function generateBlogPostCard({ title, slug, date, year, month, excerpt }: BlogP
 		.replaceAll('{{ EXCERPT }}', excerpt);
 }
 
-function generatePaginationHtml(_config: BlogConfig, _pageMetadata: PageMetadata, _length: number, _selectedPage: number) {
-	// TODO: implement
+function generatePaginationHtml(_config: BlogConfig, pageMetadata: PageMetadata, maxPages: number, selectedPage: number) {
+	if (maxPages === 1) {
+		return '';
+	}
 
-	return '';
+	const TRIM_PAGE_NUMBER = 2;
+	const firstPageInNav = Math.max(1, selectedPage - TRIM_PAGE_NUMBER);
+	const lastPageInNav = Math.min(maxPages, selectedPage + TRIM_PAGE_NUMBER);
+
+	const links = Array(lastPageInNav - firstPageInNav + 1).fill(null).map((_, i) => {
+		const currentPageNumber = firstPageInNav + i;
+		const href = currentPageNumber === 1 ? '' : `page-${currentPageNumber}/`;
+
+		return `<li><a href="/${pageMetadata.basePath}/${href}">${currentPageNumber}</a></li>`;
+	});
+
+	const nextPageLink = selectedPage + 1 > maxPages ? '' : `<a href="/${pageMetadata.basePath}/page-${selectedPage + 1}/">Next</a>`;
+	let previousPageLink = '';
+
+	if (selectedPage - 1 === 1) {
+		previousPageLink = `<a href="/${pageMetadata.basePath}/">Previous</a>`;
+	} else if (selectedPage - 1 > 1) {
+		previousPageLink = `<a href="/${pageMetadata.basePath}/page-${selectedPage - 1}/">Previous</a>`;
+	}
+
+	return `<nav>
+		${previousPageLink}
+		<ol>
+			${links.join('\n')}
+		</ol>
+		${nextPageLink}
+	</nav>`;
 }
 
 async function generatePaginatedList(config: BlogConfig, pageMetadata: PageMetadata, posts: BlogPost[]) {
