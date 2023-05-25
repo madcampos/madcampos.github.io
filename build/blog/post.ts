@@ -101,11 +101,11 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 	const markedOptions: marked.MarkedOptions = {
 		...config.markedOptions,
 		baseUrl: url,
-		highlight: (code, lang) => highlighter?.codeToHtml(code, { lang, lineOptions: [{ line: 2 }] }) ?? code
+		highlight: (code, lang) => highlighter.codeToHtml(code, { lang })
 	};
 
 	const lex = marked.lexer(post, markedOptions);
-	const content = marked.parser(lex, markedOptions);
+	const content = marked.parser(lex, markedOptions).replaceAll(/<pre><code class=".+?"><pre/giu, '<pre').replaceAll('</pre></code></pre>', '</pre>');
 
 	const images: string[] = [];
 	let title = slug;
