@@ -3,6 +3,7 @@ import type { BlogConfig } from '.';
 
 import { readFile } from 'fs/promises';
 import { marked } from 'marked';
+import shiki from 'shiki';
 import { basename, dirname } from 'path';
 import { copyFile, createHtmlFile } from './file-write';
 
@@ -92,9 +93,15 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 	const destPath = `${config.postsDestDir}/${year}/${month}/${slug}/`;
 	const url = new URL(`${year}/${month}/${slug}/`, config.url).toString();
 
+	const highlighter = await shiki.getHighlighter({
+		theme: 'dark-plus',
+		langs: ['typescript', 'ts', 'html', 'javascript', 'js', 'json', 'css']
+	});
+
 	const markedOptions: marked.MarkedOptions = {
 		...config.markedOptions,
-		baseUrl: url
+		baseUrl: url,
+		highlight: (code, lang) => highlighter?.codeToHtml(code, { lang, lineOptions: [{ line: 2 }] }) ?? code
 	};
 
 	const lex = marked.lexer(post, markedOptions);
