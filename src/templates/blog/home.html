@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<link rel="canonical" href="https://madcampos.dev/{{ BLOG_PATH }}" />
+		<link rel="canonical" href="{{url}}" />
 		<link rel="alternate" type="application/atom+xml" href="/blog/rss.xml" title="Marco Campos' Blog" />
 
 		<title>Marco Campos | Blog</title>
@@ -21,7 +21,7 @@
 		<meta property="og:image" name="twitter:image" itemprop="image" content="https://madcampos.dev/images/me.jpg" />
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" itemprop="inLanguage" content="en_US" />
-		<meta property="og:url" itemprop="url" content="https://madcampos.dev/{{ BLOG_PATH }}" />
+		<meta property="og:url" itemprop="url" content="{{url}}" />
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:dnt" content="on">
 
@@ -66,14 +66,25 @@
 	<body>
 		<header class="blog-page-header">
 			<h1>
-				<a href="{{ BLOG_PATH }}"><img src="/images/logo-blog.svg" alt="My moniker, &quot;madcampos&quot;, written between curly braces on a monospaced font. With the word &quot;blog&quot; written to it's lower right side." /></a>
+				<a href="{{url}}"><img src="/images/logo-blog.svg" alt="My moniker, &quot;madcampos&quot;, written between curly braces on a monospaced font. With the word &quot;blog&quot; written to it's lower right side." /></a>
 			</h1>
 		</header>
 		<main id="blog-posts">
-			{{ POSTS }}
+			{{#each posts}}
+				<article class="post-card">
+					<header>
+						<a href="{{url}}"><h2>{{title}}</h2></a>
+						<a href="{{url}}"><span>{{createdAt}}</span></a>
+					</header>
+					{{{summary}}}
+					<footer>
+						<a href="{{url}}">Read more...</a>
+					</footer>
+				</article>
+			{{/each}}
 		</main>
 		<footer>
-			{{ PAGINATION }}
+			{{paginationHtml}}
 		</footer>
 	</body>
 </html>

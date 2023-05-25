@@ -19,12 +19,10 @@ export default defineConfig(async ({ mode }) => {
 	const baseUrl = mode === 'production' ? 'https://madcampos.dev/' : 'https://localhost:3000/';
 
 	const blogPages = await createBlogPages({
-		blogMetadata: {
-			description: "Marco Campos' Blog - A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript and more.",
-			title: "Marco Campos' Blog",
-			url: `${baseUrl}blog`,
-			imageUrl: `${baseUrl}icons/transparent/manifest-icon-512.png`
-		}
+		description: "Marco Campos' Blog - A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript and more.",
+		title: "Marco Campos' Blog",
+		url: new URL('blog/', baseUrl).toString(),
+		rssIconUrl: `${baseUrl}icons/transparent/manifest-icon-512.png`
 	});
 
 	const config: UserConfig = {

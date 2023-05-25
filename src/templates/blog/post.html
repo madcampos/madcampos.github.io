@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<link rel="canonical" href="https://madcampos.dev/{{ POST_PATH }}" />
+		<link rel="canonical" href="{{url}}" />
 		<link rel="alternate" type="application/atom+xml" href="/blog/rss.xml" title="Marco Campos' Blog" />
 
-		<title>{{ TITLE }} | Marco Campos | Blog</title>
+		<title>{{title}} | Marco Campos | Blog</title>
 
 		<!-- App Metadata -->
 		<link rel="icon" href="/icons/favicon.svg" />
@@ -16,12 +16,12 @@
 		<!-- Social metadata -->
 		<meta name="keywords" itemprop="keywords" content="personal, senior web developer, web developer, vue.js, vue, node.js, javascript, typescript, webdev" />
 
-		<meta property="og:title" name="twitter:title" itemprop="name" content="{{ TITLE }}" />
-		<meta property="og:description" name="description" itemprop="abstract" content="{{ EXCERPT }}" />
+		<meta property="og:title" name="twitter:title" itemprop="name" content="{{title}}" />
+		<meta property="og:description" name="description" itemprop="abstract" content="{{summary}}" />
 		<meta property="og:image" name="twitter:image" itemprop="image" content="https://madcampos.dev/images/me.jpg" />
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" itemprop="inLanguage" content="en_US" />
-		<meta property="og:url" itemprop="url" content="https://madcampos.dev/{{ POST_PATH }}" />
+		<meta property="og:url" itemprop="url" content="{{url}}" />
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:dnt" content="on">
 
@@ -67,20 +67,20 @@
 		<main>
 			<div id="post-header">
 				<nav id="back-to-blog">
-					<a id="link-small" href="{{ BLOG_PATH }}" title="Back to blog">
+					<a id="link-small" href="{{config.url}}" title="Back to blog">
 						<img src="/images/logo-blog-mini.svg" alt="" role="presentation" />
 					</a>
-					<a id="link-big" href="{{ BLOG_PATH }}" title="Back to blog">
+					<a id="link-big" href="{{config.url}}" title="Back to blog">
 						<img src="/images/logo-blog-micro.svg" alt="" role="presentation" />
 					</a>
 				</nav>
 				<header>
-					<h1>{{ TITLE }}</h1>
-					<aside>Published: {{ DATE }}</aside>
+					<h1>{{title}}</h1>
+					<aside>Published: {{createdAt}}</aside>
 				</header>
 			</div>
 			<article id="post-contents">
-				{{ CONTENT }}
+				{{{content}}}
 			</article>
 		</main>
 	</body>
