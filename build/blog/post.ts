@@ -60,13 +60,12 @@ interface PostTemplateData extends BlogPost {
 	config: BlogConfig
 }
 
-function extractPostMetadata(postMetadata: string, config: BlogConfig) {
+function extractPostMetadata(postMetadata: string, config: BlogConfig, postUrl: string) {
 	const metadata = postMetadata.replaceAll(/^\s*?<!--\s*|\s*?-->\s*?$/gui, '');
 
 	const [, descriptionMatch] = (/^\s*?description:\s*(.*?)\s*$/uim).exec(metadata) ?? [];
 	const [, summaryMatch] = (/^\s*?summary:\s*(.*?)\s*$/uim).exec(metadata) ?? [];
-	const summaryLex = marked.lexer(descriptionMatch ?? summaryMatch ?? '', config.markedOptions);
-	const summary = marked.parser(summaryLex, config.markedOptions);
+	const summary = marked.parse(descriptionMatch ?? summaryMatch ?? '', { ...config.markedOptions, baseUrl: postUrl });
 
 	const [, tagsMatch] = (/^\s*?tags:\s*(.*?)\s*$/uim).exec(metadata) ?? [];
 	const tags: string[] = [...tagsMatch.split(',').map((tag) => tag.trim())];
@@ -86,20 +85,28 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 	const srcPath = dirname(postPath);
 	const post = await readFile(postPath, { encoding: 'utf8' });
 
-	const lex = marked.lexer(post, config.markedOptions);
-	const content = marked.parser(lex, config.markedOptions);
-	const images: string[] = [];
-
 	const date = basename(srcPath);
 	const [year, month, day] = date.split('-');
-	const createdAt = `${date}T00:00:00.000Z`;
-
 	const slug = basename(postPath, '.md');
+
+	const destPath = `${config.postsDestDir}/${year}/${month}/${slug}/`;
+	const url = new URL(`${year}/${month}/${slug}/`, config.url).toString();
+
+	const markedOptions: marked.MarkedOptions = {
+		...config.markedOptions,
+		baseUrl: url
+	};
+
+	const lex = marked.lexer(post, markedOptions);
+	const content = marked.parser(lex, markedOptions);
+
+	const images: string[] = [];
 	let title = slug;
 	let image: string | undefined;
 	let imageAlt: string | undefined;
 	let summary = '';
 	let tags: string[] = [];
+	const createdAt = `${date}T00:00:00.000Z`;
 	let updatedAt: string | undefined;
 	let hasMetadata = false;
 
@@ -118,7 +125,7 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 		}
 
 		if (token.type === 'html' && token.text.startsWith('<!--') && !hasMetadata) {
-			const { summary: postSummary, tags: postTags, updatedAt: postUpdatedAt } = extractPostMetadata(token.text, config);
+			const { summary: postSummary, tags: postTags, updatedAt: postUpdatedAt } = extractPostMetadata(token.text, config, url);
 
 			summary = postSummary;
 			tags = postTags;
@@ -133,8 +140,8 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 		slug,
 		filename: basename(postPath),
 		srcPath,
-		destPath: `${config.postsDestDir}/${year}/${month}/${slug}/`,
-		url: new URL(`${year}/${month}/${slug}/`, config.url).toString(),
+		destPath,
+		url,
 		createdAt,
 		updatedAt,
 		postDate: {
