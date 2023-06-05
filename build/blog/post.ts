@@ -66,7 +66,7 @@ function extractPostMetadata(postMetadata: string, config: BlogConfig, postUrl: 
 
 	const [, descriptionMatch] = (/^\s*?description:\s*(.*?)\s*$/uim).exec(metadata) ?? [];
 	const [, summaryMatch] = (/^\s*?summary:\s*(.*?)\s*$/uim).exec(metadata) ?? [];
-	const summary = marked.parse(descriptionMatch ?? summaryMatch ?? '', { ...config.markedOptions, baseUrl: postUrl });
+	const summary = marked.parseInline(descriptionMatch ?? summaryMatch ?? '', { ...config.markedOptions, async: false, baseUrl: postUrl });
 
 	const [, tagsMatch] = (/^\s*?tags:\s*(.*?)\s*$/uim).exec(metadata) ?? [];
 	const tags: string[] = [...tagsMatch.split(',').map((tag) => tag.trim())];
@@ -95,7 +95,7 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 
 	const highlighter = await shiki.getHighlighter({
 		theme: 'dark-plus',
-		langs: ['typescript', 'ts', 'html', 'javascript', 'js', 'json', 'css']
+		langs: ['typescript', 'ts', 'html', 'javascript', 'js', 'json', 'css', 'markdown', 'md', 'bash', 'shell', 'console', 'fish', 'sh', 'handlebars', 'hbs', 'jsonc', 'ini', 'diff', 'docker', 'dockerfile', 'powershell', 'ps1', 'ps', 'vue', 'vue-html']
 	});
 
 	const markedOptions: marked.MarkedOptions = {
@@ -105,7 +105,7 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 	};
 
 	const lex = marked.lexer(post, markedOptions);
-	const content = marked.parser(lex, markedOptions).replaceAll(/<pre><code class=".+?"><pre/giu, '<pre').replaceAll('</pre></code></pre>', '</pre>');
+	const content = marked.parser(lex, markedOptions);
 
 	const images: string[] = [];
 	let title = slug;
