@@ -32,7 +32,7 @@
 		"test:coverage": "vitest run --coverage"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^17.6.1",
+		"@commitlint/cli": "^17.6.5",
 		"@commitlint/config-conventional": "^17.6.1",
 		"@types/marked": "^5.0.0",
 		"@types/node": "^17.0.45",
