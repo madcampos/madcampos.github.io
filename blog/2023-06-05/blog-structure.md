@@ -1,13 +1,13 @@
 <!--
 description: A dive into the semantic html of a blog.
-tags: buildintheopen, meta, coding, vite, ts
+tags: buildintheopen, meta, coding, vite, ts, BuildingInPublic, BreakIntoTech, LearnToCode, FrontendDevelopment
 -->
 
 # The Semantics of Blogging
 
-Building an html page is fun... until you find yourself lost in a sea of meaningless `div`s.
+Building an html page is fun... until you find yourself lost in a sea of meaningless `<div>`s.
 
-The problem with html tags and, by extension the problem with language in general, is that _naming_ and _categorizing_ things _is hard_! There is a whole field of taxonomy and people spend years and a PhD thesis studing how to name and classify things.
+The problem with html tags and, by extension the problem with language in general, is that _naming_ and _categorizing_ things _is hard_! There is a whole field of taxonomy and people spend years getting a PhD thesis studying how to name and classify things.
 
 ## Anatomy of an Article Page
 
@@ -33,17 +33,20 @@ Let's start with the full markup for the article page and then break it down to 
 </body>
 ```
 
-## What Even is an `<article>`?
+## What Is An `<article>`?
 
-Interestingly enough, an `<article>` can mean more than a blog article, it can be also an item card on a shopping website, or a recipe, or even a forum post. The idea is that an `<article>` is a standalone piece of content. It can be read on its own, and it makes sense on its own.
+Interestingly, an `<article>` can mean more than a blog article, it can be also an item card on a e-commerce website, a recipe, or even a forum post. The idea is that an `<article>` is a standalone piece of content. It can be read on its own, and it makes sense on its own.
 
-To quote from the html spec:
-> The article element represents a complete, or self-contained, composition in a document, page, application, or site and that is, in principle, independently distributable or reusable, e.g. in syndication. This could be a forum post, a magazine or newspaper article, a blog entry, a user-submitted comment, an interactive widget or gadget, or any other independent item of content.
+To quote from the [html spec](https://html.spec.whatwg.org/multipage/sections.html#the-article-element):
+> _The article element represents a complete, or self-contained, composition in a document, page, application, or site and that is, in principle, independently distributable or reusable, e.g. in syndication. This could be a forum post, a magazine or newspaper article, a blog entry, a user-submitted comment, an interactive widget or gadget, or any other independent item of content._
+>
+> https://html.spec.whatwg.org/multipage/sections.html#the-article-element
 
 This gives us a basic structure for creating a post:
 ```html
 <article>
-	<!-- Navigation -->
+	<!-- Article navigation, for example, a table of contents -->
+	<!-- (Can also be used for site navigation as seen patterns where the site has a "top navigation bar") -->
 	...
 	<!-- Title -->
 	...
@@ -52,12 +55,12 @@ This gives us a basic structure for creating a post:
 </article>
 ```
 
-And also the card used on the post lists use a similar structure, but we will get into the other templates on a later post:
+The card used on the post lists use a similar structure. (Other templates, including recipes and forum posts will be covered in a future article):
 ```html
 <article class="post-card">
 	<header>
 		<a href="{{url}}"><h2>{{title}}</h2></a>
-		<a href="{{url}}"><span>{{createdAt}}</span></a>
+		<a href="{{url}}"><span>{{createdAtDate}}</span></a>
 	</header>
 	{{{summary}}}
 	<footer>
@@ -66,17 +69,22 @@ And also the card used on the post lists use a similar structure, but we will ge
 </article>
 ```
 
-## Keeping Your `<header>` in the Right Place
+## Keeping Your `<header>` In The Right Place
 
 The header tag serves to represent _almost everything_ that comes before the main content of the page. By _almost everything_, I mean data and metadata related to the article, in the case `<nav>` doesn't belong in the header, but the `<aside>` does.
 
-The reason behind it is that `<nav>` in that case is the _global_ page navigation. As for `<aside>`, it is metadata related to the article. That way things are organized and fullfill their semantic purpose.
+The reason behind it is that `<nav>` in that case is the _global_ page navigation. As for `<aside>`, it is metadata related to the article. That way things are organized and fulfil their semantic purpose.
 
 ## What About Metadata?
 
-For adding metadata and repesenting it, there are the regular html tags on the `<head>`, [Open Graph](https://ogp.me/) tags, and [Schema.org](https://schema.org/) properties.
+For adding metadata and representing it, there are mainly three ways to do it:
+
+1. The regular html tags on the `<head>`,
+2. [Open Graph](https://ogp.me/) tags, and
+3. [Schema.org](https://schema.org/) properties.
 
 The relevant tags inside the `<head>` looks somewhat like this:
+
 ```html
 <meta charset="utf-8" />
 <link rel="canonical" href="{{url}}" />
@@ -87,18 +95,39 @@ The relevant tags inside the `<head>` looks somewhat like this:
 <meta property="og:title" name="twitter:title" itemprop="name" content="{{title}}" />
 <meta property="og:description" name="description" itemprop="abstract" content="{{summary}}" />
 <meta property="og:image" name="twitter:image" itemprop="image" content="https://madcampos.dev/icons/transparent/manifest-icon-512.png" />
+
 <meta property="og:type" content="article" />
 <meta property="og:locale" itemprop="inLanguage" content="en_US" />
 <meta property="og:url" itemprop="url" content="{{url}}" />
+
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:dnt" content="on">
 ```
 
-The Open Graph tags are the ones where `property` starts with `og:`. They are used by social media sites to display a preview of the page when sharing it.
+Thus,
+1. The regular html tags on the `<head>`,
+	- The more common `<title>` and `<link>` tags.
+	- They link to the canonical version of the page, i.e. the blog post itself.
+	- They also link to the rss feed for the blog.
+2. [Open Graph](https://ogp.me/) tags,
+	- Are the ones where `property` starts with `og:`.
+	- Used by social media sites to display a preview of the page when sharing it.
+	- Started as as a Facebook thing, but now are used by other social media sites and search engines to display rich content.
+2. [Schema.org](https://schema.org/) properties.
+	- Are the `itemprop` on the page.
+	- Used by search engines to display rich results.
+	- Are older than Open Graph, but more widely used by search engines, like Google and Bing.
+	- Provide a rich set of properties for different types of content.
 
-The Schema.org properties, all those `itemprop` on the page are used by search engines to display rich results.
+## Headings Levels And Table of Contents
 
-Aside from that there are the more common `<title>` and `<link>` tags.
+Having a good heading hierarchy is important for accessibility and for search engines. The most important item is the `<h1>` tag, it is the title of the page and should be only one of it.
+
+When screen reader users use your site, they will have an `<h1>` spoken to them _first_, all other headers are children of the `<h1>`.
+
+That is why all headings for posts on this blog are `<h2>`, except for the title.
+
+If you want to make the text bigger **use CSS**.
 
 ## Conclusion
 
