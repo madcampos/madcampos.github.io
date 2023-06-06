@@ -1,11 +1,16 @@
-.shiki {
+code {
+	--line-counter-width: 2em;
+	--line-counter-margin-right: 1em;
+
 	counter-reset: step;
 	counter-increment: step 0;
 
 	white-space: pre-wrap;
 	font-family: 'Cascadia Code', Monaco, 'Courier New', Courier, monospace;
 	font-size: smaller;
+}
 
+pre {
 	background-color: #1E1E1E;
 	padding: 0.6rem 0.4rem;
 	border: thin solid black;
@@ -15,8 +20,9 @@
 code .line::before {
 	content: counter(step, decimal-leading-zero);
 	counter-increment: step;
-	width: 2.5rem;
-	margin-right: 1rem;
+	margin-left: calc((var(--line-counter-width) + var(--line-counter-margin-right)) * -1);
+	margin-right: var(--line-counter-margin-right);
+	width: var(--line-counter-width);
 	display: inline-block;
 	text-align: right;
 	color: rgba(115,138,148,.4)
@@ -24,4 +30,5 @@ code .line::before {
 
 code .line {
 	display: inline-block;
+	padding-left: calc(var(--line-counter-width) + var(--line-counter-margin-right));
 }

@@ -101,7 +101,11 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 	const markedOptions: marked.MarkedOptions = {
 		...config.markedOptions,
 		baseUrl: url,
-		highlight: (code, lang) => highlighter.codeToHtml(code, { lang })
+		highlight: (code, lang) => {
+			const formattedCode = highlighter.codeToHtml(code, { lang });
+
+			return formattedCode.replace(/^<pre class="shiki.*?<code>/iu, '').replace(/<\/pre><\/code>/iu, '');
+		}
 	};
 
 	const lex = marked.lexer(post, markedOptions);
