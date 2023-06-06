@@ -120,8 +120,10 @@ export async function createBlogPages(config: Partial<BlogConfig> = {}) {
 			langPrefix: '',
 			silent: true,
 			mangle: true,
+			// @ts-expect-error
 			smartLists: true,
 			smartypants: true,
+			sanitize: true,
 			...config.markedOptions
 		}
 	};
