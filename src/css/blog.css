@@ -27,7 +27,7 @@
 #post-header {
 	text-align: center;
 	padding-bottom: 1rem;
-	font-family: 'Courier New', Courier, monospace;
+	font-family: 'Cascadia Code', Monaco, 'Courier New', Courier, monospace;
 	display: flex;
 }
 
@@ -39,7 +39,7 @@
 #post-header h1 {
 	height: auto;
 	font-size: 4rem;
-	font-family: 'Courier New', Courier, monospace;
+	font-family: 'Cascadia Code', Monaco, 'Courier New', Courier, monospace;
 }
 
 #back-to-blog {
