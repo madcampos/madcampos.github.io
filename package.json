@@ -34,7 +34,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^17.6.1",
 		"@commitlint/config-conventional": "^17.6.1",
-		"@types/marked": "^4.3.0",
+		"@types/marked": "^5.0.0",
 		"@types/node": "^17.0.45",
 		"@typescript-eslint/eslint-plugin": "^5.59.2",
 		"@typescript-eslint/parser": "^5.59.9",
@@ -43,7 +43,7 @@
 		"handlebars": "^4.7.7",
 		"husky": "^8.0.3",
 		"lint-staged": "^13.2.2",
-		"marked": "^5.0.0",
+		"marked": "^5.0.4",
 		"oxipng-bin": "^1.0.0",
 		"pwa-asset-generator": "^6.2.1",
 		"shiki": "^0.14.2",
