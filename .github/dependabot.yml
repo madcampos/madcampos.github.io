@@ -11,6 +11,6 @@ updates:
       interval: "weekly"
     target-branch: "main"
     labels:
-      - "npm dependencies"
+      - "dependencies"
     commit-message:
       prefix: "[dependency update]"
