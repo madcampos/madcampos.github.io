@@ -37,7 +37,7 @@
 		"@types/marked": "^4.3.0",
 		"@types/node": "^17.0.45",
 		"@typescript-eslint/eslint-plugin": "^5.59.2",
-		"@typescript-eslint/parser": "^5.59.2",
+		"@typescript-eslint/parser": "^5.59.9",
 		"c8": "^7.13.0",
 		"eslint": "^8.39.0",
 		"handlebars": "^4.7.7",
