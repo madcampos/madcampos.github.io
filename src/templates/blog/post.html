@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" itemscope itemtype="https://schema.org/WebPage">
-
+<html lang="en-US" itemscope itemtype="https://schema.org/BlogPosting">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -18,8 +17,8 @@
 
 		<meta property="og:title" name="twitter:title" itemprop="name" content="{{title}}" />
 		<meta property="og:description" name="description" itemprop="abstract" content="{{summary}}" />
-		<meta property="og:image" name="twitter:image" itemprop="image" content="https://madcampos.dev/images/me.jpg" />
-		<meta property="og:type" content="website" />
+		<meta property="og:image" name="twitter:image" itemprop="image" content="https://madcampos.dev/icons/transparent/manifest-icon-512.png" />
+		<meta property="og:type" content="article" />
 		<meta property="og:locale" itemprop="inLanguage" content="en_US" />
 		<meta property="og:url" itemprop="url" content="{{url}}" />
 		<meta name="twitter:card" content="summary" />
@@ -65,7 +64,7 @@
 	</head>
 
 	<body>
-		<main>
+		<article>
 			<div id="post-header">
 				<nav id="back-to-blog">
 					<a id="link-small" href="{{config.url}}" title="Back to blog">
@@ -77,12 +76,13 @@
 				</nav>
 				<header>
 					<h1>{{title}}</h1>
-					<aside>Published: {{createdAt}}</aside>
+					<aside>Published on <time itemprop="dateCreated" datetime="{{createdAt}}">{{formatDate createdAt}}</time></aside>
 				</header>
 			</div>
-			<article id="post-contents">
+
+			<main id="post-contents" itemprop="articleBody">
 				{{{content}}}
-			</article>
-		</main>
+			</main>
+		</article>
 	</body>
 </html>

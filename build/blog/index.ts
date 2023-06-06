@@ -82,6 +82,8 @@ async function getBlogPosts(config: BlogConfig, postsDir: string) {
 }
 
 async function getCompiledTemplates(config: BlogConfig) {
+	handlebars.registerHelper('formatDate', (dateString) => new Intl.DateTimeFormat('en-US', { dateStyle: 'long' }).format(new Date(dateString)));
+
 	return {
 		post: handlebars.compile(await readFile(config.templatePaths.post, { encoding: 'utf8' })),
 		home: handlebars.compile(await readFile(config.templatePaths.home, { encoding: 'utf8' })),
