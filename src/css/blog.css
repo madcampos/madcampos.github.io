@@ -40,6 +40,21 @@
 	height: auto;
 	font-size: 4rem;
 	font-family: 'Cascadia Code', Monaco, 'Courier New', Courier, monospace;
+	font-weight: bold;
+
+	overflow-wrap: break-word;
+	word-break: break-word;
+	line-break: loose;
+	/* stylelint-disable-next-line property-no-vendor-prefix */
+	-webkit-hyphens: auto;
+	hyphens: auto;
+	hyphenate-character: '-';
+	hyphenate-limit-chars: 8 3 2;
+
+	max-width: 90vw;
+	display: inline-block;
+
+	text-wrap: balance;
 }
 
 #back-to-blog {
