@@ -1,21 +1,6 @@
 @import './vars.css';
 @import './fonts.css';
 
-::-webkit-scrollbar {
-	width: var(--scrollbar-size);
-	height: var(--scrollbar-size);
-}
-
-::-webkit-scrollbar-track {
-	border-radius: var(--pill-border-radius);
-	background-color: var(--scrollbar-bg);
-}
-
-::-webkit-scrollbar-thumb {
-	border-radius: var(--pill-border-radius);
-	background-color: var(--theme-color);
-}
-
 :not(:defined) { display: none; }
 
 html, body {
