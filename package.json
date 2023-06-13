@@ -43,7 +43,7 @@
 		"handlebars": "^4.7.7",
 		"husky": "^8.0.3",
 		"lint-staged": "^13.2.2",
-		"marked": "^5.0.4",
+		"marked": "^5.1.0",
 		"oxipng-bin": "^1.0.0",
 		"pwa-asset-generator": "^6.2.1",
 		"shiki": "^0.14.2",
