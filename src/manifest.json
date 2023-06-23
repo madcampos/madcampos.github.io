@@ -42,5 +42,21 @@
 	"handle_links": "preffered",
 	"launch_handler": {
 		"client_mode": "navigate-existing"
+	},
+	"edge_side_panel": {
+		"preffer_width": 460
+	},
+	"changelog": {
+		"version": "1.0.0",
+		"history": [
+			{
+				"url": "https://madcampos.dev/changelog",
+				"type": "text/html"
+			},
+			{
+				"url": "https://madcampos.dev/changelog.rss",
+				"type": "application/rss+xml"
+			}
+		]
 	}
 }
