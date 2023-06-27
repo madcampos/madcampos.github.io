@@ -14,7 +14,9 @@ tags:
 
 # Web Components: A (Not So) Gentle Introduction
 
-**Note**: Please don't take this post seriously, it contains irony. If you are not immune to it, go vaccinate yourself and come back later.
+**Note**: Please don't take this post seriously, it contains irony. If you are _not_ immune to it, go vaccinate yourself and come back later.
+
+## What Are Web Components?
 
 You may be wondering: What the flying spaghetti monster is a web component?
 
@@ -22,10 +24,18 @@ Glad you asked! They are a shiny and cool set of technologies to build reusable 
 
 ## But I Already Have `<Insert Framework Here>`!
 
-Well, that is awesome, although the framework you most probably are talking about is [react](https://react.dev/) or one of it's less popular cousins.
-But let me tell you something: react is a big pile of garbage. #hot-take 🔥
+Well, that is awesome, although the framework you most probably are talking about is [react](https://react.dev/) or one of it's [less](https://angularjs.org/) [popular](https://svelte.dev/) [cousins](https://vuejs.org/).
+But let me tell you something: react is a pile of garbage. #hot-take 🔥
 
 Now that we got that out of the way, let's talk about web components and why they are cool.
+
+## Why They Are So #cool?
+
+The main reason is because it is native to the web, so we don't need to load extra libraries or frameworks to use them.
+
+They also bring the promise of dropping any new component in and just use it, without having to worry about build tools, compatibility or anything else. They are also easy to integrate with any framework you may be using because it is just an html element.
+
+_I_ particularly like them because they are close enough to how the web platform works that you can understand them without having to learn new hard to grasp concepts. Yes, I'm looking at you [currying](https://en.wikipedia.org/wiki/Currying).
 
 ## The Technical, Boring, Not Fun, Stuff
 
