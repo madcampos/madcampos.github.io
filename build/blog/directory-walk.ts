@@ -6,7 +6,7 @@ export async function getFiles(dir: string) {
 	const files: string[] = [];
 
 	for await (const entry of entries) {
-		if (!entry.isDirectory() && entry.name.startsWith('.')) {
+		if (entry.name.startsWith('.')) {
 			continue;
 		}
 
