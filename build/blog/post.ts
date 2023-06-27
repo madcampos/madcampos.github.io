@@ -2,9 +2,12 @@ import type { TemplateDelegate as HandlebarsTemplateDelegate } from 'handlebars'
 import type { BlogConfig } from '.';
 
 import { readFile } from 'fs/promises';
+import { basename, dirname } from 'path';
+
 import { marked } from 'marked';
 import shiki from 'shiki';
-import { basename, dirname } from 'path';
+import { parse as frontmatter } from 'ultramatter';
+
 import { copyFile, createHtmlFile } from './file-write';
 
 export interface BlogPost {
@@ -61,30 +64,69 @@ interface PostTemplateData extends BlogPost {
 	config: BlogConfig
 }
 
-function extractPostMetadata(postMetadata: string, config: BlogConfig, postUrl: string) {
-	const metadata = postMetadata.replaceAll(/^\s*?<!--\s*|\s*?-->\s*?$/gui, '');
+interface PostMetadata {
+	title?: string,
+	slug?: string,
 
-	const [, descriptionMatch] = (/^\s*?description:\s*(.*?)\s*$/uim).exec(metadata) ?? [];
-	const [, summaryMatch] = (/^\s*?summary:\s*(.*?)\s*$/uim).exec(metadata) ?? [];
-	const summary = marked.parseInline(descriptionMatch ?? summaryMatch ?? '', { ...config.markedOptions, async: false, baseUrl: postUrl });
+	image?: string,
+	heroImage?: string,
+	hero_image?: string,
+	hero?: string,
+	mainImage?: string,
+	main_image?: string,
 
-	const [, tagsMatch] = (/^\s*?tags:\s*(.*?)\s*$/uim).exec(metadata) ?? [];
-	const tags: string[] = [...tagsMatch.split(',').map((tag) => tag.trim())];
+	imageAlt?: string,
+	image_alt?: string,
+	heroImageAlt?: string,
+	hero_image_alt?: string,
+	heroAlt?: string,
+	hero_alt?: string,
+	mainImageAlt?: string,
+	main_image_alt?: string,
 
-	const [, updatedMatch] = (/^\s*?updated:\s*(.*?)\s*$/uim).exec(metadata) ?? [];
-	const [, updatedAtMatch] = (/^\s*?updated_at:\s*(.*?)\s*$/uim).exec(metadata) ?? [];
-	const updatedAt = updatedMatch ?? updatedAtMatch;
+	createdAt?: string,
+	created_at?: string,
+	created?: string,
 
-	return {
-		summary,
-		tags,
-		updatedAt
-	};
+	updatedAt?: string,
+	updated_at?: string,
+	updated?: string,
+
+	summary?: string,
+	description?: string,
+	excerpt?: string,
+
+	tags?: string[]
+}
+
+function getTitleFromMetadata(slug: string, metadata?: PostMetadata) {
+	return metadata?.title ?? slug;
+}
+
+function getSummaryFromMetadata(metadata?: PostMetadata) {
+	return metadata?.summary ?? metadata?.description ?? metadata?.excerpt ?? '';
+}
+
+function getHeroImageFromMetadata(metadata?: PostMetadata) {
+	return metadata?.image ?? metadata?.heroImage ?? metadata?.hero_image ?? metadata?.hero ?? metadata?.mainImage ?? metadata?.main_image;
+}
+
+function getHeroImageAltTextFromMetadata(metadata?: PostMetadata) {
+	// eslint-disable-next-line max-len
+	return metadata?.imageAlt ?? metadata?.image_alt ?? metadata?.heroImageAlt ?? metadata?.hero_image_alt ?? metadata?.heroAlt ?? metadata?.hero_alt ?? metadata?.mainImageAlt ?? metadata?.main_image_alt;
+}
+
+function getCreatedAtDateFromMetadata(date: string, metadata?: PostMetadata) {
+	return metadata?.createdAt ?? metadata?.created_at ?? metadata?.created ?? `${date}T00:00:00.000Z`;
+}
+
+function getUpdatedAtDateFromMetadata(createdAt: string, metadata?: PostMetadata) {
+	return metadata?.updatedAt ?? metadata?.updated_at ?? metadata?.updated ?? createdAt;
 }
 
 export async function getPostContent(postPath: string, config: BlogConfig) {
 	const srcPath = dirname(postPath);
-	const post = await readFile(postPath, { encoding: 'utf8' });
+	const rawPostText = await readFile(postPath, { encoding: 'utf8' });
 
 	const date = basename(srcPath);
 	const [year, month, day] = date.split('-');
@@ -108,18 +150,15 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 		}
 	};
 
-	const lex = marked.lexer(post, markedOptions);
+	const { frontmatter: metadata, content: postText }: { frontmatter?: PostMetadata, content: string } = frontmatter(rawPostText);
+	const lex = marked.lexer(postText, markedOptions);
 	const content = marked.parser(lex, markedOptions);
 
 	const images: string[] = [];
-	let title = slug;
-	let image: string | undefined;
-	let imageAlt: string | undefined;
-	let summary = '';
-	let tags: string[] = [];
-	const createdAt = `${date}T00:00:00.000Z`;
-	let updatedAt: string | undefined;
-	let hasMetadata = false;
+	let title = getTitleFromMetadata(slug, metadata);
+	let image = getHeroImageFromMetadata(metadata);
+	let imageAlt = getHeroImageAltTextFromMetadata(metadata);
+	const createdAt = getCreatedAtDateFromMetadata(date, metadata);
 
 	marked.walkTokens(lex, (token) => {
 		if (token.type === 'heading' && token.depth === 1 && title === slug) {
@@ -134,16 +173,6 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 		if (token.type === 'image') {
 			images.push(token.href);
 		}
-
-		if (token.type === 'html' && token.text.startsWith('<!--') && !hasMetadata) {
-			const { summary: postSummary, tags: postTags, updatedAt: postUpdatedAt } = extractPostMetadata(token.text, config, url);
-
-			summary = postSummary;
-			tags = postTags;
-			updatedAt = postUpdatedAt;
-
-			hasMetadata = true;
-		}
 	});
 
 	const postContent: BlogPost = {
@@ -154,13 +183,13 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 		destPath,
 		url,
 		createdAt,
-		updatedAt,
+		updatedAt: getUpdatedAtDateFromMetadata(createdAt, metadata),
 		postDate: {
 			year,
 			month,
 			day
 		},
-		summary,
+		summary: getSummaryFromMetadata(metadata),
 		content,
 		...(image && {
 			mainImage: {
@@ -169,7 +198,7 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 			}
 		}),
 		images,
-		tags
+		tags: metadata?.tags ?? []
 	};
 
 	return postContent;
