@@ -1,8 +1,13 @@
-<!--
+---
 description: Summary of the experience and hurdles of coding this blog.
-tags: buildintheopen, meta, coding, vite, ts
+tags:
+  - buildintheopen
+  - meta
+  - coding
+  - vite
+  - ts
 updated: 2023-06-05
--->
+---
 
 # Hello, World!
 

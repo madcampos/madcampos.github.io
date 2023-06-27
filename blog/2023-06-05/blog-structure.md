@@ -1,7 +1,17 @@
-<!--
+---
 description: A dive into the semantic html of a blog.
-tags: buildintheopen, meta, coding, vite, ts, BuildingInPublic, BreakIntoTech, LearnToCode, FrontendDevelopment
--->
+tags:
+  - buildintheopen
+  - meta
+  - coding
+  - vite
+  - ts
+  - BuildingInPublic
+  - BreakIntoTech
+  - LearnToCode
+  - FrontendDevelopment
+updated: 2023-06-07
+---
 
 # The Semantics of Blogging
 
