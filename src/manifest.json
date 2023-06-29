@@ -1,6 +1,6 @@
 {
 	"id": "https://madcampos.dev/?id=a51d10e1-ffc3-4214-b4bd-b33691d1cdb1",
-	"scope": "https://madcampos.dev/",
+	"scope": "https://madcampos.dev/?utm_source=pwa&utm_medium=install&utm_campaign=web_app_manifest",
 	"name": "Marco Campos",
 	"short_name": "MADCampos",
 	"lang": "en-US",
@@ -50,11 +50,11 @@
 		"version": "1.0.0",
 		"history": [
 			{
-				"url": "https://madcampos.dev/changelog",
+				"url": "https://madcampos.dev/changelog?utm_source=pwa&utm_medium=changelog&utm_campaign=changelog",
 				"type": "text/html"
 			},
 			{
-				"url": "https://madcampos.dev/changelog.rss",
+				"url": "https://madcampos.dev/changelog.rss?utm_source=pwa&utm_medium=changelog&utm_campaign=changelog",
 				"type": "application/rss+xml"
 			}
 		]
