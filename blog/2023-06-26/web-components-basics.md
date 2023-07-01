@@ -3,9 +3,9 @@ description: A brief introduction to web components.
 tags:
   - web
   - web-components
-  - javascript
+  - JavaScript
   - html
-  - css
+  - CSS
   - BuildingInPublic
   - BreakIntoTech
   - LearnToCode

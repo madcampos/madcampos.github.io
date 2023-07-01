@@ -1,11 +1,11 @@
 ---
 description: Summary of the experience and hurdles of coding this blog.
 tags:
-  - buildintheopen
+  - BuildInTheOpen
   - meta
   - coding
   - vite
-  - ts
+  - TS
 updated: 2023-06-05
 ---
 
@@ -38,7 +38,7 @@ Unfortunately there were no existing plugins for that. The only option was [Vite
 
 That meant I was about to build a plugin or at least write _some_ code myself.
 
-The investigation followed with some Multi-page application (MPA) plugins for vite. As it was born from the Vue community it's main porpouse is to build Single-page applications (SPA) and it's not the best at building MPAs, but it can be done. The one that cought my attention was [`vite-plugin-virtual-mpa`](https://github.com/emosheeep/vite-plugin-virtual-mpa/). I configured it, wrote a lot of code and then went to test...
+The investigation followed with some Multi-page application (MPA) plugins for vite. As it was born from the Vue community it's main purpose is to build Single-page applications (SPA) and it's not the best at building MPAs, but it can be done. The one that caught my attention was [`vite-plugin-virtual-mpa`](https://github.com/emosheeep/vite-plugin-virtual-mpa/). I configured it, wrote a lot of code and then went to test...
 
 BOOM! Cryptic errors showed up.
 
@@ -53,7 +53,7 @@ I tried to investigate what was causing it, and to keep a 4 hours of frustration
 
 The plugin was generating the files on the dev server but when it came time to build, rollup was not able to find them because they were never created _on disk_, they were only _virtual_.
 
-## The (Failed) Atempt
+## The (Failed) Attempt
 
 I then dug into the source code for `vite-plugin-virtual-mpa` and tried to create the minimal steps to reproduce the bug.
 
@@ -93,7 +93,7 @@ So, the "plugin" does the following steps:
 
 The result is this blog that you, dear reader, is reading right now. It is not perfect, but it is a good MVP to be up and running and improve as I go.
 
-The code can be viewed on github on the [`blog/index.ts`](https://github.com/madcampos/madcampos.github.io/blob/main/build/blog/index.ts) file.
+The code can be viewed on GitHub on the [`blog/index.ts`](https://github.com/madcampos/madcampos.github.io/blob/main/build/blog/index.ts) file.
 
 ## Next Steps
 There are still some point to improve. The next ones I intend to tackle are the styling of the blog (it is pretty barebones right now), and pagination.

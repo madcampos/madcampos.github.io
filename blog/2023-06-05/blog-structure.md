@@ -1,11 +1,12 @@
 ---
 description: A dive into the semantic html of a blog.
 tags:
-  - buildintheopen
+  - buildInTheOpen
   - meta
   - coding
   - vite
-  - ts
+  - TS
+  - TypeScript
   - BuildingInPublic
   - BreakIntoTech
   - LearnToCode
@@ -21,7 +22,7 @@ The problem with html tags and, by extension the problem with language in genera
 
 ## Anatomy of an Article Page
 
-Let's start with the full markup for the article page and then break it down to it's parts. I'm only showing the `body` here for brevity, but you can see the full template in the [github repo](https://github.com/madcampos/madcampos.github.io/blob/main/src/templates/post.html).
+Let's start with the full markup for the article page and then break it down to it's parts. I'm only showing the `body` here for brevity, but you can see the full template in the [GitHub repo](https://github.com/madcampos/madcampos.github.io/blob/main/src/templates/post.html).
 
 ```html
 <body>
@@ -98,7 +99,7 @@ The relevant tags inside the `<head>` looks somewhat like this:
 ```html
 <meta charset="utf-8" />
 <link rel="canonical" href="{{url}}" />
-<link rel="alternate" type="application/atom+xml" href="/blog/rss.xml" title="Marco Campos' Blog" />
+<link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Marco Campos' Blog" />
 
 <title>{{title}} | Marco Campos | Blog</title>
 
@@ -118,7 +119,7 @@ Thus,
 1. The regular html tags on the `<head>`,
 	- The more common `<title>` and `<link>` tags.
 	- They link to the canonical version of the page, i.e. the blog post itself.
-	- They also link to the rss feed for the blog.
+	- They also link to the RSS feed for the blog.
 2. [Open Graph](https://ogp.me/) tags,
 	- Are the ones where `property` starts with `og:`.
 	- Used by social media sites to display a preview of the page when sharing it.
