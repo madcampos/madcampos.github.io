@@ -22,7 +22,7 @@ export interface BlogConfig {
 	/**
 	 * The blog main url.
 	 * @default ''
-	 * @example 'https://example.com/blog'
+	 * @example 'https://example.com/blog/'
 	 */
 	url: string,
 

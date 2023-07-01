@@ -75,7 +75,7 @@ export async function generatePaginatedList(config: BlogConfig, pageMetadata: Pa
 
 		const content = template({
 			...pageMetadata,
-			url: pageUrl,
+			url: pageUrl.replace(/(?<!:)\/\/+/giu, '/'),
 			destPath: pagePath,
 			config,
 			posts: postsOnPage,
