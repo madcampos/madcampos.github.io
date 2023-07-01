@@ -1,7 +1,7 @@
 ---
 description: A dive into the semantic html of a blog.
 tags:
-  - buildInTheOpen
+  - BuildInTheOpen
   - meta
   - coding
   - vite

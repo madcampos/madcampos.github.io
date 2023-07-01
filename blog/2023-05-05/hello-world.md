@@ -2,6 +2,7 @@
 description: Summary of the experience and hurdles of coding this blog.
 tags:
   - BuildInTheOpen
+  - BuildingInPublic
   - meta
   - coding
   - vite

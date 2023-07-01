@@ -6,6 +6,7 @@ tags:
   - JavaScript
   - html
   - CSS
+  - BuildInTheOpen
   - BuildingInPublic
   - BreakIntoTech
   - LearnToCode
