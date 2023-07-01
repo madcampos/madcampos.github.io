@@ -5,7 +5,7 @@ export function generateRssFeed(config: BlogConfig, posts: BlogPost[]) {
 	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 	const ONE_WEEK_IN_MINUTES = 60 * 24 * 7;
 
-	let rssString = `<?xml version="1.0" encoding="UTF-8" ?><rss version="2.0"><channel>
+	let rssString = `<?xml version="1.0" encoding="UTF-8" ?><?xml-stylesheet href="/rss.xsl" type="text/xsl"?><rss version="2.0"><channel>
 		<title>${config.title}</title>
 		<link>${config.url}</link>
 		<description>${config.description}</description>
