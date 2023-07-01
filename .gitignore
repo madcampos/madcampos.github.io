@@ -26,7 +26,7 @@ coverage
 
 # Blog
 src/blog/**
-public/blog/*.xml
+public/blog/**
 
 # Server certificates
 certs

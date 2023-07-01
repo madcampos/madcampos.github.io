@@ -1,0 +1,4 @@
+main {
+	width: clamp(10rem, 80vw, 50rem);
+	margin-inline: auto;
+}
