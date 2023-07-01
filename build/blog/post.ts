@@ -24,6 +24,8 @@ export interface BlogPost {
 	srcPath: string,
 	/** The path where the post file should be created. */
 	destPath: string,
+	/** The path for where assets for this post will go, like images or media */
+	assetsPath: string,
 
 	/** A summary for the post that will show in list pages. */
 	summary: string,
@@ -133,6 +135,7 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 	const slug = basename(postPath, '.md');
 
 	const destPath = `${config.postsDestDir}/${year}/${month}/${slug}/`;
+	const assetsPath = `${config.assetsDir}/${year}/${month}/${slug}/`;
 	const url = new URL(`${year}/${month}/${slug}/`, config.url).toString();
 
 	const highlighter = await shiki.getHighlighter({
@@ -156,18 +159,18 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 
 	const images: string[] = [];
 	let title = getTitleFromMetadata(slug, metadata);
-	let image = getHeroImageFromMetadata(metadata);
-	let imageAlt = getHeroImageAltTextFromMetadata(metadata);
+	const image = getHeroImageFromMetadata(metadata);
+	const imageUrl = image && new URL(image, url).toString();
+	const imageAlt = getHeroImageAltTextFromMetadata(metadata);
 	const createdAt = getCreatedAtDateFromMetadata(date, metadata);
+
+	if (image) {
+		images.push(image);
+	}
 
 	marked.walkTokens(lex, (token) => {
 		if (token.type === 'heading' && token.depth === 1 && title === slug) {
 			title = token.text;
-		}
-
-		if (token.type === 'image' && !image) {
-			image = token.href;
-			imageAlt = token.title ?? token.text;
 		}
 
 		if (token.type === 'image') {
@@ -181,6 +184,7 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 		filename: basename(postPath),
 		srcPath,
 		destPath,
+		assetsPath,
 		url,
 		createdAt,
 		updatedAt: getUpdatedAtDateFromMetadata(createdAt, metadata),
@@ -191,9 +195,9 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 		},
 		summary: getSummaryFromMetadata(metadata),
 		content,
-		...(image && {
+		...(imageUrl && {
 			mainImage: {
-				url: image,
+				url: imageUrl,
 				alt: imageAlt
 			}
 		}),
@@ -213,7 +217,7 @@ export async function generateBlogPostPage(config: BlogConfig, template: Handleb
 		if (imagePath.startsWith('./')) {
 			const imageFilePath = imagePath.replace(/^.\//iu, '');
 
-			await copyFile(`${postData.srcPath}/${imageFilePath}`, `${postData.destPath}/${imageFilePath}`);
+			await copyFile(`${postData.srcPath}/${imageFilePath}`, `${postData.assetsPath}/${imageFilePath}`);
 		}
 	}));
 

@@ -1,5 +1,5 @@
 import { copyFile as cp, mkdir, writeFile } from 'fs/promises';
-import { basename, dirname } from 'path';
+import { dirname } from 'path';
 
 export async function createFile(filePath: string, contents: string) {
 	const destPath = dirname(filePath);
@@ -17,9 +17,10 @@ export async function createHtmlFile(destPath: string, contents: string) {
 }
 
 export async function copyFile(filePath: string, destPath: string) {
-	const fileName = basename(filePath);
-	const normalizedPath = decodeURI(fileName);
+	const normalizedFilePath = filePath.replaceAll(/\/\//giu, '/');
+	const normalizedDestPath = destPath.replaceAll(/\/\//giu, '/');
+	const destDir = dirname(normalizedDestPath);
 
-	await mkdir(destPath, { recursive: true });
-	await cp(filePath, `${destPath}/${normalizedPath}`);
+	await mkdir(destDir, { recursive: true });
+	await cp(normalizedFilePath, normalizedDestPath);
 }

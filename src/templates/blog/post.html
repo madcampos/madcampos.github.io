@@ -17,7 +17,14 @@
 
 		<meta property="og:title" name="twitter:title" itemprop="name" content="{{title}}" />
 		<meta property="og:description" name="description" itemprop="abstract" content="{{summary}}" />
-		<meta property="og:image" name="twitter:image" itemprop="image" content="https://madcampos.dev/icons/transparent/manifest-icon-512.png" />
+
+		{{#if mainImage}}
+			<meta property="og:image" name="twitter:image" itemprop="image" content="{{mainImage.url}}" />
+			<meta property="og:image:alt" content="{{mainImage.alt}}" />
+		{{else}}
+			<meta property="og:image" name="twitter:image" itemprop="image" content="https://madcampos.dev/images/logo-blog.png" />
+		{{/if}}
+
 		<meta property="og:type" content="article" />
 		<meta property="og:locale" itemprop="inLanguage" content="en_US" />
 		<meta property="og:url" itemprop="url" content="{{url}}" />
