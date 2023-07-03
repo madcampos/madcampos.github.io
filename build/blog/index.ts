@@ -46,12 +46,6 @@ export interface BlogConfig {
 	 */
 	postsDestDir: string,
 
-	/**
-	 * The path to the directory where the blog assets are located, relative to the project root.
-	 * @default 'public/blog'
-	 */
-	assetsDir: string,
-
 	/** The paths to the templates for the blog pages. */
 	templatePaths: {
 		/**
@@ -105,7 +99,6 @@ export async function createBlogPages(config: Partial<BlogConfig> = {}) {
 
 		postsSrcDir: 'blog',
 		postsDestDir: 'src/blog',
-		assetsDir: 'public/blog',
 		pagination: 30,
 
 		rssPath: 'public/blog/rss.xml',

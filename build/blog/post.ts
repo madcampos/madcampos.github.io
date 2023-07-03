@@ -24,8 +24,6 @@ export interface BlogPost {
 	srcPath: string,
 	/** The path where the post file should be created. */
 	destPath: string,
-	/** The path for where assets for this post will go, like images or media */
-	assetsPath: string,
 
 	/** A summary for the post that will show in list pages. */
 	summary: string,
@@ -36,6 +34,8 @@ export interface BlogPost {
 	mainImage?: {
 		/** The main image url. */
 		url: string,
+		/** The main image relative url. */
+		src: string,
 		/** The main image alt text. */
 		alt?: string
 	},
@@ -135,7 +135,6 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 	const slug = basename(postPath, '.md');
 
 	const destPath = `${config.postsDestDir}/${year}/${month}/${slug}/`;
-	const assetsPath = `${config.assetsDir}/${year}/${month}/${slug}/`;
 	const url = new URL(`${year}/${month}/${slug}/`, config.url).toString();
 
 	const highlighter = await shiki.getHighlighter({
@@ -145,17 +144,10 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 
 	const markedOptions: marked.MarkedOptions = {
 		...config.markedOptions,
-		baseUrl: url,
-		highlight: (code, lang) => {
-			const formattedCode = highlighter.codeToHtml(code, { lang });
-
-			return formattedCode.replace(/^<pre class="shiki.*?<code>/iu, '').replace(/<\/pre><\/code>/iu, '');
-		}
+		baseUrl: url
 	};
 
 	const { frontmatter: metadata, content: postText }: { frontmatter?: PostMetadata, content: string } = frontmatter(rawPostText);
-	const lex = marked.lexer(postText, markedOptions);
-	const content = marked.parser(lex, markedOptions);
 
 	const images: string[] = [];
 	let title = getTitleFromMetadata(slug, metadata);
@@ -168,15 +160,30 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 		images.push(image);
 	}
 
-	marked.walkTokens(lex, (token) => {
-		if (token.type === 'heading' && token.depth === 1 && title === slug) {
-			title = token.text;
-		}
+	marked.use({
+		walkTokens(token) {
+			if (token.type === 'heading' && token.depth === 1 && title === slug) {
+				title = token.text;
+			}
 
-		if (token.type === 'image') {
-			images.push(token.href);
+			if (token.type === 'image') {
+				images.push(token.href);
+			}
+		},
+		renderer: {
+			image(href, imageTitle, text) {
+				return `<img src="${href}" alt="${text}" ${imageTitle ? `title="${imageTitle}"` : ''} />`;
+			},
+			code(code, lang) {
+				const formattedCode = highlighter.codeToHtml(code, { lang });
+
+				return formattedCode;
+			}
 		}
 	});
+
+	// eslint-disable-next-line @typescript-eslint/await-thenable
+	const content = await marked(postText, markedOptions);
 
 	const postContent: BlogPost = {
 		title,
@@ -184,7 +191,6 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 		filename: basename(postPath),
 		srcPath,
 		destPath,
-		assetsPath,
 		url,
 		createdAt,
 		updatedAt: getUpdatedAtDateFromMetadata(createdAt, metadata),
@@ -198,10 +204,11 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 		...(imageUrl && {
 			mainImage: {
 				url: imageUrl,
+				src: image,
 				alt: imageAlt
 			}
 		}),
-		images,
+		images: [...new Set(images)],
 		tags: metadata?.tags ?? []
 	};
 
@@ -217,7 +224,7 @@ export async function generateBlogPostPage(config: BlogConfig, template: Handleb
 		if (imagePath.startsWith('./')) {
 			const imageFilePath = imagePath.replace(/^.\//iu, '');
 
-			await copyFile(`${postData.srcPath}/${imageFilePath}`, `${postData.assetsPath}/${imageFilePath}`);
+			await copyFile(`${postData.srcPath}/${imageFilePath}`, `${postData.destPath}/${imageFilePath}`);
 		}
 	}));
 
