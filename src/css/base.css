@@ -30,17 +30,6 @@ body *, body *::after, body *::before {
 	font-family: inherit;
 }
 
-body {
-	background-image: radial-gradient(
-		circle at bottom,
-		var(--bg-color),
-		transparent 50%
-	);
-
-	background-position: bottom center;
-	background-attachment: fixed;
-}
-
 ::selection {
 	background-color: var(--theme-color);
 	color: var(--bg-color);
@@ -65,8 +54,6 @@ a:has(img) {
 a:focus:has(img) {
 	background-color: var(--secondary-color);
 }
-
-main { overflow: auto; }
 
 h1 {
 	text-align: center;
