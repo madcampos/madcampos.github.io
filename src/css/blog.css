@@ -94,6 +94,19 @@
 	width: clamp(7rem, 25vw, 20rem);
 }
 
+iframe {
+	border: thin solid black;
+	border-radius: 0.2rem;
+
+	display: block;
+	margin-inline: auto;
+	min-width: 10rem;
+	min-height: 5rem;
+	width: clamp(10rem, 100%, 70rem);
+	height: auto;
+	aspect-ratio: 3 / 2;
+}
+
 @media (max-width: 768px) {
 	#post-header {
 		flex-direction: column;

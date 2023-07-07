@@ -123,7 +123,7 @@ export async function createBlogPages(config: Partial<BlogConfig> = {}) {
 			// @ts-expect-error
 			smartLists: true,
 			smartypants: true,
-			sanitize: true,
+			sanitize: false,
 			...config.markedOptions
 		}
 	};

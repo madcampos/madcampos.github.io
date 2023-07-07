@@ -166,5 +166,9 @@ if (!customElements.get('dad-jokes-bonanza')) {
 
 You can check out the full code on CodePen: https://codepen.io/madcampos/pen/WNxYoPv
 
+<iframe src="https://codepen.io/madcampos/embed/preview/WNxYoPv?default-tab=result&editable=true" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin">
+	See the Pen <a href="https://codepen.io/madcampos/pen/WNxYoPv">Dad Jokes - Infinite Scroller</a> by Marco Campos (<a href="https://codepen.io/madcampos">@madcampos</a>) on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
 I intentionally left styling and some complexities related to components to make the post brief and easy to follow.
 The API is extremely powerful and let's us do a lot... but that is for other posts.

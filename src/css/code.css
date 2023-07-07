@@ -6,6 +6,9 @@ code {
 	counter-increment: step 0;
 
 	white-space: pre-wrap;
+	overflow-wrap: break-word;
+	word-break: break-word;
+	tab-size: 2;
 	font-family: 'Cascadia Code', Monaco, 'Courier New', Courier, monospace;
 	font-size: smaller;
 }
