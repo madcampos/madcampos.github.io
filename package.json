@@ -39,7 +39,7 @@
 		"@typescript-eslint/eslint-plugin": "^5.60.0",
 		"@typescript-eslint/parser": "^5.60.0",
 		"c8": "^8.0.0",
-		"eslint": "^8.43.0",
+		"eslint": "^8.44.0",
 		"handlebars": "^4.7.7",
 		"husky": "^8.0.3",
 		"lint-staged": "^13.2.3",
