@@ -12,6 +12,7 @@ html, body {
 
 	font-family: var(--monospace-font-family);
 	font-size: var(--body-text);
+	font-weight: normal;
 
 	display: flex;
 	flex-direction: column;
