@@ -172,7 +172,7 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 		},
 		renderer: {
 			image(href, imageTitle, text) {
-				return `<img src="${href}" alt="${text}" ${imageTitle ? `title="${imageTitle}"` : ''} />`;
+				return `<img src="${href}" loading="lazy" alt="${text}" ${imageTitle ? `title="${imageTitle}"` : ''} />`;
 			},
 			code(code, lang) {
 				const formattedCode = highlighter.codeToHtml(code, { lang });
