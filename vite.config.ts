@@ -75,6 +75,8 @@ export default defineConfig(async ({ mode }) => {
 			rollupOptions: {
 				input: {
 					main: resolve('src/index.html'),
+					talks: resolve('src/talks/index.html'),
+					projects: resolve('src/projects/index.html'),
 					...blogPages
 				},
 				output: {
