@@ -33,7 +33,7 @@
 	--text-color: black;
 	--scrollbar-bg: rgba(255, 255, 255, 0.1);
 
-	color-scheme: light;
+	color-scheme: light dark;
 	accent-color: var(--theme-color);
 }
 
