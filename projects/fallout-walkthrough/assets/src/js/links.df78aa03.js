@@ -1,1 +1,0 @@
-function i(){document.addEventListener("click",s=>{const t=s.target;if(t.matches("a")){const r=t.getAttribute("href");if(r?.startsWith("#")){s.preventDefault();const e=document.querySelector(r);e?.closest("details")&&e.closest("details")?.setAttribute("open",""),e?.scrollIntoView({block:"start",inline:"start",behavior:"smooth"}),history.pushState({},"",t.hash)}}})}export{i as r};
