@@ -95,11 +95,12 @@ export async function generatePagesByDate(config: BlogConfig, posts: BlogPost[],
 			years[post.postDate.year] = {};
 		}
 
-		if (!years[post.postDate.year][post.postDate.month]) {
+		if (!years[post.postDate.year]?.[post.postDate.month]) {
+			// @ts-expect-error - The object already exists here.
 			years[post.postDate.year][post.postDate.month] = [];
 		}
 
-		years[post.postDate.year][post.postDate.month].push(post);
+		years[post.postDate.year]?.[post.postDate.month]?.push(post);
 
 		return years;
 	// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
@@ -143,7 +144,7 @@ export async function generatePagesByTag(config: BlogConfig, posts: BlogPost[], 
 				tags[tag] = [];
 			}
 
-			tags[tag].push(post);
+			tags[tag]?.push(post);
 		});
 
 		return tags;

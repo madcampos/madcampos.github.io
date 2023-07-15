@@ -131,7 +131,7 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 	const rawPostText = await readFile(postPath, { encoding: 'utf8' });
 
 	const date = basename(srcPath);
-	const [year, month, day] = date.split('-');
+	const [year = '', month = '', day = ''] = date.split('-');
 	const slug = basename(postPath, '.md');
 
 	const destPath = `${config.postsDestDir}/${year}/${month}/${slug}/`;
