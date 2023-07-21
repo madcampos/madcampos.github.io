@@ -49,8 +49,10 @@
 	hyphenate-character: '-';
 	hyphenate-limit-chars: 8 3 2;
 
+	width: 100%;
 	max-width: 90vw;
-	display: inline-block;
+	display: block;
+	margin-inline: auto;
 
 	text-wrap: balance;
 }
