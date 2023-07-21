@@ -7,7 +7,6 @@
 				<title>
 					<xsl:value-of select="/rss/channel/title"/>
 				</title>
-				<link rel="stylesheet" href="/css/base.css"/>
 				<link rel="stylesheet" href="/css/xml-feed.css"/>
 			</head>
 			<body>
@@ -53,7 +52,7 @@
 							</h2>
 							<aside>Published on: <em><xsl:value-of select="pubDate"/></em></aside>
 
-							<xsl:if test="enclosure">
+							<!-- <xsl:if test="enclosure">
 								<figure>
 									<img>
 										<xsl:attribute name="src">
@@ -64,7 +63,7 @@
 										<xsl:value-of select="enclosure/@type"/>
 									</figcaption>
 								</figure>
-							</xsl:if>
+							</xsl:if> -->
 
 							<div><xsl:value-of select="description" disable-output-escaping="yes"/></div>
 							<p><a><xsl:attribute name="href"><xsl:value-of select="link"/></xsl:attribute>Read more...</a></p>

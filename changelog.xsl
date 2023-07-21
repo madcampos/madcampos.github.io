@@ -7,7 +7,6 @@
 				<title>
 					<xsl:value-of select="/rss/channel/title"/>
 				</title>
-				<link rel="stylesheet" href="/css/base.css"/>
 				<link rel="stylesheet" href="/css/xml-changelog.css"/>
 			</head>
 			<body>
