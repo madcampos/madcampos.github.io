@@ -80,11 +80,27 @@
 					{{/if}}
 
 					<h1>{{title}}</h1>
-					<aside>Published on <time itemprop="dateCreated" datetime="{{createdAt}}">{{formatDate createdAt}}</time></aside>
+					<aside>Published on <time itemprop="dateCreated" datetime="{{formatISODate createdAt}}">{{formatDate createdAt}}</time></aside>
+					{{#if updatedAt}}
+						<aside>Updated on <time itemprop="dateModified" datetime="{{formatISODate updatedAt}}">{{formatDate updatedAt}}</time></aside>
+					{{/if}}
 				</header>
 			</div>
 
 			<main id="post-contents" itemprop="articleBody">
+				{{#if updates}}
+					<details>
+						<summary>Update History</summary>
+						<ul>
+							{{#each updates}}
+								<li>
+									<p>{{this}}</p>
+								</li>
+							{{/each}}
+						</ul>
+					</details>
+				{{/if}}
+
 				{{{content}}}
 			</main>
 		</article>
