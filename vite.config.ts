@@ -76,6 +76,7 @@ export default defineConfig(async ({ mode }) => {
 				input: {
 					main: resolve('src/index.html'),
 					talks: resolve('src/talks/index.html'),
+					'web-components-talk': resolve('src/talks/tojs-web-components/index.html'),
 					projects: resolve('src/projects/index.html'),
 					...blogPages
 				},
