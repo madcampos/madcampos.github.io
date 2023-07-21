@@ -59,7 +59,10 @@ export interface BlogPost {
 	/** The post creation date. */
 	createdAt: string,
 	/** The post last update date. */
-	updatedAt?: string
+	updatedAt?: string,
+
+	/** The post updates. */
+	updates?: string[]
 }
 
 interface PostTemplateData extends BlogPost {
@@ -93,6 +96,7 @@ interface PostMetadata {
 	updatedAt?: string,
 	updated_at?: string,
 	updated?: string,
+	updates?: string[],
 
 	summary?: string,
 	description?: string,
@@ -119,11 +123,15 @@ function getHeroImageAltTextFromMetadata(metadata?: PostMetadata) {
 }
 
 function getCreatedAtDateFromMetadata(date: string, metadata?: PostMetadata) {
-	return metadata?.createdAt ?? metadata?.created_at ?? metadata?.created ?? `${date}T00:00:00.000Z`;
+	const potentialDate = metadata?.createdAt ?? metadata?.created_at ?? metadata?.created ?? date;
+
+	return new Date(potentialDate).toISOString();
 }
 
-function getUpdatedAtDateFromMetadata(createdAt: string, metadata?: PostMetadata) {
-	return metadata?.updatedAt ?? metadata?.updated_at ?? metadata?.updated ?? createdAt;
+function getUpdatedAtDateFromMetadata(metadata?: PostMetadata) {
+	const date = metadata?.updatedAt ?? metadata?.updated_at ?? metadata?.updated;
+
+	return date ? new Date(date).toISOString() : undefined;
 }
 
 export async function getPostContent(postPath: string, config: BlogConfig) {
@@ -193,7 +201,8 @@ export async function getPostContent(postPath: string, config: BlogConfig) {
 		destPath,
 		url,
 		createdAt,
-		updatedAt: getUpdatedAtDateFromMetadata(createdAt, metadata),
+		updatedAt: getUpdatedAtDateFromMetadata(metadata),
+		updates: metadata?.updates,
 		postDate: {
 			year,
 			month,
