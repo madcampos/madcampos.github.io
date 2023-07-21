@@ -1,5 +1,8 @@
 ---
 description: A brief introduction to web components.
+updatedAt: 2023-07-20
+updates:
+  - 2023-07-20 - Added cross-link to tabs post.
 tags:
   - web
   - web-components
@@ -171,4 +174,4 @@ You can check out the full code on CodePen: https://codepen.io/madcampos/pen/WNx
 </iframe>
 
 I intentionally left styling and some complexities related to components to make the post brief and easy to follow.
-The API is extremely powerful and let's us do a lot... but that is for other posts.
+The API is extremely powerful and let's us do a lot... but that is for [other posts](/blog/2023/07/tabs-web-component/).
