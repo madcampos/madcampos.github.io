@@ -8,11 +8,6 @@ import htmlMinifier from 'vite-plugin-html-minifier';
 import { resolve } from 'path';
 import { createBlogPages } from './build/blog';
 
-const sslOptions = {
-	cert: readFileSync('./certs/server.crt'),
-	key: readFileSync('./certs/server.key')
-};
-
 const manifest: Partial<ManifestOptions> = JSON.parse(readFileSync('./src/manifest.json', { encoding: 'utf8' }));
 
 export default defineConfig(async ({ mode }) => {
@@ -24,6 +19,13 @@ export default defineConfig(async ({ mode }) => {
 		url: new URL('blog/', baseUrl).toString(),
 		rssIconUrl: `${baseUrl}icons/transparent/manifest-icon-512.png`
 	});
+
+	const sslOptions = mode === 'production'
+		? false
+		: {
+			cert: readFileSync('./certs/server.crt'),
+			key: readFileSync('./certs/server.key')
+		};
 
 	const config: UserConfig = {
 		plugins: [
@@ -48,7 +50,7 @@ export default defineConfig(async ({ mode }) => {
 				includeAssets: ['/icons/favicon.svg'],
 				manifest,
 				scope: baseUrl,
-				// Remove service worker on the base site, until we find a better alternative for sub-apps.
+				// FIXME: Remove service worker on the base site, until we find a better alternative for sub-apps.
 				injectRegister: null,
 				devOptions: {
 					enabled: false
