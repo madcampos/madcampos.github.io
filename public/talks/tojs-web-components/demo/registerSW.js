@@ -1,1 +1,0 @@
-if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('https://madcampos.dev/talks/tojs-web-components/demo/sw.js', { scope: 'https://madcampos.dev/talks/tojs-web-components/demo/' })})}

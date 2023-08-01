@@ -1,1 +1,0 @@
-if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('https://madcampos.dev/projects/fallout-walkthrough/sw.js', { scope: 'https://madcampos.dev/projects/fallout-walkthrough' })})}
