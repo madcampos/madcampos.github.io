@@ -116,6 +116,8 @@
 	margin-block-end: 2rem;
 	overflow-x: hidden;
 	font-family: var(--sans-serif-font-family);
+
+	text-wrap: pretty;
 }
 
 #post-contents h1:first-of-type {

@@ -36,6 +36,11 @@ body *, body *::after, body *::before {
 	color: var(--bg-color);
 }
 
+::target-text {
+	background-color: var(--accent-color);
+	color: var(--bg-color);
+}
+
 a { color: var(--theme-color); }
 a:visited { color: var(--secondary-color); }
 a:hover { color: var(--accent-color); }
