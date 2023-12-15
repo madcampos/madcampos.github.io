@@ -6,19 +6,11 @@ import { defineConfig, type UserConfig } from 'vitest/config';
 import { type ManifestOptions, VitePWA as vitePWA } from 'vite-plugin-pwa';
 import htmlMinifier from 'vite-plugin-html-minifier';
 import { resolve } from 'path';
-import { createBlogPages } from './build/blog';
 
 const manifest: Partial<ManifestOptions> = JSON.parse(readFileSync('./src/manifest.json', { encoding: 'utf8' }));
 
-export default defineConfig(async ({ mode }) => {
+export default defineConfig(({ mode }) => {
 	const baseUrl = mode === 'production' ? 'https://madcampos.dev/' : 'https://localhost:3000/';
-
-	const blogPages = await createBlogPages({
-		description: "Marco Campos' Blog - A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript and more.",
-		title: "Marco Campos' Blog",
-		url: new URL('blog/', baseUrl).toString(),
-		rssIconUrl: `${baseUrl}icons/transparent/manifest-icon-512.png`
-	});
 
 	const sslOptions = mode === 'production'
 		? false
@@ -79,8 +71,7 @@ export default defineConfig(async ({ mode }) => {
 					main: resolve('src/index.html'),
 					talks: resolve('src/talks/index.html'),
 					'web-components-talk': resolve('src/talks/tojs-web-components/index.html'),
-					projects: resolve('src/projects/index.html'),
-					...blogPages
+					projects: resolve('src/projects/index.html')
 				},
 				output: {
 					generatedCode: 'es2015',
@@ -99,7 +90,6 @@ export default defineConfig(async ({ mode }) => {
 			passWithNoTests: true,
 			maxConcurrency: 4,
 			coverage: {
-				excludeNodeModules: true,
 				reportsDirectory: '../dist/coverage',
 				functions: 75,
 				branches: 75,
