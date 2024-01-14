@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 
 import rss, { type RSSFeedItem } from '@astrojs/rss';
-import { getCollection } from 'astro:content';
+import { listAllPosts } from '../../utils/post';
 import { getImage } from 'astro:assets';
 
 import defaultImage from '../../assets/images/logo-blog-micro.png';
@@ -18,7 +18,7 @@ export const GET: APIRoute = async (context) => {
     title: "Marco Campos' Blog",
     description: 'A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript',
     site: context.site ?? '',
-    items: await Promise.all((await getCollection('blog')).map(async (post) => {
+    items: await Promise.all((await listAllPosts()).map(async (post) => {
       const image = post.data.image && await getImage({ src: post.data.image, format: 'png' });
       // 10kb (arbitrary value)
       const imageSize = TEN_KB_IN_BYTES;
@@ -28,7 +28,7 @@ export const GET: APIRoute = async (context) => {
         description: post.data.summary,
         pubDate: post.data.createdAt,
         categories: post.data.tags,
-        link: `${context.site?.toString() ?? ''}/${post.slug as string}`,
+        link: `${context.site?.toString().replace(/\/$/u, '') ?? ''}/blog/${post.url}`,
         ...(image && {
           enclosure: {
             url: new URL(image.src, context.site).toString(),
@@ -40,7 +40,7 @@ export const GET: APIRoute = async (context) => {
 
       return item;
     })),
-    stylesheet: '/blog.xsl',
+    stylesheet: '/feed.xsl',
     customData: `
       <language>en-us</language>
       <image>
