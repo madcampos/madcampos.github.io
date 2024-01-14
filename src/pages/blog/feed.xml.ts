@@ -40,6 +40,7 @@ export const GET: APIRoute = async (context) => {
 
       return item;
     })),
+    stylesheet: '/blog.xsl',
     customData: `
       <language>en-us</language>
       <image>
