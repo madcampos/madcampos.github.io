@@ -5,6 +5,7 @@
 #blog-posts {
 	width: clamp(15rem, 70vw, 60rem);
 	margin-inline: auto;
+	padding-block-end: 1rem;
 }
 
 .post-card header {
@@ -15,7 +16,7 @@
 	margin-bottom: 0.5rem;
 }
 
-.post-card span {
+.post-card time {
 	font-size: small;
 }
 
@@ -128,6 +129,7 @@
 	display: block;
 	margin-inline: auto;
 	width: clamp(7rem, 25vw, 20rem);
+	height: auto;
 }
 
 iframe {
@@ -141,6 +143,27 @@ iframe {
 	width: clamp(10rem, 100%, 70rem);
 	height: auto;
 	aspect-ratio: 3 / 2;
+}
+
+#pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin-block-start: 2rem;
+	gap: 2rem;
+}
+
+#pagination ol {
+	display: flex;
+	gap: 1rem;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#pagination:has(li:only-child) {
+	display: none;
 }
 
 @media (max-width: 768px) {
