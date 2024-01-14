@@ -1,0 +1,26 @@
+---
+import '../assets/css/base.css';
+
+import HtmlHead from '../components/HtmlHead.astro';
+
+interface Props {
+	title: string
+}
+
+const { title } = Astro.props;
+const siteUrl = new URL('', Astro.site).toString();
+---
+<!DOCTYPE html>
+<html lang="en-US" itemscope itemtype="https://schema.org/WebPage">
+	<HtmlHead
+		title={`Marco Campos | ${title}`}
+		description='Marco Campos - Senior Web Developer - Vue.js, Node.js, TypeScript, JavaScript'
+		url={siteUrl}
+		tags={['Senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev']}
+	/>
+	<body>
+		<main>
+			<slot></slot>
+		</main>
+	</body>
+</html>

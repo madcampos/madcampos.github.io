@@ -1,0 +1,36 @@
+---
+import HomeLayout from '../layouts/Home.astro';
+
+import avatar from '../assets/images/me.jpg';
+import logo from '../assets/images/logo.svg';
+
+const links = {
+	'GitHub': 'https://github.com/madcampos',
+	'CodePen': 'https://codepen.io/madcampos',
+	'Project Highlights': '/projects',
+	'Talks I\'ve given': '/talks',
+	'My Blog': '/blog',
+	'LinkedIn': 'https://www.linkedin.com/in/madcampos/',
+}
+---
+<HomeLayout>
+	<h1>
+		<a href="/"><img src={logo.src} alt="My moniker, &quot;madcampos&quot;, written between curly braces on a monospaced font." /></a>
+	</h1>
+	<section id="about">
+		<aside>
+			<picture>
+				<img src={avatar.src} alt="A picture of my face with a smile looking at the camera. I'm wearing aviator glasses, a fake fur winter hat and an orange scarf."/>
+			</picture>
+		</aside>
+		<article>
+			<p>Hi there! My name is <em>Marco Campos</em>, and I'm a Toronto based developer.</p>
+			<p>I've worked in both frontend and backend development, with focus on responsive and accessible design, typescript and node.js.</p>
+
+			<p>You can find my projects, personal work and social netowrks on:</p>
+			<ul>
+				{Object.entries(links).map(([title, url]) => <li><a href={url} rel="noreferrer noopener">{title}</a></li>)}
+			</ul>
+		</article>
+	</section>
+</HomeLayout>
