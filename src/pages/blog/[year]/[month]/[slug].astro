@@ -1,0 +1,35 @@
+---
+import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
+
+import { listAllPosts } from '../../../../utils/post.ts';
+import BlogPostLayout from '../../../../layouts/BlogPost.astro';
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+export const getStaticPaths = (async () => {
+	return (await listAllPosts()).map((post) => ({
+		params: {
+			year: post.year,
+			month: post.month,
+			day: post.day,
+			slug: post.slug
+		},
+		props: post
+	}));
+}) satisfies GetStaticPaths;
+
+const { render, url, data: { title, summary, image, imageAlt, createdAt, updatedAt, updates } } = Astro.props;
+const { Content } = await render();
+---
+<BlogPostLayout
+	url={url}
+	title={title}
+	summary={summary}
+	image={image}
+	imageAlt={imageAlt}
+	createdAt={createdAt}
+	updatedAt={updatedAt}
+	updates={updates}
+>
+	<Content />
+</BlogPostLayout>

@@ -1,0 +1,46 @@
+---
+import type { Post } from '../utils/post';
+
+import '../assets/css/blog.css';
+
+import Pagination from '../components/Pagination.astro';
+import PostCard from '../components/PostCard.astro';
+import HtmlHead from '../components/HtmlHead.astro';
+import PageHeader from '../components/BlogPageHeader.astro';
+
+interface Props {
+	posts: Post[],
+	title?: string
+	currentUrl: string,
+	currentPage: number,
+	lastPage: number,
+	prevUrl?: string,
+	nextUrl?: string
+}
+
+const { posts, title = '', currentUrl, currentPage, lastPage, prevUrl, nextUrl } = Astro.props;
+
+const url = new URL(currentUrl.replace(/^\//iu, ''), Astro.site).toString();
+---
+<html lang="en-US" itemscope itemtype="https://schema.org/WebPage">
+	<HtmlHead
+		title={`Marco Campos | Blog | ${title}`}
+		description="Marco Campos' Blog - A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript"
+		tags={['blog', 'senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev']}
+		url={url}
+	/>
+
+	<body>
+		<PageHeader title={title} />
+
+		<main id="blog-posts">
+			{ posts.map((post) => <PostCard url={post.url} createdAt={post.data.createdAt.toISOString()}>
+				<span slot="title">{post.data.title}</span>
+				{post.data.summary}
+			</PostCard>)}
+		</main>
+		<footer>
+			<Pagination baseUrl={currentUrl} currentPage={currentPage} lastPage={lastPage} prevUrl={prevUrl} nextUrl={nextUrl} />
+		</footer>
+	</body>
+</html>

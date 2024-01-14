@@ -1,0 +1,52 @@
+---
+import type { ImageProps } from '../content/config.ts';
+
+import '../assets/css/blog.css';
+import '../assets/css/code.css';
+
+import HtmlHead from '../components/HtmlHead.astro.tsx';
+import PostHeader from '../components/PostHeader.astro.tsx';
+
+interface Props {
+	title: string,
+	summary: string,
+	image?: ImageProps,
+	imageAlt?: string,
+	createdAt: Date,
+	updatedAt?: Date,
+	updates?: string[]
+	tags?: string[],
+	url: string
+}
+
+const { title, summary, image, imageAlt, createdAt, updatedAt, updates, url, tags = [] } = Astro.props;
+const postUrl = new URL(url.replace(/^\//iu, ''), Astro.site).toString();
+
+---
+<!DOCTYPE html>
+<html lang="en-US" itemscope itemtype="https://schema.org/BlogPosting">
+	<HtmlHead
+		title={`${title} | Marco Campos | Blog`}
+		description={summary}
+		tags={tags}
+		url={postUrl}
+	/>
+
+	<body>
+		<article>
+			<PostHeader
+				title={title}
+				image={image}
+				imageAlt={imageAlt}
+				createdAt={createdAt}
+				updatedAt={updatedAt}
+			/>
+
+			<main id="post-contents" itemprop="articleBody">
+				{ updates && <details><summary>Update History</summary><ul>{updates.map((update) => <li><p>{update}</p></li>)}
+</ul></details> }
+				<slot></slot>
+			</main>
+		</article>
+	</body>
+</html>

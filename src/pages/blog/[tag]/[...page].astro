@@ -1,0 +1,21 @@
+---
+import type { InferGetStaticPropsType, GetStaticPaths, PaginateFunction } from 'astro';
+
+import { listPostPagesByTag, MAX_POSTS_PER_PAGE } from '../../../utils/post.ts';
+import BlogPostsLayout from '../../../layouts/BlogPosts.astro';
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+export const getStaticPaths = (async ({ paginate }: { paginate: PaginateFunction }) => {
+	const posts = await listPostPagesByTag();
+
+	return Object.entries(posts).flatMap(([tag, posts]) => paginate(posts, {
+		params: { tag },
+		pageSize: MAX_POSTS_PER_PAGE
+	}));
+}) satisfies GetStaticPaths;
+
+const { data: posts, url, currentPage, lastPage } = Astro.props.page;
+const { tag } = Astro.params;
+---
+<BlogPostsLayout posts={posts} title={tag} currentUrl={url.current} currentPage={currentPage} lastPage={lastPage} prevUrl={url.prev} nextUrl={url.next} />

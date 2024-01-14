@@ -1,0 +1,51 @@
+---
+import type { Post } from '../utils/post';
+
+import '../assets/css/blog.css';
+
+import Pagination from '../components/Pagination.astro';
+import PostCard from '../components/PostCard.astro';
+import HtmlHead from '../components/HtmlHead.astro';
+
+import logoBlog from '../assets/images/logo-blog.svg';
+import blogSocialImage from '../assets/images/logo-blog-micro.png';
+
+interface Props {
+	posts: Post[],
+	currentUrl: string,
+	currentPage: number,
+	lastPage: number,
+	prevUrl?: string,
+	nextUrl?: string
+}
+
+const { posts, currentUrl, currentPage, lastPage, prevUrl, nextUrl } = Astro.props;
+const logoDescription = 'My moniker, "madcampos", written between curly braces on a monospaced font. With the word "blog" written to it\'s lower right side.';
+const siteUrl = new URL(currentUrl.replace(/^\//iu, ''), Astro.site).toString();
+---
+<!DOCTYPE html>
+<html lang="en-US" itemscope itemtype="https://schema.org/WebPage">
+	<HtmlHead
+		title="Marco Campos | Blog"
+		description="Marco Campos' Blog - A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript"
+		tags={['blog', 'senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev']}
+		url={siteUrl}
+		hasFeed={true}
+		socialImage={blogSocialImage.src}
+	/>
+
+	<body>
+		<header class="blog-page-header">
+			<h1><a href={siteUrl}><img src={logoBlog.src} alt={logoDescription} /></a></h1>
+		</header>
+		<main id="blog-posts">
+			{ posts.map((post) => <PostCard url={post.url} createdAt={post.data.createdAt.toISOString()}>
+				<span slot="title">{post.data.title}</span>
+				{post.data.summary}
+			</PostCard>)}
+		</main>
+		<footer>
+			<Pagination baseUrl={siteUrl} currentPage={currentPage} lastPage={lastPage} prevUrl={prevUrl} nextUrl={nextUrl} />
+		</footer>
+	</body>
+</html>
