@@ -16,7 +16,7 @@ interface Props {
 
 const { title, createdAt, updatedAt, image, imageAlt } = Astro.props;
 
-const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
+const { format: formatDate } = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 
 const logoDescription = 'Blog logo consisting of stylized "{m}" with a subtext of "--blog"';
 const linkTitle = 'Back to blog';
@@ -34,7 +34,7 @@ const linkTitle = 'Back to blog';
 		{ image && <Image id="hero-image" src={image} alt={imageAlt ?? ''} itemprop="image" /> }
 
 		<h1>{title}</h1>
-		<aside>Published on <time itemprop="dateCreated" datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time></aside>
-		{ updatedAt && <aside>Updated on <time itemprop="dateModified" datetime={updatedAt.toISOString()}>{formatter.format(updatedAt)}</time></aside> }
+		<aside>Published on <time itemprop="dateCreated" datetime={createdAt.toISOString()}>{formatDate(createdAt)}</time></aside>
+		{ updatedAt && <aside>Updated on <time itemprop="dateModified" datetime={updatedAt.toISOString()}>{formatDate(updatedAt)}</time></aside> }
 	</header>
 </div>

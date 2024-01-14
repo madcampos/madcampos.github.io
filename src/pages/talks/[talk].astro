@@ -1,0 +1,39 @@
+---
+import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
+
+import { listAllTalks } from '../../utils/talks';
+import TalkLayout from '../../layouts/Talk.astro';
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+export const getStaticPaths = (async () => {
+	return (await listAllTalks()).map((talk) => ({
+		params: {
+			talk: talk.slug
+		},
+		props: talk
+	}));
+}) satisfies GetStaticPaths;
+
+const { render, data: { title, summary, date, event, eventUrl, image, imageAlt, slides, video, code, demo, relatedContent, techStack } } = Astro.props;
+const { url } = Astro;
+const { Content } = await render();
+---
+<TalkLayout
+	title={title}
+	description={summary}
+	url={url.toString()}
+	image={image?.src}
+	imageAlt={imageAlt}
+	date={date}
+	event={event}
+	eventUrl={eventUrl}
+	slides={slides}
+	video={video}
+	code={code}
+	demo={demo}
+	relatedContent={relatedContent}
+	techStack={techStack}
+>
+	<Content />
+</TalkLayout>

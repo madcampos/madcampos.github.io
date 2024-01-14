@@ -1,0 +1,83 @@
+---
+import '../assets/css/base.css';
+
+import HtmlHead from '../components/HtmlHead.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+interface Props {
+	title: string,
+	description: string,
+	url: string,
+
+	image?: string,
+	imageAlt?: string,
+
+	event?: string,
+	eventUrl?: string,
+	date: Date,
+
+	slides?: string,
+	video?: string,
+	code?: string,
+	demo?: string,
+
+	relatedContent?: {
+		title: string,
+		url: string,
+	}[],
+
+	techStack?: string[]
+}
+
+const { format: formatDate } = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
+const { title, description, url, event, eventUrl, date, slides, video, code, demo, relatedContent, techStack } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en-US" itemscope itemtype="https://schema.org/WebPage">
+	<HtmlHead
+		title={`Marco Campos | ${title}`}
+		description={description}
+		url={url}
+		tags={['Senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev']}
+	/>
+	<body>
+		<PageHeader title={title} />
+
+		<main>
+			<slot></slot>
+
+			<h3><span class="icon">ℹ️</span> Talk info</h3>
+			<ul>
+				<li><strong>Event:</strong> {eventUrl ? (<a href={eventUrl} rel="noopener noreferrer">{event}</a>) : event}</li>
+				<li><strong>Date:</strong> <time datetime={date.toISOString()}>{formatDate(date)}</time></li>
+				{slides && <li><strong>Slides:</strong> <a href={slides} rel="noopener noreferrer">{slides}</a></li>}
+				{video && <li><strong>Video:</strong> <a href={video} rel="noopener noreferrer">{video}</a></li>}
+				{code && <li><strong>Code:</strong> <a href={code} rel="noopener noreferrer">{code}</a></li>}
+			</ul>
+
+			<h3><span class="icon">📚</span> Related content</h3>
+			<ul>
+				{relatedContent?.map(({ url, title }) => (
+					<li>
+						<a href={url} rel="noopener noreferrer">{title}</a>
+					</li>
+				))}
+			</ul>
+
+			<h3><span class="icon">🛠️</span> Technologies used</h3>
+			<ul class="technology-tags">
+				{techStack?.map((tech) => (
+					<li class="tag">{tech}</li>
+				))}
+			</ul>
+
+			{demo && (
+				<h3><span class="icon">🖥️</span>Demo</h3>
+
+				<iframe src={demo} loading="lazy" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin">
+					A local running demo of the project.
+				</iframe>
+			)}
+		</main>
+	</body>
+</html>

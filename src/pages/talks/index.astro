@@ -1,0 +1,59 @@
+---
+import InternalPage from '../../layouts/InternalPage.astro';
+import { listAllTalks } from '../../utils/talks';
+
+import '../../assets/css/projects.css';
+
+const talks = await listAllTalks();
+
+const { format: formatDate } = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
+const { url } = Astro;
+---
+
+<InternalPage
+	title="Projects"
+	description="Talks I've given at conferences and meetups."
+	url="/talks"
+>
+{ talks.map(talk => (
+	<article>
+		<header>
+			<a href={`${url}/${talk.slug}`}><h2>{ talk.data.title}</h2></a>
+		</header>
+		<div class="project-content">
+			{talk.data.image && <img class="project-image" loading="lazy" role="presentation" alt={talk.data.imageAlt} src={talk.data.image.src} />}
+			{talk.data.summary}
+		</div>
+		<footer>
+			<details class="project-info">
+				<summary><span class="icon">🔍</span> More info</summary>
+				<h3><span class="icon">ℹ️</span> Talk info</h3>
+				<ul>
+					<li><strong>Event:</strong> {talk.data.eventUrl ? (<a href={talk.data.eventUrl} rel="noopener noreferrer">{talk.data.event}</a>) : talk.data.event}</li>
+					<li><strong>Date:</strong> <time datetime={talk.data.date.toISOString()}>{formatDate(talk.data.date)}</time></li>
+					{talk.data.slides && <li><strong>Slides:</strong> <a href={talk.data.slides} rel="noopener noreferrer">{talk.data.slides}</a></li>}
+					{talk.data.video && <li><strong>Video:</strong> <a href={talk.data.video} rel="noopener noreferrer">{talk.data.video}</a></li>}
+					{talk.data.code && <li><strong>Code:</strong> <a href={talk.data.code} rel="noopener noreferrer">{talk.data.code}</a></li>}
+					{talk.data.demo && <li><strong>Demo:</strong> <a href={talk.data.demo} rel="noopener noreferrer">{talk.data.demo}</a></li>}
+				</ul>
+
+				<h3><span class="icon">📚</span> Related content</h3>
+				<ul>
+					{talk.data.relatedContent?.map(({ url, title }) => (
+						<li>
+							<a href={url} rel="noopener noreferrer">{title}</a>
+						</li>
+					))}
+				</ul>
+
+				<h3><span class="icon">🛠️</span> Technologies used</h3>
+				<ul class="technology-tags">
+					{talk.data.techStack?.map((tech) => (
+						<li class="tag">{tech}</li>
+					))}
+				</ul>
+			</details>
+		</footer>
+	</article>
+)) }
+</InternalPage>
