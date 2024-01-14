@@ -4,6 +4,8 @@ createdAt: "2023-06-30"
 summary: "A quick post about styling XML feeds and other uses for XML."
 image: "./arcane-c-incantations.jpg"
 imageAlt: 'AI generated image for the prompt: "an arcane incantation on an old manuscript with C++ code"'
+updates:
+  - "2024-01-14 - Fixed link to feed.xml and added a link to the RSS feeds."
 tags:
   - "XML"
   - "web"
@@ -13,7 +15,7 @@ tags:
   - "FrontendDevelopment"
 ---
 
-While building this blog I included one of my favorite yet underrated features: [RSS feeds](https://www.rssboard.org/rss-specification) support.
+While building this blog I included one of my favorite yet underrated features: [RSS feeds](https://aboutfeeds.com/) ([RSS Specification](https://www.rssboard.org/rss-specification)) support.
 
 While RSS feeds are old and I feel like a boomer to use it, they are a nice way to consume content _directly_ from the source. No ads, no tracking, no selling your soul to the [FAANG](https://en.wikipedia.org/wiki/Big_Tech) overlords.
 
@@ -69,4 +71,4 @@ Which outputs:
 
 It is cool that we can do something like this and it Just Works™ in browsers. But it is not something I would use to build the core of my website.
 
-If you want to check it out go to: https://madcampos.dev/blog/rss.xml
+If you want to check it out go to: https://madcampos.dev/blog/feed.xml
