@@ -16,7 +16,7 @@ const { url } = Astro;
 	url="/talks"
 >
 { talks.map(talk => (
-	<article>
+	<article class="project">
 		<header>
 			<a href={`${url}/${talk.slug}`}><h2>{ talk.data.title}</h2></a>
 		</header>

@@ -15,7 +15,7 @@ const { format: formatDate } = new Intl.DateTimeFormat('en-US', { dateStyle: 'lo
 	url="/projects"
 >
 { projects.map(project => (
-	<article>
+	<article class="project">
 		<header>
 			<h2>{ project.data.title}</h2>
 		</header>
