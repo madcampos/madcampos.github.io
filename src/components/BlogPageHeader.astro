@@ -10,13 +10,14 @@ const { title } = Astro.props;
 
 const logoDescription = 'Blog logo consisting of stylized "{m}" with a subtext of "--blog"';
 const linkTitle = 'Back to blog';
+const blogUrl = new URL('/blog', Astro.site).toString();
 ---
 <header class="blog-page-header">
 	<nav id="back-to-blog">
-		<a id="link-small" href={Astro.site} title={linkTitle}>
+		<a id="link-small" href={blogUrl} title={linkTitle}>
 			<img src={logoMini.src} alt={logoDescription} role="presentation" />
 		</a>
-		<a id="link-big" href={Astro.site} title={linkTitle}>
+		<a id="link-big" href={blogUrl} title={linkTitle}>
 			<img src={logoMicro.src} alt={logoDescription} role="presentation" />
 		</a>
 	</nav>
