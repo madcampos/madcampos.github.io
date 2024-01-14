@@ -25,6 +25,7 @@ const baseUrl = Astro.site?.toString() ?? '/';
 
 	<!-- App Metadata -->
 	<link rel="icon" href={`${baseUrl}icons/favicon.svg`} />
+	{/* eslint-disable-next-line astro/no-set-html-directive */}
 	{ pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
 
 	<!-- Social metadata -->

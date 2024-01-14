@@ -31,7 +31,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 					<li>Started in: <time datetime={project.data.createdAt.toISOString()}>{formatter.format(project.data.createdAt)}</time></li>
 					{project.data.version && <li>Current version: {project.data.version}</li>}
 					{project.data.updatedAt && <li>Last updated: <time datetime={project.data.updatedAt.toISOString()}>{formatter.format(project.data.updatedAt)}</time></li>}
-					<li>Current status: <span class={`tag status-${project.data.status}`}>{project.data.status}</span></li>
+					<li>Current status: <span class:list={`tag status-${project.data.status}`}>{project.data.status}</span></li>
 					{project.data.repository && <li>Repository: <a href={project.data.repository} rel="noopener noreferrer">{project.data.repository}</a></li>}
 				</ul>
 
