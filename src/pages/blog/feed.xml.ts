@@ -4,7 +4,7 @@ import rss, { type RSSFeedItem } from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { getImage } from 'astro:assets';
 
-import defaultImage from '../assets/images/logo-blog-micro.png';
+import defaultImage from '../../assets/images/logo-blog-micro.png';
 
 export const GET: APIRoute = async (context) => {
   // eslint-disable-next-line @typescript-eslint/no-magic-numbers
