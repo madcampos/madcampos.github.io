@@ -1,5 +1,6 @@
 {
 	"ignoreFiles": ["./dist/**/*", "./public/**/*"],
+	"extends": "stylelint-config-html",
 	"rules": {
 		"alpha-value-notation": "number",
 		"at-rule-allowed-list": null,

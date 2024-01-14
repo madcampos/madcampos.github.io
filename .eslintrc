@@ -17,6 +17,45 @@
 	},
 	"ignorePatterns": ["dist/**"],
 	"plugins": ["@typescript-eslint"],
+	"overrides": [
+		{
+			"files": ["*.astro"],
+			"plugins": ["astro"],
+			"env": {
+				"node": true,
+				"astro/astro": true,
+				"es2020": true
+			},
+			"parser": "astro-eslint-parser",
+			"parserOptions": {
+				"parser": "@typescript-eslint/parser",
+				"extraFileExtensions": [".astro"],
+				"sourceType": "module"
+			}
+		},
+		{
+			"files": ["**/*.astro/*.js", "*.astro/*.js"],
+			"env": {
+				"browser": true,
+				"es2020": true
+			},
+			"parserOptions": {
+				"sourceType": "module"
+			}
+		},
+		{
+			"files": ["**/*.astro/*.ts", "*.astro/*.ts"],
+			"env": {
+				"browser": true,
+				"es2020": true
+			},
+			"parser": "@typescript-eslint/parser",
+			"parserOptions": {
+				"sourceType": "module",
+				"project": "./tsconfig.json"
+			}
+		}
+	],
 	"rules": {
 		// Possible errors
 		"for-direction": "error",
@@ -595,7 +634,7 @@
 		"@typescript-eslint/no-shadow": ["warn", {
 			"builtinGlobals": true,
 			"hoist": "all",
-			"allow": ["name", "status", "event", "prompt", "alert", "top", "origin", "self", "length", "close", "open", "stop", "focus", "blur"],
+			"allow": ["name", "status", "event", "prompt", "alert", "top", "origin", "self", "length", "close", "open", "stop", "focus", "blur", "Image"],
 			"ignoreTypeValueShadow": true,
 			"ignoreFunctionTypeParameterNameValueShadow": false
 		}],
