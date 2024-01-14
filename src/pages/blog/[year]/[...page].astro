@@ -1,17 +1,18 @@
 ---
-import type { InferGetStaticPropsType, GetStaticPaths, PaginateFunction } from 'astro';
+import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from 'astro';
 
 import { listPostPagesByYear, MAX_POSTS_PER_PAGE } from '../../../utils/post.ts';
 import BlogPostsLayout from '../../../layouts/BlogPosts.astro';
 
+// eslint-disable-next-line @typescript-eslint/no-use-before-define
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 export const getStaticPaths = (async ({ paginate }: { paginate: PaginateFunction }) => {
-	const posts = await listPostPagesByYear();
+	const postsList = await listPostPagesByYear();
 
-	return Object.entries(posts).flatMap(([year, posts]) => paginate(posts, {
+	return Object.entries(postsList).flatMap(([yearKey, yearPosts]) => paginate(yearPosts, {
 		params: {
-			year
+			year: yearKey
 		},
 		pageSize: MAX_POSTS_PER_PAGE
 	}));

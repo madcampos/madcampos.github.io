@@ -1,13 +1,13 @@
 ---
-import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 
 import { listAllPosts } from '../../../../utils/post.ts';
 import BlogPostLayout from '../../../../layouts/BlogPost.astro';
 
+// eslint-disable-next-line @typescript-eslint/no-use-before-define
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
-export const getStaticPaths = (async () => {
-	return (await listAllPosts()).map((post) => ({
+export const getStaticPaths = (async () => (await listAllPosts()).map((post) => ({
 		params: {
 			year: post.year,
 			month: post.month,
@@ -15,8 +15,7 @@ export const getStaticPaths = (async () => {
 			slug: post.slug
 		},
 		props: post
-	}));
-}) satisfies GetStaticPaths;
+	}))) satisfies GetStaticPaths;
 
 const { render, url, data: { title, summary, image, imageAlt, createdAt, updatedAt, updates } } = Astro.props;
 const { Content } = await render();

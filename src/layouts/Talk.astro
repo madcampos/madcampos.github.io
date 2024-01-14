@@ -24,13 +24,13 @@ interface Props {
 
 	relatedContent?: {
 		title: string,
-		url: string,
+		url: string
 	}[],
 
 	techStack?: string[]
 }
 
-const { format: formatDate } = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
+const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 const { title, description, url, event, eventUrl, date, slides, video, code, demo, relatedContent, techStack } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ const { title, description, url, event, eventUrl, date, slides, video, code, dem
 			<h3><span class="icon">ℹ️</span> Talk info</h3>
 			<ul>
 				<li><strong>Event:</strong> {eventUrl ? (<a href={eventUrl} rel="noopener noreferrer">{event}</a>) : event}</li>
-				<li><strong>Date:</strong> <time datetime={date.toISOString()}>{formatDate(date)}</time></li>
+				<li><strong>Date:</strong> <time datetime={date.toISOString()}>{formatter.format(date)}</time></li>
 				{slides && <li><strong>Slides:</strong> <a href={slides} rel="noopener noreferrer">{slides}</a></li>}
 				{video && <li><strong>Video:</strong> <a href={video} rel="noopener noreferrer">{video}</a></li>}
 				{code && <li><strong>Code:</strong> <a href={code} rel="noopener noreferrer">{code}</a></li>}
@@ -58,9 +58,9 @@ const { title, description, url, event, eventUrl, date, slides, video, code, dem
 
 			<h3><span class="icon">📚</span> Related content</h3>
 			<ul>
-				{relatedContent?.map(({ url, title }) => (
+				{relatedContent?.map(({ url: contentUrl, title: contentTitle }) => (
 					<li>
-						<a href={url} rel="noopener noreferrer">{title}</a>
+						<a href={contentUrl} rel="noopener noreferrer">{contentTitle}</a>
 					</li>
 				))}
 			</ul>
@@ -73,11 +73,13 @@ const { title, description, url, event, eventUrl, date, slides, video, code, dem
 			</ul>
 
 			{demo && (
-				<h3><span class="icon">🖥️</span>Demo</h3>
+				<>
+					<h3><span class="icon">🖥️</span>Demo</h3>
 
-				<iframe src={demo} loading="lazy" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin">
-					A local running demo of the project.
-				</iframe>
+					<iframe src={demo} loading="lazy" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin">
+						A local running demo of the project.
+					</iframe>
+				</>
 			)}
 		</main>
 	</body>

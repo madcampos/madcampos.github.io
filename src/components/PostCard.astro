@@ -6,12 +6,12 @@ interface Props {
 
 const { url, createdAt } = Astro.props;
 const postUrl = new URL(url.replace(/^\//iu, ''), Astro.site).toString();
-const { format: formatDate } = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
+const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 ---
 <article class="post-card">
 	<header>
 		<a href={postUrl}><h2><slot name="title"></slot></h2></a>
-		<a href={postUrl}><span><time datetime={new Date(createdAt).toISOString()}>{formatDate(new Date(createdAt))}</time></span></a>
+		<a href={postUrl}><span><time datetime={new Date(createdAt).toISOString()}>{formatter.format(new Date(createdAt))}</time></span></a>
 	</header>
 	<slot></slot>
 	<footer>
