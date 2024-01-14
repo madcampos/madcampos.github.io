@@ -1,0 +1,44 @@
+---
+import { pwaInfo } from 'virtual:pwa-info';
+
+import '../assets/css/base.css';
+
+import defaultSocialImage from '../assets/images/logo-micro.png';
+
+interface Props {
+	title: string,
+	url: URL | string,
+	description: string,
+	tags?: string[],
+	socialImage?: string,
+	hasFeed?: boolean
+}
+
+const { title, url, description, tags = [], socialImage, hasFeed = false } = Astro.props;
+---
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<link rel="canonical" href={url.toString()} />
+	{ hasFeed && <link rel="alternate" type="application/rss+xml" href={`${Astro.site}feed.xml`} title="Marco Campos' Blog" /> }
+
+	<title>{title}</title>
+
+	<!-- App Metadata -->
+	<link rel="icon" href={`${Astro.site}icons/favicon.svg`} />
+	{ pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
+
+	<!-- Social metadata -->
+	<meta name="keywords" itemprop="keywords" content={tags.join(', ')} />
+
+	<meta property="og:title" name="twitter:title" itemprop="name" content={title} />
+	<meta property="og:description" name="description" itemprop="abstract" content={description} />
+	<meta property="og:image" name="twitter:image" itemprop="image" content={socialImage ?? defaultSocialImage.src} />
+	<meta property="og:type" content="website" />
+	<meta property="og:locale" itemprop="inLanguage" content="en_US" />
+	<meta property="og:url" itemprop="url" content={url.toString()} />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:dnt" content="on">
+
+	<meta name="pinterest" content="nopin">
+</head>

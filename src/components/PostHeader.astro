@@ -1,0 +1,40 @@
+---
+import type { ImageProps } from '../content/config.ts';
+
+import { Image } from 'astro:assets';
+
+import logoMini from '../assets/images/logo-blog-mini.svg';
+import logoMicro from '../assets/images/logo-blog-micro.svg';
+
+interface Props {
+	title: string
+	createdAt: Date
+	updatedAt?: Date
+	image?: ImageProps
+	imageAlt?: string
+}
+
+const { title, createdAt, updatedAt, image, imageAlt } = Astro.props;
+
+const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
+
+const logoDescription = 'Blog logo consisting of stylized "{m}" with a subtext of "--blog"';
+const linkTitle = 'Back to blog';
+---
+<div id="post-header">
+	<nav id="back-to-blog">
+		<a id="link-small" href={Astro.site} title={linkTitle}>
+			<img src={logoMini.src} alt={logoDescription} role="presentation" />
+		</a>
+		<a id="link-big" href={Astro.site} title={linkTitle}>
+			<img src={logoMicro.src} alt={logoDescription} role="presentation" />
+		</a>
+	</nav>
+	<header>
+		{ image && <Image id="hero-image" src={image} alt={imageAlt ?? ''} itemprop="image" /> }
+
+		<h1>{title}</h1>
+		<aside>Published on <time itemprop="dateCreated" datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time></aside>
+		{ updatedAt && <aside>Updated on <time itemprop="dateModified" datetime={updatedAt.toISOString()}>{formatter.format(updatedAt)}</time></aside> }
+	</header>
+</div>

@@ -1,0 +1,32 @@
+---
+
+interface Props {
+	baseUrl: string,
+	currentPage: number,
+	lastPage: number,
+	prevUrl?: string,
+	nextUrl?: string
+}
+
+const { currentPage, lastPage, baseUrl, prevUrl, nextUrl } = Astro.props;
+
+const TRIM_PAGE_NUMBER = 2;
+const firstPageInNav = Math.max(1, currentPage - TRIM_PAGE_NUMBER);
+const lastPageInNav = Math.min(lastPage, currentPage + TRIM_PAGE_NUMBER);
+---
+<nav id="pagination">
+	{prevUrl && <a href={new URL(prevUrl.replace(/^\//iu, ''), Astro.site)}>← Previous</a>}
+	<ol>
+		{Array(lastPageInNav - firstPageInNav + 1).fill(null).map((_, i) => {
+			const currentPageNumber = firstPageInNav + i;
+			const href = currentPageNumber === 1 ? '' : currentPageNumber;
+
+			if (currentPageNumber === currentPage) {
+				return <li><span>{currentPageNumber}</span></li>;
+			}
+
+			return <li><a href={new URL(`${baseUrl}/../${href}`.replace(/^\//iu, ''), Astro.site)}>{currentPageNumber}</a></li>;
+		})}
+	</ol>
+	{nextUrl && <a href={new URL(nextUrl.replace(/^\//iu, ''), Astro.site)}>Next →</a>}
+</nav>
