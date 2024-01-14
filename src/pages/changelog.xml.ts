@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 
+import { marked } from 'marked';
 import rss, { type RSSFeedItem } from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { getImage } from 'astro:assets';
@@ -16,20 +17,20 @@ export const GET: APIRoute = async (context) => {
 		title: "Marco Campos' Blog",
 		description: 'A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript',
 		site: context.site ?? '',
-		items: (await getCollection('changelog')).map((changelog) => {
+		items: await Promise.all((await getCollection('changelog')).map(async (changelog) => {
 			const versionNumber = changelog.id.replace('.md', '');
 			const { versionName } = changelog.data;
 
 			const item: RSSFeedItem = {
 				// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 				title: `${versionNumber}${versionName ? ` (${versionName})` : ''}`,
-				description: changelog.body,
+				description: await marked(changelog.body),
 				pubDate: changelog.data.date,
 				link: new URL('/changelog', context.site).toString()
 			};
 
 			return item;
-		}),
+		})),
 		stylesheet: '/changelog.xsl',
 		customData: `
 		<language>en-us</language>
