@@ -1,5 +1,5 @@
 {
-	"name": "madcampos",
+	"name": "madcampos-site",
 	"private": true,
 	"version": "1.0.0",
 	"license": "MIT",
@@ -8,68 +8,57 @@
 		"node": ">=18.0.0"
 	},
 	"volta": {
-		"node": "18.16.0"
+		"node": "20.11.0"
 	},
 	"scripts": {
 		"postinstall": "husky install",
-		"start": "vite",
-		"start:sw": "vite",
+		"start": "npm run dev",
+		"dev": "astro dev --site=http://localhost:3000/blog/",
+		"build": "astro check && astro build",
+		"preview": "astro preview --site=http://localhost:3000/blog/",
 		"typecheck": "tsc --noEmit",
 		"lint:js": "eslint src --ext .js,.mjs,.ts,.mts --fix --ignore-path .gitignore",
 		"lint:css": "stylelint **/*.css --fix",
 		"lint": "npm run typecheck && npm run lint:js && npm run lint:css",
 		"lint-staged": "lint-staged",
-		"build": "vite build",
 		"build:icons-transparent": "pwa-asset-generator build/logo.html --type png --maskable false --icon-only --scrape false --dark-mode --opaque false --log false public/icons/transparent",
 		"build:icons-maskable": "pwa-asset-generator build/logo.html --type png --maskable false --icon-only --log false public/icons/maskable",
 		"build:splash": "pwa-asset-generator build/logo.html --type png --splash-only --log false public/splash",
-		"build:assets": "npm run build:icons-transparent && npm run build:icons-maskable && npm run build:splash",
-		"optimize:svg": "svgo --multipass --eol lf --final-newline --recursive --folder public --output dist",
-		"optimize:png": "oxipng --opt max --strip safe --recursive --alpha --fix --zopfli --dir dist public/**/*.png",
-		"prepreview": "npm run build",
-		"preview": "vite preview --port 3000",
-		"test": "vitest",
-		"test:coverage": "vitest run --coverage"
+		"build:assets": "npm run build:icons-transparent && npm run build:icons-maskable && npm run build:splash"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^18.4.3",
-		"@commitlint/config-conventional": "^18.4.3",
-		"@types/marked": "^6.0.0",
-		"@types/node": "^20.10.6",
-		"@typescript-eslint/eslint-plugin": "^6.17.0",
-		"@typescript-eslint/parser": "^6.17.0",
-		"@vitest/coverage-v8": "^1.1.1",
+		"@astrojs/check": "^0.4.1",
+		"@astrojs/rss": "^4.0.2",
+		"@commitlint/cli": "^18.4.4",
+		"@commitlint/config-conventional": "^18.4.4",
+		"@types/node": "^20.11.0",
+		"@typescript-eslint/eslint-plugin": "^6.18.1",
+		"@typescript-eslint/parser": "^6.18.1",
+		"@vite-pwa/astro": "^0.2.0",
+		"astro": "^4.1.2",
 		"eslint": "^8.56.0",
-		"handlebars": "^4.7.8",
 		"husky": "^8.0.3",
 		"lint-staged": "^15.2.0",
-		"marked": "^11.1.1",
-		"oxipng-bin": "^1.0.0",
 		"pwa-asset-generator": "^6.3.1",
-		"shiki": "^0.14.7",
 		"stylelint": "^16.1.0",
-		"svgo": "^3.1.0",
-		"typescript": "^5.3.3",
-		"ultramatter": "^0.0.4",
-		"vite": "^5.0.10",
-		"vite-plugin-html-minifier": "^1.0.3",
-		"vite-plugin-pwa": "^0.17.4",
-		"vitest": "^1.1.1"
+		"typescript": "^5.3.3"
 	},
 	"lint-staged": {
-		"*.ts": [
-			"eslint --ext .ts --fix",
-			"vitest related"
-		],
-		"*.js": [
-			"eslint --ext .js --fix",
-			"vitest related"
-		],
+		"*.ts": "eslint --ext .ts --fix",
+		"*.cts": "eslint --ext .cts --fix",
+		"*.mts": "eslint --ext .mts --fix",
+		"*.js": "eslint --ext .js --fix",
+		"*.cjs": "eslint --ext .cjs --fix",
+		"*.mjs": "eslint --ext .mjs --fix",
 		"*.css": "stylelint --fix"
 	},
 	"commitlint": {
 		"extends": [
 			"@commitlint/config-conventional"
 		]
+	},
+	"overrides": {
+		"hasown": "npm:@nolyfill/hasown@latest",
+		"string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@latest"
 	}
 }

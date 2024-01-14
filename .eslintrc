@@ -15,7 +15,7 @@
 		"worker": true,
 		"shared-node-browser": true
 	},
-	"ignorePatterns": ["lib/**", "dist/**"],
+	"ignorePatterns": ["dist/**"],
 	"plugins": ["@typescript-eslint"],
 	"rules": {
 		// Possible errors
