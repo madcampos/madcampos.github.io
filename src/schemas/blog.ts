@@ -5,6 +5,7 @@ export const blogSchema = ({ image }: SchemaContext) => zod.object({
 	summary: zod.string().describe('A summary for the post that will show in list pages.'),
 	createdAt: zod.string().transform((date: string) => new Date(date)).describe('The post creation date.'),
 	updatedAt: zod.string().transform((date: string) => new Date(date)).optional().describe('The post last update date.'),
+	draft: zod.boolean().optional().describe('Whether the post is a draft or not.'),
 
 	image: image().optional().describe('The post main "hero" image path, relative to the blog root.'),
 	imageAlt: zod.string().optional().describe('The post main image alt text.'),

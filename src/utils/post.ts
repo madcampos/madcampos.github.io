@@ -2,13 +2,20 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 
 export const MAX_POSTS_PER_PAGE = 10;
 
-export type Post = CollectionEntry<'blog'> & {
+export type Post = Omit<CollectionEntry<'blog'>, 'slug'> & {
 	slug: string,
 	year: string,
 	month: string,
 	day: string,
 	url: string
 };
+
+function sortPostsByDate(first: Post, second: Post) {
+	const firstDate = new Date(first.data.updatedAt ?? first.data.createdAt);
+	const secondDate = new Date(second.data.updatedAt ?? second.data.createdAt);
+
+	return secondDate.getTime() - firstDate.getTime();
+}
 
 function formatPostMetadata(post: CollectionEntry<'blog'>) {
 	const slug = post.slug.split('/').pop() ?? '';
@@ -31,15 +38,14 @@ function formatPostMetadata(post: CollectionEntry<'blog'>) {
 
 export async function listAllPosts() {
 	const blogEntries = await getCollection('blog');
-	// eslint-disable-next-line max-len
-	const posts = blogEntries.map((entry) => formatPostMetadata(entry)).sort((first, second) => Number.parseInt(second.year) - Number.parseInt(first.year) || Number.parseInt(second.month) - Number.parseInt(first.month) || Number.parseInt(second.day) - Number.parseInt(first.day));
+	const posts = blogEntries.filter(({ data: { draft } }) => !draft).map((entry) => formatPostMetadata(entry)).sort(sortPostsByDate);
 
 	return posts;
 }
 
 export async function listPostPagesByYear() {
 	const blogEntries = await getCollection('blog');
-	const posts = blogEntries.map((entry) => formatPostMetadata(entry));
+	const posts = blogEntries.filter(({ data: { draft } }) => !draft).map((entry) => formatPostMetadata(entry));
 
 	const years: Record<string, Post[]> = {};
 
@@ -54,7 +60,7 @@ export async function listPostPagesByYear() {
 	}
 
 	for (const year of Object.keys(years)) {
-		years[year]?.sort((first, second) => Number.parseInt(second.month) - Number.parseInt(first.month) || Number.parseInt(second.day) - Number.parseInt(first.day));
+		years[year]?.sort(sortPostsByDate);
 	}
 
 	return years;
@@ -89,7 +95,7 @@ export async function listPostsPagesByMonth() {
 
 export async function listPostPagesByTag() {
 	const blogEntries = await getCollection('blog');
-	const posts = blogEntries.map((entry) => formatPostMetadata(entry));
+	const posts = blogEntries.filter(({ data: { draft } }) => !draft).map((entry) => formatPostMetadata(entry));
 
 	const tags: Record<string, Post[]> = {};
 
@@ -105,7 +111,7 @@ export async function listPostPagesByTag() {
 
 	for (const tag of Object.keys(tags)) {
 		// eslint-disable-next-line max-len
-		tags[tag]?.sort((first, second) => Number.parseInt(second.year) - Number.parseInt(first.year) || Number.parseInt(second.month) - Number.parseInt(first.month) || Number.parseInt(second.day) - Number.parseInt(first.day));
+		tags[tag]?.sort(sortPostsByDate);
 	}
 
 	return tags;
