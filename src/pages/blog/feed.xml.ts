@@ -24,10 +24,18 @@ export const GET: APIRoute = async (context) => {
       let imageSize = TEN_KB_IN_BYTES;
 
       if (post.data.image) {
-        const originalFilePath = post.data.image.src.replace(/^\/@fs/ui, '').replace(/\?.+$/ui, '');
+        const sourceFilePath = post.data.image.src.replace(/^\/@fs/iu, '').replace(/\?.+$/iu, '');
+        const buildFilePath = import.meta.url.replace(/\/dist\/.*$/iu, `/dist${sourceFilePath}`).replace(/^file:\/\//iu, '');
 
         image = await getImage({ src: post.data.image, format: 'png' });
-        imageSize = (await stat(originalFilePath)).size;
+
+        // If we are in dev mode, the paths will be diferent.
+        // If we are in build mode, one will be part of the other.
+        if (buildFilePath.includes(sourceFilePath)) {
+          imageSize = (await stat(buildFilePath)).size;
+        } else {
+          imageSize = (await stat(sourceFilePath)).size;
+        }
       }
 
       const item: RSSFeedItem = {
