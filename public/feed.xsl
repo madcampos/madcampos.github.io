@@ -44,6 +44,16 @@
 				<main>
 					<xsl:for-each select="/rss/channel/item">
 						<article>
+							<xsl:if test="enclosure">
+								<figure>
+									<img>
+										<xsl:attribute name="src">
+											<xsl:value-of select="enclosure/@url"/>
+										</xsl:attribute>
+									</img>
+								</figure>
+							</xsl:if>
+
 							<h2>
 								<a>
 									<xsl:attribute name="href"><xsl:value-of select="link"/></xsl:attribute>
@@ -51,19 +61,6 @@
 								</a>
 							</h2>
 							<aside>Published on: <em><xsl:value-of select="pubDate"/></em></aside>
-
-							<!-- <xsl:if test="enclosure">
-								<figure>
-									<img>
-										<xsl:attribute name="src">
-											<xsl:value-of select="enclosure/@url"/>
-										</xsl:attribute>
-									</img>
-									<figcaption>
-										<xsl:value-of select="enclosure/@type"/>
-									</figcaption>
-								</figure>
-							</xsl:if> -->
 
 							<div><xsl:value-of select="description" disable-output-escaping="yes"/></div>
 							<p><a><xsl:attribute name="href"><xsl:value-of select="link"/></xsl:attribute>Read more...</a></p>

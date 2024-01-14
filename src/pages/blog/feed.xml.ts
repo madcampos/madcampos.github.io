@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 
+import { stat } from 'node:fs/promises';
 import rss, { type RSSFeedItem } from '@astrojs/rss';
 import { listAllPosts } from '../../utils/post';
 import { getImage } from 'astro:assets';
@@ -19,9 +20,15 @@ export const GET: APIRoute = async (context) => {
     description: 'A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript',
     site: context.site ?? '',
     items: await Promise.all((await listAllPosts()).map(async (post) => {
-      const image = post.data.image && await getImage({ src: post.data.image, format: 'png' });
-      // 10kb (arbitrary value)
-      const imageSize = TEN_KB_IN_BYTES;
+      let image;
+      let imageSize = TEN_KB_IN_BYTES;
+
+      if (post.data.image) {
+        const originalFilePath = post.data.image.src.replace(/^\/@fs/ui, '').replace(/\?.+$/ui, '');
+
+        image = await getImage({ src: post.data.image, format: 'png' });
+        imageSize = (await stat(originalFilePath)).size;
+      }
 
       const item: RSSFeedItem = {
         title: post.data.title,

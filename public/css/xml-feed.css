@@ -157,3 +157,23 @@ main {
 	width: clamp(10rem, 80vw, 50rem);
 	margin-inline: auto;
 }
+
+article {
+	clear: both;
+}
+
+figure {
+	width: 8rem;
+	height: 8rem;
+	object-fit: contain;
+	object-position: center;
+	border: solid thin var(--border-color);
+	border-radius: 0.5rem;
+	float: left;
+	margin: 1rem;
+}
+
+figure img {
+	width: 100%;
+	height: 100%;
+}
