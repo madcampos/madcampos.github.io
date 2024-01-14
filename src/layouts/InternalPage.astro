@@ -1,0 +1,30 @@
+---
+import '../assets/css/base.css';
+
+import HtmlHead from '../components/HtmlHead.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+interface Props {
+	title: string,
+	description: string,
+	url: string,
+}
+
+const { title, description, url } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en-US" itemscope itemtype="https://schema.org/WebPage">
+	<HtmlHead
+		title={`Marco Campos | ${title}`}
+		description={description}
+		url={url}
+		tags={['Senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev']}
+	/>
+	<body>
+		<PageHeader title={title} />
+
+		<main>
+			<slot></slot>
+		</main>
+	</body>
+</html>
