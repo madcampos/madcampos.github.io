@@ -3,8 +3,8 @@ import { type SchemaContext, z as zod } from 'astro:content';
 export const projectsSchema = ({ image }: SchemaContext) => zod.object({
 	title: zod.string().describe('The project title displayed in the projects list.'),
 	status: zod.enum(['finished', 'ongoing']).describe('The project status.'),
-	createdAt: zod.string().transform((date: string) => new Date(date)).describe('The project creation date.'),
-	updatedAt: zod.string().transform((date: string) => new Date(date)).optional().describe('The project last update date.'),
+	createdAt: zod.date().describe('The project creation date.'),
+	updatedAt: zod.date().optional().describe('The project last update date.'),
 	version: zod.string().optional().describe('The project version.'),
 	url: zod.string().url().optional().describe('The project URL.'),
 

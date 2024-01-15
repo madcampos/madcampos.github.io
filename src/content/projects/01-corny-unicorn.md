@@ -1,16 +1,16 @@
 ---
-title: "Corny Unicorn"
-createdAt: "2021-08-01"
-status: "ongoing"
-version: "1.0.0"
-repository: "https://github.com/madcampos/corny-unicorn/"
-image: "./01-corny-unicorn.png"
+title: Corny Unicorn
+createdAt: 2021-08-01
+status: ongoing
+version: 1.0.0
+repository: https://github.com/madcampos/corny-unicorn/
+image: ./assets/01-corny-unicorn.png
 imageAlt: ""
 techStack:
-  - "HTML"
-  - "CSS"
-  - "JavaScript"
-  - "Hono"
+  - HTML
+  - CSS
+  - JavaScript
+  - Hono
 ---
 A unicorn adoption website project for [Toronto JS'](https://torontojs.com) Code club event.
 

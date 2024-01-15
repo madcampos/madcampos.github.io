@@ -5,7 +5,7 @@ export const talksSchema = ({ image }: SchemaContext) => zod.object({
 	summary: zod.string().describe('A summary for the talk that will show in the talks list pages.'),
 	event: zod.string().describe('The event the talk was given.'),
 	eventUrl: zod.string().url().optional().describe('The event URL.'),
-	date: zod.string().transform((date: string) => new Date(date)).describe('The talk date.'),
+	date: zod.date().describe('The talk date.'),
 
 	image: image().optional().describe('The talk main image path, relative to the site root.'),
 	imageAlt: zod.string().optional().describe('The talk main image alt text.'),

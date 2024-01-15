@@ -28,12 +28,42 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 				<summary><span class="icon">🔍</span> More info</summary>
 				<h3><span class="icon">ℹ️</span> Talk info</h3>
 				<ul>
-					<li><strong>Event:</strong> {talk.data.eventUrl ? (<a href={talk.data.eventUrl} rel="noopener noreferrer">{talk.data.event}</a>) : talk.data.event}</li>
-					<li><strong>Date:</strong> <time datetime={talk.data.date.toISOString()}>{formatter.format(talk.data.date)}</time></li>
-					{talk.data.slides && <li><strong>Slides:</strong> <a href={talk.data.slides} rel="noopener noreferrer">{talk.data.slides}</a></li>}
-					{talk.data.video && <li><strong>Video:</strong> <a href={talk.data.video} rel="noopener noreferrer">{talk.data.video}</a></li>}
-					{talk.data.code && <li><strong>Code:</strong> <a href={talk.data.code} rel="noopener noreferrer">{talk.data.code}</a></li>}
-					{talk.data.demo && <li><strong>Demo:</strong> <a href={talk.data.demo} rel="noopener noreferrer">{talk.data.demo}</a></li>}
+					<li>
+						<strong>Event:</strong>
+						{talk.data.eventUrl ? (<a href={talk.data.eventUrl} rel="noopener noreferrer">{talk.data.event}</a>) : talk.data.event}
+					</li>
+					<li>
+						<strong>Date:</strong>
+						<time datetime={talk.data.date.toISOString()}>{formatter.format(talk.data.date)}</time>
+					</li>
+
+					{talk.data.slides && (
+						<li>
+							<strong>Slides:</strong>
+							<a href={talk.data.slides} rel="noopener noreferrer">{talk.data.slides}</a>
+						</li>
+					)}
+
+					{talk.data.video && (
+						<li>
+							<strong>Video:</strong>
+							<a href={talk.data.video} rel="noopener noreferrer">{talk.data.video}</a>
+						</li>
+					)}
+
+					{talk.data.code && (
+						<li>
+							<strong>Code:</strong>
+							<a href={talk.data.code} rel="noopener noreferrer">{talk.data.code}</a>
+						</li>
+					)}
+
+					{talk.data.demo && (
+						<li>
+							<strong>Demo:</strong>
+							<a href={talk.data.demo} rel="noopener noreferrer">{talk.data.demo}</a>
+						</li>
+					)}
 				</ul>
 
 				<h3><span class="icon">📚</span> Related content</h3>

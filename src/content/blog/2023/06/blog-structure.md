@@ -1,21 +1,20 @@
 ---
-title: "The Semantics of Blogging"
-createdAt: "2023-06-05"
-updatedAt: "2023-06-07"
-summary: "A dive into the semantic html of a blog."
+title: The Semantics of Blogging
+createdAt: 2023-06-05
+updatedAt: 2023-06-07
+summary: A dive into the semantic html of a blog.
 tags:
-  - "BuildInTheOpen"
-  - "meta"
-  - "coding"
-  - "vite"
-  - "TS"
-  - "TypeScript"
-  - "BuildingInPublic"
-  - "BreakIntoTech"
-  - "LearnToCode"
-  - "FrontendDevelopment"
+  - BuildInTheOpen
+  - meta
+  - coding
+  - vite
+  - TS
+  - TypeScript
+  - BuildingInPublic
+  - BreakIntoTech
+  - LearnToCode
+  - FrontendDevelopment
 ---
-
 Building an html page is fun... until you find yourself lost in a sea of meaningless `<div>`s.
 
 The problem with html tags and, by extension the problem with language in general, is that _naming_ and _categorizing_ things _is hard_! There is a whole field of taxonomy and people spend years getting a PhD thesis studying how to name and classify things.

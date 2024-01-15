@@ -1,17 +1,17 @@
 ---
-title: "Fallout 2 Walkthrough"
-createdAt: "2021-08-01"
-status: "finished"
-version: "1.0.0"
-repository: "https://github.com/madcampos/fallout-walkthrough/"
-url: "https://madcampos.dev/fallout-walkthrough/"
-image: "./30-fallout-walkthrough.png"
+title: Fallout 2 Walkthrough
+createdAt: 2021-08-01
+status: finished
+version: 1.0.0
+repository: https://github.com/madcampos/fallout-walkthrough/
+url: https://madcampos.dev/fallout-walkthrough/
+image: ./assets/30-fallout-walkthrough.png
 imageAlt: ""
 techStack:
-  - "HTML"
-  - "CSS"
-  - "JavaScript"
-  - "GitHub Pages"
+  - HTML
+  - CSS
+  - JavaScript
+  - GitHub Pages
 ---
 A walkthrough guide for Fallout 2. It is based on the original project by Per Jorner, with additions by Killap and new style and markup.
 

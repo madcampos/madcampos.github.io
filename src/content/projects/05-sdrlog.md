@@ -1,24 +1,24 @@
 ---
-title: "Shadowrun Catalog"
-createdAt: "2018-02-26"
-status: "ongoing"
-version: "2.0.0"
-repository: "https://github.com/madcampos/sdrlog/"
-url: "https://madcampos.dev/sdrlog/"
-image: "./05-sdrlog.png"
+title: Shadowrun Catalog
+createdAt: 2018-02-26
+status: ongoing
+version: 2.0.0
+repository: https://github.com/madcampos/sdrlog/
+url: https://madcampos.dev/sdrlog/
+image: ./assets/05-sdrlog.png
 imageAlt: ""
 techStack:
-  - "HTML"
-  - "CSS"
-  - "JavaScript"
-  - "PWA"
-  - "Service Worker"
-  - "IndexedDB"
-  - "Web App Manifest"
-  - "GitHub Pages"
-  - "Web Components"
-  - "lit-html"
-  - "Web Assembly"
+  - HTML
+  - CSS
+  - JavaScript
+  - PWA
+  - Service Worker
+  - IndexedDB
+  - Web App Manifest
+  - GitHub Pages
+  - Web Components
+  - lit-html
+  - Web Assembly
 ---
 A PWA for maintaining a library of content released for [Shadowrun](https://en.wikipedia.org/wiki/Shadowrun).
 

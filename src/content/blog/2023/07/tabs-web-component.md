@@ -1,17 +1,17 @@
 ---
-title: "Tabs, Tabs, Tabs"
-createdAt: "2023-07-20"
-summary: "A how to guide on building an accessible tab component using Web Components."
+title: Tabs, Tabs, Tabs
+createdAt: 2023-07-20
+summary: A how to guide on building an accessible tab component using Web Components.
 tags:
-  - "web-components"
-  - "JavaScript"
-  - "html"
-  - "CSS"
-  - "BuildInTheOpen"
-  - "BuildingInPublic"
-  - "BreakIntoTech"
-  - "LearnToCode"
-  - "FrontendDevelopment"
+  - web-components
+  - JavaScript
+  - html
+  - CSS
+  - BuildInTheOpen
+  - BuildingInPublic
+  - BreakIntoTech
+  - LearnToCode
+  - FrontendDevelopment
 ---
 
 This post is a deeper dive into Web Components, with a focus on building a tab navigation that is accessible. If you are not familiar with Web Components, I recommend you read my [previous post](../06/web-components-basics) on the topic.

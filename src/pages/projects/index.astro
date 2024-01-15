@@ -14,37 +14,66 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 	description="A list of all my projects"
 	url="/projects"
 >
-{ projects.map((project) => (
-	<article class="project">
-		<header>
-			<h2>{ project.data.title}</h2>
-		</header>
-		<div class="project-content">
-			{project.data.image && <img class="project-image" loading="lazy" role="presentation" alt={project.data.imageAlt} src={project.data.image.src} />}
-			{project.body}
-		</div>
-		<footer>
-			<details class="project-info">
-				<summary><span class="icon">🔍</span> More info</summary>
-				<h3><span class="icon">ℹ️</span> Project info</h3>
-				<ul>
-					<li>Started in: <time datetime={project.data.createdAt.toISOString()}>{formatter.format(project.data.createdAt)}</time></li>
-					{project.data.version && <li>Current version: {project.data.version}</li>}
-					{project.data.updatedAt && <li>Last updated: <time datetime={project.data.updatedAt.toISOString()}>{formatter.format(project.data.updatedAt)}</time></li>}
-					<li>Current status: <span class:list={`tag status-${project.data.status}`}>{project.data.status}</span></li>
-					{project.data.repository && <li>Repository: <a href={project.data.repository} rel="noopener noreferrer">{project.data.repository}</a></li>}
-				</ul>
+	{ projects.map(async (project) => {
+		const { Content } = await project.render();
 
-				<h3><span class="icon">🛠️</span> Technologies used</h3>
-				<ul class="technology-tags">
-					{project.data.techStack?.map((tech) => (
-						<li class="tag">{tech}</li>
-					))}
-				</ul>
-			</details>
+		return (
+			<article class="project">
+				<header>
+					<h2>{ project.data.title}</h2>
+				</header>
+				<div class="project-content">
+					{project.data.image && <img class="project-image" loading="lazy" role="presentation" alt={project.data.imageAlt} src={project.data.image.src} />}
+					<Content />
+				</div>
+				<footer>
+					<details class="project-info">
+						<summary><span class="icon">🔍</span> More info</summary>
+						<h3><span class="icon">ℹ️</span> Project info</h3>
+						<ul>
+							<li>
+								<strong>Started in:</strong>
+								<time datetime={project.data.createdAt.toISOString()}>{formatter.format(project.data.createdAt)}</time>
+							</li>
 
-			{project.data.url && <a href={project.data.url} rel="noopener noreferrer">View Project</a>}
-		</footer>
-	</article>
-)) }
+							{project.data.version && (
+								<li>
+									<strong>Current version:</strong>
+									{project.data.version}
+								</li>
+							)}
+
+							{project.data.updatedAt && (
+								<li>
+									<strong>Last updated:</strong>
+									<time datetime={project.data.updatedAt.toISOString()}>{formatter.format(project.data.updatedAt)}</time>
+								</li>
+							)}
+
+							<li>
+								<strong>Current status:</strong>
+								<span class:list={`tag status-${project.data.status}`}>{project.data.status}</span>
+							</li>
+
+							{project.data.repository && (
+								<li>
+									<strong>Repository:</strong>
+									<a href={project.data.repository} rel="noopener noreferrer">{project.data.repository}</a>
+								</li>
+							)}
+						</ul>
+
+						<h3><span class="icon">🛠️</span> Technologies used</h3>
+						<ul class="technology-tags">
+							{project.data.techStack?.map((tech) => (
+								<li class="tag">{tech}</li>
+							))}
+						</ul>
+					</details>
+
+					{project.data.url && <a href={project.data.url} rel="noopener noreferrer">View Project</a>}
+				</footer>
+			</article>
+		);
+	}) }
 </InternalPage>

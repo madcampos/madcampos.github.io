@@ -49,11 +49,36 @@ const { title, description, url, event, eventUrl, date, slides, video, code, dem
 
 			<h3><span class="icon">ℹ️</span> Talk info</h3>
 			<ul>
-				<li><strong>Event:</strong> {eventUrl ? (<a href={eventUrl} rel="noopener noreferrer">{event}</a>) : event}</li>
-				<li><strong>Date:</strong> <time datetime={date.toISOString()}>{formatter.format(date)}</time></li>
-				{slides && <li><strong>Slides:</strong> <a href={slides} rel="noopener noreferrer">{slides}</a></li>}
-				{video && <li><strong>Video:</strong> <a href={video} rel="noopener noreferrer">{video}</a></li>}
-				{code && <li><strong>Code:</strong> <a href={code} rel="noopener noreferrer">{code}</a></li>}
+				<li>
+					<strong>Event:</strong>
+					{eventUrl ? (<a href={eventUrl} rel="noopener noreferrer">{event}</a>) : event}
+				</li>
+
+				<li>
+					<strong>Date:</strong>
+					<time datetime={date.toISOString()}>{formatter.format(date)}</time>
+				</li>
+
+				{slides && (
+					<li>
+						<strong>Slides:</strong>
+						<a href={slides} rel="noopener noreferrer">{slides}</a>
+					</li>
+				)}
+
+				{video && (
+					<li>
+						<strong>Video:</strong>
+						<a href={video} rel="noopener noreferrer">{video}</a>
+					</li>
+				)}
+
+				{code && (
+					<li>
+						<strong>Code:</strong>
+						<a href={code} rel="noopener noreferrer">{code}</a>
+					</li>
+				)}
 			</ul>
 
 			<h3><span class="icon">📚</span> Related content</h3>

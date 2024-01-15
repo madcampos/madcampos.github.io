@@ -1,17 +1,16 @@
 ---
 title: "Hello, World!"
-createdAt: "2023-05-05"
-updatedAt: "2023-06-05"
-summary: "Summary of the experience and hurdles of coding this blog."
+createdAt: 2023-05-05
+updatedAt: 2023-06-05
+summary: Summary of the experience and hurdles of coding this blog.
 tags:
-  - "BuildInTheOpen"
-  - "BuildingInPublic"
-  - "meta"
-  - "coding"
-  - "vite"
-  - "TS"
+  - BuildInTheOpen
+  - BuildingInPublic
+  - meta
+  - coding
+  - vite
+  - TS
 ---
-
 This is how I built this blog, or at least the first iteration of it. So please ride along on this journey of sweet success and sorrowful cryptic error messages.
 But first let me vent out on my frustrations on modern front-end tooling...
 

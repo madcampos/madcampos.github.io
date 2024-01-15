@@ -1,23 +1,22 @@
 ---
 title: "Web Components: A (Not So) Gentle Introduction"
-createdAt: "2023-06-26"
-updatedAt: "2023-07-20"
-summary: "A brief introduction to web components."
+createdAt: 2023-06-26
+updatedAt: 2023-07-20
+summary: A brief introduction to web components.
 updates:
   - "2023-07-20 - Added cross-link to tabs post."
 tags:
-  - "web"
-  - "web-components"
-  - "JavaScript"
-  - "html"
-  - "CSS"
-  - "BuildInTheOpen"
-  - "BuildingInPublic"
-  - "BreakIntoTech"
-  - "LearnToCode"
-  - "FrontendDevelopment"
+  - web
+  - web-components
+  - JavaScript
+  - html
+  - CSS
+  - BuildInTheOpen
+  - BuildingInPublic
+  - BreakIntoTech
+  - LearnToCode
+  - FrontendDevelopment
 ---
-
 **Note**: Please don't take this post seriously, it contains irony. If you are _not_ immune to it, go vaccinate yourself and come back later.
 
 ## What Are Web Components?
