@@ -1,6 +1,9 @@
 import { readFileSync } from 'node:fs';
+
 import { defineConfig } from 'astro/config';
 import astroPWA, { type PwaOptions } from '@vite-pwa/astro';
+
+import remarkBreaks from 'remark-breaks';
 
 const manifest: PwaOptions['manifest'] = JSON.parse(readFileSync('./src/manifest.json', { encoding: 'utf8' }));
 
@@ -20,7 +23,8 @@ export default defineConfig({
 	markdown: {
 		shikiConfig: {
 			theme: 'dark-plus'
-		}
+		},
+		remarkPlugins: [remarkBreaks]
 	},
 	integrations: [
 		astroPWA({
