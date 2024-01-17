@@ -15,7 +15,7 @@ This reminded me of a [couple](https://piccalil.li/blog/a-more-modern-css-reset/
 
 ## What is a CSS reset?
 
-In the old times of Internet Explorer and using tables for layouts, the browsers were quite inconsistent on their results. Nowadays they are still very different on the inside inside, but tend to be consistent on the output, so you can expect things to look "similar enough"[^2] in different browsers.
+In the old times of Internet Explorer and using tables for layouts, the browsers were quite inconsistent on their results. Nowadays they are still very different on the inside, but tend to be consistent on the output, so you can expect things to look "similar enough"[^2] in different browsers.
 
 Those browser differences of yore caused problems, so developers came up with the idea of starting a project with a "reset". That would put all browsers on the same baseline and _revert_ all inconsistencies to a more sane default.
 
