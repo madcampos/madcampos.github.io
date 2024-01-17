@@ -8,16 +8,21 @@ tags:
   - html
   - web
 ---
-I was reading a newsletter the other day[^1] and one article caught my attention: [My CSS Resets](https://keithjgrant.com/posts/2024/01/my-css-resets/).
-This reminded me of a [couple](https://piccalil.li/blog/a-more-modern-css-reset/) [articles](https://chriscoyier.net/2023/10/03/being-picky-about-a-css-reset-for-fun-pleasure/) I read last year and  how I approach to CSS resets. I decided to comment on it because I'm a person on the internet and I have _a moral obligation_ to do that.
+I was reading a newsletter the other day[^1] and an article caught my attention: [My CSS Resets](https://keithjgrant.com/posts/2024/01/my-css-resets/).
+This reminded me of a couple of articles I read last year. 
+
+- [A (more) Modern CSS Reset](https://piccalil.li/blog/a-more-modern-css-reset/) by [Andy Bell](https://piccalil.li/)
+- [Being Picky about a CSS Reset for Fun & Pleasure](https://chriscoyier.net/2023/10/03/being-picky-about-a-css-reset-for-fun-pleasure/) by [Chris Coyier](https://chriscoyier.net)
+
+And how I approach CSS resets. I decided to comment on it because I'm a person on the internet and I have _a moral obligation_ to do that.
 
 ![An image composed of four panels, the three first are stretching exercises and the forth one is a finger pressing the "Caps Lock" button.](./assets/arguing-on-the-internet.jpg)
 
 ## What is a CSS reset?
 
-In the old times of Internet Explorer and using tables for layouts, the browsers were quite inconsistent on their results. Nowadays they are still very different on the inside, but tend to be consistent on the output, so you can expect things to look "similar enough"[^2] in different browsers.
+In the old times of Internet Explorer and using tables for layouts, browsers were quite inconsistent in their results. Nowadays, while they are still very different on the inside, browsers tend to have consistent output, so you can expect things to look "similar enough"[^2] in different browsers.
 
-Those browser differences of yore caused problems, so developers came up with the idea of starting a project with a "reset". That would put all browsers on the same baseline and _revert_ all inconsistencies to a more sane default.
+Those browser differences of yore caused problems! So developers came up with the idea of starting a project with a "reset". That would put all browsers on the same baseline and _revert_ all inconsistencies to a more sane default.
 
 ## Do you need a CSS reset?
 
@@ -81,7 +86,7 @@ The default font part here is two fold:
 }
 ```
 
-When you set the [`accent-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/accent-color) for your page, all controls will render with that colour instead of whatever default one the browser uses. Checkboxes, radio buttons, selects and other widgets will look nicer without much effort. Here I'm just setting it to my theme colour because branding is important.
+When you set the [`accent-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/accent-color) for your page, all controls will render with that colour instead of whichever default the browser uses. Checkboxes, radio buttons, selects and other widgets will look nicer without much effort. Here I'm just setting it to my theme colour because branding is important.
 
 ### Come to the dark side
 
@@ -91,7 +96,7 @@ When you set the [`accent-color`](https://developer.mozilla.org/en-US/docs/Web/C
 }
 ```
 
-The [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme) is used to set the page to render first in dark mode and then in light mode. A note here is that it means that the page _can_ be rendered in both modes because it lists both values, but _prefers_ dark over light.
+The [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme) is used to set the page to render first in dark mode, and then in light mode. Note that it means that the page _can_ be rendered in both modes because it lists both values, but _prefers_ dark over light.
 
 ### The infamous CSS box-model
 
@@ -125,9 +130,9 @@ Back to the previous example:
 
 Quite confusing, I know. The MDN docs on this are much more thorough and better at explaining the box model: https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model
 
-The probelm is, we are used to think closer to the way IE implemented things than the standard, so the people on the standards got to a compromise and added a property to control it: [`box-sizing`](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing).
+The problem is, we are used to thinking closer to the way Internet Explorer implemented things than the standard, so the people on the standards got to a compromise and added a property to control it: [`box-sizing`](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing).
 
-Here I'm setting it to be like IE did it and that all elements and pseudo elements (`::before` and `::after`) should follow the same model.
+Here I'm setting it to be like Internet Explorer did it and that all elements and pseudo elements (`::before` and `::after`) should follow the same model.
 
 ### The hidden skeleton loader
 
@@ -137,7 +142,7 @@ Here I'm setting it to be like IE did it and that all elements and pseudo elemen
 
 This rule applies to web components before [they are defined](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements#registering_a_custom_element). It simply hides components that the browser doesn't know how to handle yet so they don't show.
 
-There is a prototype for adding skeleton loaders to undefined elements I started working a while back, but it is very bare _bones_ (pun intended): https://codepen.io/madcampos/pen/VwVMQQp
+I started working a prototype for adding skeleton loaders to undefined elements awhile back, but it is very bare _bones_ (pun intended): https://codepen.io/madcampos/pen/VwVMQQp
 
 ### Mind the gap
 
@@ -175,7 +180,7 @@ img, picture, svg, canvas, audio, video {
 }
 ```
 
-I’'m gonna quote Keith’'s post here:
+I'm gonna quote Keith's post here:
 
 > I can’t recall the last time I used an `<img>` as an inline element. They’re almost always part of the page structure, so I make them block level.
 
