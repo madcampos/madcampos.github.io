@@ -9,7 +9,7 @@ tags:
   - web
 ---
 I was reading a newsletter the other day[^1] and an article caught my attention: [My CSS Resets](https://keithjgrant.com/posts/2024/01/my-css-resets/).
-This reminded me of a couple of articles I read last year. 
+This reminded me of a couple of articles I read last year.
 
 - [A (more) Modern CSS Reset](https://piccalil.li/blog/a-more-modern-css-reset/) by [Andy Bell](https://piccalil.li/)
 - [Being Picky about a CSS Reset for Fun & Pleasure](https://chriscoyier.net/2023/10/03/being-picky-about-a-css-reset-for-fun-pleasure/) by [Chris Coyier](https://chriscoyier.net)
@@ -182,7 +182,7 @@ img, picture, svg, canvas, audio, video {
 
 I'm gonna quote Keith's post here:
 
-> I can’t recall the last time I used an `<img>` as an inline element. They’re almost always part of the page structure, so I make them block level.
+> I can't recall the last time I used an `<img>` as an inline element. They're almost always part of the page structure, so I make them block level.
 
 Usually all those elements are used as block level elements that span the whole width of the page, so this rule makes them behave like this.
 
