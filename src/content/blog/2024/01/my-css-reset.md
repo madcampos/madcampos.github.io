@@ -1,7 +1,6 @@
 ---
 title: My CSS Reset
-createdAt: 2024-01-16
-draft: true
+createdAt: 2024-01-18
 summary: A breakdown of my CSS reset file and why each piece is there.
 tags:
   - CSS
