@@ -13,7 +13,9 @@ This reminded me of a couple of articles I read last year.
 - [A (more) Modern CSS Reset](https://piccalil.li/blog/a-more-modern-css-reset/) by [Andy Bell](https://piccalil.li/)
 - [Being Picky about a CSS Reset for Fun & Pleasure](https://chriscoyier.net/2023/10/03/being-picky-about-a-css-reset-for-fun-pleasure/) by [Chris Coyier](https://chriscoyier.net)
 
-And how I approach CSS resets. I decided to comment on it because I'm a person on the internet and I have _a moral obligation_ to do that.
+And how I approach CSS resets. So, I decided to comment on it because I'm a person on the internet and I have _a moral obligation_ to do that.
+
+Brace yourselves, strong opinions incoming! 
 
 ![An image composed of four panels, the three first are stretching exercises and the forth one is a finger pressing the "Caps Lock" button.](./assets/arguing-on-the-internet.jpg)
 
@@ -190,4 +192,4 @@ Usually all those elements are used as block level elements that span the whole 
 And that is it for my CSS reset. Although browsers are much better and more compatible with each other there are some small quality of life improvements that help us suffer less when debugging.
 
 [^1]: I guess reading newsletters is the millennial version of the boomer who reads the newspaper.
-[^2]: By "similar enough", it doesn't mean they will be pixel perfect, just that things will behave mostly the same and generate results that, given some wiggle room, are so close to each other that the differences don't matter.
+[^2]: By "similar enough", it doesn't mean they will be _pixel perfect_, just that things will behave mostly the same and generate results that, given some wiggle room, are so close to each other that the differences don't matter.
