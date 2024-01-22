@@ -4,7 +4,6 @@ summary: Do we need trailing slashes on URLs? What is the difference between add
 image: 
 imageAlt: 
 createdAt: 2024-01-20
-draft: true
 tags:
   - URL
   - HTTP
@@ -81,5 +80,7 @@ Nowadays search engines will not care and will index your pages whatever they co
 To solve the technicality, you have to specify a [canonical URL](https://en.wikipedia.org/wiki/Canonical_link_element) for your page and SEOs will treat both as the same thing.
 
 Nowadays it doesn't really matter, but one rule of thumb is to be consistent on what you chose and stick with it.
+
+As a closing note, if you are looking for more thorough insights trailing slashes, this is the post I used as reference, give it a read: https://www.zachleat.com/web/trailing-slash/ 
 
 [^1]: There is more to it and technically an url does not have to map one-to-one to a file on someone else's computer. But for the sake of this post, let's pretend it does.
