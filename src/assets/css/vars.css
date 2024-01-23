@@ -32,6 +32,10 @@
 	--dark-border-color: #444444;
 	--text-color: black;
 	--scrollbar-bg: rgba(255, 255, 255, 0.1);
+	--link-color: #065bd1;
+	--link-visited-color: #0080ff;
+	--link-hover-color: #ff8100;
+	--link-active-color: #cf4f00;
 
 	color-scheme: light dark;
 	accent-color: var(--theme-color);
@@ -52,6 +56,10 @@
 		--dark-border-color: #444444;
 		--text-color: whitesmoke;
 		--scrollbar-bg: rgba(255, 255, 255, 0.1);
+		--link-color: #70b8ff;
+		--link-visited-color: lightblue;
+		--link-hover-color: var(--accent-color);
+		--link-active-color: var(--complementary-color);
 
 		color-scheme: dark;
 	}

@@ -3,6 +3,7 @@ import InternalPage from '../../layouts/InternalPage.astro';
 import { listAllProjects } from '../../utils/projects';
 
 import '../../assets/css/projects.css';
+import { Picture } from 'astro:assets';
 
 const projects = await listAllProjects();
 
@@ -12,7 +13,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 <InternalPage
 	title="Projects"
 	description="A list of all my projects"
-	url="/projects"
+	url={`${Astro.site?.toString()}projects`}
 >
 	{ projects.map(async (project) => {
 		const { Content } = await project.render();
@@ -20,18 +21,14 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 		return (
 			<article class="project">
 				<header>
-					<h2>{ project.data.title}</h2>
+					<h2>{project.data.title}</h2>
 				</header>
 				<div class="project-content">
 					{project.data.image && (
-						<img
+						<Picture
 							class="project-image"
-							loading="lazy"
-							role="presentation"
-							alt={project.data.imageAlt}
-							src={project.data.image.src}
-							width={project.data.image.width}
-							height={project.data.image.height}
+							src={project.data.image}
+							alt={project.data.imageAlt ?? project.data.title}
 						/>
 					)}
 					<Content />
@@ -81,7 +78,15 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 						</ul>
 					</details>
 
-					{project.data.url && <a href={project.data.url} rel="noopener noreferrer">View Project</a>}
+					{project.data.url && (
+						<a
+							href={project.data.url}
+							rel="noopener noreferrer"
+							class="view-project"
+						>
+							View Project
+						</a>
+					)}
 				</footer>
 			</article>
 		);

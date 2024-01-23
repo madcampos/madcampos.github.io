@@ -47,6 +47,10 @@
 	opacity: 0.4;
 }
 
+#about li {
+	margin: var(--margin-inline);
+}
+
 @media (max-width: 650px) {
 	#about {
 		flex-direction: column;

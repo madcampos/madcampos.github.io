@@ -149,6 +149,7 @@
 	font-family: var(--sans-serif-font-family);
 
 	text-wrap: pretty;
+	overflow-wrap: break-word;
 }
 
 #post-contents h1:first-of-type {
@@ -236,4 +237,8 @@ iframe {
 	#back-to-blog { align-self: center; }
 	#back-to-blog #link-big { display: none; }
 	#back-to-blog #link-small { display: inline-flex; }
+
+	#post-contents p > img:only-child {
+		width: clamp(7rem, 70vw, 20rem);
+	}
 }

@@ -30,7 +30,6 @@ const blogUrl = new URL('/blog', Astro.site).toString();
 				width={logoMini.width}
 				height={logoMini.height}
 				alt={logoDescription}
-				role="presentation"
 			/>
 		</a>
 		<a id="link-big" href={blogUrl} title={linkTitle}>
@@ -39,12 +38,19 @@ const blogUrl = new URL('/blog', Astro.site).toString();
 				width={logoMicro.width}
 				height={logoMicro.height}
 				alt={logoDescription}
-				role="presentation"
 			/>
 		</a>
 	</nav>
 	<header>
-		{ image && <Image id="hero-image" src={image} alt={imageAlt ?? ''} itemprop="image" /> }
+		{image && (
+			<Image
+				id="hero-image"
+				src={image}
+				alt={imageAlt ?? ''}
+				itemprop="image"
+				loading="eager"
+			/>
+		)}
 
 		<h1>{title}</h1>
 		<aside>Published on <time itemprop="dateCreated" datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time></aside>

@@ -41,13 +41,18 @@ body *, body *::after, body *::before {
 	color: var(--bg-color);
 }
 
-a { color: var(--theme-color); }
-a:visited { color: var(--secondary-color); }
-a:hover { color: var(--accent-color); }
-a:active { color: var(--complementary-color); }
+a {
+	color: var(--link-color);
+	overflow-wrap: break-word;
+}
+
+a:visited { color: var(--link-visited-color); }
+a:hover { color: var(--link-hover-color); }
+a:active { color: var(--link-active-color); }
 
 a:focus {
-	outline: none;
+	outline: var(--theme-color) solid var(--border-width);
+	outline-offset: var(--border-width);
 	background-color: var(--theme-color);
 	color: var(--bg-color);
 	border-radius: var(--border-radius);

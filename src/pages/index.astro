@@ -3,6 +3,7 @@ import HomeLayout from '../layouts/Home.astro';
 
 import avatar from '../assets/images/me.jpg';
 import logo from '../assets/images/logo.svg';
+import { Picture } from 'astro:assets';
 
 const links = {
 	GitHub: 'https://github.com/madcampos',
@@ -26,15 +27,11 @@ const links = {
 	</h1>
 	<section id="about">
 		<aside>
-			<picture>
-				{/* eslint-disable-next-line astro/jsx-a11y/img-redundant-alt */}
-				<img
-					src={avatar.src}
-					width={avatar.width}
-					height={avatar.height}
-					alt="A picture of my face with a smile looking at the camera. I'm wearing aviator glasses, a fake fur winter hat and an orange scarf."
-				/>
-			</picture>
+			{/* eslint-disable-next-line astro/jsx-a11y/img-redundant-alt */}
+			<Picture
+				src={avatar}
+				alt="A picture of my face with a smile looking at the camera. I'm wearing aviator glasses, a fake fur winter hat and an orange scarf."
+			/>
 		</aside>
 		<article>
 			<p>Hi there! My name is <em>Marco Campos</em>, and I'm a Toronto based developer.</p>

@@ -1,4 +1,5 @@
 ---
+import { Picture } from 'astro:assets';
 import type { ImageProps } from '../content/config';
 
 interface Props {
@@ -13,16 +14,7 @@ const postUrl = new URL(url.replace(/^\//iu, ''), Astro.site).toString();
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 ---
 <article class="post-card">
-	{image && (
-		<picture>
-			<img
-				src={image.src}
-				width={image.width}
-				height={image.height}
-				alt={imageAlt ?? ''}
-			/>
-		</picture>
-	)}
+	{image && (<Picture src={image} alt={imageAlt ?? ''} />)}
 	<header>
 		<a href={postUrl}>
 			<h2><slot name="title"></slot></h2>

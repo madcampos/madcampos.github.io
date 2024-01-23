@@ -31,7 +31,7 @@ interface Props {
 }
 
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
-const { title, description, url, event, eventUrl, date, slides, video, code, demo, relatedContent, techStack } = Astro.props;
+const { title, description, url, event, eventUrl, date, slides, video, code, demo, relatedContent, techStack, image, imageAlt } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en-US" itemscope itemtype="https://schema.org/WebPage">
@@ -40,14 +40,17 @@ const { title, description, url, event, eventUrl, date, slides, video, code, dem
 		description={description}
 		url={url}
 		tags={['Senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev']}
+		image={image}
+		imageAlt={imageAlt}
+		createdAt={date}
 	/>
 	<body>
 		<PageHeader title={title} />
 
-		<main>
+		<main class="project">
 			<slot></slot>
 
-			<h3><span class="icon">ℹ️</span> Talk info</h3>
+			<h2><span class="icon">ℹ️</span> Talk info</h2>
 			<ul>
 				<li>
 					<strong>Event:</strong>
@@ -81,16 +84,20 @@ const { title, description, url, event, eventUrl, date, slides, video, code, dem
 				)}
 			</ul>
 
-			<h3><span class="icon">📚</span> Related content</h3>
-			<ul>
-				{relatedContent?.map(({ url: contentUrl, title: contentTitle }) => (
-					<li>
-						<a href={contentUrl} rel="noopener noreferrer">{contentTitle}</a>
-					</li>
-				))}
-			</ul>
+			{relatedContent && (
+				<>
+					<h2><span class="icon">📚</span> Related content</h2>
+					<ul class="related-content">
+						{relatedContent?.map(({ url: contentUrl, title: contentTitle }) => (
+							<li>
+								<a href={contentUrl} rel="noopener noreferrer">{contentTitle}</a>
+							</li>
+						))}
+					</ul>
+				</>
+			)}
 
-			<h3><span class="icon">🛠️</span> Technologies used</h3>
+			<h2><span class="icon">🛠️</span> Technologies used</h2>
 			<ul class="technology-tags">
 				{techStack?.map((tech) => (
 					<li class="tag">{tech}</li>
@@ -99,7 +106,7 @@ const { title, description, url, event, eventUrl, date, slides, video, code, dem
 
 			{demo && (
 				<>
-					<h3><span class="icon">🖥️</span>Demo</h3>
+					<h2><span class="icon">🖥️</span>Demo</h2>
 
 					<iframe src={demo} loading="lazy" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin" title={`Demo for ${title}`}>
 						A local running demo of the project.

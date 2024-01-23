@@ -10,6 +10,7 @@ body > header h1 {
 	height: auto;
 	font-size: clamp(2rem, 5vw, 4rem);
 	font-weight: bold;
+	padding-inline: var(--padding-inline);
 
 	overflow-wrap: break-word;
 	word-break: break-word;
@@ -55,7 +56,7 @@ main {
 
 .project footer details { width: 100%; }
 
-.project footer a {
+.project footer .view-project {
 	display: inline-block;
 	padding: 0.25rem 0.5rem;
 }
@@ -87,6 +88,10 @@ main {
 .project .project-info > summary {
 	font-size: larger;
 	font-weight: bold;
+}
+
+.related-content li {
+	margin: var(--margin-inline);
 }
 
 .project .technology-tags {
@@ -125,9 +130,12 @@ main {
 }
 
 iframe {
-	border: none;
+	border: solid var(--border-width) var(--theme-color);
+	border-radius: var(--border-radius);
 	width: 80vw;
 	height: 80vh;
+	margin-inline: auto;
+	display: block;
 }
 
 @media (max-width: 500px) {
