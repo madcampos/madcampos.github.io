@@ -25,6 +25,7 @@ const socialImage = `${baseUrl}${(image ?? defaultSocialImage.src).replace(/^\//
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<link rel="canonical" href={url.toString()} />
 	{ hasFeed && <link rel="alternate" type="application/rss+xml" href={`${baseUrl}blog/feed.xml`} title="Marco Campos' Blog" /> }
+	<link rel="sitemap" href={`${baseUrl}sitemap-index.xml`} />
 
 	<title>{title}</title>
 

@@ -76,5 +76,8 @@
 		"object.entries": "npm:@nolyfill/object.entries@latest",
 		"object.fromentries": "npm:@nolyfill/object.fromentries@latest",
 		"object.values": "npm:@nolyfill/object.values@latest"
+	},
+	"dependencies": {
+		"@astrojs/sitemap": "^3.0.5"
 	}
 }
