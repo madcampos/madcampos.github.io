@@ -8,11 +8,14 @@ import { Picture } from 'astro:assets';
 const links = {
 	GitHub: 'https://github.com/madcampos',
 	CodePen: 'https://codepen.io/madcampos',
+	LinkedIn: 'https://www.linkedin.com/in/madcampos/',
 	'Project Highlights': '/projects',
 	'Talks I\'ve given': '/talks',
-	'My Blog': '/blog',
-	LinkedIn: 'https://www.linkedin.com/in/madcampos/'
+	'My Blog': '/blog'
 };
+
+// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+const AVATAR_WIDTHS = [256, 512, 768, avatar.width];
 ---
 <HomeLayout>
 	<h1>
@@ -32,6 +35,9 @@ const links = {
 				src={avatar}
 				alt="A picture of my face with a smile looking at the camera. I'm wearing aviator glasses, a fake fur winter hat and an orange scarf."
 				loading="eager"
+				widths={AVATAR_WIDTHS}
+				sizes={`(max-width: 360px) 256px, (max-width: 720px) 512px, (max-width: 1280px) 768px, ${avatar.width}px`}
+				quality="high"
 			/>
 		</aside>
 		<article>

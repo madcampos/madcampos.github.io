@@ -10,11 +10,23 @@ interface Props {
 }
 
 const { url, createdAt, image, imageAlt } = Astro.props;
+
+// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+const IMAGE_WIDTHS = [256, 512, 768, image?.width ?? 1024];
+
 const postUrl = new URL(url.replace(/^\//iu, ''), Astro.site).toString();
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 ---
 <article class="post-card">
-	{image && (<Picture src={image} alt={imageAlt ?? ''} />)}
+	{image && (
+		<Picture
+			src={image}
+			alt={imageAlt ?? ''}
+			widths={IMAGE_WIDTHS}
+			sizes={`(max-width: 360px) 256px, (max-width: 720px) 512px, (max-width: 1280px) 768px, ${image.width}px`}
+			quality="high"
+		/>
+	)}
 	<header>
 		<a href={postUrl}>
 			<h2><slot name="title"></slot></h2>

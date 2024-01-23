@@ -8,6 +8,9 @@ import { Picture } from 'astro:assets';
 const talks = await listAllTalks();
 
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
+
+// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+const DEFAULT_WIDTHS = [256, 512, 768];
 ---
 
 <InternalPage
@@ -26,6 +29,9 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 					class="project-image"
 					src={talk.data.image}
 					alt={talk.data.imageAlt ?? talk.data.title}
+					widths={[...DEFAULT_WIDTHS, talk.data.image.width]}
+					sizes={`(max-width: 360px) 256px, (max-width: 720px) 512px, (max-width: 1280px) 768px, ${talk.data.image.width}px`}
+					quality="high"
 				/>
 			)}
 			{talk.data.summary}

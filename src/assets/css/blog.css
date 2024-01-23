@@ -159,7 +159,7 @@
 #post-contents p > img:only-child {
 	display: block;
 	margin-inline: auto;
-	width: clamp(7rem, 25vw, 20rem);
+	width: clamp(7rem, 35vw, 20rem);
 	height: auto;
 }
 
