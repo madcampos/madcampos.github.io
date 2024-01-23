@@ -4,7 +4,8 @@ createdAt: 2023-06-26
 updatedAt: 2023-07-20
 summary: A brief introduction to web components.
 updates:
-  - "2023-07-20 - Added cross-link to tabs post."
+  - date: 2023-07-20
+    changes: Added cross-link to tabs post.
 tags:
   - web
   - web-components

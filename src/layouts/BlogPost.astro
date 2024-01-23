@@ -15,7 +15,7 @@ interface Props {
 	imageAlt?: string,
 	createdAt: Date,
 	updatedAt?: Date,
-	updates?: string[],
+	updates?: { date: Date, changes: string }[],
 	tags?: string[],
 	url: string
 }
@@ -49,8 +49,28 @@ const postUrl = new URL(url.replace(/^\//iu, ''), Astro.site).toString();
 			/>
 
 			<main id="post-contents" itemprop="articleBody">
-				{ updates && <details><summary>Update History</summary><ul>{updates.map((update) => <li><p>{update}</p></li>)}
-</ul></details> }
+				{updates && (
+					<details><summary>Update History</summary>
+						<ul>
+							{updates.map((update) => (
+								<li>
+									<time datetime={new Date(update.date).toISOString()}>{new Date(update.date).toLocaleDateString()}</time>:&nbsp;
+									<span>{update.changes}</span>
+								</li>
+							))}
+						</ul>
+					</details>
+				)}
+				{tags && (
+					<aside id="post-tags">
+						<details>
+							<summary>Tags</summary>
+							{tags.map((tag) => (
+								<a href={`/blog/tags/${tag}`} class="tag">{tag}</a>
+							))}
+						</details>
+					</aside>
+				)}
 				<slot></slot>
 			</main>
 		</article>

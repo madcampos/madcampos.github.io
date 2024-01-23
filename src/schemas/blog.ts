@@ -13,5 +13,8 @@ export const blogSchema = ({ image }: SchemaContext) => zod.object({
 	tags: zod.array(zod.string()).optional().describe('Tags for this post.'),
 	relatedPosts: zod.array(zod.string()).optional().describe('Slugs for posts related to this.'),
 
-	updates: zod.array(zod.string()).optional().describe('A list of updates this post had.')
+	updates: zod.array(zod.object({
+		date: zod.date().describe('The date of the update.'),
+		changes: zod.string().describe('A summary of the changes in this update.')
+	})).optional().describe('A list of updates this post had.')
 });

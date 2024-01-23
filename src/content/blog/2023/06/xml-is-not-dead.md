@@ -5,7 +5,8 @@ summary: A quick post about styling XML feeds and other uses for XML.
 image: ./assets/arcane-c-incantations.jpg
 imageAlt: 'AI generated image for the prompt: "an arcane incantation on an old manuscript with C++ code"'
 updates:
-  - 2024-01-14 - Fixed link to feed.xml and added a link to the RSS feeds.
+  - date: 2024-01-14
+    changes: Fixed link to feed.xml and added a link to the RSS feeds.
 tags:
   - XML
   - web
