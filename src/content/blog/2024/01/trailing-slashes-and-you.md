@@ -1,8 +1,8 @@
 ---
 title: Trailing Slashes and You!
-summary: Do we need trailing slashes on URLs? What is the difference between adding them or not?
-image: 
-imageAlt: 
+summary: Do we need trailing slashes on URLs? What is the difference between adding them or not? Find all out in this post!
+image: ./assets/slashing-samurai.jpg
+imageAlt: An AI generated image of a samurai holding a sword glowing with a blue light and cutting through a rainbow colored circuit board.
 createdAt: 2024-01-20
 tags:
   - URL
@@ -81,6 +81,6 @@ To solve the technicality, you have to specify a [canonical URL](https://en.wiki
 
 Nowadays it doesn't really matter, but one rule of thumb is to be consistent on what you chose and stick with it.
 
-As a closing note, if you are looking for more thorough insights trailing slashes, this is the post I used as reference, give it a read: https://www.zachleat.com/web/trailing-slash/ 
+As a closing note, if you are looking for more thorough insights trailing slashes, this is the post I used as reference, give it a read: https://www.zachleat.com/web/trailing-slash/
 
 [^1]: There is more to it and technically an url does not have to map one-to-one to a file on someone else's computer. But for the sake of this post, let's pretend it does.
