@@ -1,17 +1,35 @@
 ---
+import type { ImageProps } from '../content/config';
+
 interface Props {
 	url: string,
-	createdAt: string | Date
+	createdAt: string | Date,
+	image?: ImageProps,
+	imageAlt?: string
 }
 
-const { url, createdAt } = Astro.props;
+const { url, createdAt, image, imageAlt } = Astro.props;
 const postUrl = new URL(url.replace(/^\//iu, ''), Astro.site).toString();
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 ---
 <article class="post-card">
+	{image && (
+		<picture>
+			<img
+				src={image.src}
+				width={image.width}
+				height={image.height}
+				alt={imageAlt ?? ''}
+			/>
+		</picture>
+	)}
 	<header>
-		<a href={postUrl}><h2><slot name="title"></slot></h2></a>
-		<a href={postUrl}><span><time datetime={new Date(createdAt).toISOString()}>{formatter.format(new Date(createdAt))}</time></span></a>
+		<a href={postUrl}>
+			<h2><slot name="title"></slot></h2>
+		</a>
+		<a href={postUrl}>
+			<span><time datetime={new Date(createdAt).toISOString()}>{formatter.format(new Date(createdAt))}</time></span>
+		</a>
 	</header>
 	<slot></slot>
 	<footer>

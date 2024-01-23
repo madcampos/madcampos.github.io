@@ -54,10 +54,15 @@ const siteUrl = new URL(currentUrl.replace(/^\//iu, ''), Astro.site).toString();
 				const postUrl = new URL(`/blog/${post.url}`, Astro.site).toString();
 
 				return (
-					<PostCard url={postUrl} createdAt={post.data.createdAt.toISOString()}>
-					<span slot="title">{post.data.title}</span>
-					{post.data.summary}
-				</PostCard>
+					<PostCard
+						url={postUrl}
+						createdAt={post.data.createdAt.toISOString()}
+						image={post.data.image}
+						imageAlt={post.data.imageAlt}
+					>
+						<span slot="title">{post.data.title}</span>
+						{post.data.summary}
+					</PostCard>
 				);
 			})}
 		</main>

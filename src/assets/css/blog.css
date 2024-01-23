@@ -25,6 +25,36 @@
 	font-size: small;
 }
 
+.post-card picture {
+	--image-size: clamp(10rem, 30vw, 25rem);
+
+	border-radius: 1rem;
+	border: solid thin var(--theme-color);
+	overflow: hidden;
+
+	width: var(--image-size);
+	height: var(--image-size);
+	object-fit: cover;
+	object-position: center;
+
+	display: block;
+	float: left;
+	margin: 1rem;
+}
+
+.post-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.post-card::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
 #post-header {
 	text-align: center;
 	padding-bottom: 1rem;
@@ -181,6 +211,13 @@ iframe {
 #post-tags .tag:hover {
 	background-color: var(--theme-color);
 	color: white;
+}
+
+@media (max-width: 500px) {
+	.post-card picture {
+		float: none;
+		margin-inline: auto;
+	}
 }
 
 @media (max-width: 768px) {
