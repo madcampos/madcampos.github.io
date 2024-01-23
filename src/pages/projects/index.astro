@@ -23,7 +23,17 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 					<h2>{ project.data.title}</h2>
 				</header>
 				<div class="project-content">
-					{project.data.image && <img class="project-image" loading="lazy" role="presentation" alt={project.data.imageAlt} src={project.data.image.src} />}
+					{project.data.image && (
+						<img
+							class="project-image"
+							loading="lazy"
+							role="presentation"
+							alt={project.data.imageAlt}
+							src={project.data.image.src}
+							width={project.data.image.width}
+							height={project.data.image.height}
+						/>
+					)}
 					<Content />
 				</div>
 				<footer>

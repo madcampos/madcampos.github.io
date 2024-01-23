@@ -14,10 +14,22 @@ const linkTitle = 'Back to Home';
 <header>
 	<nav id="back-to-home">
 		<a id="link-small" href={Astro.site} title={linkTitle}>
-			<img src={logoMini.src} alt={logoDescription} role="presentation" />
+			<img
+				src={logoMini.src}
+				width={logoMini.width}
+				height={logoMini.height}
+				alt={logoDescription}
+				role="presentation"
+			/>
 		</a>
 		<a id="link-big" href={Astro.site} title={linkTitle}>
-			<img src={logoMicro.src} alt={logoDescription} role="presentation" />
+			<img
+				src={logoMicro.src}
+				width={logoMicro.width}
+				height={logoMicro.height}
+				alt={logoDescription}
+				role="presentation"
+			/>
 		</a>
 	</nav>
 	<h1>{title}</h1>

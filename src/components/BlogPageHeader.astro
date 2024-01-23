@@ -15,10 +15,22 @@ const blogUrl = new URL('/blog', Astro.site).toString();
 <header class="blog-page-header">
 	<nav id="back-to-blog">
 		<a id="link-small" href={blogUrl} title={linkTitle}>
-			<img src={logoMini.src} alt={logoDescription} role="presentation" />
+			<img
+				src={logoMini.src}
+				width={logoMini.width}
+				height={logoMini.height}
+				alt={logoDescription}
+				role="presentation"
+			/>
 		</a>
 		<a id="link-big" href={blogUrl} title={linkTitle}>
-			<img src={logoMicro.src} alt={logoDescription} role="presentation" />
+			<img
+				src={logoMicro.src}
+				width={logoMicro.width}
+				height={logoMicro.height}
+				alt={logoDescription}
+				role="presentation"
+			/>
 		</a>
 	</nav>
 	<h1>{title}</h1>

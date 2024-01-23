@@ -15,13 +15,25 @@ const links = {
 ---
 <HomeLayout>
 	<h1>
-		<a href="/"><img src={logo.src} alt="My moniker, &quot;madcampos&quot;, written between curly braces on a monospaced font." /></a>
+		<a href="/">
+			<img
+				src={logo.src}
+				width={logo.width}
+				height={logo.height}
+				alt="My moniker, &quot;madcampos&quot;, written between curly braces on a monospaced font."
+			/>
+		</a>
 	</h1>
 	<section id="about">
 		<aside>
 			<picture>
 				{/* eslint-disable-next-line astro/jsx-a11y/img-redundant-alt */}
-				<img src={avatar.src} alt="A picture of my face with a smile looking at the camera. I'm wearing aviator glasses, a fake fur winter hat and an orange scarf."/>
+				<img
+					src={avatar.src}
+					width={avatar.width}
+					height={avatar.height}
+					alt="A picture of my face with a smile looking at the camera. I'm wearing aviator glasses, a fake fur winter hat and an orange scarf."
+				/>
 			</picture>
 		</aside>
 		<article>

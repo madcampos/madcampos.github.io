@@ -20,7 +20,17 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 			<a href={`/talks/${talk.slug}`}><h2>{ talk.data.title}</h2></a>
 		</header>
 		<div class="project-content">
-			{talk.data.image && <img class="project-image" loading="lazy" role="presentation" alt={talk.data.imageAlt} src={talk.data.image.src} />}
+			{talk.data.image && (
+				<img
+					class="project-image"
+					loading="lazy"
+					role="presentation"
+					alt={talk.data.imageAlt}
+					src={talk.data.image.src}
+					width={talk.data.image.width}
+					height={talk.data.image.height}
+				/>
+			)}
 			{talk.data.summary}
 		</div>
 		<footer>
