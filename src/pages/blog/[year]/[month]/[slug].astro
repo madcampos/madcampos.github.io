@@ -17,7 +17,7 @@ export const getStaticPaths = (async () => (await listAllPosts()).map((post) => 
 		props: post
 	}))) satisfies GetStaticPaths;
 
-const { render, url, data: { title, summary, image, imageAlt, createdAt, updatedAt, updates } } = Astro.props;
+const { render, url, data: { title, summary, image, imageAlt, createdAt, updatedAt, updates, tags } } = Astro.props;
 const { Content } = await render();
 ---
 <BlogPostLayout
@@ -29,6 +29,7 @@ const { Content } = await render();
 	createdAt={createdAt}
 	updatedAt={updatedAt}
 	updates={updates}
+	tags={tags}
 >
 	<Content />
 </BlogPostLayout>

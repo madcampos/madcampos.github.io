@@ -20,7 +20,7 @@ interface Props {
 	url: string
 }
 
-const { title, summary, image, imageAlt, createdAt, updatedAt, updates, url, tags = [] } = Astro.props;
+const { title, summary, image, imageAlt, createdAt, updatedAt, updates, url, tags } = Astro.props;
 const postUrl = new URL(url.replace(/^\//iu, ''), Astro.site).toString();
 
 ---
@@ -31,6 +31,11 @@ const postUrl = new URL(url.replace(/^\//iu, ''), Astro.site).toString();
 		description={summary}
 		tags={tags}
 		url={postUrl}
+		hasFeed={true}
+		image={image?.src}
+		imageAlt={imageAlt}
+		createdAt={createdAt}
+		updatedAt={updatedAt}
 	/>
 
 	<body>

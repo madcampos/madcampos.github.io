@@ -9,6 +9,8 @@ import PostCard from '../components/PostCard.astro';
 import HtmlHead from '../components/HtmlHead.astro';
 import PageHeader from '../components/BlogPageHeader.astro';
 
+import blogSocialImage from '../assets/images/logo-blog-micro.png';
+
 interface Props {
 	posts: Post[],
 	title?: string,
@@ -23,12 +25,15 @@ const { posts, title = '', currentUrl, currentPage, lastPage, prevUrl, nextUrl }
 
 const url = new URL(currentUrl.replace(/^\//iu, ''), Astro.site).toString();
 ---
-<html lang="en-US" itemscope itemtype="https://schema.org/WebPage">
+<html lang="en-US" itemscope itemtype="https://schema.org/Blog">
 	<HtmlHead
 		title={`${title} | Blog | Marco Campos`}
 		description="Marco Campos' Blog - A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript"
 		tags={['blog', 'senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev']}
 		url={url}
+		hasFeed={true}
+		image={blogSocialImage.src}
+		imageAlt={'Logo for madcampos\' blog consisting of stylized "{m}" in blue with a subtext of "--blog" in orange.'}
 	/>
 
 	<body>
