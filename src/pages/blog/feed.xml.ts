@@ -19,6 +19,21 @@ export const GET: APIRoute = async (context) => {
     title: "Marco Campos' Blog",
     description: 'A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript',
     site: context.site ?? '',
+    xmlns: { atom: 'http://www.w3.org/2005/Atom' },
+    stylesheet: '/feed.xsl',
+    customData: `
+      <language>en-us</language>
+      <atom:link href="${context.site?.toString() ?? ''}" rel="self" type="application/rss+xml" />
+      <image>
+        <url>${new URL(blogImage.src, context.site).toString()}</url>
+        <title>Marco Campos' Blog</title>
+        <link>${context.site?.toString() ?? ''}</link>
+        <width>144</width>
+        <height>144</height>
+      </image>
+      <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+      <ttl>${ONE_WEEK_IN_MINUTES}</ttl>
+    `,
     items: await Promise.all((await listAllPosts()).map(async (post) => {
       let image;
       let imageSize = TEN_KB_IN_BYTES;
@@ -54,19 +69,6 @@ export const GET: APIRoute = async (context) => {
       };
 
       return item;
-    })),
-    stylesheet: '/feed.xsl',
-    customData: `
-      <language>en-us</language>
-      <image>
-        <url>${new URL(blogImage.src, context.site).toString()}</url>
-        <title>Marco Campos' Blog</title>
-        <link>${context.site?.toString() ?? ''}</link>
-        <width>${blogImage.options.width}</width>
-        <height>${blogImage.options.height}</height>
-      </image>
-      <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-      <ttl>${ONE_WEEK_IN_MINUTES}</ttl>
-    `
+    }))
   });
 };
