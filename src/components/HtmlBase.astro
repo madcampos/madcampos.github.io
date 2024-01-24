@@ -1,0 +1,52 @@
+---
+import '../assets/css/base.css';
+
+import HtmlHead from '../components/HtmlHead.astro';
+import RefreshBanner from '../components/RefreshBanner.astro';
+
+interface Props {
+	title: string,
+	url: URL | string,
+	description: string,
+	tags?: string[],
+	image?: string,
+	imageAlt?: string,
+	createdAt?: Date,
+	updatedAt?: Date,
+	hasFeed?: boolean,
+	pageSchema?: string
+}
+
+const {
+	title,
+	description,
+	url,
+	tags,
+	image,
+	imageAlt,
+	createdAt,
+	updatedAt,
+	hasFeed = false,
+	pageSchema = 'WebPage'
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en-US" itemscope itemtype={`https://schema.org/${pageSchema}`}>
+	<HtmlHead
+		title={title}
+		url={url}
+		description={description}
+		tags={tags}
+		image={image}
+		imageAlt={imageAlt}
+		createdAt={createdAt}
+		updatedAt={updatedAt}
+		hasFeed={hasFeed}
+	/>
+	<body>
+		<main>
+			<slot></slot>
+		</main>
+		<RefreshBanner />
+	</body>
+</html>

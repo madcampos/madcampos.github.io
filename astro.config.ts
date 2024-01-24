@@ -6,6 +6,8 @@ import astroPWA, { type PwaOptions } from '@vite-pwa/astro';
 
 import remarkBreaks from 'remark-breaks';
 
+import { externalResources, internalResources } from './src/sw-caching';
+
 const manifest: PwaOptions['manifest'] = JSON.parse(readFileSync('./src/manifest.json', { encoding: 'utf8' }));
 
 export default defineConfig({
@@ -30,15 +32,21 @@ export default defineConfig({
 	integrations: [
 		astroPWA({
 			registerType: 'prompt',
-			minify: true,
-			includeAssets: ['/icons/favicon.svg'],
-			manifest,
-			scope: 'https://madcampos.dev/',
-			// FIXME: Remove service worker on the base site, until we find a better alternative for sub-apps.
-			injectRegister: null,
-			devOptions: {
-				enabled: false
-			}
+				minify: true,
+				includeAssets: ['/icons/favicon.svg'],
+				manifest,
+				workbox: {
+					cleanupOutdatedCaches: true,
+					clientsClaim: true,
+					navigationPreload: false,
+					runtimeCaching: [
+						internalResources,
+						externalResources
+					]
+				},
+				devOptions: {
+					enabled: false
+				}
 		}),
 		sitemap({
 			changefreq: 'weekly',

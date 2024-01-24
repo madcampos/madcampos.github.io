@@ -1,0 +1,44 @@
+#pwa-toast {
+	visibility: hidden;
+	position: fixed;
+	display: flex;
+	gap: var(--padding-inline);
+	align-items: center;
+	justify-content: space-between;
+
+	width: clamp(10rem, 50vw, 35rem);
+	inset-inline: 0;
+	inset-block-end: var(--margin-block);
+	margin-inline: auto;
+	padding: var(--padding-block) var(--padding-inline);
+
+	background-color: var(--bg-color);
+	border-radius: var(--border-radius);
+
+	z-index: 1;
+}
+
+#pwa-toast:is([data-offline], [data-refresh]) {
+	visibility: visible;
+}
+
+#pwa-toast button {
+	background-color: transparent;
+	border: var(--border-width) solid var(--border-color);
+	border-radius: 100vmax;
+	display: none;
+	place-items: center;
+	padding: var(--padding-inline);
+	color: var(--text-color);
+	width: 2.5rem;
+	height: 2.5rem;
+	cursor: pointer;
+}
+
+#pwa-toast[data-offline] #pwa-close {
+	display: grid;
+}
+
+#pwa-toast[data-refresh] #pwa-refresh {
+	display: grid;
+}

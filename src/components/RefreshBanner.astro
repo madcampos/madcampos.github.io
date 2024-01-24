@@ -1,0 +1,22 @@
+---
+import swLoader from '../sw?url';
+
+import '../assets/css/refresh-banner.css';
+---
+<script src={swLoader} type="module"></script>
+
+<div
+	id="pwa-toast"
+	role="alert"
+	aria-labelledby="toast-message"
+>
+	<div>
+		<span id="toast-message"></span>
+	</div>
+	<button id="pwa-refresh" title="Reload">
+		♻️
+	</button>
+	<button id="pwa-close" title="Close">
+		❌
+	</button>
+</div>
