@@ -1,5 +1,7 @@
 ---
-import HomeLayout from '../layouts/Home.astro';
+import BaseLayout from '../layouts/Base.astro';
+
+import '../assets/css/home.css';
 
 import avatar from '../assets/images/me.jpg';
 import logo from '../assets/images/logo.svg';
@@ -16,8 +18,15 @@ const links = {
 
 // eslint-disable-next-line @typescript-eslint/no-magic-numbers
 const AVATAR_WIDTHS = [256, 512, 768, avatar.width];
+
+const siteUrl = new URL('', Astro.site);
 ---
-<HomeLayout>
+<BaseLayout
+	title="Web Developer | Marco Campos"
+	description="Marco Campos - Senior Web Developer - Vue.js, Node.js, TypeScript, JavaScript"
+	url={siteUrl}
+	tags={['Senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev']}
+>
 	<h1>
 		<a href="/">
 			<img
@@ -46,8 +55,10 @@ const AVATAR_WIDTHS = [256, 512, 768, avatar.width];
 
 			<p>You can find my projects, personal work and social netowrks on:</p>
 			<ul>
-				{Object.entries(links).map(([title, url]) => <li><a href={url} rel="noreferrer noopener">{title}</a></li>)}
+				{Object.entries(links).map(([title, url]) => (
+					<li><a href={url} rel="noreferrer noopener">{title}</a></li>
+				))}
 			</ul>
 		</article>
 	</section>
-</HomeLayout>
+</BaseLayout>
