@@ -2,11 +2,11 @@
 import type { ImageProps } from '../content/config.ts';
 
 import '../assets/css/base.css';
-import '../assets/css/blog.css';
+import '../assets/css/blog-post.css';
 import '../assets/css/code.css';
 
-import HtmlHead from '../components/HtmlHead.astro';
-import PostHeader from '../components/PostHeader.astro';
+import BaseLayout from './Base.astro';
+import PostHeader from '../components/PostHeader/index.astro';
 
 interface Props {
 	title: string,
@@ -24,55 +24,51 @@ const { title, summary, image, imageAlt, createdAt, updatedAt, updates, url, tag
 const postUrl = new URL(url.replace(/^\//iu, ''), Astro.site).toString();
 
 ---
-<!DOCTYPE html>
-<html lang="en-US" itemscope itemtype="https://schema.org/BlogPosting">
-	<HtmlHead
-		title={`${title} | Blog | Marco Campos`}
-		description={summary}
-		tags={tags}
-		url={postUrl}
-		hasFeed={true}
-		image={image?.src}
+<BaseLayout
+	title={`${title} | Blog | Marco Campos`}
+	description={summary}
+	tags={tags}
+	url={postUrl}
+	image={image?.src}
+	imageAlt={imageAlt}
+	createdAt={createdAt}
+	updatedAt={updatedAt}
+>
+	<PostHeader
+		slot="header"
+		title={title}
+		image={image}
 		imageAlt={imageAlt}
 		createdAt={createdAt}
 		updatedAt={updatedAt}
 	/>
 
-	<body>
-		<article>
-			<PostHeader
-				title={title}
-				image={image}
-				imageAlt={imageAlt}
-				createdAt={createdAt}
-				updatedAt={updatedAt}
-			/>
+	<article id="post-contents" itemprop="articleBody">
+		<slot></slot>
+	</article>
 
-			<main id="post-contents" itemprop="articleBody">
-				{updates && (
-					<details><summary>Update History</summary>
-						<ul>
-							{updates.map((update) => (
-								<li>
-									<time datetime={new Date(update.date).toISOString()}>{new Date(update.date).toLocaleDateString()}</time>:&nbsp;
-									<span>{update.changes}</span>
-								</li>
-							))}
-						</ul>
-					</details>
-				)}
-				{tags && (
-					<aside id="post-tags">
-						<details>
-							<summary>Tags</summary>
-							{tags.map((tag) => (
-								<a href={`/blog/tags/${tag}`} class="tag">{tag}</a>
-							))}
-						</details>
-					</aside>
-				)}
-				<slot></slot>
-			</main>
-		</article>
-	</body>
-</html>
+	<footer slot="footer">
+		{updates && (
+			<details><summary>Update History</summary>
+				<ul>
+					{updates.map((update) => (
+						<li>
+							<time datetime={new Date(update.date).toISOString()}>{new Date(update.date).toLocaleDateString()}</time>:&nbsp;
+							<span>{update.changes}</span>
+						</li>
+					))}
+				</ul>
+			</details>
+		)}
+		{tags && (
+			<aside id="post-tags">
+				<details>
+					<summary>Tags</summary>
+					{tags.map((tag) => (
+						<a href={`/blog/tags/${tag}`} class="tag">{tag}</a>
+					))}
+				</details>
+			</aside>
+		)}
+	</footer>
+</BaseLayout>

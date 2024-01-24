@@ -1,0 +1,19 @@
+#pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	gap: 2rem;
+}
+
+#pagination ol {
+	display: flex;
+	gap: 1rem;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#pagination:has(li:only-child) {
+	display: none;
+}

@@ -1,19 +1,20 @@
 ---
 import type { Post } from '../utils/post';
 
-import '../assets/css/base.css';
-import '../assets/css/blog.css';
+import BaseLayout from '../layouts/Base.astro';
+import PostCard from '../components/PostCard/index.astro';
+import Pagination from '../components/Pagination/index.astro';
 
-import Pagination from '../components/Pagination.astro';
-import PostCard from '../components/PostCard.astro';
-import HtmlHead from '../components/HtmlHead.astro';
-import PageHeader from '../components/BlogPageHeader.astro';
+import { BLOG_DESCRIPTION, BLOG_LOGO_MICRO_ALT, BLOG_TAGS, BLOG_TITLE } from '../constants';
+
+import '../assets/css/blog.css';
 
 import blogSocialImage from '../assets/images/logo-blog-micro.png';
 
 interface Props {
 	posts: Post[],
 	title?: string,
+	baseUrl: string,
 	currentUrl: string,
 	currentPage: number,
 	lastPage: number,
@@ -21,43 +22,40 @@ interface Props {
 	nextUrl?: string
 }
 
-const { posts, title = '', currentUrl, currentPage, lastPage, prevUrl, nextUrl } = Astro.props;
-
-const url = new URL(currentUrl.replace(/^\//iu, ''), Astro.site).toString();
+const { posts, title = '', baseUrl, currentUrl, currentPage, lastPage, prevUrl, nextUrl } = Astro.props;
 ---
-<html lang="en-US" itemscope itemtype="https://schema.org/Blog">
-	<HtmlHead
-		title={`${title} | Blog | Marco Campos`}
-		description="Marco Campos' Blog - A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript"
-		tags={['blog', 'senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev']}
-		url={url}
-		hasFeed={true}
-		image={blogSocialImage.src}
-		imageAlt={'Logo for madcampos\' blog consisting of stylized "{m}" in blue with a subtext of "--blog" in orange.'}
-	/>
+<BaseLayout
+	title={`${title ? `${title} | ` : ''}${BLOG_TITLE}`}
+	description={BLOG_DESCRIPTION}
+	tags={BLOG_TAGS}
+	url={currentUrl}
+	hasFeed={true}
+	image={blogSocialImage.src}
+	imageAlt={BLOG_LOGO_MICRO_ALT}
+	pageSchema="Blog"
+>
+	<slot name="header" slot="header"></slot>
 
-	<body>
-		<PageHeader title={title} />
+	<div id="posts-list">
+		{posts.map((post) => {
+			const postUrl = new URL(`/blog/${post.url}`, Astro.site).toString();
 
-		<main id="blog-posts">
-			{ posts.map((post) => {
-				const postUrl = new URL(`/blog/${post.url}`, Astro.site).toString();
+			return (
+				<PostCard
+					url={postUrl}
+					createdAt={post.data.createdAt.toISOString()}
+					image={post.data.image}
+					imageAlt={post.data.imageAlt}
+					tags={post.data.tags}
+				>
+					<span slot="title">{post.data.title}</span>
+					{post.data.summary}
+				</PostCard>
+			);
+		})}
+	</div>
 
-				return (
-					<PostCard
-						url={postUrl}
-						createdAt={post.data.createdAt.toISOString()}
-						image={post.data.image}
-						imageAlt={post.data.imageAlt}
-					>
-						<span slot="title">{post.data.title}</span>
-						{post.data.summary}
-					</PostCard>
-				);
-			})}
-		</main>
-		<footer>
-			<Pagination baseUrl={currentUrl} currentPage={currentPage} lastPage={lastPage} prevUrl={prevUrl} nextUrl={nextUrl} />
-		</footer>
-	</body>
-</html>
+	<footer slot="footer">
+		<Pagination baseUrl={baseUrl} currentPage={currentPage} lastPage={lastPage} prevUrl={prevUrl} nextUrl={nextUrl} />
+	</footer>
+</BaseLayout>

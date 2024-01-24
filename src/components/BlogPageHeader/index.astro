@@ -1,0 +1,16 @@
+---
+import BlogNav from '../BlogNav/index.astro';
+
+import './styles.css';
+
+interface Props {
+	title: string
+}
+
+const { title } = Astro.props;
+
+---
+<header id="blog-page-header">
+	<BlogNav />
+	<h1>{title}</h1>
+</header>

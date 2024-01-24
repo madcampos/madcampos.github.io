@@ -1,8 +1,12 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from 'astro';
 
-import { listAllPosts, MAX_POSTS_PER_PAGE, type Post } from '../../utils/post.ts';
-import BlogHomeLayout from '../../layouts/BlogHome.astro';
+import BlogPostsLayout from '../../layouts/BlogPosts.astro';
+
+import { BLOG_LOGO_ALT } from '../../constants';
+import { listAllPosts, MAX_POSTS_PER_PAGE } from '../../utils/post.ts';
+
+import logoBlog from '../../assets/images/logo-blog.svg';
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -16,6 +20,28 @@ export const getStaticPaths = (async ({ paginate }: { paginate: PaginateFunction
 }) satisfies GetStaticPaths;
 
 const { data: posts, url, currentPage, lastPage } = Astro.props.page;
+const currentUrl = new URL(url.current.replace(/^\//iu, ''), Astro.site).toString();
 ---
 
-<BlogHomeLayout posts={posts as Post[]} currentUrl={url.current} currentPage={currentPage} lastPage={lastPage} prevUrl={url.prev} nextUrl={url.next}></BlogHomeLayout>
+<BlogPostsLayout
+	posts={posts}
+	baseUrl={`${Astro.site?.toString()}blog`}
+	currentUrl={currentUrl}
+	currentPage={currentPage}
+	lastPage={lastPage}
+	prevUrl={url.prev}
+	nextUrl={url.next}
+>
+	<header slot="header">
+		<h1>
+			<a href={currentUrl}>
+				<img
+					src={logoBlog.src}
+					width={logoBlog.width}
+					height={logoBlog.height}
+					alt={BLOG_LOGO_ALT}
+				/>
+			</a>
+		</h1>
+	</header>
+</BlogPostsLayout>

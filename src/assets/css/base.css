@@ -52,7 +52,7 @@ a:active { color: var(--link-active-color); }
 
 a:focus {
 	outline: var(--theme-color) solid var(--border-width);
-	outline-offset: var(--border-width);
+	outline-offset: var(--margin-block);
 	background-color: var(--theme-color);
 	color: var(--bg-color);
 	border-radius: var(--border-radius);
@@ -63,7 +63,7 @@ a:has(img) {
 }
 
 a:focus:has(img) {
-	background-color: var(--secondary-color);
+	background-color: var(--bg-color);
 }
 
 h1 {

@@ -1,4 +1,5 @@
 ---
+import './styles.css';
 
 interface Props {
 	baseUrl: string,
@@ -17,6 +18,7 @@ const lastPageInNav = Math.min(lastPage, currentPage + TRIM_PAGE_NUMBER);
 <nav id="pagination">
 	{prevUrl && <a href={new URL(prevUrl.replace(/^\//iu, ''), Astro.site)}>← Previous</a>}
 	<ol>
+		{firstPageInNav > 1 && <li><span>…</span></li>}
 		{Array(lastPageInNav - firstPageInNav + 1).fill(null).map((_, i) => {
 			const currentPageNumber = firstPageInNav + i;
 			const href = currentPageNumber === 1 ? '' : currentPageNumber;
@@ -25,8 +27,9 @@ const lastPageInNav = Math.min(lastPage, currentPage + TRIM_PAGE_NUMBER);
 				return <li><span>{currentPageNumber}</span></li>;
 			}
 
-			return <li><a href={new URL(`${baseUrl}/../${href}`.replace(/^\//iu, ''), Astro.site)}>{currentPageNumber}</a></li>;
+			return <li><a href={new URL(`${baseUrl}/${href}`.replace(/^\//iu, ''), Astro.site)}>{currentPageNumber}</a></li>;
 		})}
+		{lastPageInNav < lastPage && <li><span>…</span></li>}
 	</ol>
 	{nextUrl && <a href={new URL(nextUrl.replace(/^\//iu, ''), Astro.site)}>Next →</a>}
 </nav>

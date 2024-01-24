@@ -1,15 +1,18 @@
 ---
 import { Picture } from 'astro:assets';
-import type { ImageProps } from '../content/config';
+import type { ImageProps } from '../../content/config';
+
+import './styles.css';
 
 interface Props {
 	url: string,
 	createdAt: string | Date,
 	image?: ImageProps,
-	imageAlt?: string
+	imageAlt?: string,
+	tags?: string[]
 }
 
-const { url, createdAt, image, imageAlt } = Astro.props;
+const { url, createdAt, image, imageAlt, tags } = Astro.props;
 
 // eslint-disable-next-line @typescript-eslint/no-magic-numbers
 const IMAGE_WIDTHS = [256, 512, 768, image?.width ?? 1024];
@@ -27,16 +30,34 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 			quality="high"
 		/>
 	)}
+
 	<header>
-		<a href={postUrl}>
-			<h2><slot name="title"></slot></h2>
-		</a>
-		<a href={postUrl}>
-			<span><time datetime={new Date(createdAt).toISOString()}>{formatter.format(new Date(createdAt))}</time></span>
-		</a>
+		<h2>
+			<a href={postUrl}>
+				<slot name="title"></slot>
+			</a>
+		</h2>
+
+		<span><time datetime={new Date(createdAt).toISOString()}>{formatter.format(new Date(createdAt))}</time></span>
 	</header>
-	<slot></slot>
+
+	<div class="post-card-content">
+		<slot></slot>
+		<p>
+			<a href={postUrl}>Read more...</a>
+		</p>
+	</div>
+
 	<footer>
-		<a href={postUrl}>Read more...</a>
+		{tags && tags.length > 0 && (
+			<details>
+				<summary>Tags</summary>
+				<ul>
+					{tags.map((tag) => (
+						<a href={`/blog/tags/${tag}`} class="tag">{tag}</a>
+					))}
+				</ul>
+			</details>
+		)}
 	</footer>
 </article>

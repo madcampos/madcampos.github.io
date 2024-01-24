@@ -1,10 +1,11 @@
 ---
-import type { ImageProps } from '../content/config.ts';
+import type { ImageProps } from '../../content/config.ts';
 
 import { Image } from 'astro:assets';
 
-import logoMini from '../assets/images/logo-blog-mini.svg';
-import logoMicro from '../assets/images/logo-blog-micro.svg';
+import BlogNav from '../BlogNav/index.astro';
+
+import './styles.css';
 
 interface Props {
 	title: string,
@@ -17,30 +18,9 @@ interface Props {
 const { title, createdAt, updatedAt, image, imageAlt } = Astro.props;
 
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
-
-const logoDescription = 'Blog logo consisting of stylized "{m}" with a subtext of "--blog"';
-const linkTitle = 'Back to blog';
-const blogUrl = new URL('/blog', Astro.site).toString();
 ---
 <div id="post-header">
-	<nav id="back-to-blog">
-		<a id="link-small" href={blogUrl} title={linkTitle}>
-			<img
-				src={logoMini.src}
-				width={logoMini.width}
-				height={logoMini.height}
-				alt={logoDescription}
-			/>
-		</a>
-		<a id="link-big" href={blogUrl} title={linkTitle}>
-			<img
-				src={logoMicro.src}
-				width={logoMicro.width}
-				height={logoMicro.height}
-				alt={logoDescription}
-			/>
-		</a>
-	</nav>
+	<BlogNav />
 	<header>
 		{image && (
 			<Image

@@ -1,8 +1,10 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from 'astro';
 
-import { listPostPagesByYear, MAX_POSTS_PER_PAGE } from '../../../utils/post.ts';
 import BlogPostsLayout from '../../../layouts/BlogPosts.astro';
+import BlogPageHeader from '../../../components/BlogPageHeader/index.astro';
+
+import { listPostPagesByYear, MAX_POSTS_PER_PAGE } from '../../../utils/post.ts';
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -23,10 +25,13 @@ const { year } = Astro.params;
 ---
 <BlogPostsLayout
 	posts={posts}
-	title={year}
+	title={`Posts from ${year}`}
 	currentUrl={url.current}
 	currentPage={currentPage}
 	lastPage={lastPage}
 	prevUrl={url.prev}
 	nextUrl={url.next}
-/>
+	baseUrl={`${Astro.site?.toString()}blog/${year}`}
+>
+	<BlogPageHeader slot="header" title={`Posts from ${year}`} />
+</BlogPostsLayout>
