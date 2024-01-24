@@ -41,6 +41,14 @@ body *, body *::after, body *::before {
 	color: var(--bg-color);
 }
 
+:focus {
+	outline: var(--theme-color) solid var(--border-width);
+	outline-offset: var(--margin-block);
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	border-radius: var(--border-radius);
+}
+
 a {
 	color: var(--link-color);
 	overflow-wrap: break-word;
@@ -49,14 +57,7 @@ a {
 a:visited { color: var(--link-visited-color); }
 a:hover { color: var(--link-hover-color); }
 a:active { color: var(--link-active-color); }
-
-a:focus {
-	outline: var(--theme-color) solid var(--border-width);
-	outline-offset: var(--margin-block);
-	background-color: var(--theme-color);
-	color: var(--bg-color);
-	border-radius: var(--border-radius);
-}
+a:focus { color: var(--text-color); }
 
 a:has(img) {
 	display: inline-flex;
