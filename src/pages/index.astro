@@ -1,4 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 import BaseLayout from '../layouts/Base.astro';
 
 import '../assets/css/home.css';
@@ -8,12 +10,36 @@ import logo from '../assets/images/logo.svg';
 import { Picture } from 'astro:assets';
 
 const links = {
-	GitHub: 'https://github.com/madcampos',
-	CodePen: 'https://codepen.io/madcampos',
-	LinkedIn: 'https://www.linkedin.com/in/madcampos/',
-	'Project Highlights': '/projects',
-	'Talks I\'ve given': '/talks',
-	'My Blog': '/blog'
+	GitHub: {
+		url: 'https://github.com/madcampos',
+		icon: 'brandico:github',
+		iconAlt: 'An icon with Github\'s logo.'
+	},
+	CodePen: {
+		url: 'https://codepen.io/madcampos',
+		icon: 'brandico:codepen',
+		iconAlt: 'An icon with Codepen\'s logo.'
+	},
+	LinkedIn: {
+		url: 'https://www.linkedin.com/in/madcampos/',
+		icon: 'brandico:linkedin-rect',
+		iconAlt: 'An icon with LinkedIn\'s logo.'
+	},
+	'Project Highlights': {
+		url: '/projects',
+		icon: 'uil:arrow',
+		iconAlt: 'An icon of two arrows pointing to opposite directions, meaning "code projects".'
+	},
+	'Talks I\'ve given': {
+		url: '/talks',
+		icon: 'uil:chat-bubble-user',
+		iconAlt: 'An icon of a chat bubble with a user inside, meaning "talks".'
+	},
+	'My Blog': {
+		url: '/blog',
+		icon: 'uil:pen',
+		iconAlt: 'An icon of a pen, meaning "blog".'
+	}
 };
 
 // eslint-disable-next-line @typescript-eslint/no-magic-numbers
@@ -55,8 +81,13 @@ const siteUrl = new URL('', Astro.site);
 
 			<p>You can find my projects, personal work and social netowrks on:</p>
 			<ul>
-				{Object.entries(links).map(([title, url]) => (
-					<li><a href={url} rel="noreferrer noopener">{title}</a></li>
+				{Object.entries(links).map(([title, { url, icon, iconAlt }]) => (
+					<li>
+						<Icon name={icon} title={iconAlt} />
+						<a href={url} rel="noreferrer noopener">
+							{title}
+						</a>
+					</li>
 				))}
 			</ul>
 		</article>

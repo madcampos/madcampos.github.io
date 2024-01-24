@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import astroPWA, { type PwaOptions } from '@vite-pwa/astro';
+import astroIcon from 'astro-icon';
 
 import remarkBreaks from 'remark-breaks';
 
@@ -24,6 +25,7 @@ export default defineConfig({
 		port: 3000
 	},
 	markdown: {
+		syntaxHighlight: 'shiki',
 		shikiConfig: {
 			theme: 'dark-plus'
 		},
@@ -52,6 +54,9 @@ export default defineConfig({
 			changefreq: 'weekly',
 			priority: 0.7,
 			lastmod: new Date()
+		}),
+		astroIcon({
+			iconDir: 'src/assets/icons'
 		})
 	]
 });

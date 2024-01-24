@@ -47,8 +47,18 @@
 	opacity: 0.4;
 }
 
+#about ul { padding: 0; }
+
 #about li {
 	margin: var(--margin-inline);
+	display: flex;
+	align-items: center;
+	gap: var(--padding-inline);
+}
+
+#about li svg {
+	width: 1rem;
+	height: 1rem;
 }
 
 @media (max-width: 650px) {
