@@ -3,7 +3,7 @@
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"sourceType": "module",
-		"ecmaVersion": 2021,
+		"ecmaVersion": 2022,
 		"ecmaFeatures": {
 			"impliedStrict": true
 		},
@@ -19,7 +19,7 @@
 	"plugins": ["@typescript-eslint"],
 	"overrides": [
 		{
-			"files": ["*.astro"],
+			"files": ["**/*.astro"],
 			"plugins": ["astro"],
 			"env": {
 				"node": true,
@@ -30,28 +30,35 @@
 			"parserOptions": {
 				"parser": "@typescript-eslint/parser",
 				"extraFileExtensions": [".astro"],
-				"sourceType": "module"
+				"sourceType": "module",
+				"ecmaVersion": 2022,
+				"ecmaFeatures": {
+					"impliedStrict": true
+				},
+				"project": "./tsconfig.json"
 			}
 		},
 		{
 			"files": ["**/*.astro/*.js", "*.astro/*.js"],
-			"env": {
-				"browser": true,
-				"es2020": true
-			},
+			"parser": "@typescript-eslint/parser",
 			"parserOptions": {
-				"sourceType": "module"
+				"sourceType": "module",
+				"ecmaVersion": 2022,
+				"ecmaFeatures": {
+					"impliedStrict": true
+				},
+				"project": "./tsconfig.json"
 			}
 		},
 		{
 			"files": ["**/*.astro/*.ts", "*.astro/*.ts"],
-			"env": {
-				"browser": true,
-				"es2020": true
-			},
 			"parser": "@typescript-eslint/parser",
 			"parserOptions": {
 				"sourceType": "module",
+				"ecmaVersion": 2022,
+				"ecmaFeatures": {
+					"impliedStrict": true
+				},
 				"project": "./tsconfig.json"
 			}
 		}
