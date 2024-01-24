@@ -2,5 +2,19 @@
 	display: flex;
 	align-items: center;
 	gap: 1rem;
+}
+
+#blog-page-header h1 {
+	overflow-wrap: break-word;
+	word-break: break-word;
+	line-break: loose;
+	/* stylelint-disable-next-line property-no-vendor-prefix */
+	-webkit-hyphens: auto;
+	hyphens: auto;
+	hyphenate-character: '-';
+	hyphenate-limit-chars: 8 3 2;
+
+	text-wrap: balance;
+
 	padding: 1rem;
 }

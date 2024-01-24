@@ -32,8 +32,10 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 			/>
 		)}
 
-		<h1>{title}</h1>
-		<aside>Published on <time itemprop="dateCreated" datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time></aside>
-		{ updatedAt && <aside>Updated on <time itemprop="dateModified" datetime={updatedAt.toISOString()}>{formatter.format(updatedAt)}</time></aside> }
+		<div>
+			<h1>{title}</h1>
+			<aside>Published on <time itemprop="dateCreated" datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time></aside>
+			{ updatedAt && <aside>Updated on <time itemprop="dateModified" datetime={updatedAt.toISOString()}>{formatter.format(updatedAt)}</time></aside> }
+		</div>
 	</header>
 </div>

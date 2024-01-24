@@ -1,9 +1,10 @@
 #post-header {
 	text-align: center;
-	padding: 1rem;
+	padding-block-end: 2rem;
 	display: grid;
 	grid-template-columns: 1fr auto 1fr;
-	align-items: start;
+	grid-template-rows: auto;
+	place-items: start center;
 }
 
 #post-header h1 {
@@ -21,28 +22,27 @@
 	hyphenate-limit-chars: 8 3 2;
 
 	width: 100%;
-	max-width: 90vw;
+	max-width: calc(90vw - 6rem);
 	display: block;
 	margin-inline: auto;
 
 	text-wrap: balance;
+	padding: 1rem;
 }
 
 #post-header header:has(#hero-image) {
 	position: relative;
 	z-index: 1;
 	overflow: hidden;
-	text-align: initial;
+	justify-self: stretch;
+	display: grid;
+	height: 60vh;
+	place-items: end center;
 }
 
 #post-header header:has(#hero-image) > *:not(#hero-image) {
 	position: relative;
 	z-index: 2;
-	text-align: center;
-}
-
-#post-header header:has(#hero-image) h1 {
-	margin-block-start: 30vh;
 }
 
 #post-header header:has(#hero-image)::before {
@@ -61,10 +61,8 @@
 
 @media (max-width: 768px) {
 	#post-header {
-		flex-direction: column;
-	}
-
-	#post-header header {
-		margin-inline-end: 0;
+		grid-template-columns: auto;
+		grid-template-rows: 1fr auto;
+		padding: 0;
 	}
 }
