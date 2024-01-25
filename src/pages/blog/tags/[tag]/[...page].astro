@@ -1,6 +1,8 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from 'astro';
 
+import { BLOG_TAGS_URL } from '../../../../constants';
+
 import BlogPostsLayout from '../../../../layouts/BlogPosts.astro';
 import BlogPageHeader from '../../../../components/BlogPageHeader/index.astro';
 
@@ -29,7 +31,7 @@ const { tag } = Astro.params;
 	lastPage={lastPage}
 	prevUrl={url.prev}
 	nextUrl={url.next}
-	baseUrl={`${Astro.site?.toString()}blog/tags/${tag}`}
+	baseUrl={`${BLOG_TAGS_URL}/${tag}`}
 >
 	<BlogPageHeader slot="header" title={`Posts tagged with: "${tag}"`} />
 </BlogPostsLayout>

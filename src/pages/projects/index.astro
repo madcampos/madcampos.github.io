@@ -1,9 +1,13 @@
 ---
+import { Picture } from 'astro:assets';
+
 import InternalPage from '../../layouts/InternalPage.astro';
+
+import { PROJECTS_URL } from '../../constants';
+
 import { listAllProjects } from '../../utils/projects';
 
 import '../../assets/css/projects.css';
-import { Picture } from 'astro:assets';
 
 const projects = await listAllProjects();
 
@@ -18,7 +22,7 @@ const DEFAULT_WIDTHS = [256, 512, 768];
 <InternalPage
 	title="Projects"
 	description="A list of all my projects"
-	url={`${Astro.site?.toString()}projects`}
+	url={PROJECTS_URL}
 >
 	{ projects.map(async (project) => {
 		const { Content } = await project.render();

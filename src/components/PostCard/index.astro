@@ -2,6 +2,8 @@
 import { Picture } from 'astro:assets';
 import type { ImageProps } from '../../content/config';
 
+import { BLOG_TAGS_URL } from '../../constants';
+
 import './styles.css';
 
 interface Props {
@@ -16,8 +18,6 @@ const { url, createdAt, image, imageAlt, tags } = Astro.props;
 
 // eslint-disable-next-line @typescript-eslint/no-magic-numbers
 const IMAGE_WIDTHS = [256, 512, 768, image?.width ?? 1024];
-
-const postUrl = new URL(url.replace(/^\//iu, ''), Astro.site).toString();
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 ---
 <article class="post-card">
@@ -33,7 +33,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 
 	<header>
 		<h2>
-			<a href={postUrl}>
+			<a href={url}>
 				<slot name="title"></slot>
 			</a>
 		</h2>
@@ -44,7 +44,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 	<div class="post-card-content">
 		<slot></slot>
 		<p>
-			<a href={postUrl}>Read more...</a>
+			<a href={url}>Read more...</a>
 		</p>
 	</div>
 
@@ -54,7 +54,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 				<summary>Tags</summary>
 				<ul>
 					{tags.map((tag) => (
-						<a href={`/blog/tags/${tag}`} class="tag">{tag}</a>
+						<a href={`${BLOG_TAGS_URL}/${tag}`} class="tag">{tag}</a>
 					))}
 				</ul>
 			</details>

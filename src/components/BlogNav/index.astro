@@ -1,5 +1,5 @@
 ---
-import { BLOG_LOGO_MICRO_ALT, BLOG_LOGO_MINI_ALT } from '../../constants';
+import { BLOG_LOGO_MICRO_ALT, BLOG_LOGO_MINI_ALT, BLOG_URL } from '../../constants';
 
 import './styles.css';
 
@@ -7,10 +7,9 @@ import logoMini from '../../assets/images/logo-blog-mini.svg';
 import logoMicro from '../../assets/images/logo-blog-micro.svg';
 
 const linkTitle = 'Back to blog';
-const blogUrl = new URL('/blog', Astro.site).toString();
 ---
 <nav id="back-to-blog">
-	<a id="link-mobile" href={blogUrl} title={linkTitle}>
+	<a id="link-mobile" href={BLOG_URL} title={linkTitle}>
 		<img
 			src={logoMini.src}
 			width={logoMini.width}
@@ -18,7 +17,7 @@ const blogUrl = new URL('/blog', Astro.site).toString();
 			alt={BLOG_LOGO_MINI_ALT}
 		/>
 	</a>
-	<a id="link-desktop" href={blogUrl} title={linkTitle}>
+	<a id="link-desktop" href={BLOG_URL} title={linkTitle}>
 		<img
 			src={logoMicro.src}
 			width={logoMicro.width}

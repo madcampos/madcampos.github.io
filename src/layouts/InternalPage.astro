@@ -1,30 +1,34 @@
 ---
 import '../assets/css/base.css';
 
-import HtmlHead from '../components/HtmlHead.astro';
+import BaseLayout from './Base.astro';
 import PageHeader from '../components/PageHeader.astro';
 
 interface Props {
 	title: string,
+	url: string,
 	description: string,
-	url: string
+	tags?: string[],
+	image?: string,
+	imageAlt?: string,
+	createdAt?: Date,
+	updatedAt?: Date,
+	hasFeed?: boolean
 }
 
-const { title, description, url } = Astro.props;
+const { title, description, url, tags, image, imageAlt, createdAt, updatedAt, hasFeed } = Astro.props;
 ---
-<!DOCTYPE html>
-<html lang="en-US" itemscope itemtype="https://schema.org/WebPage">
-	<HtmlHead
-		title={`${title} | Marco Campos`}
-		description={description}
-		url={url}
-		tags={['Senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev']}
-	/>
-	<body>
-		<PageHeader title={title} />
-
-		<main>
-			<slot></slot>
-		</main>
-	</body>
-</html>
+<BaseLayout
+	title={title}
+	description={description}
+	url={url}
+	tags={tags}
+	image={image}
+	imageAlt={imageAlt}
+	createdAt={createdAt}
+	updatedAt={updatedAt}
+	hasFeed={hasFeed}
+>
+	<PageHeader slot="header" title={title} />
+	<slot></slot>
+</BaseLayout>

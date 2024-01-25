@@ -4,6 +4,8 @@ import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from '
 import BlogPostsLayout from '../../../layouts/BlogPosts.astro';
 import BlogPageHeader from '../../../components/BlogPageHeader/index.astro';
 
+import { BLOG_URL } from '../../../constants';
+
 import { listPostPagesByYear, MAX_POSTS_PER_PAGE } from '../../../utils/post.ts';
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
@@ -31,7 +33,7 @@ const { year } = Astro.params;
 	lastPage={lastPage}
 	prevUrl={url.prev}
 	nextUrl={url.next}
-	baseUrl={`${Astro.site?.toString()}blog/${year}`}
+	baseUrl={`${BLOG_URL}/${year}`}
 >
 	<BlogPageHeader slot="header" title={`Posts from ${year}`} />
 </BlogPostsLayout>

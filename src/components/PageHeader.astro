@@ -1,4 +1,6 @@
 ---
+import { SITE_URL } from '../constants';
+
 import logoMini from '../assets/images/logo-mini.svg';
 import logoMicro from '../assets/images/logo-micro.svg';
 
@@ -13,7 +15,7 @@ const linkTitle = 'Back to Home';
 ---
 <header>
 	<nav id="back-to-home">
-		<a id="link-small" href={Astro.site} title={linkTitle}>
+		<a id="link-small" href={SITE_URL} title={linkTitle}>
 			<img
 				src={logoMini.src}
 				width={logoMini.width}
@@ -21,7 +23,7 @@ const linkTitle = 'Back to Home';
 				alt={logoDescription}
 			/>
 		</a>
-		<a id="link-big" href={Astro.site} title={linkTitle}>
+		<a id="link-big" href={SITE_URL} title={linkTitle}>
 			<img
 				src={logoMicro.src}
 				width={logoMicro.width}

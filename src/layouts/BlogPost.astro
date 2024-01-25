@@ -1,6 +1,8 @@
 ---
 import type { ImageProps } from '../content/config.ts';
 
+import { BLOG_TAGS_URL, BLOG_URL } from '../constants';
+
 import '../assets/css/base.css';
 import '../assets/css/blog-post.css';
 import '../assets/css/code.css';
@@ -21,8 +23,7 @@ interface Props {
 }
 
 const { title, summary, image, imageAlt, createdAt, updatedAt, updates, url, tags } = Astro.props;
-const postUrl = new URL(url.replace(/^\//iu, ''), Astro.site).toString();
-
+const postUrl = `${BLOG_URL}${url}`;
 ---
 <BaseLayout
 	title={`${title} | Blog | Marco Campos`}
@@ -65,7 +66,7 @@ const postUrl = new URL(url.replace(/^\//iu, ''), Astro.site).toString();
 				<details>
 					<summary>Tags</summary>
 					{tags.map((tag) => (
-						<a href={`/blog/tags/${tag}`} class="tag">{tag}</a>
+						<a href={`${BLOG_TAGS_URL}/${tag}`} class="tag">{tag}</a>
 					))}
 				</details>
 			</aside>

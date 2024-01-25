@@ -5,7 +5,7 @@ import BaseLayout from '../layouts/Base.astro';
 import PostCard from '../components/PostCard/index.astro';
 import Pagination from '../components/Pagination/index.astro';
 
-import { BLOG_DESCRIPTION, BLOG_LOGO_MICRO_ALT, BLOG_TAGS, BLOG_TITLE } from '../constants';
+import { BLOG_DESCRIPTION, BLOG_LOGO_MICRO_ALT, BLOG_TAGS, BLOG_TITLE, BLOG_URL } from '../constants';
 
 import '../assets/css/blog.css';
 
@@ -37,22 +37,18 @@ const { posts, title = '', baseUrl, currentUrl, currentPage, lastPage, prevUrl, 
 	<slot name="header" slot="header"></slot>
 
 	<div id="posts-list">
-		{posts.map((post) => {
-			const postUrl = new URL(`/blog/${post.url}`, Astro.site).toString();
-
-			return (
-				<PostCard
-					url={postUrl}
-					createdAt={post.data.createdAt.toISOString()}
-					image={post.data.image}
-					imageAlt={post.data.imageAlt}
-					tags={post.data.tags}
-				>
-					<span slot="title">{post.data.title}</span>
-					{post.data.summary}
-				</PostCard>
-			);
-		})}
+		{posts.map((post) => (
+			<PostCard
+				url={`${BLOG_URL}${post.url}`}
+				createdAt={post.data.createdAt.toISOString()}
+				image={post.data.image}
+				imageAlt={post.data.imageAlt}
+				tags={post.data.tags}
+			>
+				<span slot="title">{post.data.title}</span>
+				{post.data.summary}
+			</PostCard>
+		))}
 	</div>
 
 	<footer slot="footer">

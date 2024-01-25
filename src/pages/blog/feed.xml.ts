@@ -5,6 +5,7 @@ import { stat } from 'node:fs/promises';
 import rss, { type RSSFeedItem } from '@astrojs/rss';
 import { getImage } from 'astro:assets';
 
+import { BLOG_URL } from '../../constants';
 import { listAllPosts } from '../../utils/post';
 
 import defaultImage from '../../assets/images/logo-blog-micro.png';
@@ -16,11 +17,12 @@ export const GET: APIRoute = async (context) => {
 	const TEN_KB_IN_BYTES = 10 * 1024;
 
 	const blogImage = await getImage({ src: defaultImage, format: 'png', width: 512, height: 512 });
+	const blogUrl = new URL(BLOG_URL, context.site).toString();
 
 	return rss({
 		title: "Marco Campos' Blog",
 		description: 'A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript',
-		site: context.site ?? '',
+		site: blogUrl,
 		xmlns: {
 			atom: 'http://www.w3.org/2005/Atom',
 			media: 'http://search.yahoo.com/mrss/'
@@ -32,7 +34,7 @@ export const GET: APIRoute = async (context) => {
 			<image>
 				<url>${new URL(blogImage.src, context.site).toString()}</url>
 				<title>Marco Campos' Blog</title>
-				<link>${context.site?.toString() ?? ''}</link>
+				<link>${blogUrl}</link>
 				<width>144</width>
 				<height>144</height>
 			</image>
@@ -63,7 +65,7 @@ export const GET: APIRoute = async (context) => {
 				description: post.data.summary,
 				pubDate: post.data.createdAt,
 				categories: post.data.tags,
-				link: `${context.site?.toString().replace(/\/$/u, '') ?? ''}/blog/${post.url}`,
+				link: `${blogUrl}${post.url}`,
 				...(image && {
 					enclosure: {
 						url: new URL(image.src, context.site).toString(),

@@ -8,6 +8,7 @@ import '../assets/css/home.css';
 import avatar from '../assets/images/me.jpg';
 import logo from '../assets/images/logo.svg';
 import { Picture } from 'astro:assets';
+import { BLOG_URL, PROJECTS_URL, TALKS_URL } from '../constants';
 
 const links = {
 	GitHub: {
@@ -26,17 +27,17 @@ const links = {
 		iconAlt: 'An icon with LinkedIn\'s logo.'
 	},
 	'Project Highlights': {
-		url: '/projects',
+		url: PROJECTS_URL,
 		icon: 'uil:arrow',
 		iconAlt: 'An icon of two arrows pointing to opposite directions, meaning "code projects".'
 	},
 	'Talks I\'ve given': {
-		url: '/talks',
+		url: TALKS_URL,
 		icon: 'uil:chat-bubble-user',
 		iconAlt: 'An icon of a chat bubble with a user inside, meaning "talks".'
 	},
 	'My Blog': {
-		url: '/blog',
+		url: BLOG_URL,
 		icon: 'uil:pen',
 		iconAlt: 'An icon of a pen, meaning "blog".'
 	}
@@ -44,13 +45,11 @@ const links = {
 
 // eslint-disable-next-line @typescript-eslint/no-magic-numbers
 const AVATAR_WIDTHS = [256, 512, 768, avatar.width];
-
-const siteUrl = new URL('', Astro.site);
 ---
 <BaseLayout
 	title="Web Developer | Marco Campos"
 	description="Marco Campos - Senior Web Developer - Vue.js, Node.js, TypeScript, JavaScript"
-	url={siteUrl}
+	url="/"
 	tags={['Senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev']}
 >
 	<h1>

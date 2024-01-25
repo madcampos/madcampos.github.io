@@ -3,7 +3,7 @@ import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from '
 
 import BlogPostsLayout from '../../layouts/BlogPosts.astro';
 
-import { BLOG_LOGO_ALT } from '../../constants';
+import { BLOG_LOGO_ALT, BLOG_URL } from '../../constants';
 import { listAllPosts, MAX_POSTS_PER_PAGE } from '../../utils/post.ts';
 
 import logoBlog from '../../assets/images/logo-blog.svg';
@@ -20,13 +20,12 @@ export const getStaticPaths = (async ({ paginate }: { paginate: PaginateFunction
 }) satisfies GetStaticPaths;
 
 const { data: posts, url, currentPage, lastPage } = Astro.props.page;
-const currentUrl = new URL(url.current.replace(/^\//iu, ''), Astro.site).toString();
 ---
 
 <BlogPostsLayout
 	posts={posts}
-	baseUrl={`${Astro.site?.toString()}blog`}
-	currentUrl={currentUrl}
+	baseUrl={BLOG_URL}
+	currentUrl={url.current}
 	currentPage={currentPage}
 	lastPage={lastPage}
 	prevUrl={url.prev}
@@ -34,7 +33,7 @@ const currentUrl = new URL(url.current.replace(/^\//iu, ''), Astro.site).toStrin
 >
 	<header slot="header">
 		<h1>
-			<a href={currentUrl}>
+			<a href={BLOG_URL}>
 				<img
 					src={logoBlog.src}
 					width={logoBlog.width}

@@ -5,7 +5,7 @@ import defaultSocialImage from '../assets/images/logo-micro.png';
 
 interface Props {
 	title: string,
-	url: URL | string,
+	url: string,
 	description: string,
 	tags?: string[],
 	image?: string,
@@ -16,14 +16,17 @@ interface Props {
 }
 
 const { title, url, description, tags, image, imageAlt, createdAt: publishedDate, updatedAt: updatedDate, hasFeed = false } = Astro.props;
+
 const baseUrl = Astro.site?.toString() ?? '/';
+const fullUrl = new URL(url, baseUrl).toString();
+
 const socialImageAlt = imageAlt ?? 'Logo for madcampos\' site consisting of stylized "{m}" in blue.';
 const socialImage = `${baseUrl}${(image ?? defaultSocialImage.src).replace(/^\//iu, '')}`;
 ---
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<link rel="canonical" href={url.toString()} />
+	<link rel="canonical" href={fullUrl} />
 	{ hasFeed && <link rel="alternate" type="application/rss+xml" href={`${baseUrl}blog/feed.xml`} title="Marco Campos' Blog" /> }
 	<link rel="sitemap" href={`${baseUrl}sitemap-index.xml`} />
 
@@ -42,7 +45,7 @@ const socialImage = `${baseUrl}${(image ?? defaultSocialImage.src).replace(/^\//
 	<meta name="twitter:card" content={socialImage ? 'summary_large_image' : 'summary'} />
 
 	<meta property="og:locale" itemprop="inLanguage" content="en_US" />
-	<meta property="og:url" itemprop="url" content={url.toString()} />
+	<meta property="og:url" itemprop="url" content={fullUrl} />
 
 	<meta property="og:description" name="description" itemprop="headline" content={description} />
 	<meta name="twitter:description" itemprop="abstract" content={description} />
