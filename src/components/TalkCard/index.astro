@@ -1,0 +1,65 @@
+---
+import { Picture } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+
+import type { ImageProps } from '../../content/config';
+
+import './styles.css';
+
+interface Props {
+	url?: string,
+	event?: string,
+	date: Date,
+
+	image?: ImageProps,
+	imageAlt?: string
+}
+
+const { url, event, date, image, imageAlt } = Astro.props;
+
+// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+const IMAGE_WIDTHS = [256, 512, 768, image?.width ?? 1024];
+const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
+---
+<article class="talk-card">
+	{image && (
+		<Picture
+			src={image}
+			alt={imageAlt ?? ''}
+			widths={[...IMAGE_WIDTHS, image.width]}
+			sizes={`(max-width: 360px) 256px, (max-width: 720px) 512px, (max-width: 1280px) 768px, ${image.width}px`}
+			quality="high"
+		/>
+	)}
+
+	<header>
+		<a href={url}>
+			<h2>
+				<slot name="title"></slot>
+			</h2>
+		</a>
+		<aside>
+			{event && (
+				<span>
+					<Icon name="uil:presentation-play" title="Icon of a presentation board with a play symbol in it's center." />
+					{event}
+				</span>
+			)}
+
+			<span>
+				<Icon name="uil:calendar-alt" title="An icon of a calendar" />
+				<time datetime={date.toISOString()}>{formatter.format(date)}</time>
+			</span>
+		</aside>
+	</header>
+
+	<div class="talk-content">
+		<p><slot></slot></p>
+
+		{url && (
+			<p>
+				<a href={url} rel="noopener noreferrer" class="view-project">View Talk Info</a>
+			</p>
+		)}
+	</div>
+</article>

@@ -1,0 +1,70 @@
+.talk-card {
+	--image-size: 10rem;
+
+	display: grid;
+	grid-template-areas:
+		'header header'
+		'picture content';
+	grid-template-columns: var(--image-size) 1fr;
+	grid-template-rows: auto 1fr;
+	gap: var(--padding-inline);
+
+	margin: 3rem 0;
+}
+
+.talk-card:not(:has( picture)) {
+	grid-template-areas:
+		'header header'
+		'content content';
+	grid-template-columns: 1fr;
+	grid-template-rows: auto 1fr;
+}
+
+
+.talk-card header { grid-area: header; }
+.talk-card header h2 { color: var(--theme-color); }
+
+.talk-card picture {
+	grid-area: picture;
+	place-self: start center;
+
+	border-radius: 1rem;
+	border: solid thin var(--theme-color);
+	overflow: hidden;
+
+	width: var(--image-size);
+	height: var(--image-size);
+	object-fit: cover;
+	object-position: center;
+
+	display: block;
+}
+
+.talk-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.talk-card .talk-content { grid-area: content; }
+.talk-card .talk-content > *:first-child { margin-block-start: 0; }
+
+*:has(> svg) {
+	display: flex;
+	align-items: center;
+	gap: var(--margin-inline);
+}
+
+@media (max-width: 500px) {
+	.talk-card {
+		--image-size: 8rem;
+
+		grid-template-areas:
+			'header'
+			'picture'
+			'content';
+		grid-template-columns: 1fr;
+		grid-template-rows: auto var(--image-size) 1fr;
+	}
+}

@@ -1,105 +1,33 @@
 ---
-import { Picture } from 'astro:assets';
-
 import InternalPage from '../../layouts/InternalPage.astro';
+import TalkCard from '../../components/TalkCard/index.astro';
 
-import { TALKS_URL } from '../../constants';
+import { TALKS_TITLE, TALKS_URL } from '../../constants';
 
 import { listAllTalks } from '../../utils/talks';
 
-import '../../assets/css/projects.css';
+import '../../assets/css/internal-page.css';
 
 const talks = await listAllTalks();
-
-const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
-
-// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-const DEFAULT_WIDTHS = [256, 512, 768];
 ---
 
 <InternalPage
-	title="Projects"
+	title={TALKS_TITLE}
 	description="Talks I've given at conferences and meetups."
 	url={TALKS_URL}
 >
-{ talks.map((talk) => (
-	<article class="project">
-		<header>
-			<a href={`${TALKS_URL}/${talk.slug}`}><h2>{ talk.data.title}</h2></a>
-		</header>
-		<div class="project-content">
-			{talk.data.image && (
-				<Picture
-					class="project-image"
-					src={talk.data.image}
-					alt={talk.data.imageAlt ?? talk.data.title}
-					widths={[...DEFAULT_WIDTHS, talk.data.image.width]}
-					sizes={`(max-width: 360px) 256px, (max-width: 720px) 512px, (max-width: 1280px) 768px, ${talk.data.image.width}px`}
-					quality="high"
-				/>
-			)}
+	<span slot="header">Talks and Events</span>
+
+	{ talks.map((talk) => (
+		<TalkCard
+			url={`${TALKS_URL}/${talk.slug}`}
+			event={talk.data.event}
+			date={talk.data.date}
+			image={talk.data.image}
+			imageAlt={talk.data.imageAlt}
+		>
+			<span slot="title">{talk.data.title}</span>
 			{talk.data.summary}
-		</div>
-		<footer>
-			<details class="project-info">
-				<summary><span class="icon">🔍</span> More info</summary>
-				<h3><span class="icon">ℹ️</span> Talk info</h3>
-				<ul>
-					<li>
-						<strong>Event:</strong>
-						{talk.data.eventUrl ? (<a href={talk.data.eventUrl} rel="noopener noreferrer">{talk.data.event}</a>) : talk.data.event}
-					</li>
-					<li>
-						<strong>Date:</strong>
-						<time datetime={talk.data.date.toISOString()}>{formatter.format(talk.data.date)}</time>
-					</li>
-
-					{talk.data.slides && (
-						<li>
-							<strong>Slides:</strong>
-							<a href={talk.data.slides} rel="noopener noreferrer">{talk.data.slides}</a>
-						</li>
-					)}
-
-					{talk.data.video && (
-						<li>
-							<strong>Video:</strong>
-							<a href={talk.data.video} rel="noopener noreferrer">{talk.data.video}</a>
-						</li>
-					)}
-
-					{talk.data.code && (
-						<li>
-							<strong>Code:</strong>
-							<a href={talk.data.code} rel="noopener noreferrer">{talk.data.code}</a>
-						</li>
-					)}
-
-					{talk.data.demo && (
-						<li>
-							<strong>Demo:</strong>
-							<a href={talk.data.demo} rel="noopener noreferrer">{talk.data.demo}</a>
-						</li>
-					)}
-				</ul>
-
-				<h3><span class="icon">📚</span> Related content</h3>
-				<ul class="related-content">
-					{talk.data.relatedContent?.map(({ url, title }) => (
-						<li>
-							<a href={url} rel="noopener noreferrer">{title}</a>
-						</li>
-					))}
-				</ul>
-
-				<h3><span class="icon">🛠️</span> Technologies used</h3>
-				<ul class="technology-tags">
-					{talk.data.techStack?.map((tech) => (
-						<li class="tag">{tech}</li>
-					))}
-				</ul>
-			</details>
-		</footer>
-	</article>
-)) }
+		</TalkCard>
+	)) }
 </InternalPage>

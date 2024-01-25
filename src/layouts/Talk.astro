@@ -1,9 +1,8 @@
 ---
-import '../assets/css/base.css';
-import '../assets/css/projects.css';
+import { TALKS_TAGS, TALKS_TITLE } from '../constants';
 
-import HtmlHead from '../components/HtmlHead.astro';
-import PageHeader from '../components/PageHeader.astro';
+import InternalPage from '../layouts/InternalPage.astro';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
 	title: string,
@@ -33,86 +32,80 @@ interface Props {
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 const { title, description, url, event, eventUrl, date, slides, video, code, demo, relatedContent, techStack, image, imageAlt } = Astro.props;
 ---
-<!DOCTYPE html>
-<html lang="en-US" itemscope itemtype="https://schema.org/WebPage">
-	<HtmlHead
-		title={`${title} | Talk | Marco Campos`}
-		description={description}
-		url={url}
-		tags={['Senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev']}
-		image={image}
-		imageAlt={imageAlt}
-		createdAt={date}
-	/>
-	<body>
-		<PageHeader title={title} />
+<InternalPage
+	title={`${title} | ${TALKS_TITLE}`}
+	description={description}
+	url={url}
+	tags={TALKS_TAGS}
+	image={image}
+	imageAlt={imageAlt}
+	createdAt={date}
+>
+	<span slot="header">{title}</span>
 
-		<main class="project">
-			<slot></slot>
+	<slot></slot>
 
-			<h2><span class="icon">ℹ️</span> Talk info</h2>
-			<ul>
-				<li>
-					<strong>Event:</strong>
-					{eventUrl ? (<a href={eventUrl} rel="noopener noreferrer">{event}</a>) : event}
-				</li>
+	<h2><Icon name="uil:info-circle" title="Info sign" /> Talk info</h2>
+	<ul>
+		<li>
+			<strong>Event:</strong>
+			{eventUrl ? (<a href={eventUrl} rel="noopener noreferrer">{event}</a>) : event}
+		</li>
 
-				<li>
-					<strong>Date:</strong>
-					<time datetime={date.toISOString()}>{formatter.format(date)}</time>
-				</li>
+		<li>
+			<strong>Date:</strong>
+			<time datetime={date.toISOString()}>{formatter.format(date)}</time>
+		</li>
 
-				{slides && (
+		{slides && (
+			<li>
+				<strong>Slides:</strong>
+				<a href={slides} rel="noopener noreferrer">{slides}</a>
+			</li>
+		)}
+
+		{video && (
+			<li>
+				<strong>Video:</strong>
+				<a href={video} rel="noopener noreferrer">{video}</a>
+			</li>
+		)}
+
+		{code && (
+			<li>
+				<strong>Code:</strong>
+				<a href={code} rel="noopener noreferrer">{code}</a>
+			</li>
+		)}
+	</ul>
+
+	{relatedContent && (
+		<>
+			<h2><Icon name="uil:file-share-alt" title="Icon of a file with a sharing badge" /> Related content</h2>
+			<ul class="related-content">
+				{relatedContent?.map(({ url: contentUrl, title: contentTitle }) => (
 					<li>
-						<strong>Slides:</strong>
-						<a href={slides} rel="noopener noreferrer">{slides}</a>
+						<a href={contentUrl} rel="noopener noreferrer">{contentTitle}</a>
 					</li>
-				)}
-
-				{video && (
-					<li>
-						<strong>Video:</strong>
-						<a href={video} rel="noopener noreferrer">{video}</a>
-					</li>
-				)}
-
-				{code && (
-					<li>
-						<strong>Code:</strong>
-						<a href={code} rel="noopener noreferrer">{code}</a>
-					</li>
-				)}
-			</ul>
-
-			{relatedContent && (
-				<>
-					<h2><span class="icon">📚</span> Related content</h2>
-					<ul class="related-content">
-						{relatedContent?.map(({ url: contentUrl, title: contentTitle }) => (
-							<li>
-								<a href={contentUrl} rel="noopener noreferrer">{contentTitle}</a>
-							</li>
-						))}
-					</ul>
-				</>
-			)}
-
-			<h2><span class="icon">🛠️</span> Technologies used</h2>
-			<ul class="technology-tags">
-				{techStack?.map((tech) => (
-					<li class="tag">{tech}</li>
 				))}
 			</ul>
+		</>
+	)}
 
-			{demo && (
-				<>
-					<h2><span class="icon">🖥️</span>Demo</h2>
+	<h2><Icon name="uil:cog" title="Icon of a cog" /> Technologies used</h2>
+	<ul class="technology-tags">
+		{techStack?.map((tech) => (
+			<li class="tag">{tech}</li>
+		))}
+	</ul>
 
-					<iframe src={demo} loading="lazy" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin" title={`Demo for ${title}`}>
-						A local running demo of the project.
-					</iframe>
-				</>
-			)}
-		</main>
-	</body>
-</html>
+	{demo && (
+		<>
+			<h2><Icon name="uil:flask" title="Icon of a chemistry flask" />Demo</h2>
+
+			<iframe src={demo} loading="lazy" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin" title={`Demo for ${title}`}>
+				A local running demo of the project.
+			</iframe>
+		</>
+	)}
+</InternalPage>
