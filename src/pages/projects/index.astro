@@ -2,7 +2,7 @@
 import InternalPage from '../../layouts/InternalPage.astro';
 import ProjectCard from '../../components/ProjectCard/index.astro';
 
-import { PROJECTS_URL } from '../../constants';
+import { PROJECTS_TITLE, PROJECTS_URL } from '../../constants';
 
 import { listAllProjects } from '../../utils/projects';
 
@@ -12,10 +12,12 @@ const projects = await listAllProjects();
 ---
 
 <InternalPage
-	title="Projects"
+	title={PROJECTS_TITLE}
 	description="A list of all my projects"
 	url={PROJECTS_URL}
 >
+	<span slot="header">Project Highlights</span>
+
 	{ projects.map(async (project) => {
 		const { Content } = await project.render();
 

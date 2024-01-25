@@ -1,5 +1,5 @@
 ---
-import '../assets/css/internal-page.css';
+import '../assets/css/pages/internal-page.css';
 
 import BaseLayout from './Base.astro';
 import PageHeader from '../components/PageHeader/index.astro';
@@ -31,6 +31,8 @@ const { title, description, url, tags, image, imageAlt, createdAt, updatedAt, ha
 	hasFeed={hasFeed}
 	pageSchema={pageSchema}
 >
-	<PageHeader slot="header" title={title} />
+	<PageHeader slot="header">
+		<slot name="header"></slot>
+	</PageHeader>
 	<slot></slot>
 </BaseLayout>
