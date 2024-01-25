@@ -1,4 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 import './styles.css';
 ---
 <script src="../../assets/js/main.ts"></script>
@@ -11,10 +13,10 @@ import './styles.css';
 	<div>
 		<span id="toast-message"></span>
 	</div>
-	<button id="pwa-refresh" title="Reload">
-		♻️
+	<button id="pwa-refresh" aria-label="Reload page">
+		<Icon name="uil:refresh" title="Reload" />
 	</button>
-	<button id="pwa-close" title="Close">
-		❌
+	<button id="pwa-close" aria-label="Close notification">
+		<Icon name="uil:check" title="Close" />
 	</button>
 </div>
