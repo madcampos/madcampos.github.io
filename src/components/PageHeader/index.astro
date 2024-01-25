@@ -1,0 +1,15 @@
+---
+import PageNav from '../PageNav/index.astro';
+
+import './styles.css';
+
+interface Props {
+	title: string
+}
+
+const { title } = Astro.props;
+---
+<header id="page-header">
+	<PageNav />
+	<h1>{title}</h1>
+</header>

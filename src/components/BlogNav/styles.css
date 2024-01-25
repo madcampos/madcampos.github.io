@@ -4,7 +4,7 @@
 	margin: 1rem;
 }
 
-#back-to-blog img {
+#back-to-blog :is(a, img) {
 	height: 100%;
 	width: 100%;
 	object-fit: contain;
@@ -13,7 +13,6 @@
 #back-to-blog #link-mobile { display: none; }
 
 @media (max-width: 768px) {
-	#blog-page-header { flex-direction: column; }
 	#back-to-blog { width: clamp(10rem, 70vmin, 30rem); }
 	#back-to-blog #link-desktop { display: none; }
 	#back-to-blog #link-mobile { display: block; }

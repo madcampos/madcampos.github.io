@@ -1,20 +1,12 @@
 ---
-import { Picture } from 'astro:assets';
-
 import InternalPage from '../../layouts/InternalPage.astro';
+import ProjectCard from '../../components/ProjectCard/index.astro';
 
 import { PROJECTS_URL } from '../../constants';
 
 import { listAllProjects } from '../../utils/projects';
 
-import '../../assets/css/projects.css';
-
 const projects = await listAllProjects();
-
-const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
-
-// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-const DEFAULT_WIDTHS = [256, 512, 768];
 
 // TODO: add web application schema: https://schema.org/WebApplication
 ---
@@ -28,79 +20,21 @@ const DEFAULT_WIDTHS = [256, 512, 768];
 		const { Content } = await project.render();
 
 		return (
-			<article class="project">
-				<header>
-					<h2>{project.data.title}</h2>
-				</header>
-				<div class="project-content">
-					{project.data.image && (
-						<Picture
-							class="project-image"
-							src={project.data.image}
-							alt={project.data.imageAlt ?? project.data.title}
-							widths={[...DEFAULT_WIDTHS, project.data.image.width]}
-							sizes={`(max-width: 360px) 256px, (max-width: 720px) 512px, (max-width: 1280px) 768px, ${project.data.image.width}px`}
-							quality="high"
-						/>
-					)}
-					<Content />
-				</div>
-				<footer>
-					<details class="project-info">
-						<summary><span class="icon">🔍</span> More info</summary>
-						<h3><span class="icon">ℹ️</span> Project info</h3>
-						<ul>
-							<li>
-								<strong>Started in:</strong>
-								<time datetime={project.data.createdAt.toISOString()}>{formatter.format(project.data.createdAt)}</time>
-							</li>
+			<ProjectCard
+				status={project.data.status}
+				createdAt={project.data.createdAt}
+				updatedAt={project.data.updatedAt}
+				version={project.data.version}
+				url={project.data.url}
+				image={project.data.image}
+				imageAlt={project.data.imageAlt}
+				techStack={project.data.techStack}
+				repository={project.data.repository}
+			>
+				<span slot="title">{project.data.title}</span>
 
-							{project.data.version && (
-								<li>
-									<strong>Current version:</strong>
-									{project.data.version}
-								</li>
-							)}
-
-							{project.data.updatedAt && (
-								<li>
-									<strong>Last updated:</strong>
-									<time datetime={project.data.updatedAt.toISOString()}>{formatter.format(project.data.updatedAt)}</time>
-								</li>
-							)}
-
-							<li>
-								<strong>Current status:</strong>
-								<span class:list={`tag status-${project.data.status}`}>{project.data.status}</span>
-							</li>
-
-							{project.data.repository && (
-								<li>
-									<strong>Repository:</strong>
-									<a href={project.data.repository} rel="noopener noreferrer">{project.data.repository}</a>
-								</li>
-							)}
-						</ul>
-
-						<h3><span class="icon">🛠️</span> Technologies used</h3>
-						<ul class="technology-tags">
-							{project.data.techStack?.map((tech) => (
-								<li class="tag">{tech}</li>
-							))}
-						</ul>
-					</details>
-
-					{project.data.url && (
-						<a
-							href={project.data.url}
-							rel="noopener noreferrer"
-							class="view-project"
-						>
-							View Project
-						</a>
-					)}
-				</footer>
-			</article>
+				<Content />
+			</ProjectCard>
 		);
 	}) }
 </InternalPage>

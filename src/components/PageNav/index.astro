@@ -1,0 +1,28 @@
+---
+import { LOGO_MICRO_ALT, LOGO_MINI_ALT, SITE_URL } from '../../constants';
+
+import './styles.css';
+
+import logoMini from '../../assets/images/logo-mini.svg';
+import logoMicro from '../../assets/images/logo-micro.svg';
+
+const linkTitle = 'Back to Home';
+---
+<nav id="back-to-home">
+	<a id="link-mobile" href={SITE_URL} title={linkTitle}>
+		<img
+			src={logoMini.src}
+			width={logoMini.width}
+			height={logoMini.height}
+			alt={LOGO_MINI_ALT}
+		/>
+	</a>
+	<a id="link-desktop" href={SITE_URL} title={linkTitle}>
+		<img
+			src={logoMicro.src}
+			width={logoMicro.width}
+			height={logoMicro.height}
+			alt={LOGO_MICRO_ALT}
+		/>
+	</a>
+</nav>

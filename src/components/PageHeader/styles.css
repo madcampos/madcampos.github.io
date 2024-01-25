@@ -1,10 +1,10 @@
-#blog-page-header {
+#page-header {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
 }
 
-#blog-page-header h1 {
+#page-header h1 {
 	overflow-wrap: break-word;
 	word-break: break-word;
 	line-break: loose;
@@ -19,6 +19,7 @@
 	padding: 1rem;
 }
 
-@media (max-width: 768px) {
-	#blog-page-header { flex-direction: column; }
+
+@media (max-width: 500px) {
+	#page-header { flex-direction: column; }
 }

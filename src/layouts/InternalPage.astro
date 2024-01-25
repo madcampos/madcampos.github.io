@@ -1,8 +1,8 @@
 ---
-import '../assets/css/base.css';
+import '../assets/css/internal-page.css';
 
 import BaseLayout from './Base.astro';
-import PageHeader from '../components/PageHeader.astro';
+import PageHeader from '../components/PageHeader/index.astro';
 
 interface Props {
 	title: string,
@@ -13,10 +13,11 @@ interface Props {
 	imageAlt?: string,
 	createdAt?: Date,
 	updatedAt?: Date,
-	hasFeed?: boolean
+	hasFeed?: boolean,
+	pageSchema?: string
 }
 
-const { title, description, url, tags, image, imageAlt, createdAt, updatedAt, hasFeed } = Astro.props;
+const { title, description, url, tags, image, imageAlt, createdAt, updatedAt, hasFeed, pageSchema } = Astro.props;
 ---
 <BaseLayout
 	title={title}
@@ -28,6 +29,7 @@ const { title, description, url, tags, image, imageAlt, createdAt, updatedAt, ha
 	createdAt={createdAt}
 	updatedAt={updatedAt}
 	hasFeed={hasFeed}
+	pageSchema={pageSchema}
 >
 	<PageHeader slot="header" title={title} />
 	<slot></slot>

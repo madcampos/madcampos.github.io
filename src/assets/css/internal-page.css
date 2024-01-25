@@ -1,0 +1,13 @@
+main {
+	padding-inline: 1rem;
+	padding-block-end: 1rem;
+}
+
+iframe {
+	border: solid var(--border-width) var(--theme-color);
+	border-radius: var(--border-radius);
+	width: 80vw;
+	height: 80vh;
+	margin-inline: auto;
+	display: block;
+}

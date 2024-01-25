@@ -1,0 +1,101 @@
+---
+import { Picture } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+
+import type { ImageProps } from '../../content/config';
+
+import './styles.css';
+
+interface Props {
+	status: 'finished' | 'ongoing',
+	createdAt: Date,
+	updatedAt?: Date,
+	version?: string,
+	url?: string,
+
+	image?: ImageProps,
+	imageAlt?: string,
+
+	techStack?: string[],
+	repository?: string
+}
+
+const { status, createdAt, updatedAt, version, url, image, imageAlt, techStack, repository } = Astro.props;
+
+// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+const IMAGE_WIDTHS = [256, 512, 768, image?.width ?? 1024];
+const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
+---
+<article class="project-card">
+	{image && (
+		<Picture
+			src={image}
+			alt={imageAlt ?? ''}
+			widths={[...IMAGE_WIDTHS, image.width]}
+			sizes={`(max-width: 360px) 256px, (max-width: 720px) 512px, (max-width: 1280px) 768px, ${image.width}px`}
+			quality="high"
+		/>
+	)}
+
+	<header>
+		<h2>
+			<slot name="title"></slot>
+		</h2>
+	</header>
+
+	<div class="project-content">
+		<slot></slot>
+
+		{url && (
+			<p>
+				<a href={url} rel="noopener noreferrer" class="view-project">View Project</a>
+			</p>
+		)}
+	</div>
+
+	<footer>
+		<details class="project-info">
+			<summary>More info</summary>
+			<h3><Icon name="uil:info-circle" title="Info sign" /> Project info</h3>
+			<ul>
+				<li>
+					<strong>Started in:</strong>
+					<time datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time>
+				</li>
+
+				{version && (
+					<li>
+						<strong>Current version:</strong>
+						{version}
+					</li>
+				)}
+
+				{updatedAt && (
+					<li>
+						<strong>Last updated:</strong>
+						<time datetime={updatedAt.toISOString()}>{formatter.format(updatedAt)}</time>
+					</li>
+				)}
+
+				<li>
+					<strong>Current status:</strong>
+					<span class:list={`tag status-${status}`}>{status}</span>
+				</li>
+
+				{repository && (
+					<li>
+						<strong>Repository:</strong>
+						<a href={repository} rel="noopener noreferrer">{repository}</a>
+					</li>
+				)}
+			</ul>
+
+			<h3><Icon name="uil:cog" title="Icon of a cog" /> Technologies used</h3>
+			<ul class="technology-tags">
+				{techStack?.map((tech) => (
+					<li class="tag">{tech}</li>
+				))}
+			</ul>
+		</details>
+	</footer>
+</article>
