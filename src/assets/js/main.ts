@@ -7,11 +7,11 @@ window.addEventListener('DOMContentLoaded', () => {
 	const refreshSW = registerSW({
 		immediate: true,
 		onOfflineReady() {
-			pwaToastMessage.innerHTML = 'App ready to work offline';
+			pwaToastMessage.innerHTML = 'App ready to work offline.';
 			pwaToast.dataset['offline'] = 'true';
 		},
 		onNeedRefresh() {
-			pwaToastMessage.innerHTML = 'New content available, click on reload button to update';
+			pwaToastMessage.innerHTML = 'New content available, click on reload button to update.';
 			pwaToast.dataset['refresh'] = 'true';
 		},
 		onRegisteredSW(swScriptUrl) {

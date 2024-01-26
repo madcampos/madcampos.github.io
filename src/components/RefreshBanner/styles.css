@@ -22,21 +22,42 @@
 	visibility: visible;
 }
 
+#pwa-toast div {
+	flex-basis: min-content;
+	flex-grow: 1;
+}
+
 #pwa-toast button {
 	background-color: transparent;
 	border: var(--border-width) solid var(--border-color);
 	border-radius: 100vmax;
 	display: none;
 	place-items: center;
-	padding: var(--padding-inline);
+	padding: 0.25rem;
 	color: var(--text-color);
 	width: 2.5rem;
 	height: 2.5rem;
 	cursor: pointer;
 }
 
+#pwa-toast button:focus {
+	background-color: var(--theme-color);
+	color: var(--text-color);
+	border-color: var(--text-color);
+}
+
 #pwa-toast button:hover {
-	background-color: var(--bg-color);
+	background-color: var(--dark-bg-color);
+	color: var(--accent-color);
+	border-color: var(--accent-color);
+	outline-color: var(--accent-color);
+}
+
+#pwa-toast button:active {
+	background-color: var(--accent-color);
+	color: var(--text-color);
+	border-color: var(--text-color);
+	outline-color: var(--text-color);
 }
 
 #pwa-toast button svg {
