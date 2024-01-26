@@ -13,7 +13,7 @@ imageAlt: A "doge meme". It shows a close up photo of a shiba dog's face with th
 ---
 [Now this is a story all about how I got a perfect score and assets size down...](https://youtu.be/1nCqRmx3Dnw?si=QhtnwGRPyCN0u_rE) 🎤🎶
 
-![A gif of Will Smith sitting on a throne and rotating from the opening of "Fresh Prince of Bel-Air"](assets/fresh-prince-of-bel-air.gif)
+![A gif of Will Smith sitting on a throne and rotating from the opening of "Fresh Prince of Bel-Air"](./assets/fresh-prince-of-bel-air.gif)
 
 Okay, jokes aside, here is a _breakdown_ of how I got 100 in [PageSpeed](https://pagespeed.web.dev/), [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/), and [AXE](https://www.deque.com/axe/devtools/chrome-browser-extension/). (And sorry I can't hold myself to a good pun)
 
@@ -50,7 +50,7 @@ The most interesting ones are:
 
 Here are my results:
 
-![A screenshot of Lighthouse showing the results for the home page of madcampos.dev, the highlight being a score of 100 on all sections](assets/lighthouse.png)
+![A screenshot of Lighthouse showing the results for the home page of madcampos.dev, the highlight being a score of 100 on all sections](./assets/lighthouse.png)
 
 ## All about speed
 
@@ -58,7 +58,7 @@ Here are my results:
 
 Here are my results:
 
-![A screenshot of Page Speed showing the results for the home page of madcampos.dev, the highlight being a score of 100 on all sections](assets/page-speed.png)
+![A screenshot of Page Speed showing the results for the home page of madcampos.dev, the highlight being a score of 100 on all sections](./assets/page-speed.png)
 
 ## Chopping errors like wood
 
@@ -70,7 +70,7 @@ In short, as long as you add descriptions to images, use semantic html and don't
 
 Here are my results by the way:
 
-![A screenshot of aXe showing the results for the home page of madcampos.dev, the highlight being the number of accessibility issues of 0.](assets/axe.png)
+![A screenshot of aXe showing the results for the home page of madcampos.dev, the highlight being the number of accessibility issues of 0.](./assets/axe.png)
 
 ## What the hack?!
 
@@ -78,7 +78,7 @@ So, the question now is:
 
 > How did you get such a perfect score?
 
-![A "doge meme". It shows a close up photo of a shiba dog's face with the dog looking to the camera. Overlaid on the image, in comic sans, are the phrases "Much speed!", "Such accessible!", "Many score!", "WOW!", and "100/100".](assets/doge-score.jpg)
+![A "doge meme". It shows a close up photo of a shiba dog's face with the dog looking to the camera. Overlaid on the image, in comic sans, are the phrases "Much speed!", "Such accessible!", "Many score!", "WOW!", and "100/100".](./assets/doge-score.jpg)
 
 The secret sauce is simplicity and no Javascript! Don't get me wrong, I earn a living by programming in Javascript. _BUT_, when it comes to tools, I must choose the one that is better suited to my use case.
 
@@ -99,4 +99,4 @@ In short, I wanted to brag about how I build things in a performant way and that
 
 Here is another meme to close things off:
 
-![A "Success Kid" image macro meme. It shows a blue background with a kid on the front holding a fist and looking fierce as if he achieved something. Overlaid on the image are the phrases: "Build crappy website" and "Still accessible".](assets/success-site.jpg)
+![A "Success Kid" image macro meme. It shows a blue background with a kid on the front holding a fist and looking fierce as if he achieved something. Overlaid on the image are the phrases: "Build crappy website" and "Still accessible".](./assets/success-site.jpg)
