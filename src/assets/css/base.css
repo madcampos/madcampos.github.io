@@ -52,12 +52,23 @@ body *, body *::after, body *::before {
 a {
 	color: var(--link-color);
 	overflow-wrap: break-word;
+	text-underline-offset: 0.15em;
+	text-decoration-skip-ink: auto;
+	text-decoration-thickness: 0.08em;
 }
 
 a:visited { color: var(--link-visited-color); }
-a:hover { color: var(--link-hover-color); }
-a:active { color: var(--link-active-color); }
 a:focus { color: var(--text-color); }
+
+a:hover {
+	color: var(--link-hover-color);
+	outline-color: var(--link-hover-color);
+}
+
+a:active {
+	color: var(--link-active-color);
+	outline-color: var(--link-active-color);
+}
 
 a:has(img) {
 	display: inline-flex;
@@ -90,4 +101,8 @@ nav ul {
 	margin-block: 2rem;
 	margin-inline: auto;
 	width: clamp(10rem, 50vw, 20rem);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	a { text-decoration-style: dashed; }
 }

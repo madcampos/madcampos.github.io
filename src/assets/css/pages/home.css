@@ -1,3 +1,9 @@
+body {
+	background-attachment: fixed;
+	background-image: linear-gradient(to bottom, var(--bg-color), transparent);
+	background-repeat: no-repeat;
+}
+
 #about {
 	width: clamp(10rem, 80vw, 50rem);
 	margin-inline: auto;
@@ -6,6 +12,12 @@
 	justify-content: center;
 	align-items: flex-start;
 	gap: 2rem;
+}
+
+#about *:has(> svg) {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--padding-inline);
 }
 
 #about picture {

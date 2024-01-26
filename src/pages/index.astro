@@ -82,8 +82,8 @@ const AVATAR_WIDTHS = [256, 512, 768, avatar.width];
 			<ul>
 				{Object.entries(links).map(([title, { url, icon, iconAlt }]) => (
 					<li>
-						<Icon name={icon} title={iconAlt} />
 						<a href={url} rel="noreferrer noopener">
+							<Icon name={icon} title={iconAlt} />
 							{title}
 						</a>
 					</li>

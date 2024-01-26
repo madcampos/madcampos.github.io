@@ -26,9 +26,9 @@
 	--complementary-color: orangered;
 
 	/* Base colors */
-	--bg-color: lightgray;
+	--bg-color: silver;
 	--dark-bg-color: whitesmoke;
-	--border-color: silver;
+	--border-color: dimgray;
 	--dark-border-color: #444444;
 	--text-color: black;
 	--scrollbar-bg: rgba(255, 255, 255, 0.1);
