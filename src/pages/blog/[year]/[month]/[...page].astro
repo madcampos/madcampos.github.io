@@ -23,7 +23,7 @@ export const getStaticPaths = (async ({ paginate }: { paginate: PaginateFunction
 	})));
 }) satisfies GetStaticPaths;
 
-const { data: posts, url, currentPage, lastPage } = Astro.props.page;
+const { data: posts, url, currentPage, lastPage, start, end, total, size } = Astro.props.page;
 const { year, month } = Astro.params;
 const formatter = new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric' });
 ---
@@ -36,6 +36,10 @@ const formatter = new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric'
 	prevUrl={url.prev}
 	nextUrl={url.next}
 	baseUrl={`${BLOG_URL}/${year}/${month}`}
+	start={start}
+	end={end}
+	total={total}
+	size={size}
 >
 	<BlogPageHeader slot="header" title={`Posts from ${formatter.format(new Date(`${year}-${month}-01T00:00:00`))}`} />
 </BlogPostsLayout>

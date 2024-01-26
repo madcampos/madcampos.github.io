@@ -17,3 +17,23 @@
 #pagination:has(li:only-child) {
 	display: none;
 }
+
+#pagination *:has(> svg) {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--padding-inline);
+}
+
+#pagination svg {
+	width: 2rem;
+	height: 2rem;
+}
+
+#pagination a:not([href]) {
+	color: var(--link-visited-color);
+}
+
+#pagination-info {
+	text-align: center;
+	padding: var(--padding-inline) var(--padding-block);
+}

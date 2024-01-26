@@ -22,7 +22,7 @@ export const getStaticPaths = (async ({ paginate }: { paginate: PaginateFunction
 	}));
 }) satisfies GetStaticPaths;
 
-const { data: posts, url, currentPage, lastPage } = Astro.props.page;
+const { data: posts, url, currentPage, lastPage, start, end, total, size } = Astro.props.page;
 const { year } = Astro.params;
 ---
 <BlogPostsLayout
@@ -34,6 +34,10 @@ const { year } = Astro.params;
 	prevUrl={url.prev}
 	nextUrl={url.next}
 	baseUrl={`${BLOG_URL}/${year}`}
+	start={start}
+	end={end}
+	total={total}
+	size={size}
 >
 	<BlogPageHeader slot="header" title={`Posts from ${year}`} />
 </BlogPostsLayout>

@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import './styles.css';
 
 interface Props {
@@ -6,30 +7,67 @@ interface Props {
 	currentPage: number,
 	lastPage: number,
 	prevUrl?: string,
-	nextUrl?: string
+	nextUrl?: string,
+	start: number,
+	end: number,
+	total: number,
+	size: number
 }
 
-const { currentPage, lastPage, baseUrl, prevUrl, nextUrl } = Astro.props;
+const { currentPage, lastPage, baseUrl, prevUrl, nextUrl, start, end, total, size } = Astro.props;
 
 const TRIM_PAGE_NUMBER = 2;
 const firstPageInNav = Math.max(1, currentPage - TRIM_PAGE_NUMBER);
 const lastPageInNav = Math.min(lastPage, currentPage + TRIM_PAGE_NUMBER);
 ---
-<nav id="pagination">
-	{prevUrl && <a href={prevUrl}>← Previous</a>}
-	<ol>
-		{firstPageInNav > 1 && <li><span>…</span></li>}
-		{Array(lastPageInNav - firstPageInNav + 1).fill(null).map((_, i) => {
-			const currentPageNumber = firstPageInNav + i;
-			const href = currentPageNumber === 1 ? '' : currentPageNumber;
+<nav>
+	<div id="pagination">
+		<a {...(currentPage > 1 && { href: `${baseUrl}/` })}>
+			<Icon name="uil:angle-double-left" aria-hidden="true"/>
+			First
+		</a>
+		<a {...(prevUrl && { href: prevUrl })}>
+			<Icon name="uil:angle-left" aria-hidden="true"/>
+			Previous
+		</a>
 
-			if (currentPageNumber === currentPage) {
-				return <li><span>{currentPageNumber}</span></li>;
-			}
+		<ol>
+			{firstPageInNav > 1 && (
+				<>
+					<li><a href={`${baseUrl}/`}>1</a></li>
+					<li><span>…</span></li>
+				</>
+			)}
 
-			return <li><a href={`${baseUrl}/${href}`}>{currentPageNumber}</a></li>;
-		})}
-		{lastPageInNav < lastPage && <li><span>…</span></li>}
-	</ol>
-	{nextUrl && <a href={nextUrl}>Next →</a>}
+			{Array(lastPageInNav - firstPageInNav + 1).fill(null).map((_, i) => {
+				const currentPageNumber = firstPageInNav + i;
+				const href = currentPageNumber === 1 ? '' : currentPageNumber;
+
+				if (currentPageNumber === currentPage) {
+					return <li><span>{currentPageNumber}</span></li>;
+				}
+
+				return <li><a href={`${baseUrl}/${href}`}>{currentPageNumber}</a></li>;
+			})}
+
+			{lastPageInNav < lastPage && (
+				<>
+					<li><span>…</span></li>
+					<li><a href={`${baseUrl}/${lastPage}`}>{lastPage}</a></li>
+				</>
+			)}
+		</ol>
+
+		<a {...(nextUrl && { href: nextUrl })}>
+			Next
+			<Icon name="uil:angle-right" aria-hidden="true"/>
+		</a>
+		<a {...(currentPage < lastPage && { href: `${baseUrl}/${lastPage}` })}>
+			Last
+			<Icon name="uil:angle-double-right" aria-hidden="true"/>
+		</a>
+	</div>
+	<aside id="pagination-info">
+		{start + 1}-{end + 1} of {total} ({size} per page)
+	</aside>
 </nav>

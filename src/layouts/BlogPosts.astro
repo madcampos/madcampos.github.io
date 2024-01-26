@@ -19,10 +19,14 @@ interface Props {
 	currentPage: number,
 	lastPage: number,
 	prevUrl?: string,
-	nextUrl?: string
+	nextUrl?: string,
+	start: number,
+	end: number,
+	total: number,
+	size: number
 }
 
-const { posts, title = '', baseUrl, currentUrl, currentPage, lastPage, prevUrl, nextUrl } = Astro.props;
+const { posts, title = '', baseUrl, currentUrl, currentPage, lastPage, prevUrl, nextUrl, start, end, total, size } = Astro.props;
 ---
 <BaseLayout
 	title={`${title ? `${title} | ` : ''}${BLOG_TITLE}`}
@@ -52,6 +56,16 @@ const { posts, title = '', baseUrl, currentUrl, currentPage, lastPage, prevUrl, 
 	</div>
 
 	<footer slot="footer">
-		<Pagination baseUrl={baseUrl} currentPage={currentPage} lastPage={lastPage} prevUrl={prevUrl} nextUrl={nextUrl} />
+		<Pagination
+			baseUrl={baseUrl}
+			currentPage={currentPage}
+			lastPage={lastPage}
+			prevUrl={prevUrl}
+			nextUrl={nextUrl}
+			start={start}
+			end={end}
+			total={total}
+			size={size}
+		/>
 	</footer>
 </BaseLayout>
