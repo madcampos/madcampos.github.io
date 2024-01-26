@@ -14,7 +14,8 @@
 	margin: 0;
 }
 
-#pagination:has(li:only-child) {
+#pagination:has(li:only-child),
+#pagination:has(li:only-child) + * {
 	display: none;
 }
 
