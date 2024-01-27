@@ -1,6 +1,6 @@
 body {
-	background-attachment: fixed;
-	background-image: linear-gradient(to bottom, var(--bg-color), transparent);
+	/* background-attachment: fixed; */
+	background-image: linear-gradient(to bottom, var(--bg-color), var(--dark-bg-color));
 	background-repeat: no-repeat;
 }
 
