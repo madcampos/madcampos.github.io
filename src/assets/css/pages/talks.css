@@ -1,3 +1,28 @@
-#talks {
-	display: block;
+main {
+	padding-inline: min(10vw,8rem);
+}
+
+*:has(> svg) {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--padding-inline);
+}
+
+#technology-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--padding-inline);
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#technology-tags .tag {
+	padding: var(--padding-small) var(--padding-inline);
+	margin: var(--margin-block);
+	border-radius: 100vmax;
+	font-size: 0.75rem;
+	border: solid thin var(--theme-color);
+	background-color: var(--secondary-color);
+	color: #3c3c3c;
 }

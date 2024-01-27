@@ -4,6 +4,8 @@ import { TALKS_TAGS, TALKS_TITLE } from '../constants';
 import InternalPage from '../layouts/InternalPage.astro';
 import { Icon } from 'astro-icon/components';
 
+import '../assets/css/pages/talks.css';
+
 interface Props {
 	title: string,
 	description: string,
@@ -93,7 +95,7 @@ const { title, description, url, event, eventUrl, date, slides, video, code, dem
 	)}
 
 	<h2><Icon name="uil:cog" title="Icon of a cog" /> Technologies used</h2>
-	<ul class="technology-tags">
+	<ul id="technology-tags">
 		{techStack?.map((tech) => (
 			<li class="tag">{tech}</li>
 		))}
