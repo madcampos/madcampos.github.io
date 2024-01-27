@@ -7,36 +7,116 @@
 	"dir": "ltr",
 	"description": "Marco Campos - Senior Web Developer - Vue.js, Node.js, TypeScript, JavaScript",
 	"categories": ["personal", "web developer", "senior web developer", "vue.js", "vue", "node.js", "javascript", "typescript", "webdev"],
-	"display": "standalone",
+	"display": "browser",
 	"orientation": "portrait",
-	"display_override": ["window-controls-overlay"],
 	"background_color": "#252525",
 	"theme_color": "#0080ff",
 	"prefer_related_applications": false,
 	"icons": [
 		{
-			"src": "icons/transparent/manifest-icon-192.png",
-			"sizes": "192x192",
-			"type": "image/png",
-			"purpose": "any"
+			"src": "/icons/pwa-64x64.png",
+			"sizes": "64x64",
+			"type": "image/png"
 		},
 		{
-			"src": "icons/maskable/manifest-icon-192.png",
+			"src": "/icons/pwa-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/icons/pwa-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		},
+		{
+			"src": "/icons/maskable-icon-64x64.png",
+			"sizes": "64x64",
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{
+			"src": "/icons/maskable-icon-192x192.png",
 			"sizes": "192x192",
 			"type": "image/png",
 			"purpose": "maskable"
 		},
 		{
-			"src": "icons/transparent/manifest-icon-512.png",
-			"sizes": "512x512",
-			"type": "image/png",
-			"purpose": "any"
-		},
-		{
-			"src": "icons/maskable/manifest-icon-512.png",
+			"src": "/icons/maskable-icon-512x512.png",
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "maskable"
+		}
+	],
+
+	"shortcuts": [
+		{
+			"name": "Marco Campos' Blog",
+			"short_name": "Blog",
+			"description": "Visit Marco Campos' Blog",
+			"url": "/blog/?utm_source=pwa&utm_medium=shortcut&utm_campaign=blog",
+			"icons": [
+				{
+					"src": "/icons/shortcuts/blog.svg",
+					"sizes": "any",
+					"type": "image/svg+xml"
+				},
+				{
+					"src": "/icons/shortcuts/blog-96x96.png",
+					"sizes": "96x96",
+					"type": "image/png"
+				},
+				{
+					"src": "/icons/shortcuts/blog-512x512.png",
+					"sizes": "512x512",
+					"type": "image/png"
+				}
+			]
+		},
+		{
+			"name": "Project Highlights",
+			"short_name": "Projects",
+			"description": "A list of projects I've worked on",
+			"url": "/projects?utm_source=pwa&utm_medium=shortcut&utm_campaign=projects",
+			"icons": [
+				{
+					"src": "/icons/shortcuts/projects.svg",
+					"sizes": "any",
+					"type": "image/svg+xml"
+				},
+				{
+					"src": "/icons/shortcuts/projects-96x96.png",
+					"sizes": "96x96",
+					"type": "image/png"
+				},
+				{
+					"src": "/icons/shortcuts/projects-512x512.png",
+					"sizes": "512x512",
+					"type": "image/png"
+				}
+			]
+		},
+		{
+			"name": "Talks and Presentations",
+			"short_name": "Talks",
+			"description": "A list of talks and presentations I've given",
+			"url": "/talks?utm_source=pwa&utm_medium=shortcut&utm_campaign=talks",
+			"icons": [
+				{
+					"src": "/icons/shortcuts/talks.svg",
+					"sizes": "any",
+					"type": "image/svg+xml"
+				},
+				{
+					"src": "/icons/shortcuts/talks-96x96.png",
+					"sizes": "96x96",
+					"type": "image/png"
+				},
+				{
+					"src": "/icons/shortcuts/talks-512x512.png",
+					"sizes": "512x512",
+					"type": "image/png"
+				}
+			]
 		}
 	],
 	"handle_links": "preffered",

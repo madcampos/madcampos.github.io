@@ -24,6 +24,7 @@ html, body {
 
 	scrollbar-width: thin;
 	scrollbar-color: var(--theme-color) var(--scrollbar-bg);
+	overscroll-behavior-y: contain;
 }
 
 body *, body *::after, body *::before {

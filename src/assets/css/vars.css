@@ -37,7 +37,7 @@
 	--link-hover-color: #ff8100;
 	--link-active-color: #cf4f00;
 
-	color-scheme: light dark;
+	color-scheme: dark light;
 	accent-color: var(--theme-color);
 }
 

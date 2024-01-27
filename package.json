@@ -21,7 +21,8 @@
 		"lint:js": "eslint src --ext .js,.mjs,.ts,.mts,.astro --fix --ignore-path .gitignore",
 		"lint:css": "stylelint **/*.{css,astro} --fix",
 		"lint": "npm run typecheck && npm run lint:js && npm run lint:css",
-		"lint-staged": "lint-staged"
+		"lint-staged": "lint-staged",
+		"build:assets": "pwa-assets-generator --config ./pwa-assets-generator.config.ts"
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.4.1",
@@ -33,6 +34,7 @@
 		"@types/node": "^20.11.0",
 		"@typescript-eslint/eslint-plugin": "^6.18.1",
 		"@typescript-eslint/parser": "^6.18.1",
+		"@vite-pwa/assets-generator": "^0.2.3",
 		"@vite-pwa/astro": "^0.2.0",
 		"astro": "^4.1.2",
 		"astro-icon": "^1.0.2",
