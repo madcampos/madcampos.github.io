@@ -4,7 +4,7 @@ createdAt: 2018-02-26
 status: ongoing
 version: 2.0.0
 repository: https://github.com/madcampos/sdrlog/
-url: https://madcampos.dev/sdrlog/
+url: https://sdrlog.madcampos.dev/
 image: ./assets/05-sdrlog.png
 imageAlt: ""
 techStack:

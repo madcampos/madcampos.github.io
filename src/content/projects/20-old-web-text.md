@@ -4,7 +4,7 @@ createdAt: 2021-08-01
 status: finished
 version: 1.0.0
 repository: https://github.com/madcampos/oldwebtext/
-url: https://madcampos.dev/oldwebtext/
+url: https://owt.madcampos.dev/
 image: ./assets/20-oldwebtext.png
 imageAlt: ""
 techStack:

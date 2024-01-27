@@ -4,7 +4,7 @@ createdAt: 2021-08-01
 status: finished
 version: 1.0.0
 repository: https://github.com/madcampos/fallout-walkthrough/
-url: https://madcampos.dev/fallout-walkthrough/
+url: https://fallout2.madcampos.dev/
 image: ./assets/30-fallout-walkthrough.png
 imageAlt: ""
 techStack:
