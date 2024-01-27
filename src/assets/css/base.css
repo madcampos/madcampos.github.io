@@ -27,7 +27,7 @@ html, body {
 	overscroll-behavior-y: contain;
 }
 
-body *, body *::after, body *::before {
+*, *::after, *::before {
 	box-sizing: inherit;
 	font-family: inherit;
 }

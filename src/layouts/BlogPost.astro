@@ -49,24 +49,34 @@ const postUrl = `${BLOG_URL}${url}`;
 
 	<footer slot="footer">
 		{updates && (
-			<details><summary>Update History</summary>
-				<ul>
-					{updates.map((update) => (
-						<li>
-							<time datetime={new Date(update.date).toISOString()}>{new Date(update.date).toLocaleDateString()}</time>:&nbsp;
-							<span>{update.changes}</span>
-						</li>
-					))}
-				</ul>
-			</details>
+			<aside>
+				<details><summary>Update History</summary>
+					<ul>
+						{updates.map((update) => (
+							<li>
+								<time
+									datetime={new Date(update.date).toISOString()}
+									title={new Date(update.date).toISOString()}
+								>
+									{new Date(update.date).toLocaleDateString()}
+								</time>
+								<span>&mdash;</span>
+								<span>{update.changes}</span>
+							</li>
+						))}
+					</ul>
+				</details>
+			</aside>
 		)}
 		{tags && (
 			<aside id="post-tags">
 				<details>
 					<summary>Tags</summary>
-					{tags.map((tag) => (
-						<a href={`${BLOG_TAGS_URL}/${tag}`} class="tag">{tag}</a>
-					))}
+					<ul>
+						{tags.map((tag) => (
+							<li><a href={`${BLOG_TAGS_URL}/${tag}`} class="tag">{tag}</a></li>
+						))}
+					</ul>
 				</details>
 			</aside>
 		)}

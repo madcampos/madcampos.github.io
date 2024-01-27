@@ -11,7 +11,6 @@
 	max-width: 76rem;
 	margin-inline: auto;
 	padding-inline: min(10vw,8rem);
-	margin-block-end: 2rem;
 	overflow-x: hidden;
 	font-family: var(--sans-serif-font-family);
 
@@ -43,11 +42,24 @@ iframe {
 	aspect-ratio: 3 / 2;
 }
 
+footer aside {
+	padding-inline: min(10vw,8rem);
+	margin-block-end: 1rem;
+}
+
+#post-tags ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+	list-style: none;
+	padding: 0;
+}
+
 #post-tags .tag {
 	display: inline-block;
 	list-style: none;
 	padding: var(--padding-small) var(--padding-inline);
-	margin: var(--margin-small);
 	border-radius: 100vmax;
 	font-size: 0.75rem;
 	border: solid thin var(--theme-color);
