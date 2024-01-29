@@ -17,8 +17,8 @@ export interface Post extends Omit<CollectionEntry<'blog'>, 'slug' | 'relatedPos
 }
 
 function sortPostsByDate(first: Post, second: Post) {
-	const firstDate = new Date(first.data.updatedAt ?? first.data.createdAt);
-	const secondDate = new Date(second.data.updatedAt ?? second.data.createdAt);
+	const firstDate = new Date(first.data.createdAt);
+	const secondDate = new Date(second.data.createdAt);
 
 	return secondDate.getTime() - firstDate.getTime();
 }
