@@ -1,11 +1,13 @@
 ---
 title: "Web Components: A (Not So) Gentle Introduction"
 createdAt: 2023-06-26
-updatedAt: 2023-07-20
+updatedAt: 2024-01-29
 summary: A brief introduction to web components.
 updates:
   - date: 2023-07-20
     changes: Added cross-link to tabs post.
+  - date: 2024-01-29
+    changes: Updated embedded codepen iframe.
 tags:
   - web
   - web-components
@@ -168,9 +170,10 @@ if (!customElements.get('dad-jokes-bonanza')) {
 ## Putting It All Together
 
 You can check out the full code on CodePen: https://codepen.io/madcampos/pen/WNxYoPv
-
-<iframe src="https://codepen.io/madcampos/embed/preview/WNxYoPv?default-tab=result&editable=true" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin">
-	See the Pen <a href="https://codepen.io/madcampos/pen/WNxYoPv">Dad Jokes - Infinite Scroller</a> by Marco Campos (<a href="https://codepen.io/madcampos">@madcampos</a>) on <a href="https://codepen.io">CodePen</a>.
+<iframe height="300" style="width: 100%;" scrolling="no" title="Dad Jokes - Infinite Scroller" src="https://codepen.io/madcampos/embed/preview/WNxYoPv?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin">
+  See the Pen <a href="https://codepen.io/madcampos/pen/WNxYoPv">
+  Dad Jokes - Infinite Scroller</a> by Marco Campos (<a href="https://codepen.io/madcampos">@madcampos</a>)
+  on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
 I intentionally left styling and some complexities related to components to make the post brief and easy to follow.
