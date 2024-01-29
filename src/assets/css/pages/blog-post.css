@@ -29,6 +29,20 @@
 	height: auto;
 }
 
+blockquote {
+	border-left: var(--border-width) solid var(--theme-color);
+	padding-inline: var(--padding-inline);
+	margin-inline: var(--padding-inline);
+	margin-block: var(--padding-block);
+
+	font-style: italic;
+}
+
+blockquote > p {
+	margin-block: 0;
+	padding-block: 1rem;
+}
+
 iframe {
 	border: thin solid black;
 	border-radius: 0.2rem;
