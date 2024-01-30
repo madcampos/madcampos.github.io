@@ -19,6 +19,8 @@ export const GET: APIRoute = async (context) => {
 	const blogImage = await getImage({ src: defaultImage, format: 'png', width: 512, height: 512 });
 	const blogUrl = new URL(BLOG_URL, context.site).toString();
 
+	const allPosts = await listAllPosts();
+
 	return rss({
 		title: "Marco Campos' Blog",
 		description: 'A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript',
@@ -27,7 +29,7 @@ export const GET: APIRoute = async (context) => {
 			atom: 'http://www.w3.org/2005/Atom',
 			media: 'http://search.yahoo.com/mrss/'
 		},
-		stylesheet: '/feed.xsl',
+		stylesheet: `${blogUrl}/feed.xsl`,
 		customData: `
 			<language>en-us</language>
 			<atom:link href="${context.site?.toString() ?? ''}" rel="self" type="application/rss+xml" />
@@ -38,10 +40,12 @@ export const GET: APIRoute = async (context) => {
 				<width>144</width>
 				<height>144</height>
 			</image>
+			<pubDate>${new Date(allPosts[0]?.data.createdAt ?? new Date()).toUTCString()}</pubDate>
 			<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
 			<ttl>${ONE_WEEK_IN_MINUTES}</ttl>
+			<generator>Astro</generator>
 		`,
-		items: await Promise.all((await listAllPosts()).map(async (post) => {
+		items: await Promise.all(allPosts.map(async (post) => {
 			let image;
 			let imageSize = TEN_KB_IN_BYTES;
 
