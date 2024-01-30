@@ -8,8 +8,7 @@
 					<xsl:value-of select="/rss/channel/title"/>
 				</title>
 
-				<!-- TODO: write CSS -->
-				<style></style>
+				<!-- {{CSS}} -->
 
 				<script type="module">
 					const formatter = new Intl.DateTimeFormat('en-US', {
@@ -180,7 +179,6 @@
 			<xsl:otherwise>
 				<xsl:variable name="lcletters">abcdefghijklmnopqrstuvwxyz</xsl:variable>
 				<xsl:variable name="ucletters">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xsl:variable>
-				<!-- lowercase extension -->
 				<xsl:value-of select="translate($rest,$ucletters,$lcletters)"/>
 			</xsl:otherwise>
 		</xsl:choose>
