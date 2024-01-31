@@ -20,11 +20,13 @@ export const GET: APIRoute = async (context) => {
 		items: await Promise.all((await getCollection('changelog')).map(async (changelog) => {
 			const versionNumber = changelog.id.replace('.md', '');
 			const { versionName } = changelog.data;
+			const content = await marked(changelog.body, { gfm: true, breaks: true });
 
 			const item: RSSFeedItem = {
 				// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 				title: `${versionNumber}${versionName ? ` (${versionName})` : ''}`,
-				description: await marked(changelog.body),
+				description: content,
+				content,
 				pubDate: changelog.data.date,
 				link: new URL(`/changelog.xml#${versionNumber}`, context.site).toString()
 			};

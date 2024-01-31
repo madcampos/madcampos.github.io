@@ -4,6 +4,7 @@ import { stat } from 'node:fs/promises';
 
 import rss, { type RSSFeedItem } from '@astrojs/rss';
 import { getImage } from 'astro:assets';
+import { marked } from 'marked';
 
 import { BLOG_DESCRIPTION, BLOG_LOGO_MICRO_ALT, BLOG_URL } from '../../constants';
 import { listAllPosts } from '../../utils/post';
@@ -67,13 +68,15 @@ export const GET: APIRoute = async (context) => {
 				}
 			}
 
+			const content = await marked(post.body, { gfm: true, breaks: true });
+
 			const item: RSSFeedItem = {
 				title: post.data.title,
 				description: post.data.summary,
 				pubDate: post.data.createdAt,
 				categories: post.data.tags,
 				link: `${blogUrl}${post.url}`,
-				content: post.body,
+				content,
 				...(image && {
 					enclosure: {
 						url: new URL(image.src, context.site).toString(),
