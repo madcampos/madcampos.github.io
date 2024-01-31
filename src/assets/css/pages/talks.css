@@ -26,3 +26,11 @@ main {
 	background-color: var(--secondary-color);
 	color: #3c3c3c;
 }
+
+img {
+	width: clamp(10rem, 100%, 50rem);
+	height: clamp(10rem, 70vh, 50rem);
+	object-fit: contain;
+	display: block;
+	margin-inline: auto;
+}
