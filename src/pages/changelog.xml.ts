@@ -11,11 +11,11 @@ export const GET: APIRoute = async (context) => {
 	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 	const ONE_WEEK_IN_MINUTES = 60 * 24 * 7;
 
-	const blogImage = await getImage({ src: defaultImage, format: 'png', width: 512, height: 512 });
+	const siteImage = await getImage({ src: defaultImage, format: 'png', width: 512, height: 512 });
 
 	return rss({
-		title: "Marco Campos' Blog",
-		description: 'A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript',
+		title: "Marco Campos' Site Changelog",
+		description: 'Changelog (Version History) for Marco Campos\' Website, containing all recent changes.',
 		site: context.site ?? '',
 		items: await Promise.all((await getCollection('changelog')).map(async (changelog) => {
 			const versionNumber = changelog.id.replace('.md', '');
@@ -26,21 +26,21 @@ export const GET: APIRoute = async (context) => {
 				title: `${versionNumber}${versionName ? ` (${versionName})` : ''}`,
 				description: await marked(changelog.body),
 				pubDate: changelog.data.date,
-				link: new URL('/changelog', context.site).toString()
+				link: new URL(`/changelog.xml#${versionNumber}`, context.site).toString()
 			};
 
 			return item;
 		})),
-		stylesheet: '/changelog.xsl',
+		stylesheet: '/blog/feed.xsl',
 		customData: `
 		<language>en-us</language>
 		<image>
-			<url>${new URL(blogImage.src, context.site).toString()}</url>
+			<url>${new URL(siteImage.src, context.site).toString()}</url>
 			<title>Marco Campos' Website Changelog</title>
 			<description>Changelog (Version History) for Marco Campos' Website, containing all recent changes.</description>
-			<link>http://madcampos.dev/changelog</link>
-			<width>${blogImage.options.width}</width>
-			<height>${blogImage.options.height}</height>
+			<link>http://madcampos.dev/changelog.xml</link>
+			<width>142</width>
+			<height>116</height>
 		</image>
 		<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
 		<ttl>${ONE_WEEK_IN_MINUTES}</ttl>
