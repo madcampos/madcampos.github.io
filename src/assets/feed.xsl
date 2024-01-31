@@ -11,7 +11,7 @@
 				<!-- {{CSS}} -->
 
 				<script type="module">
-					const formatter = new Intl.DateTimeFormat('en-US', {
+					const formatter = new Intl.DateTimeFormat(navigator.language, {
 						year: 'numeric',
 						month: 'long',
 						day: 'numeric',
@@ -28,15 +28,41 @@
 				</script>
 			</head>
 			<body>
-				<header>
+				<header id="feed-header">
 					<a id="feed-image">
 						<xsl:attribute name="href"><xsl:value-of select="/rss/channel/link"/></xsl:attribute>
 
 						<img>
 							<xsl:attribute name="src"><xsl:value-of select="/rss/channel/image/url"/></xsl:attribute>
-							<xsl:attribute name="alt"><xsl:value-of select="/rss/channel/image/title"/></xsl:attribute>
-							<xsl:attribute name="width"><xsl:value-of select="/rss/channel/image/width"/></xsl:attribute>
-							<xsl:attribute name="height"><xsl:value-of select="/rss/channel/image/height"/></xsl:attribute>
+							<xsl:choose>
+								<xsl:when test="/rss/channel/image/description">
+									<xsl:attribute name="alt"><xsl:value-of select="/rss/channel/image/description"/></xsl:attribute>
+								</xsl:when>
+								<xsl:when test="/rss/channel/image/title">
+									<xsl:attribute name="alt"><xsl:value-of select="/rss/channel/image/title"/></xsl:attribute>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:attribute name="alt">No image description</xsl:attribute>
+								</xsl:otherwise>
+							</xsl:choose>
+
+							<xsl:choose>
+								<xsl:when test="/rss/channel/image/width">
+									<xsl:attribute name="width"><xsl:value-of select="/rss/channel/image/width"/></xsl:attribute>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:attribute name="width">88</xsl:attribute>
+								</xsl:otherwise>
+							</xsl:choose>
+
+							<xsl:choose>
+								<xsl:when test="/rss/channel/image/height">
+									<xsl:attribute name="height"><xsl:value-of select="/rss/channel/image/height"/></xsl:attribute>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:attribute name="height">31</xsl:attribute>
+								</xsl:otherwise>
+							</xsl:choose>
 						</img>
 					</a>
 
@@ -67,29 +93,31 @@
 
 				<main>
 					<xsl:for-each select="/rss/channel/item">
-						<article>
+						<article class="item">
 							<xsl:choose>
 								<xsl:when test="media:content and media:content/@medium = 'image'">
-									<img>
-										<xsl:attribute name="src"><xsl:value-of select="media:content/@url"/></xsl:attribute>
-										<xsl:attribute name="width"><xsl:value-of select="media:content/@width"/></xsl:attribute>
-										<xsl:attribute name="height"><xsl:value-of select="media:content/@height"/></xsl:attribute>
+									<picture>
+										<img>
+											<xsl:attribute name="src"><xsl:value-of select="media:content/@url"/></xsl:attribute>
+											<xsl:attribute name="width"><xsl:value-of select="media:content/@width"/></xsl:attribute>
+											<xsl:attribute name="height"><xsl:value-of select="media:content/@height"/></xsl:attribute>
 
-										<xsl:choose>
-											<xsl:when test="media:description">
-												<xsl:attribute name="alt"><xsl:value-of select="media:description"/></xsl:attribute>
-											</xsl:when>
-											<xsl:when test="media:title">
-												<xsl:attribute name="alt"><xsl:value-of select="media:title"/></xsl:attribute>
-											</xsl:when>
-											<xsl:when test="media:content/@title">
-												<xsl:attribute name="alt"><xsl:value-of select="media:content/@title"/></xsl:attribute>
-											</xsl:when>
-											<xsl:otherwise>
-												<xsl:attribute name="alt">No image description</xsl:attribute>
-											</xsl:otherwise>
-										</xsl:choose>
-									</img>
+											<xsl:choose>
+												<xsl:when test="media:description">
+													<xsl:attribute name="alt"><xsl:value-of select="media:description"/></xsl:attribute>
+												</xsl:when>
+												<xsl:when test="media:title">
+													<xsl:attribute name="alt"><xsl:value-of select="media:title"/></xsl:attribute>
+												</xsl:when>
+												<xsl:when test="media:content/@title">
+													<xsl:attribute name="alt"><xsl:value-of select="media:content/@title"/></xsl:attribute>
+												</xsl:when>
+												<xsl:otherwise>
+													<xsl:attribute name="alt">No image description</xsl:attribute>
+												</xsl:otherwise>
+											</xsl:choose>
+										</img>
+									</picture>
 								</xsl:when>
 								<xsl:when test="enclosure">
 									<xsl:for-each select="enclosure[position()=1]">
@@ -100,38 +128,54 @@
 										</xsl:variable>
 
 										<xsl:if test="$ext = 'jpg' or $ext = 'gif' or $ext = 'png' or $ext = 'jpeg' or $ext = 'webp'">
-											<figure>
+											<picture>
 												<img width="200" height="200">
 													<xsl:attribute name="src"><xsl:value-of select="./@url"/></xsl:attribute>
+
+													<xsl:choose>
+														<xsl:when test="media:description">
+															<xsl:attribute name="alt"><xsl:value-of select="media:description"/></xsl:attribute>
+														</xsl:when>
+														<xsl:when test="media:title">
+															<xsl:attribute name="alt"><xsl:value-of select="media:title"/></xsl:attribute>
+														</xsl:when>
+														<xsl:when test="media:content/@title">
+															<xsl:attribute name="alt"><xsl:value-of select="media:content/@title"/></xsl:attribute>
+														</xsl:when>
+														<xsl:otherwise>
+															<xsl:attribute name="alt">No image description</xsl:attribute>
+														</xsl:otherwise>
+													</xsl:choose>
 												</img>
-											</figure>
+											</picture>
 										</xsl:if>
 									</xsl:for-each>
 								</xsl:when>
 							</xsl:choose>
+							<header>
+								<h2>
+									<a>
+										<xsl:attribute name="href"><xsl:value-of select="link"/></xsl:attribute>
+										<xsl:value-of select="title"/>
+									</a>
+								</h2>
 
-							<h2>
-								<a>
-									<xsl:attribute name="href"><xsl:value-of select="link"/></xsl:attribute>
-									<xsl:value-of select="title"/>
-								</a>
-							</h2>
+								<aside class="item-metadata">
+									<xsl:if test="pubDate">
+										<span>Published on: <time><xsl:value-of select="pubDate"/></time></span>
+									</xsl:if>
 
-							<aside class="post-pub-date">
-								<xsl:if test="pubDate">
-									<span>Published on: <time><xsl:value-of select="pubDate"/></time></span>
-								</xsl:if>
+									<xsl:if test="pubDate and author">
+										<span> | </span>
+									</xsl:if>
 
-								<xsl:if test="pubDate and author">
-									<span> | </span>
-								</xsl:if>
+									<xsl:if test="author">
+										<span><xsl:value-of select="author"/></span>
+									</xsl:if>
+								</aside>
+							</header>
 
-								<xsl:if test="author">
-									<span><xsl:value-of select="author"/></span>
-								</xsl:if>
-							</aside>
-
-							<div>
+							<div class="item-content">
 								<xsl:choose>
 									<xsl:when test="description[@type='xhtml']">
 										<xsl:copy-of select="description/*"/>
@@ -150,7 +194,7 @@
 										<summary>Post Tags</summary>
 										<ul>
 											<xsl:for-each select="category">
-												<li>
+												<li class="tag">
 													<xsl:value-of select="."/>
 												</li>
 											</xsl:for-each>

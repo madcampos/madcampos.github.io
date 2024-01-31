@@ -5,7 +5,7 @@ import { stat } from 'node:fs/promises';
 import rss, { type RSSFeedItem } from '@astrojs/rss';
 import { getImage } from 'astro:assets';
 
-import { BLOG_URL } from '../../constants';
+import { BLOG_DESCRIPTION, BLOG_LOGO_MICRO_ALT, BLOG_URL } from '../../constants';
 import { listAllPosts } from '../../utils/post';
 
 import defaultImage from '../../assets/images/logo-blog-micro.png';
@@ -23,27 +23,30 @@ export const GET: APIRoute = async (context) => {
 
 	return rss({
 		title: "Marco Campos' Blog",
-		description: 'A space where I talk about web development, Vue.js, Node.js, TypeScript, JavaScript',
+		description: BLOG_DESCRIPTION,
 		site: blogUrl,
 		xmlns: {
 			atom: 'http://www.w3.org/2005/Atom',
-			media: 'http://search.yahoo.com/mrss/'
+			media: 'http://search.yahoo.com/mrss/',
+			dc: 'http://purl.org/dc/elements/1.1/'
 		},
 		stylesheet: `${blogUrl}/feed.xsl`,
 		customData: `
 			<language>en-us</language>
-			<atom:link href="${context.site?.toString() ?? ''}" rel="self" type="application/rss+xml" />
+			<atom:link href="${new URL(blogImage.src, context.site).toString()}" rel="self" type="application/rss+xml" />
 			<image>
 				<url>${new URL(blogImage.src, context.site).toString()}</url>
 				<title>Marco Campos' Blog</title>
+				<description>${BLOG_LOGO_MICRO_ALT}</description>
 				<link>${blogUrl}</link>
-				<width>144</width>
-				<height>144</height>
+				<width>142</width>
+				<height>116</height>
 			</image>
 			<pubDate>${new Date(allPosts[0]?.data.createdAt ?? new Date()).toUTCString()}</pubDate>
 			<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
 			<ttl>${ONE_WEEK_IN_MINUTES}</ttl>
 			<generator>Astro</generator>
+			<dc:creator>Marco Campos</dc:creator>
 		`,
 		items: await Promise.all(allPosts.map(async (post) => {
 			let image;
@@ -70,6 +73,7 @@ export const GET: APIRoute = async (context) => {
 				pubDate: post.data.createdAt,
 				categories: post.data.tags,
 				link: `${blogUrl}${post.url}`,
+				content: post.body,
 				...(image && {
 					enclosure: {
 						url: new URL(image.src, context.site).toString(),
