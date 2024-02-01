@@ -10,7 +10,8 @@ const talks = await listAllTalks();
 ---
 
 <InternalPage
-	title={TALKS_TITLE}
+	htmlTitle={TALKS_TITLE}
+	title={TALKS_TITLE[0] ?? ''}
 	description="Talks I've given at conferences and meetups."
 	url={TALKS_URL}
 >

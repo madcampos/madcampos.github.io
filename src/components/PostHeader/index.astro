@@ -8,14 +8,16 @@ import BlogNav from '../BlogNav/index.astro';
 import './styles.css';
 
 interface Props {
+	url: string,
 	title: string,
+	summary: string,
 	createdAt: Date,
 	updatedAt?: Date,
 	image?: ImageProps,
 	imageAlt?: string
 }
 
-const { title, createdAt, updatedAt, image, imageAlt } = Astro.props;
+const { url, title, summary, createdAt, updatedAt, image, imageAlt } = Astro.props;
 
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 ---
@@ -24,6 +26,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 	<header>
 		{image && (
 			<Image
+				itemprop="image"
 				id="hero-image"
 				src={image}
 				alt={imageAlt ?? ''}
@@ -33,7 +36,12 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 		)}
 
 		<div>
-			<h1 class="p-name">{title}</h1>
+			<h1 class="p-name" itemprop="headline">{title}</h1>
+
+			<div hidden>
+				<a class="u-uid u-url" href={url}>{title}</a>
+				<p class="p-summary" itemprop="description">{summary}</p>
+			</div>
 
 			<aside>
 				Published by <span itemprop="author" itemscope itemtype="https://schema.org/Person">

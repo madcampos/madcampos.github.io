@@ -35,7 +35,8 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 const { title, description, url, event, eventUrl, date, slides, video, code, demo, relatedContent, techStack, image, imageAlt } = Astro.props;
 ---
 <InternalPage
-	title={`${title} | ${TALKS_TITLE}`}
+	htmlTitle={[title, ...TALKS_TITLE]}
+	title={title}
 	description={description}
 	url={url}
 	tags={TALKS_TAGS}

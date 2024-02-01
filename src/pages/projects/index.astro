@@ -12,7 +12,8 @@ const projects = await listAllProjects();
 ---
 
 <InternalPage
-	title={PROJECTS_TITLE}
+	htmlTitle={PROJECTS_TITLE}
+	title={PROJECTS_TITLE[0] ?? ''}
 	description="A list of all my projects"
 	url={PROJECTS_URL}
 >

@@ -29,7 +29,8 @@ interface Props {
 const { posts, title = '', baseUrl, currentUrl, currentPage, lastPage, prevUrl, nextUrl, start, end, total, size } = Astro.props;
 ---
 <BaseLayout
-	title={`${title ? `${title} | ` : ''}${BLOG_TITLE}`}
+	htmlTitle={[title, ...BLOG_TITLE].filter(Boolean)}
+	title={title ?? BLOG_TITLE[0] ?? ''}
 	description={BLOG_DESCRIPTION}
 	tags={BLOG_TAGS}
 	url={currentUrl}

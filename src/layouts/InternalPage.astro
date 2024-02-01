@@ -5,6 +5,7 @@ import BaseLayout from './Base.astro';
 import PageHeader from '../components/PageHeader/index.astro';
 
 interface Props {
+	htmlTitle?: string[],
 	title: string,
 	url: string,
 	description: string,
@@ -17,9 +18,10 @@ interface Props {
 	pageSchema?: string
 }
 
-const { title, description, url, tags, image, imageAlt, createdAt, updatedAt, hasFeed, pageSchema } = Astro.props;
+const { htmlTitle, title, description, url, tags, image, imageAlt, createdAt, updatedAt, hasFeed, pageSchema } = Astro.props;
 ---
 <BaseLayout
+	htmlTitle={htmlTitle}
 	title={title}
 	description={description}
 	url={url}

@@ -6,6 +6,7 @@ import RefreshBanner from '../components/RefreshBanner/index.astro';
 
 interface Props {
 	title: string,
+	htmlTitle?: string[],
 	url: string,
 	description: string,
 	tags?: string[],
@@ -19,6 +20,7 @@ interface Props {
 
 const {
 	title,
+	htmlTitle,
 	description,
 	url,
 	tags,
@@ -33,6 +35,7 @@ const {
 <!DOCTYPE html>
 <html lang="en-US" itemscope itemtype={`https://schema.org/${pageSchema}`}>
 	<HtmlHead
+		htmlTitle={htmlTitle}
 		title={title}
 		url={url}
 		description={description}

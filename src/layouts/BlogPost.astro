@@ -25,7 +25,8 @@ const { title, summary, image, imageAlt, createdAt, updatedAt, updates, url, tag
 const postUrl = `${BLOG_URL}${url}`;
 ---
 <BaseLayout
-	title={`${title} | Blog | Marco Campos`}
+	htmlTitle={[title, 'Blog', 'Marco Campos']}
+	title={title}
 	description={summary}
 	tags={tags}
 	url={postUrl}
@@ -34,10 +35,13 @@ const postUrl = `${BLOG_URL}${url}`;
 	createdAt={createdAt}
 	updatedAt={updatedAt}
 	pageSchema="BlogPosting"
+	hasFeed={true}
 >
 	<PostHeader
 		slot="header"
+		url={postUrl}
 		title={title}
+		summary={summary}
 		image={image}
 		imageAlt={imageAlt}
 		createdAt={createdAt}

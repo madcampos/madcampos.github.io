@@ -4,6 +4,7 @@ import { pwaInfo } from 'virtual:pwa-info';
 import defaultSocialImage from '../assets/images/logo-micro.png';
 
 interface Props {
+	htmlTitle?: string[],
 	title: string,
 	url: string,
 	description: string,
@@ -15,7 +16,7 @@ interface Props {
 	hasFeed?: boolean
 }
 
-const { title, url, description, tags, image, imageAlt, createdAt: publishedDate, updatedAt: updatedDate, hasFeed = false } = Astro.props;
+const { htmlTitle, title, url, description, tags, image, imageAlt, createdAt: publishedDate, updatedAt: updatedDate, hasFeed = false } = Astro.props;
 
 const baseUrl = Astro.site?.toString() ?? '/';
 const fullUrl = new URL(url, baseUrl).toString();
@@ -30,7 +31,7 @@ const socialImage = `${baseUrl}${(image ?? defaultSocialImage.src).replace(/^\//
 	{ hasFeed && <link rel="alternate" type="application/rss+xml" href={`${baseUrl}blog/feed.xml`} title="Marco Campos' Blog" /> }
 	<link rel="sitemap" href={`${baseUrl}sitemap-index.xml`} />
 
-	<title>{title}</title>
+	<title>{htmlTitle?.join(' | ') ?? title}</title>
 
 	<!-- App Metadata -->
 	<link rel="icon" href={`${baseUrl}icons/favicon.svg`} sizes="any" type="image/svg+xml" />
@@ -49,8 +50,8 @@ const socialImage = `${baseUrl}${(image ?? defaultSocialImage.src).replace(/^\//
 	<meta property="og:locale" itemprop="inLanguage" content="en_US" />
 	<meta property="og:url" itemprop="url" content={fullUrl} />
 
-	<meta property="og:description" name="description" itemprop="headline" content={description} />
-	<meta name="twitter:description" itemprop="abstract" content={description} />
+	<meta property="og:description" name="description" itemprop="abstract" content={description} />
+	<meta name="twitter:description" content={description} />
 
 	<meta property="og:image" name="twitter:image" itemprop="image" content={socialImage} />
 	<meta property="og:image:alt" name="twitter:image:alt" content={socialImageAlt} />
