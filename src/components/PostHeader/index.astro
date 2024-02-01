@@ -45,7 +45,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 
 			<aside>
 				Published by <span itemprop="author" itemscope itemtype="https://schema.org/Person">
-					<a class="p-author h-card" rel="author" itemprop="url" href={Astro.site}><span itemprop="name">Marco Campos</span></a>
+					<a class="p-author" rel="author" itemprop="url" href={Astro.site}><span itemprop="name">Marco Campos</span></a>
 				</span>
 				on <time itemprop="datePublished" class="dt-published" datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time>
 			</aside>
