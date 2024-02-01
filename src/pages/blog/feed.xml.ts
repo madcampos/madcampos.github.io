@@ -4,12 +4,12 @@ import { stat } from 'node:fs/promises';
 
 import rss, { type RSSFeedItem } from '@astrojs/rss';
 import { getImage } from 'astro:assets';
-import { marked } from 'marked';
 
 import { BLOG_DESCRIPTION, BLOG_LOGO_MICRO_ALT, BLOG_URL } from '../../constants';
 import { listAllPosts } from '../../utils/post';
 
 import defaultImage from '../../assets/images/logo-blog-micro.png';
+import { parseMarkdown } from '../../utils/markdown';
 
 export const GET: APIRoute = async (context) => {
 	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
@@ -68,7 +68,7 @@ export const GET: APIRoute = async (context) => {
 				}
 			}
 
-			const content = await marked(post.body, { gfm: true, breaks: true });
+			const content = await parseMarkdown(post.body);
 
 			const item: RSSFeedItem = {
 				title: post.data.title,

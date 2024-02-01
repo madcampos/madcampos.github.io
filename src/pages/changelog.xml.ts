@@ -1,9 +1,10 @@
 import type { APIRoute } from 'astro';
 
-import { marked } from 'marked';
 import rss, { type RSSFeedItem } from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { getImage } from 'astro:assets';
+
+import { parseMarkdown } from '../utils/markdown';
 
 import defaultImage from '../assets/images/logo-micro.png';
 
@@ -20,7 +21,7 @@ export const GET: APIRoute = async (context) => {
 		items: await Promise.all((await getCollection('changelog')).map(async (changelog) => {
 			const versionNumber = changelog.id.replace('.md', '');
 			const { versionName } = changelog.data;
-			const content = await marked(changelog.body, { gfm: true, breaks: true });
+			const content = await parseMarkdown(changelog.body);
 
 			const item: RSSFeedItem = {
 				// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
