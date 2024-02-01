@@ -7,6 +7,8 @@ import BlogNav from '../BlogNav/index.astro';
 
 import './styles.css';
 
+import avatar from '../../assets/images/me.jpg';
+
 interface Props {
 	url: string,
 	title: string,
@@ -38,16 +40,19 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 		<div>
 			<h1 class="p-name" itemprop="headline">{title}</h1>
 
-			<div hidden>
+			<div class="visually-hidden" hidden>
 				<a class="u-uid u-url" href={url}>{title}</a>
 				<p class="p-summary" itemprop="description">{summary}</p>
+				<span itemprop="author" itemscope itemtype="https://schema.org/Person">
+					<a class="p-author h-card" rel="author" itemprop="url" href={Astro.site}>
+						<Image class="u-photo" itemprop="image" src={avatar} alt="Marco Campos" loading="lazy" />
+						<span itemprop="name">Marco Campos</span>
+					</a>
+				</span>
 			</div>
 
 			<aside>
-				Published by <span itemprop="author" itemscope itemtype="https://schema.org/Person">
-					<a class="p-author" rel="author" itemprop="url" href={Astro.site}><span itemprop="name">Marco Campos</span></a>
-				</span>
-				on <time itemprop="datePublished" class="dt-published" datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time>
+				Published on <time itemprop="datePublished" class="dt-published" datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time>
 			</aside>
 			{ updatedAt && (
 				<aside>
