@@ -6,6 +6,7 @@ import astroPWA, { type PwaOptions } from '@vite-pwa/astro';
 import astroIcon from 'astro-icon';
 
 import remarkBreaks from 'remark-breaks';
+import rehypeExternalLinks from 'rehype-external-links';
 
 import { externalResources, internalResources } from './src/sw-caching';
 
@@ -29,7 +30,8 @@ export default defineConfig({
 		shikiConfig: {
 			theme: 'dark-plus'
 		},
-		remarkPlugins: [remarkBreaks]
+		remarkPlugins: [remarkBreaks],
+		rehypePlugins: [[rehypeExternalLinks, { rel: ['external', 'noopener', 'noreferrer'] }]]
 	},
 	integrations: [
 		astroPWA({

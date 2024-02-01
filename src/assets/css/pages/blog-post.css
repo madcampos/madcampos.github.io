@@ -29,6 +29,12 @@
 	height: auto;
 }
 
+a[rel~="external"]::after {
+	content: " 🌐\FE0E⤴\FE0E";
+	vertical-align: super;
+	font-size: 0.5rem;
+}
+
 blockquote {
 	border-left: var(--border-width) solid var(--theme-color);
 	padding-inline: var(--padding-inline);
