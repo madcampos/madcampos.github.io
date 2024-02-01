@@ -13,9 +13,7 @@ tags:
   - BuildingInPublic
   - FrontendDevelopment
 ---
-There was an interesting problem at work the other day. In short we have a dynamic list of things to display on the screen, all of them have a dotted border and coloured text.
-
-Those colours are picked dynamically from a cycling list of colours. But not all of them have enough contrast with the background and some are really hard to see.
+There was an interesting problem at work the other day. In short we have a dynamic list of things to display on the screen, all of them have a dotted border and coloured text. Those colours are picked dynamically from a cycling list of colours. But _**not** all of them_ have enough contrast with the background and some are really hard to see.
 
 How to fix that?
 
@@ -27,7 +25,7 @@ The [Web Content Accessibility Guidelines](https://www.w3.org/TR/WCAG22/), WCAG 
 
 Here is the full reference: https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html
 
-Basically it says that the contrast between the colour used for text and borders has to have a contrast of 4.1 against the background colour.
+Basically it translates to: the contrast between the colour used for text and borders has to have be of 4.1 against the background colour.
 
 ## Engineering a solution
 
@@ -37,13 +35,15 @@ I used two criteria to check for the contrast:
 1. WCAG 2.2 contrast algorithm.
 2.  Accessible Perceptual Contrast Algorithm (APCA), the fancy new algorithm that will be used for WCAG 3.
 
-Then was just a matter of listing out the colours and picking them.
+With the list of colours in hand and a basic [`for...of`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of) loop to iterate over them and calculate the contrasts, it was just a matter of picking the ones I liked most.
 
 ## Picking colours
 
-To generate the final list of colours I used a simple HTML `<form>` element with checkboxes representing all of the colours on the list, the ones that were not selected were styled to show only the colours hexadecimal code.
+To generate the final list of colours I used a simple HTML `<form>` element. Inside the form I ran the loop that generates contrasts and made it output the results to divs with checkboxes.
 
-After that I set some pre-selection criteria, so all colours with a contrast of at least 5 on WCAG and 50 on APCA were pre-selected, all others were not.
+That gave me a representation of all the colours on the list in a nice selectable way. to make things even more explicit, the colour checkboxes that were not `checked` were styled to show only the hexadecimal code and [go to the end of the list](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Ordering_flex_items#the_order_property).
+
+After that I set some pre-selection criteria to make my life easier: All colours with a contrast of at least 5 on WCAG and 50 on APCA were pre-selected, all others were not.
 
 Here is the end result:
 
