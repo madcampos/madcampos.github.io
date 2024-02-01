@@ -7,106 +7,103 @@ import '../assets/css/pages/home.css';
 
 import avatar from '../assets/images/me.jpg';
 import logo from '../assets/images/logo.svg';
-import { Picture } from 'astro:assets';
+import { Image } from 'astro:assets';
 import { BLOG_URL, PROJECTS_URL, TALKS_URL } from '../constants';
-
-type HomeLinks = Record<string, {
-		url: string,
-		icon: string,
-		iconAlt: string,
-		isRelMe?: boolean,
-		isRelAuth?: boolean
-	}>;
-
-const links: HomeLinks = {
-	GitHub: {
-		url: 'https://github.com/madcampos',
-		icon: 'brandico:github',
-		iconAlt: 'An icon with Github\'s logo.',
-		isRelMe: true,
-		isRelAuth: true
-	},
-	CodePen: {
-		url: 'https://codepen.io/madcampos',
-		icon: 'brandico:codepen',
-		iconAlt: 'An icon with Codepen\'s logo.',
-		isRelMe: true
-	},
-	LinkedIn: {
-		url: 'https://www.linkedin.com/in/madcampos/',
-		icon: 'brandico:linkedin-rect',
-		iconAlt: 'An icon with LinkedIn\'s logo.',
-		isRelMe: true
-	},
-	'me@madcampos.dev': {
-		url: 'mailto:me@madcampos.dev',
-		icon: 'uil:envelope',
-		iconAlt: 'An icon with an envelope, meaning "email".',
-		isRelMe: true
-	},
-	'Project Highlights': {
-		url: PROJECTS_URL,
-		icon: 'uil:flask',
-		iconAlt: 'An icon of box, meaning "projects".'
-	},
-	'Talks I\'ve given': {
-		url: TALKS_URL,
-		icon: 'uil:presentation-check',
-		iconAlt: 'An icon of a chat bubble with a user inside, meaning "talks".'
-	},
-	'My Blog': {
-		url: BLOG_URL,
-		icon: 'uil:file-edit-alt',
-		iconAlt: 'An icon of a pen, meaning "blog".'
-	}
-};
 
 // eslint-disable-next-line @typescript-eslint/no-magic-numbers
 const AVATAR_WIDTHS = [256, 512, 768, avatar.width];
 ---
 <BaseLayout
-	title="Web Developer | Marco Campos"
+	title="Marco Campos | Senior Web Developer"
 	description="Marco Campos - Senior Web Developer - Vue.js, Node.js, TypeScript, JavaScript"
 	url="/"
 	tags={['Senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev']}
+	pageSchema="ProfilePage"
 >
-	<h1>
-		<a href="/">
-			<img
-				src={logo.src}
-				width={logo.width}
-				height={logo.height}
-				alt="My moniker, &quot;madcampos&quot;, written between curly braces on a monospaced font."
-			/>
-		</a>
-	</h1>
-	<section id="about">
-		<aside>
-			{/* eslint-disable-next-line astro/jsx-a11y/img-redundant-alt */}
-			<Picture
-				src={avatar}
-				alt="A picture of my face with a smile looking at the camera. I'm wearing aviator glasses, a fake fur winter hat and an orange scarf."
-				loading="eager"
-				widths={AVATAR_WIDTHS}
-				sizes={`(max-width: 360px) 256px, (max-width: 720px) 512px, (max-width: 1280px) 768px, ${avatar.width}px`}
-				quality="high"
-			/>
-		</aside>
-		<article>
-			<p>Hi there! My name is <em>Marco Campos</em>, and I'm a Toronto based developer.</p>
-			<p>I've worked in both frontend and backend development, with focus on responsive and accessible design, typescript and node.js.</p>
+	<div class="h-card vcard">
+		<h1>
+			<a class="u-url url" href="/">
+				<img
+					class="u-logo"
+					src={logo.src}
+					width={logo.width}
+					height={logo.height}
+					alt="My moniker, &quot;madcampos&quot;, written between curly braces on a monospaced font."
+				/>
+			</a>
+		</h1>
+		<section id="about" itemprop="mainEntity" itemtype="https://schema.org/Person" itemscope>
+			<aside>
+				<picture
+					itemprop="image"
+					itemscope
+					itemtype="https://schema.org/ImageObject"
+				>
+					<Image
+						class="u-photo photo"
+						itemprop="contentUrl"
+						src={avatar}
+						alt="A picture of my face with a smile looking at the camera. I'm wearing aviator glasses, a fake fur winter hat and an orange scarf."
+						loading="eager"
+						widths={AVATAR_WIDTHS}
+						sizes={`(max-width: 360px) 256px, (max-width: 720px) 512px, (max-width: 1280px) 768px, ${avatar.width}px`}
+						quality="high"
+					/>
+				</picture>
+			</aside>
+			<article>
+				<p>Hi there! My name is <em class="p-name fn n" itemprop="name"><span class="p-given-name given-name" itemprop="givenName">Marco</span> <span class="p-family-name family-name" itemprop="familyName">Campos</span></em> (<em>@</em><em class="p-nickname nickname" itemprop="alternateName">madcampos</em> on most social networks)!
+				<br/>
+				I'm a <span class="p-category category p-job-title" itemprop="jobTitle">Web Developer</span> based in <span class="p-adr adr" itemprop="address"><span class="p-locality locality" itemprop="addressLocality">Toronto</span>, <span class="p-country-name country-name" itemprop="addressCountry">Canada</span></span>.</p>
 
-			<p>You can find my projects, personal work and social netowrks on:</p>
-			<ul>
-				{Object.entries(links).map(([title, { url, icon, iconAlt, isRelMe, isRelAuth }]) => (
+				<p>I have experience with both frontend and backend development, with focus on responsive and accessible design, typescript and node.js.</p>
+
+				<p>You can find my projects, personal work, blog and some social networks on the links below:</p>
+				<ul>
 					<li>
-						<a href={url} rel={`noreferrer noopener${isRelMe ? ' me' : ''}${isRelAuth ? ' authn' : ''}`}>
-							<Icon name={icon} title={iconAlt} />
-							{title}
+						<a href="https://github.com/madcampos" rel="noreferrer noopener me authn" itemprop="sameAs">
+							<Icon name="brandico:github" title="An icon with Github's logo." />
+							GitHub
 						</a>
 					</li>
-				))}
-			</ul>
-		</article>
-	</section>
+					<li>
+						<a href="https://codepen.io/madcampos" rel="noreferrer noopener me" itemprop="sameAs">
+							<Icon name="brandico:codepen" title="An icon with CodePen's logo." />
+							CodePen
+						</a>
+					</li>
+					<li>
+						<a href="https://www.linkedin.com/in/madcampos/" rel="noreferrer noopener" itemprop="sameAs">
+							<Icon name="brandico:linkedin-rect" title="An icon with LinkedIn's logo." />
+							LinkedIn
+						</a>
+					</li>
+					<li>
+						<a class="u-email email" itemprop="email" href="mailto:me@madcampos.dev" rel="noreferrer noopener me">
+							<Icon name="uil:envelope" title="An icon with an envelope, meaning &quot;email&quot;." />
+							me@madcampos.dev
+						</a>
+					</li>
+					<li>
+						<a href={PROJECTS_URL} rel="noreferrer noopener">
+							<Icon name="uil:flask" title="An icon of box, meaning &quot;projects&quot;." />
+							Project Highlights
+						</a>
+					</li>
+					<li>
+						<a href={TALKS_URL} rel="noreferrer noopener">
+							<Icon name="uil:presentation-check" title="An icon of a chat bubble with a user inside, meaning &quot;talks&quot;." />
+							Talks I've given
+						</a>
+					</li>
+					<li>
+						<a href={BLOG_URL} rel="noreferrer noopener">
+							<Icon name="uil:file-edit-alt" title="An icon of a pen, meaning &quot;blog&quot;." />
+							My Blog
+						</a>
+					</li>
+				</ul>
+			</article>
+		</section>
+	</div>
 </BaseLayout>
