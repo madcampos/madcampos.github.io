@@ -33,6 +33,7 @@ const postUrl = `${BLOG_URL}${url}`;
 	imageAlt={imageAlt}
 	createdAt={createdAt}
 	updatedAt={updatedAt}
+	pageSchema="BlogPosting"
 >
 	<PostHeader
 		slot="header"
@@ -43,7 +44,7 @@ const postUrl = `${BLOG_URL}${url}`;
 		updatedAt={updatedAt}
 	/>
 
-	<article id="post-contents" itemprop="articleBody">
+	<article id="post-contents" itemprop="articleBody" class="e-content">
 		<slot></slot>
 	</article>
 
@@ -74,7 +75,7 @@ const postUrl = `${BLOG_URL}${url}`;
 					<summary>Tags</summary>
 					<ul>
 						{tags.map((tag) => (
-							<li><a href={`${BLOG_TAGS_URL}/${tag}`} class="tag">{tag}</a></li>
+							<li class="p-category"><a href={`${BLOG_TAGS_URL}/${tag}`} class="tag">{tag}</a></li>
 						))}
 					</ul>
 				</details>

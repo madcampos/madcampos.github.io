@@ -43,7 +43,7 @@ const {
 		updatedAt={updatedAt}
 		hasFeed={hasFeed}
 	/>
-	<body>
+	<body class:list={[{ 'h-entry': hasFeed }]}>
 		<slot name="header"></slot>
 		<main>
 			<slot></slot>
