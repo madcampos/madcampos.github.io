@@ -10,21 +10,39 @@ import logo from '../assets/images/logo.svg';
 import { Picture } from 'astro:assets';
 import { BLOG_URL, PROJECTS_URL, TALKS_URL } from '../constants';
 
-const links = {
+type HomeLinks = Record<string, {
+		url: string,
+		icon: string,
+		iconAlt: string,
+		isRelMe?: boolean,
+		isRelAuth?: boolean
+	}>;
+
+const links: HomeLinks = {
 	GitHub: {
 		url: 'https://github.com/madcampos',
 		icon: 'brandico:github',
-		iconAlt: 'An icon with Github\'s logo.'
+		iconAlt: 'An icon with Github\'s logo.',
+		isRelMe: true,
+		isRelAuth: true
 	},
 	CodePen: {
 		url: 'https://codepen.io/madcampos',
 		icon: 'brandico:codepen',
-		iconAlt: 'An icon with Codepen\'s logo.'
+		iconAlt: 'An icon with Codepen\'s logo.',
+		isRelMe: true
 	},
 	LinkedIn: {
 		url: 'https://www.linkedin.com/in/madcampos/',
 		icon: 'brandico:linkedin-rect',
-		iconAlt: 'An icon with LinkedIn\'s logo.'
+		iconAlt: 'An icon with LinkedIn\'s logo.',
+		isRelMe: true
+	},
+	'me@madcampos.dev': {
+		url: 'mailto:me@madcampos.dev',
+		icon: 'uil:envelope',
+		iconAlt: 'An icon with an envelope, meaning "email".',
+		isRelMe: true
 	},
 	'Project Highlights': {
 		url: PROJECTS_URL,
@@ -80,9 +98,9 @@ const AVATAR_WIDTHS = [256, 512, 768, avatar.width];
 
 			<p>You can find my projects, personal work and social netowrks on:</p>
 			<ul>
-				{Object.entries(links).map(([title, { url, icon, iconAlt }]) => (
+				{Object.entries(links).map(([title, { url, icon, iconAlt, isRelMe, isRelAuth }]) => (
 					<li>
-						<a href={url} rel="noreferrer noopener">
+						<a href={url} rel={`noreferrer noopener${isRelMe ? ' me' : ''}${isRelAuth ? ' authn' : ''}`}>
 							<Icon name={icon} title={iconAlt} />
 							{title}
 						</a>
