@@ -52,11 +52,15 @@ const AVATAR_WIDTHS = [256, 512, 768, avatar.width];
 				</picture>
 			</aside>
 			<article>
-				<p>Hi there! My name is <em class="p-name fn n" itemprop="name"><span class="p-given-name given-name" itemprop="givenName">Marco</span> <span class="p-family-name family-name" itemprop="familyName">Campos</span></em> (<em>@</em><em class="p-nickname nickname" itemprop="alternateName">madcampos</em> on most social networks)!
-				<br/>
-				I'm a <span class="p-category category p-job-title" itemprop="jobTitle">Web Developer</span> based in <span class="p-adr adr" itemprop="address"><span class="p-locality locality" itemprop="addressLocality">Toronto</span>, <span class="p-country-name country-name" itemprop="addressCountry">Canada</span></span>.</p>
+				<div class="p-note note" itemprop="description">
+					<p>
+						Hi there! My name is <em class="p-name fn n" itemprop="name"><span class="p-given-name given-name" itemprop="givenName">Marco</span> <span class="p-family-name family-name" itemprop="familyName">Campos</span></em> (<em>@</em><em class="p-nickname nickname" itemprop="alternateName">madcampos</em> on most social networks)!
+						<br/>
+						I'm a <span class="p-category category p-job-title" itemprop="jobTitle">Senior Web Developer</span> based in <span class="p-adr adr" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span class="p-locality locality" itemprop="addressLocality">Toronto</span>, <span class="p-country-name country-name" itemprop="addressCountry">Canada</span></span>.
+					</p>
 
-				<p>I have experience with both frontend and backend development, with focus on responsive and accessible design, typescript and node.js.</p>
+					<p>I have experience with both frontend and backend development, with focus on responsive and accessible design, typescript and node.js.</p>
+				</div>
 
 				<p>You can find my projects, personal work, blog and some social networks on the links below:</p>
 				<ul>
@@ -79,9 +83,9 @@ const AVATAR_WIDTHS = [256, 512, 768, avatar.width];
 						</a>
 					</li>
 					<li>
-						<a class="u-email email" itemprop="email" href="mailto:me@madcampos.dev" rel="noreferrer noopener me">
+						<a href="mailto:me@madcampos.dev" rel="noreferrer noopener me">
 							<Icon name="uil:envelope" title="An icon with an envelope, meaning &quot;email&quot;." />
-							me@madcampos.dev
+							<span class="u-email email" itemprop="email">me@madcampos.dev</span>
 						</a>
 					</li>
 					<li>
