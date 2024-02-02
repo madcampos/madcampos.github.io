@@ -4,10 +4,12 @@ import type { ImageProps } from '../../content/config.ts';
 import { Image } from 'astro:assets';
 
 import BlogNav from '../BlogNav/index.astro';
+import InlineAuthor from '../InlineAuthor/index.astro';
 
 import './styles.css';
 
 import avatar from '../../assets/images/me.jpg';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
 	url: string,
@@ -15,11 +17,12 @@ interface Props {
 	summary: string,
 	createdAt: Date,
 	updatedAt?: Date,
+	hasUpdates?: boolean,
 	image?: ImageProps,
 	imageAlt?: string
 }
 
-const { url, title, summary, createdAt, updatedAt, image, imageAlt } = Astro.props;
+const { url, title, summary, createdAt, updatedAt, hasUpdates, image, imageAlt } = Astro.props;
 
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 ---
@@ -38,27 +41,71 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 		)}
 
 		<div>
-			<h1 class="p-name" itemprop="headline">{title}</h1>
-
-			<div class="visually-hidden" hidden>
-				<a class="u-uid u-url" href={url}>{title}</a>
-				<p class="p-summary" itemprop="description">{summary}</p>
-				<span itemprop="author" itemscope itemtype="https://schema.org/Person">
-					<a class="p-author h-card" rel="author" itemprop="url" href={Astro.site}>
-						<Image class="u-photo" itemprop="image" src={avatar} alt="Marco Campos" loading="lazy" />
-						<span itemprop="name">Marco Campos</span>
-					</a>
-				</span>
-			</div>
+			<a class="u-uid u-url" href={url}>
+				<h1 class="p-name" itemprop="headline">{title}</h1>
+			</a>
 
 			<aside>
-				Published on <time itemprop="datePublished" class="dt-published" datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time>
+				<span>
+					Published on <time itemprop="datePublished" class="dt-published" datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time>
+				</span>
+				<span>
+					by <InlineAuthor
+						name="Marco Campos"
+						avatar={avatar}
+						url={Astro.site}
+					/>
+				</span>
 			</aside>
 			{ updatedAt && (
 				<aside>
 					Updated on <time itemprop="dateModified" class="dt-updated" datetime={updatedAt.toISOString()}>{formatter.format(updatedAt)}</time>
+					{hasUpdates && (
+						<a href="#update-history" aria-label="Jump to updates section">
+							<Icon name="uil:sync-exclamation" />
+						</a>
+					)}
 				</aside>
 			)}
 		</div>
+		<aside id="post-share">
+			<ul>
+				<li>
+					<button
+						id="ps-copy"
+						type="button"
+						title="Copy link to clipboard"
+						aria-label="Copy link to clipboard"
+					>
+						<Icon name="uil:link" />
+					</button>
+				</li>
+				<li>
+					<button
+						id="ps-email"
+						type="button"
+						title="Send an email"
+						aria-label="Send an email"
+					>
+						<Icon name="uil:envelope-share" />
+					</button>
+				</li>
+				<li>
+					<button
+						id="ps-native"
+						type="button"
+						title="Share on your platform"
+						aria-label="Share on your platform"
+					>
+						<Icon name="uil:share-alt" />
+					</button>
+				</li>
+			</ul>
+			<script src="../../assets/js/share.ts"></script>
+		</aside>
+
+		<blockquote id="post-summary" class="p-summary" itemprop="description">
+			<p>{summary}</p>
+		</blockquote>
 	</header>
 </div>

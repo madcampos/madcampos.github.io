@@ -46,16 +46,37 @@ const postUrl = `${BLOG_URL}${url}`;
 		imageAlt={imageAlt}
 		createdAt={createdAt}
 		updatedAt={updatedAt}
+		hasUpdates={updates && updates.length > 0}
 	/>
 
 	<article id="post-contents" itemprop="articleBody" class="e-content">
 		<slot></slot>
 	</article>
 
+	<hr/>
+
 	<footer slot="footer">
+		<aside id="post-license">
+			<p><small><em>Unless otherwise noted, all content on this site is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="u-license">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</em></small></p>
+		</aside>
+
+		{tags && (
+			<aside id="post-tags">
+				<details open>
+					<summary>Tags</summary>
+					<ul>
+						{tags.map((tag) => (
+							<li class="p-category"><a href={`${BLOG_TAGS_URL}/${tag}`} class="tag">{tag}</a></li>
+						))}
+					</ul>
+				</details>
+			</aside>
+		)}
+
 		{updates && (
-			<aside>
-				<details><summary>Update History</summary>
+			<aside id="update-history">
+				<details open>
+					<summary>Update History</summary>
 					<ul>
 						{updates.map((update) => (
 							<li>
@@ -73,58 +94,19 @@ const postUrl = `${BLOG_URL}${url}`;
 				</details>
 			</aside>
 		)}
-		{tags && (
-			<aside id="post-tags">
-				<details>
-					<summary>Tags</summary>
-					<ul>
-						{tags.map((tag) => (
-							<li class="p-category"><a href={`${BLOG_TAGS_URL}/${tag}`} class="tag">{tag}</a></li>
-						))}
-					</ul>
-				</details>
-			</aside>
-		)}
 		<!-- <aside>
 			<details>
 				<summary>This post in other platforms</summary>
+				<ul>
 					<li>
 						<a class="u-syndication u-as-downstream-duplicate u-alternate" rel="syndication" href="">...</a>
 					</li>
 				</ul>
 			</details>
-		</aside>
-		<aside>
-			<details>
-				<summary>Share</summary>
-				<ul>
-					<li>
-						<a href={`https://twitter.com/intent/tweet?text=${title}&url=${postUrl}`}>Twitter</a>
-					</li>
-					<li>
-						<a href={`https://www.facebook.com/sharer/sharer.php?u=${postUrl}`}>Facebook</a>
-					</li>
-					<li>
-						<a href={`https://www.linkedin.com/shareArticle?mini=true&url=${postUrl}&title=${title}`}>LinkedIn</a>
-					</li>
-					<li>
-						<a href={`https://www.reddit.com/submit?url=${postUrl}&title=${title}`}>Reddit</a>
-					</li>
-					<li>
-						<button type="button">Native Share UI</button>
-					</li>
-				</ul>
-			</details>
-		</aside>
-		<aside>
+		</aside> -->
+		<!-- <aside>
 			<details>
 				<summary>Comments and mentions</summary>
-			</details>
-		</aside>
-		<aside id="post-license">
-			<details>
-				<summary>License</summary>
-				<p>Unless otherwise noted, all content on this site is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="u-license">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
 			</details>
 		</aside> -->
 	</footer>

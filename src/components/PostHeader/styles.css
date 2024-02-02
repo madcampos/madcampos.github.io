@@ -2,7 +2,7 @@
 	text-align: center;
 	padding-block-end: 2rem;
 	display: grid;
-	grid-template-columns: 1fr auto 1fr;
+	grid-template-columns: 7rem auto 7rem;
 	grid-template-rows: auto;
 	place-items: start center;
 }
@@ -30,14 +30,21 @@
 	padding: 1rem;
 }
 
-#post-header header:has(#hero-image) {
+#post-header header {
 	position: relative;
-	z-index: 1;
-	overflow: hidden;
 	justify-self: stretch;
 	display: grid;
-	height: 60vh;
 	place-items: end center;
+	grid-template-rows: 1fr auto auto;
+	grid-auto-rows: auto;
+	grid-auto-flow: row;
+	padding: 1rem;
+}
+
+#post-header header:has(#hero-image) {
+	z-index: 1;
+	overflow: hidden;
+	height: 60vh;
 }
 
 #post-header header:has(#hero-image) > *:not(#hero-image) {
@@ -57,6 +64,60 @@
 	/* stylelint-disable-next-line declaration-block-no-duplicate-properties */
 	background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--dark-bg-color), transparent 20%), var(--dark-bg-color));
 	z-index: 0;
+}
+
+#post-summary {
+	border: none;
+	background: var(--bg-color);
+	border-radius: 0.5rem;
+	font-size: small;
+}
+
+#post-share ul {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	margin-block: 0.5rem;
+}
+
+#post-share button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5rem;
+	border: solid var(--border-width) var(--theme-color);
+	background: var(--bg-color);
+	border-radius: 50%;
+	color: var(--theme-color);
+}
+
+#post-share button:focus {
+	background-color: var(--theme-color);
+	color: var(--text-color);
+	border-color: var(--text-color);
+}
+
+#post-share button:hover {
+	background-color: var(--dark-bg-color);
+	color: var(--accent-color);
+	border-color: var(--accent-color);
+	outline-color: var(--accent-color);
+}
+
+#post-share button:active {
+	background-color: var(--accent-color);
+	color: var(--text-color);
+	border-color: var(--text-color);
+	outline-color: var(--text-color);
+}
+
+#post-share button svg {
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
 }
 
 @media (max-width: 768px) {
