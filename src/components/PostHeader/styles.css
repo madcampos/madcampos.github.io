@@ -44,7 +44,7 @@
 #post-header header:has(#hero-image) {
 	z-index: 1;
 	overflow: hidden;
-	height: 60vh;
+	min-height: 60vh;
 }
 
 #post-header header:has(#hero-image) > *:not(#hero-image) {
