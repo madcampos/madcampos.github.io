@@ -12,6 +12,8 @@ import { externalResources, internalResources } from './src/sw-caching';
 
 const manifest: PwaOptions['manifest'] = JSON.parse(readFileSync('./src/manifest.json', { encoding: 'utf8' }));
 
+const mode = process.env['NODE_ENV'] === 'production' ? 'production' : 'development';
+
 export default defineConfig({
 	site: 'https://madcampos.dev/',
 	base: '/',
@@ -25,6 +27,16 @@ export default defineConfig({
 		host: 'localhost',
 		port: 3000
 	},
+	...(mode !== 'production' && {
+		vite: {
+			server: {
+				https: {
+					cert: './certs/server.crt',
+					key: './certs/server.key'
+				}
+			}
+		}
+	}),
 	markdown: {
 		syntaxHighlight: 'shiki',
 		shikiConfig: {
