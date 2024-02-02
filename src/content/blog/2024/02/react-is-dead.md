@@ -1,9 +1,9 @@
 ---
 title: React is dead, long live react
+createdAt: 2024-02-01
 summary: My view on the current react situation and how it is just part of a cycle.
 image: ./assets/galaxy-crown.jpg
 imageAlt: AI generated image of a crown made up of galaxies and stars. The background is made of a city skyline in the vaporwave style. Lines move to the crown
-createdAt: 2024-02-01
 tags:
   - web
   - react

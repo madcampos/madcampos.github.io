@@ -1,12 +1,15 @@
 ---
 title: XML Is Surprisingly Not Dead
 createdAt: 2023-06-30
-summary: A quick post about styling XML feeds and other uses for XML.
-image: ./assets/arcane-c-incantations.jpg
-imageAlt: 'AI generated image for the prompt: "an arcane incantation on an old manuscript with C++ code"'
+updatedAt: 2024-02-02
 updates:
   - date: 2024-01-14
     changes: Fixed link to feed.xml and added a link to the RSS feeds.
+  - date: 2024-02-02
+    changes: Added an image to the post.
+summary: A quick post about styling XML feeds and other uses for XML.
+image: ./assets/arcane-c-incantations.jpg
+imageAlt: 'AI generated image for the prompt: "an arcane incantation on an old manuscript with C++ code"'
 tags:
   - XML
   - web

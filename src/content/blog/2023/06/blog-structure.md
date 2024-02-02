@@ -1,8 +1,15 @@
 ---
 title: The Semantics of Blogging
 createdAt: 2023-06-05
-updatedAt: 2023-06-07
+updatedAt: 2024-02-02
+updates:
+  - date: 2023-06-07
+    changes: Slight review of the content.
+  - date: 2024-02-02
+    changes: Added an image to the post.
 summary: A dive into the semantic html of a blog.
+image: ./assets/arcane-writings.jpg
+imageAlt: 'A close up of a parghement with a hand holding a quill writing on it. The writings are all undecipherable runes.'
 tags:
   - BuildInTheOpen
   - meta

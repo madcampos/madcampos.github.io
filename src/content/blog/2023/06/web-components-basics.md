@@ -1,13 +1,17 @@
 ---
 title: "Web Components: A (Not So) Gentle Introduction"
 createdAt: 2023-06-26
-updatedAt: 2024-01-29
-summary: A brief introduction to web components.
+updatedAt: 2024-02-02
 updates:
   - date: 2023-07-20
     changes: Added cross-link to tabs post.
   - date: 2024-01-29
     changes: Updated embedded codepen iframe.
+  - date: 2024-02-02
+    changes: Added an image to the post.
+summary: A brief introduction to web components.
+image: ./assets/dad-jokes.jpg
+imageAlt: 'A pop art style image of a guy dressed in a shirt with an orange tie, holding a microphone and laughing hard. The background is a brick wall with splatters of white and blue paint.'
 tags:
   - web
   - web-components

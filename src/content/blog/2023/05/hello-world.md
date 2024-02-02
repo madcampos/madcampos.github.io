@@ -1,8 +1,15 @@
 ---
 title: "Hello, World!"
 createdAt: 2023-05-05
-updatedAt: 2023-06-05
+updatedAt: 2024-02-02
+updates:
+  - date: 2023-06-05
+    changes: Formatted post after proof reading.
+  - date: 2024-02-02
+    changes: Added an image to the post.
 summary: Summary of the experience and hurdles of coding this blog.
+image: ./assets/new-waters.jpg
+imageAlt: 'A painting of a boat bursting bow first from the waves with a rainbow on the background.'
 tags:
   - BuildInTheOpen
   - BuildingInPublic

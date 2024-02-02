@@ -1,7 +1,13 @@
 ---
 title: Tabs, Tabs, Tabs
 createdAt: 2023-07-20
+updatedAt: 2024-02-02
+updates:
+  - date: 2024-02-02
+    changes: Added an image to the post.
 summary: A how to guide on building an accessible tab component using Web Components.
+image: ./assets/modern-day-mimic.jpg
+imageAlt: 'A drawing of a mimic, a monster from the game Dungeons and Dragons, disguised as a file cabinet. The mimic has big smiling teeth and googly eyes. The folders on top of the cabinet form a "hair" for the monster.'
 tags:
   - web-components
   - JavaScript

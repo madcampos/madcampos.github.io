@@ -1,7 +1,13 @@
 ---
 title: My CSS Reset
 createdAt: 2024-01-18
+updatedAt: 2024-02-02
+updates:
+  - date: 2024-02-02
+    changes: Added an image to the post.
 summary: A breakdown of my CSS reset file and why each piece is there.
+image: ./assets/pixel-unicorn.jpg
+imageAlt: An AI generated image of a pixel art of a white unicorn head looking to the left. It's mane turns into a rainbow of pixels flowing to the right. The background is dark blue with start.
 tags:
   - CSS
   - html
@@ -15,7 +21,7 @@ This reminded me of a couple of articles I read last year.
 
 And how I approach CSS resets. So, I decided to comment on it because I'm a person on the internet and I have _a moral obligation_ to do that.
 
-Brace yourselves, strong opinions incoming! 
+Brace yourselves, strong opinions incoming!
 
 ![An image composed of four panels, the three first are stretching exercises and the forth one is a finger pressing the "Caps Lock" button.](./assets/arguing-on-the-internet.jpg)
 
