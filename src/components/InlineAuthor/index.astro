@@ -1,0 +1,30 @@
+---
+import { Picture } from 'astro:assets';
+
+import './styles.css';
+
+interface Props {
+	avatar: ImageMetadata,
+	name: string,
+	url?: URL | string
+}
+
+const { avatar, name, url } = Astro.props;
+
+// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+const AVATAR_WIDTHS = [32, 64, 128, 256];
+---
+<span class="inline-author-info" itemprop="author" itemscope itemtype="https://schema.org/Person">
+	<a class="p-author h-card" rel="author" itemprop="url" href={url}>
+		<Picture
+			class="u-photo"
+			itemprop="image"
+			src={avatar}
+			alt="Marco Campos"
+			loading="lazy"
+			widths={AVATAR_WIDTHS}
+			sizes="(max-width: 360px) 32px, (max-width: 720px) 64px, (max-width: 1280px) 128px, 256px"
+		/>
+		<span itemprop="name">{name}</span>
+	</a>
+</span>
