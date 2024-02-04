@@ -61,17 +61,11 @@ const postUrl = `${BLOG_URL}${url}`;
 			<p><small><em>Unless otherwise noted, all content on this site is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="u-license">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</em></small></p>
 		</aside>
 
-		{tags && (
-			<aside id="post-tags">
-				<details open>
-					<summary>Tags</summary>
-					<ul>
-						{tags.map((tag) => (
-							<li class="p-category"><a href={`${BLOG_TAGS_URL}/${tag}`} class="tag">{tag}</a></li>
-						))}
-					</ul>
-				</details>
-			</aside>
+		{tags && tags.length > 0 && (
+			<TagList
+				tags={Object.fromEntries(tags.map((tag) => [tag, `${BLOG_TAGS_URL}/${tag}`]))}
+				isOpen={true}
+			/>
 		)}
 
 		{updates && (
