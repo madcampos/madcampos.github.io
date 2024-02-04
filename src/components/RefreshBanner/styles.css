@@ -13,7 +13,6 @@
 	padding: var(--padding-block) var(--padding-inline);
 
 	background-color: var(--bg-color);
-	border-radius: var(--border-radius);
 
 	z-index: 1;
 }

@@ -24,7 +24,7 @@ body {
 	display: block;
 	width: clamp(5rem, 30vw, 20rem);
 	height: clamp(5rem, 30vw, 20rem);
-	border-radius: var(--pill-border-radius);
+	border-radius: 100vmax;
 	overflow: hidden;
 	border: var(--border-width) solid var(--secondary-color);
 	position: relative;

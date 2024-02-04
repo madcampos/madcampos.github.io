@@ -47,7 +47,6 @@ html, body {
 	outline-offset: var(--margin-block);
 	background-color: var(--bg-color);
 	color: var(--text-color);
-	border-radius: var(--border-radius);
 }
 
 a {

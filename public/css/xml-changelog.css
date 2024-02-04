@@ -4,10 +4,6 @@
 	--small-text: 0.8rem;
 
 	--border-width: 0.1rem;
-	--border-radius: 0.3rem;
-	--pill-border-radius: 100vmax;
-
-	--scrollbar-size: 0.5rem;
 
 	/* Padding */
 	--padding-inline: 0.5rem;
@@ -29,7 +25,6 @@
 	--bg-color: lightgray;
 	--dark-bg-color: whitesmoke;
 	--border-color: silver;
-	--dark-border-color: #444444;
 	--text-color: black;
 	--scrollbar-bg: rgba(255, 255, 255, 0.1);
 
@@ -52,7 +47,6 @@
 		--bg-color: #3c3c3c;
 		--dark-bg-color: #252525;
 		--border-color: #505050;
-		--dark-border-color: #444444;
 		--text-color: whitesmoke;
 		--scrollbar-bg: rgba(255, 255, 255, 0.1);
 
@@ -102,7 +96,6 @@ a:focus {
 	outline: none;
 	background-color: var(--theme-color);
 	color: var(--bg-color);
-	border-radius: var(--border-radius);
 }
 
 a:has(img) {

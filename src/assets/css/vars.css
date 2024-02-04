@@ -3,11 +3,13 @@
 	--body-text: 20px;
 	--small-text: 0.8rem;
 
-	--border-width: 0.1rem;
-	--border-radius: 0.3rem;
-	--pill-border-radius: 100vmax;
+	/* Spacing */
+	--spacing-large: 1rem;
+	--spacing-medium: 0.5rem;
+	--spacing-small: 0.2rem;
 
-	--scrollbar-size: 0.5rem;
+	/* Border */
+	--border-width: 0.1rem;
 
 	/* Padding */
 	--padding-inline: 0.5rem;
@@ -26,12 +28,13 @@
 	--complementary-color: orangered;
 
 	/* Base colors */
+	--text-color: black;
 	--bg-color: silver;
 	--dark-bg-color: whitesmoke;
 	--border-color: dimgray;
-	--dark-border-color: #444444;
-	--text-color: black;
 	--scrollbar-bg: rgba(255, 255, 255, 0.1);
+
+	/* Link colors */
 	--link-color: #065bd1;
 	--link-visited-color: #0080ff;
 	--link-hover-color: #ff8100;
@@ -43,19 +46,14 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		/* Theme colors */
-		--theme-color: #0080ff;
-		--secondary-color: lightblue;
-		--accent-color: #ff8000;
-		--complementary-color: orangered;
-
 		/* Base colors */
+		--text-color: whitesmoke;
 		--bg-color: #3c3c3c;
 		--dark-bg-color: #252525;
 		--border-color: #505050;
-		--dark-border-color: #444444;
-		--text-color: whitesmoke;
 		--scrollbar-bg: rgba(255, 255, 255, 0.1);
+
+		/* Link colors */
 		--link-color: #70b8ff;
 		--link-visited-color: lightblue;
 		--link-hover-color: var(--accent-color);
