@@ -30,8 +30,6 @@
 	grid-area: picture;
 	place-self: center center;
 
-	border-radius: 1rem;
-	border: solid thin var(--theme-color);
 	overflow: hidden;
 
 	width: var(--image-size);
