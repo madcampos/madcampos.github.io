@@ -1,21 +1,22 @@
 ---
+import { getEntry } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 
 import BaseLayout from '../layouts/Base.astro';
+import Avatar from '../components/Avatar/index.astro';
 
 import '../assets/css/pages/home.css';
 
-import avatar from '../assets/images/me.jpg';
 import logo from '../assets/images/logo.svg';
-import { Image } from 'astro:assets';
+
 import { BLOG_URL, PROJECTS_URL, TALKS_URL } from '../constants';
 
-// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-const AVATAR_WIDTHS = [256, 512, 768, avatar.width];
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const { data: { avatar, avatarAlt, name } } = (await getEntry('authors', 'marco'))!;
 ---
 <BaseLayout
-	htmlTitle={['Marco Campos', 'Senior Web Developer']}
-	title="Marco Campos"
+	htmlTitle={[name, 'Senior Web Developer']}
+	title={name}
 	description="Marco Campos - Senior Web Developer - Vue.js, Node.js, TypeScript, JavaScript"
 	url="/"
 	tags={['Senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev']}
@@ -35,22 +36,7 @@ const AVATAR_WIDTHS = [256, 512, 768, avatar.width];
 		</h1>
 		<section id="about" itemprop="mainEntity" itemtype="https://schema.org/Person" itemscope>
 			<aside>
-				<picture
-					itemprop="image"
-					itemscope
-					itemtype="https://schema.org/ImageObject"
-				>
-					<Image
-						class="u-photo photo"
-						itemprop="contentUrl"
-						src={avatar}
-						alt="A picture of my face with a smile looking at the camera. I'm wearing aviator glasses, a fake fur winter hat and an orange scarf."
-						loading="eager"
-						widths={AVATAR_WIDTHS}
-						sizes={`(max-width: 360px) 256px, (max-width: 720px) 512px, (max-width: 1280px) 768px, ${avatar.width}px`}
-						quality="high"
-					/>
-				</picture>
+				<Avatar image={avatar} imageAlt={avatarAlt} />
 			</aside>
 			<article>
 				<div class="p-note note" itemprop="description">
