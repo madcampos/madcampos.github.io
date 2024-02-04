@@ -1,0 +1,27 @@
+---
+import { getEntry } from 'astro:content';
+
+import Avatar from '../Avatar/index.astro';
+import { parseMarkdown } from '../../utils/markdown';
+
+import './styles.css';
+
+interface Props {
+	author: string
+}
+
+const { author } = Astro.props;
+
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const { data: { avatar, avatarAlt, name, website: url }, body } = (await getEntry('authors', author))!;
+const description = await parseMarkdown(body);
+---
+<div class="author-card" itemprop="author" itemscope itemtype="https://schema.org/Person">
+	<Avatar image={avatar} imageAlt={avatarAlt} />
+
+	<a class="p-author h-card" rel="author" itemprop="url" href={url}>
+		<span itemprop="name">{name}</span>
+	</a>
+
+	<p>{description}</p>
+</div>
