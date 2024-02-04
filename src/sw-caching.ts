@@ -1,25 +1,64 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
+
 import type { VitePWAOptions } from 'vite-plugin-pwa';
 
 type Unpacked<T> = NonNullable<T extends (infer U)[] ? U : T>;
 
 type RuntimeCaching = Unpacked<VitePWAOptions['workbox']['runtimeCaching']>;
 
-const baseUrl = 'https://sdrlog.madcampos.dev/';
-
-export const internalResources: RuntimeCaching = {
-	urlPattern: new RegExp(`^${baseUrl}.*`, 'iu'),
-	handler: 'CacheFirst',
+export const pagesCache: RuntimeCaching = {
+	urlPattern: ({ url }) => url.origin === location.origin && !(/\.(?:png|gif|jpg|jpeg|webp|svg|ico|woff2|js|json|xml|xsl|webmanifest|css)$/iu).test(url.pathname),
+	handler: 'NetworkFirst',
 	options: {
-		cacheName: 'app-cache',
+		cacheName: 'pages-cache',
 		expiration: {
-			// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-			maxAgeSeconds: 60 * 60 * 24 * 30,
+			maxAgeSeconds: 60 * 60 * 24,
 			maxEntries: 100
+		},
+		cacheableResponse: {
+			statuses: [0, 200]
 		}
 	}
 };
 
-export const externalResources: RuntimeCaching = {
-	urlPattern: new RegExp(`^(?!${baseUrl}).*`, 'iu'),
+export const assetsCache: RuntimeCaching = {
+	urlPattern: ({ url }) => url.origin === location.origin && (/\.(?:png|gif|jpg|jpeg|webp|svg|ico|woff2)$/iu).test(url.pathname),
+	handler: 'CacheFirst',
+	options: {
+		cacheName: 'assets-cache',
+		expiration: {
+			maxAgeSeconds: 60 * 60 * 24 * 30 * 12,
+			maxEntries: 500
+		},
+		rangeRequests: true,
+		cacheableResponse: {
+			statuses: [0, 200]
+		}
+	}
+};
+
+export const scriptsCache: RuntimeCaching = {
+	urlPattern: ({ url }) => url.origin === location.origin && (/\.(?:js|json|xml|xsl|webmanifest|css)$/iu).test(url.pathname),
+	handler: 'StaleWhileRevalidate',
+	options: {
+		cacheName: 'scripts-cache',
+		expiration: {
+			maxAgeSeconds: 60 * 60 * 24,
+			maxEntries: 100
+		},
+		cacheableResponse: {
+			statuses: [0, 200]
+		},
+		backgroundSync: {
+			name: 'scripts-sync',
+			options: {
+				maxRetentionTime: 60 * 60 * 24
+			}
+		}
+	}
+};
+
+export const externalResourcesCache: RuntimeCaching = {
+	urlPattern: ({ url }) => url.origin !== location.origin,
 	handler: 'NetworkOnly'
 };

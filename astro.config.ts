@@ -8,7 +8,7 @@ import astroIcon from 'astro-icon';
 import remarkBreaks from 'remark-breaks';
 import rehypeExternalLinks from 'rehype-external-links';
 
-import { externalResources, internalResources } from './src/sw-caching';
+import { assetsCache, externalResourcesCache, pagesCache, scriptsCache } from './src/sw-caching';
 
 const manifest: PwaOptions['manifest'] = JSON.parse(readFileSync('./src/manifest.json', { encoding: 'utf8' }));
 
@@ -17,7 +17,7 @@ const mode = process.env['NODE_ENV'] === 'production' ? 'production' : 'developm
 export default defineConfig({
 	site: 'https://madcampos.dev/',
 	base: '/',
-	trailingSlash: 'ignore',
+	trailingSlash: 'never',
 	devToolbar: { enabled: false },
 	compressHTML: true,
 	build: {
@@ -52,12 +52,19 @@ export default defineConfig({
 				includeAssets: ['/icons/favicon.svg'],
 				manifest,
 				workbox: {
+					// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+					maximumFileSizeToCacheInBytes: 1024 * 128,
 					cleanupOutdatedCaches: true,
 					clientsClaim: true,
 					navigationPreload: false,
+					skipWaiting: true,
+					navigateFallback: '/offline',
+					navigateFallbackDenylist: [/\.(?:png|gif|jpg|jpeg|webp|svg|ico)$/iu],
 					runtimeCaching: [
-						internalResources,
-						externalResources
+						externalResourcesCache,
+						assetsCache,
+						scriptsCache,
+						pagesCache
 					]
 				},
 				devOptions: {

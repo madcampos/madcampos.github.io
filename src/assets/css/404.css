@@ -2,6 +2,12 @@ main {
 	text-align: center;
 }
 
+ul {
+	display: inline-block;
+	text-align: start;
+	list-style: '◇ ';
+}
+
 svg {
 	width: 12rem;
 	height: 12rem;
