@@ -4,6 +4,7 @@ import { blogSchema } from '../schemas/blog.ts';
 import { projectsSchema } from '../schemas/projects.ts';
 import { changelogSchema } from '../schemas/changelog.ts';
 import { talksSchema } from '../schemas/talks.ts';
+import { authorsSchema } from '../schemas/authors.ts';
 
 const blogCollection = defineCollection({
 	type: 'content',
@@ -25,16 +26,15 @@ const talksCollection = defineCollection({
 	schema: talksSchema
 });
 
-export interface ImageProps {
-	src: string,
-	width: number,
-	height: number,
-	format: 'png' | 'jpg' | 'jpeg' | 'tiff' | 'webp' | 'gif' | 'svg' | 'avif'
-}
+const authorsCollection = defineCollection({
+	type: 'content',
+	schema: authorsSchema
+});
 
 export const collections = {
 	blog: blogCollection,
 	changelog: changelogCollection,
 	projects: projectsCollection,
-	talks: talksCollection
+	talks: talksCollection,
+	authors: authorsCollection
 };
