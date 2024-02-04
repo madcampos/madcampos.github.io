@@ -52,32 +52,6 @@
 .post-card .post-card-content { grid-area: content; }
 .post-card footer { grid-area: footer; }
 
-.post-card ul {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1rem;
-	list-style: none;
-	padding: 0;
-	margin: 1rem 0;
-}
-
-.post-card .tag {
-	display: inline-block;
-	list-style: none;
-	padding: var(--padding-small) var(--padding-inline);
-	margin: var(--margin-small);
-	border-radius: 100vmax;
-	font-size: 0.75rem;
-	border: solid thin var(--theme-color);
-	background-color: var(--secondary-color);
-	color: #3c3c3c;
-}
-
-.post-card .tag:hover {
-	background-color: var(--theme-color);
-	color: white;
-}
-
 @media (max-width: 500px) {
 	.post-card {
 		--image-size: 8rem;

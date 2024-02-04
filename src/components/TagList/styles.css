@@ -1,0 +1,58 @@
+.tag-list ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+	list-style: none;
+	padding: 0;
+}
+
+.tag-list .tag {
+	--tag-width: 0.5rem;
+	--tag-height: 0.5rem;
+
+	display: inline-block;
+	list-style: none;
+	position: relative;
+	padding: var(--padding-small) var(--padding-inline);
+	padding-inline-start: calc(var(--tag-width) + var(--padding-inline));
+	margin: var(--margin-small);
+	font-size: 0.75rem;
+	color: var(--text-color);
+	overflow: visible;
+}
+
+.tag-list .tag * {
+	position: relative;
+	color: inherit;
+	outline: none;
+	background-color: transparent;
+}
+
+.tag-list .tag::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-color: var(--bg-color);
+	clip-path: polygon(
+		var(--tag-width) 0,
+		100% 0,
+		100% 100%,
+		var(--tag-width) 100%,
+		0 calc(50% + (var(--tag-height) * 0.5)),
+		0 calc(50% - (var(--tag-height) * 0.5))
+	);
+}
+
+.tag-list .tag:hover::before { background-color: var(--text-color); }
+
+.tag-list .tag:focus-within {
+	outline: var(--theme-color) solid var(--border-width);
+	outline-offset: var(--margin-block);
+	color: var(--text-color);
+}
+
+.tag-list .tag:hover {
+	color: var(--link-hover-color);
+	outline-color: var(--link-hover-color);
+}

@@ -4,6 +4,8 @@ import type { ImageProps } from '../../content/config';
 
 import { BLOG_TAGS_URL } from '../../constants';
 
+import TagList from '../TagList/index.astro';
+
 import './styles.css';
 
 interface Props {
@@ -50,14 +52,10 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 
 	<footer>
 		{tags && tags.length > 0 && (
-			<details>
-				<summary>Tags</summary>
-				<ul>
-					{tags.map((tag) => (
-						<a href={`${BLOG_TAGS_URL}/${tag}`} class="tag">{tag}</a>
-					))}
-				</ul>
-			</details>
+			<TagList
+				tags={Object.fromEntries(tags.map((tag) => [tag, `${BLOG_TAGS_URL}/${tag}`]))}
+				isOpen={true}
+			/>
 		)}
 	</footer>
 </article>
