@@ -20,7 +20,7 @@
 		"typecheck": "tsc --noEmit",
 		"lint:js": "eslint src --ext .js,.mjs,.ts,.mts,.astro --fix --ignore-path .gitignore",
 		"lint:css": "stylelint **/*.{css,astro} --fix",
-		"lint": "npm run typecheck && npm run lint:js && npm run lint:css",
+		"lint": "npm run typecheck && npm run lint:js && npm run lint:css && astro check",
 		"lint-staged": "lint-staged",
 		"build:assets": "pwa-assets-generator --config ./pwa-assets-generator.config.ts"
 	},
