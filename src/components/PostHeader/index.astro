@@ -2,11 +2,9 @@
 import { Image } from 'astro:assets';
 
 import BlogNav from '../BlogNav/index.astro';
-import InlineAuthor from '../InlineAuthor/index.astro';
 
 import './styles.css';
 
-import avatar from '../../assets/images/me.jpg';
 import { Icon } from 'astro-icon/components';
 
 interface Props {
@@ -43,18 +41,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 				<h1 class="p-name" itemprop="headline">{title}</h1>
 			</a>
 
-			<aside>
-				<span>
-					Published on <time itemprop="datePublished" class="dt-published" datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time>
-				</span>
-				<span>
-					by <InlineAuthor
-						name="Marco Campos"
-						avatar={avatar}
-						url={Astro.site}
-					/>
-				</span>
-			</aside>
+			<aside>Published on <time itemprop="datePublished" class="dt-published" datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time>.</aside>
 			{ updatedAt && (
 				<aside>
 					Updated on <time itemprop="dateModified" class="dt-updated" datetime={updatedAt.toISOString()}>{formatter.format(updatedAt)}</time>
