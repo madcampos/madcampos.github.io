@@ -1,6 +1,5 @@
 ---
 import { Picture } from 'astro:assets';
-import type { ImageProps } from '../../content/config';
 
 import { BLOG_TAGS_URL } from '../../constants';
 
@@ -11,7 +10,7 @@ import './styles.css';
 interface Props {
 	url: string,
 	createdAt: string | Date,
-	image?: ImageProps,
+	image?: ImageMetadata,
 	imageAlt?: string,
 	tags?: string[]
 }

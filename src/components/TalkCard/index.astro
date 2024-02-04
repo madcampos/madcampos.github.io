@@ -2,8 +2,6 @@
 import { Picture } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 
-import type { ImageProps } from '../../content/config';
-
 import './styles.css';
 
 interface Props {
@@ -11,7 +9,7 @@ interface Props {
 	event?: string,
 	date: Date,
 
-	image?: ImageProps,
+	image?: ImageMetadata,
 	imageAlt?: string
 }
 

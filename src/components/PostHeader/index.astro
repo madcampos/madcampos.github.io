@@ -1,6 +1,4 @@
 ---
-import type { ImageProps } from '../../content/config.ts';
-
 import { Image } from 'astro:assets';
 
 import BlogNav from '../BlogNav/index.astro';
@@ -18,7 +16,7 @@ interface Props {
 	createdAt: Date,
 	updatedAt?: Date,
 	hasUpdates?: boolean,
-	image?: ImageProps,
+	image?: ImageMetadata,
 	imageAlt?: string
 }
 

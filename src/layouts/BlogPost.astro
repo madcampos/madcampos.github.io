@@ -1,6 +1,4 @@
 ---
-import type { ImageProps } from '../content/config.ts';
-
 import { BLOG_TAGS_URL, BLOG_URL } from '../constants';
 
 import '../assets/css/pages/blog-post.css';
@@ -13,7 +11,7 @@ import TagList from '../components/TagList/index.astro';
 interface Props {
 	title: string,
 	summary: string,
-	image?: ImageProps,
+	image?: ImageMetadata,
 	imageAlt?: string,
 	createdAt: Date,
 	updatedAt?: Date,

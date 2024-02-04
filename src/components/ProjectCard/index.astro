@@ -2,8 +2,6 @@
 import { Picture } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 
-import type { ImageProps } from '../../content/config';
-
 import './styles.css';
 
 interface Props {
@@ -13,7 +11,7 @@ interface Props {
 	version?: string,
 	url?: string,
 
-	image?: ImageProps,
+	image?: ImageMetadata,
 	imageAlt?: string,
 
 	techStack?: string[],
