@@ -70,6 +70,33 @@ async function getRelatedPosts(post: CollectionEntry<'blog'>) {
 	return relatedPosts;
 }
 
+function countWords(text: string) {
+	const words = text.split(/\s+/giu)
+		.filter((wordCandidate) => wordCandidate.length > 0)
+		.filter((wordCandidate) => {
+			const isHeader = (/^#+$/ui).exec(wordCandidate);
+
+			return !isHeader;
+		});
+
+	return words.length;
+}
+
+const WORDS_PER_MINUTE = 200;
+
+function calculateReadingTime(text: string) {
+	const words = countWords(text);
+	const minutes = words / WORDS_PER_MINUTE;
+
+	return Math.ceil(minutes);
+}
+
+function countLetters(text: string) {
+	const letters = text.split('').filter((letter) => (/[a-z]/iu).exec(letter));
+
+	return letters.length;
+}
+
 async function formatPostMetadata(post: CollectionEntry<'blog'>) {
 	const slug = formatPostSlug(post);
 	const { year, month, day } = getPostDate(post);
@@ -81,7 +108,10 @@ async function formatPostMetadata(post: CollectionEntry<'blog'>) {
 		month,
 		day,
 		url: getPostUrl(post),
-		relatedPosts: await getRelatedPosts(post)
+		relatedPosts: await getRelatedPosts(post),
+		readingTime: calculateReadingTime(post.body),
+		wordCount: countWords(post.body),
+		letterCount: countLetters(post.body)
 	};
 }
 
