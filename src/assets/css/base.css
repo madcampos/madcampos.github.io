@@ -103,6 +103,11 @@ nav ul {
 	width: clamp(10rem, 50vw, 20rem);
 }
 
+summary {
+	font-weight: bold;
+	color: var(--secondary-color);
+}
+
 .visually-hidden {
 	position: absolute;
 	clip: rect(1px, 1px, 1px, 1px);

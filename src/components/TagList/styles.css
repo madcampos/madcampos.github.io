@@ -1,22 +1,22 @@
 .tag-list ul {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
-	gap: 1rem;
+	justify-content: start;
+	gap: var(--spacing-large);
 	list-style: none;
 	padding: 0;
 }
 
 .tag-list .tag {
-	--tag-width: 0.5rem;
-	--tag-height: 0.5rem;
+	--tag-width: var(--spacing-medium);
+	--tag-height: var(--spacing-medium);
 
 	display: inline-block;
 	list-style: none;
 	position: relative;
-	padding: var(--padding-small) var(--padding-inline);
-	padding-inline-start: calc(var(--tag-width) + var(--padding-inline));
-	margin: var(--margin-small);
+	padding: var(--spacing-small) var(--spacing-medium);
+	padding-inline-start: calc(var(--tag-width) + var(--spacing-medium));
+	margin: var(--spacing-small);
 	font-size: 0.75rem;
 	color: var(--text-color);
 	overflow: visible;
@@ -48,7 +48,7 @@
 
 .tag-list .tag:focus-within {
 	outline: var(--theme-color) solid var(--border-width);
-	outline-offset: var(--margin-block);
+	outline-offset: var(--spacing-small);
 	color: var(--text-color);
 }
 

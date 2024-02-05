@@ -5,9 +5,10 @@
 	grid-template-areas:
 		'header header'
 		'picture content'
+		'picture read-more'
 		'footer footer';
 	grid-template-columns: var(--image-size) 1fr;
-	grid-template-rows: auto 1fr auto;
+	grid-template-rows: auto 1fr auto auto;
 	gap: var(--padding-inline);
 
 	margin: 3rem 0;
@@ -15,11 +16,12 @@
 
 .post-card:not(:has( picture)) {
 	grid-template-areas:
-		'header header'
-		'content content'
-		'footer footer';
+		'header'
+		'content'
+		'read-more'
+		'footer';
 	grid-template-columns: 1fr;
-	grid-template-rows: auto 1fr auto;
+	grid-template-rows: auto 1fr auto auto;
 }
 
 .post-card header { grid-area: header; }
@@ -48,6 +50,7 @@
 }
 
 .post-card .post-card-content { grid-area: content; }
+.post-card .read-more-link { grid-area: read-more; }
 .post-card footer { grid-area: footer; }
 
 @media (max-width: 500px) {
@@ -58,6 +61,7 @@
 			'header'
 			'picture'
 			'content'
+			'read-more'
 			'footer';
 		grid-template-columns: 1fr;
 		grid-template-rows: auto var(--image-size) 1fr auto;
