@@ -37,3 +37,7 @@
 .user-avatar:hover::after {
 	opacity: 0.4;
 }
+
+@media (max-width: 768px) {
+	.user-avatar { --image-size: 8rem; }
+}

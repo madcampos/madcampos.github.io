@@ -1,2 +1,28 @@
-.author-card [rel="author"] {
+.author-card {
+	display: grid;
+	padding-inline: var(--spacing-large);
+	grid-template-columns: auto 1fr;
+	grid-template-rows: auto 1fr;
+	gap: var(--spacing-large);
+	place-items: center;
+	grid-template-areas:
+		"avatar name"
+		"avatar bio";
+}
+
+.author-card .author-name * { margin: 0; }
+
+.author-card .author-picture { grid-area: avatar; }
+.author-card .author-name { grid-area: name; }
+.author-card .author-bio { grid-area: bio; }
+
+@media (max-width: 768px) {
+	.author-card {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto 1fr;
+		grid-template-areas:
+			"avatar"
+			"name"
+			"bio";
+	}
 }

@@ -17,11 +17,18 @@ const { data: { avatar, avatarAlt, name, website: url }, body } = (await getEntr
 const description = await parseMarkdown(body);
 ---
 <div class="author-card" itemprop="author" itemscope itemtype="https://schema.org/Person">
-	<Avatar image={avatar} imageAlt={avatarAlt} />
-
-	<a class="p-author h-card" rel="author" itemprop="url" href={url}>
-		<span itemprop="name">{name}</span>
+	<a class="author-picture" href={url}>
+		<Avatar image={avatar} imageAlt={avatarAlt} />
 	</a>
 
-	<p>{description}</p>
+	<a class="p-author h-card author-name" rel="author" itemprop="url" href={url}>
+		<h2 itemprop="name">{name}</h2>
+	</a>
+
+	<div class="author-bio">
+		<small>
+			{/* eslint-disable-next-line astro/no-set-html-directive */}
+			<Fragment set:html={description}>
+		</small>
+	</div>
 </div>
