@@ -7,6 +7,7 @@ import '../assets/css/code.css';
 import BaseLayout from './Base.astro';
 import PostHeader from '../components/PostHeader/index.astro';
 import TagList from '../components/TagList/index.astro';
+import AuthorCard from '../components/AuthorCard/index.astro';
 
 interface Props {
 	title: string,
@@ -49,23 +50,6 @@ const postUrl = `${BLOG_URL}${url}`;
 	/>
 
 	<article id="post-contents" itemprop="articleBody" class="e-content">
-		<slot></slot>
-	</article>
-
-	<hr/>
-
-	<footer slot="footer">
-		<aside id="post-license">
-			<p><small><em>Unless otherwise noted, all content on this site is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="u-license">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</em></small></p>
-		</aside>
-
-		{tags && tags.length > 0 && (
-			<TagList
-				tags={Object.fromEntries(tags.map((tag) => [tag, `${BLOG_TAGS_URL}/${tag}`]))}
-				isOpen={true}
-			/>
-		)}
-
 		{updates && (
 			<aside id="update-history">
 				<details open>
@@ -86,6 +70,27 @@ const postUrl = `${BLOG_URL}${url}`;
 					</ul>
 				</details>
 			</aside>
+		)}
+
+		<slot></slot>
+	</article>
+
+	<footer slot="footer" id="post-footer">
+		<hr/>
+
+		<aside id="post-license">
+			<small><em>Unless otherwise noted, all content on this site is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="u-license">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</em></small>
+		</aside>
+
+		<hr/>
+		<AuthorCard author="marco" />
+		<hr/>
+
+		{tags && tags.length > 0 && (
+			<TagList
+				tags={Object.fromEntries(tags.map((tag) => [tag, `${BLOG_TAGS_URL}/${tag}`]))}
+				isOpen={true}
+			/>
 		)}
 		<!-- <aside>
 			<details>
