@@ -107,7 +107,7 @@ class CustomTabPanel extends HTMLElement {
 
 The call to `this.attachInternals()` is what makes this component accessible. It creates an [`ElementInternals`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) object that allows us to set the `role` and `aria-selected` attributes. We also set the `tabIndex` and `hidden` properties to make the panel focusable, but out of the tab order by default and hidden when not selected.
 
-Those properties are kept in sync with the attributes using the `attributeChangedCallback` method and setting the attribute value on the property [setter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set). This is done so we can set both the attribute via HTML or the property via javascript and both will get updated.
+Those properties are kept in sync with the attributes using the `attributeChangedCallback` method and setting the attribute value on the property [setter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set). This is done so we can set both the attribute via HTML or the property via JavaScript and both will get updated.
 
 ### The Tabs List
 
@@ -343,7 +343,4 @@ The keyboard navigation is handled by the `keydown` event listener. It will filt
 ## Demo
 
 You can check out the full code on CodePen: [https://codepen.io/madcampos/pen/WNxYoPv](https://codepen.io/madcampos/pen/NWEzogQ)
-
-<iframe src="https://codepen.io/madcampos/embed/NWEzogQ?default-tab=result&editable=true" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin">
-	See the Pen <a href="https://codepen.io/madcampos/pen/NWEzogQ">Dad Jokes - Infinite Scroller</a> by Marco Campos (<a href="https://codepen.io/madcampos">@madcampos</a>) on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+<iframe src="https://codepen.io/madcampos/embed/NWEzogQ?default-tab=result&editable=true" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin">See the Pen <a href="https://codepen.io/madcampos/pen/NWEzogQ">Dad Jokes - Infinite Scroller</a> by Marco Campos (<a href="https://codepen.io/madcampos">@madcampos</a>) on <a href="https://codepen.io">CodePen</a>.</iframe>

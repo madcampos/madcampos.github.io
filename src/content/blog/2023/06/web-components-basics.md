@@ -43,7 +43,7 @@ Now that we got that out of the way, let's talk about web components and why the
 
 The main reason is because it is native to the web, so we don't need to load extra libraries or frameworks to use them.
 
-They also bring the promise of dropping any new component in and just use it, without having to worry about build tools, compatibility or anything else. They are also easy to integrate with any framework you may be using because it is just an html element.
+They also bring the promise of dropping any new component in and just use it, without having to worry about build tools, compatibility or anything else. They are also easy to integrate with any framework you may be using because it is just an HTML element.
 
 _I_ particularly like them because they are close enough to how the web platform works that you can understand them without having to learn new hard to grasp concepts. Yes, I'm looking at you [currying](https://en.wikipedia.org/wiki/Currying).
 
@@ -174,11 +174,7 @@ if (!customElements.get('dad-jokes-bonanza')) {
 ## Putting It All Together
 
 You can check out the full code on CodePen: https://codepen.io/madcampos/pen/WNxYoPv
-<iframe height="300" width="400" scrolling="no" title="Dad Jokes - Infinite Scroller" src="https://codepen.io/madcampos/embed/preview/WNxYoPv?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin">
-  See the Pen <a href="https://codepen.io/madcampos/pen/WNxYoPv">
-  Dad Jokes - Infinite Scroller</a> by Marco Campos (<a href="https://codepen.io/madcampos">@madcampos</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+<iframe height="300" width="400" scrolling="no" title="Dad Jokes - Infinite Scroller" src="https://codepen.io/madcampos/embed/preview/WNxYoPv?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin">See the Pen <a href="https://codepen.io/madcampos/pen/WNxYoPv">Dad Jokes - Infinite Scroller</a> by Marco Campos (<a href="https://codepen.io/madcampos">@madcampos</a>) on <a href="https://codepen.io">CodePen</a>.</iframe>
 
 I intentionally left styling and some complexities related to components to make the post brief and easy to follow.
 The API is extremely powerful and let's us do a lot... but that is for [other posts](../07/tabs-web-component).

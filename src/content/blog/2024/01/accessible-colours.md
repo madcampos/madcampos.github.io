@@ -39,7 +39,7 @@ With the list of colours in hand and a basic [`for...of`](https://developer.mozi
 
 ## Picking colours
 
-To generate the final list of colours I used a simple HTML `<form>` element. Inside the form I ran the loop that generates contrasts and made it output the results to divs with checkboxes.
+To generate the final list of colours I used a simple HTML `<form>` element. Inside the form I ran the loop that generates contrasts and made it output the results to `<div>`s with checkboxes.
 
 That gave me a representation of all the colours on the list in a nice selectable way. to make things even more explicit, the colour checkboxes that were not `checked` were styled to show only the hexadecimal code and [go to the end of the list](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Ordering_flex_items#the_order_property).
 
@@ -47,8 +47,4 @@ After that I set some pre-selection criteria to make my life easier: All colours
 
 Here is the end result:
 
-<iframe height="300" width="400" scrolling="no" title="Color contrast list checking" src="https://codepen.io/madcampos/embed/preview/abMVLXm?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin">
-  See the Pen <a href="https://codepen.io/madcampos/pen/abMVLXm">
-  Color contrast list checking</a> by Marco Campos (<a href="https://codepen.io/madcampos">@madcampos</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+<iframe height="300" width="400" scrolling="no" title="Color contrast list checking" src="https://codepen.io/madcampos/embed/preview/abMVLXm?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin">See the Pen <a href="https://codepen.io/madcampos/pen/abMVLXm">Color contrast list checking</a> by Marco Campos (<a href="https://codepen.io/madcampos">@madcampos</a>) on <a href="https://codepen.io">CodePen</a>.</iframe>

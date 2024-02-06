@@ -64,7 +64,7 @@ The plugin was generating the files on the dev server but when it came time to b
 
 I then dug into the source code for `vite-plugin-virtual-mpa` and tried to create the minimal steps to reproduce the bug.
 
-The trial and error approach didn't help as the problem was too intrenched in the plugin's code and I was not able to find a way to fix it.
+The trial and error approach didn't help as the problem was too entrenched in the plugin's code and I was not able to find a way to fix it.
 
 But after taking a step back it clicked to me:
 
@@ -78,21 +78,19 @@ So, the "plugin" does the following steps:
 1. Walk the `blog` folder and find all the `.md` files
 2. Extract the metadata from the files
 	1. The folder name is the date
-
 		(e.g. `blog/2023-05-05/hello-world.md` is from May 5th, 2023)
 	2. The file name is the slug
-
 		(e.g. `blog/2023-05-05/hello-world.md` is `hello-world`)
 	3. The first header on the file is the title
 		```markdown
 		# Hello, World!
 		```
-	4. The first html comment is the metadata with some fields like `description` and `tags`
+	4. The first HTML comment is the metadata with some fields like `description` and `tags`
 		```html
 		<!-- description: Summary of the experience and hurdles of coding this blog. -->
 		```
 3. Create a file structure on the `src` folder with templates for each page and the extracted metadata
-4. Export a list of files to be injected by vite and rollup
+4. Export a list of files to be injected by Vite and Rollup
 5. Let vite do it's ✨ magic ✨
 6. Profit
 

@@ -22,9 +22,9 @@ tags:
   - LearnToCode
   - FrontendDevelopment
 ---
-Building an html page is fun... until you find yourself lost in a sea of meaningless `<div>`s.
+Building an HTML page is fun... until you find yourself lost in a sea of meaningless `<div>`s.
 
-The problem with html tags and, by extension the problem with language in general, is that _naming_ and _categorizing_ things _is hard_! There is a whole field of taxonomy and people spend years getting a PhD thesis studying how to name and classify things.
+The problem with HTML tags and, by extension the problem with language in general, is that _naming_ and _categorizing_ things _is hard_! There is a whole field of taxonomy and people spend years getting a PhD thesis studying how to name and classify things.
 
 ## Anatomy of an Article Page
 
@@ -90,13 +90,13 @@ The card used on the post lists use a similar structure. (Other templates, inclu
 
 The header tag serves to represent _almost everything_ that comes before the main content of the page. By _almost everything_, I mean data and metadata related to the article, in the case `<nav>` doesn't belong in the header, but the `<aside>` does.
 
-The reason behind it is that `<nav>` in that case is the _global_ page navigation. As for `<aside>`, it is metadata related to the article. That way things are organized and fulfil their semantic purpose.
+The reason behind it is that `<nav>` in that case is the _global_ page navigation. As for `<aside>`, it is metadata related to the article. That way things are organized and fulfill their semantic purpose.
 
 ## What About Metadata?
 
 For adding metadata and representing it, there are mainly three ways to do it:
 
-1. The regular html tags on the `<head>`,
+1. The regular HTML tags on the `<head>`,
 2. [Open Graph](https://ogp.me/) tags, and
 3. [Schema.org](https://schema.org/) properties.
 
@@ -122,7 +122,7 @@ The relevant tags inside the `<head>` looks somewhat like this:
 ```
 
 Thus,
-1. The regular html tags on the `<head>`,
+1. The regular HTML tags on the `<head>`,
 	- The more common `<title>` and `<link>` tags.
 	- They link to the canonical version of the page, i.e. the blog post itself.
 	- They also link to the RSS feed for the blog.

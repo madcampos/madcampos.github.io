@@ -70,13 +70,13 @@ So yeah, while we should thank react for popularizing web apps it is still stuck
 
 ### It's all about data
 
-The "data flows only one way" model of thinking is useful to break of the utter chaos that was angular's "bananas in a box". That thing is _utterly insane_ and create so many hard to track bugs.
+The "data flows only one way" model of thinking is useful to break of the utter chaos that was Angular's "bananas in a box". That thing is _utterly insane_ and create so many hard to track bugs.
 
 But things don't need to be all or nothing. If you look at Vue's model, it has [two way data binding](https://vuejs.org/guide/essentials/forms) but it flows more naturally and don't enforce you to make your code to be a specific way just because the library doesn't support it.[^2]
 
 If you need to make your data move "up" in react you have to either "lift the state up" or use redux.
 
-Lifting the state up creates an issue where your app will rerender over and over even with data that does not change. Even worse, it will rerender _sibling_ components that have nothing to do with the changed data... Because that is how react works.
+Lifting the state up creates an issue where your app will re-render over and over even with data that does not change. Even worse, it will re-render _sibling_ components that have nothing to do with the changed data... Because that is how react works.
 
 Using redux is a whole can of worms on itself. Getting it right is a blessing, but you need to write more boilerplate than a Java app to get something done. At least it is fast... 🤷‍♂️
 
@@ -106,6 +106,6 @@ History tends to repeat itself so react will probably go a slow death and possib
 
 What is interesting about all the current situation is how people got polarized and it is trendy to bash on react. It is just is a product of a context, _a point in time_, that helped push the web forward but got stuck to the way of doing things without a path forward. We have to thank react for all it's contributions but not forget that everything comes to an end.
 
-[^1]: E4X was one of the ideas that showed up on "EcmaScript 4", the dead version of javascript that never came to be.
+[^1]: E4X was one of the ideas that showed up on "ECMAScript 4", the dead version of JavaScript that never came to be.
 [^2]: It seems to me that react only forces people to write immutable code because it doesn't work with proxies.
 [^3]: In the beginning there was some problems with react's licensing and how Facebook was handling the project, that caused the community to be weary of things from the get go. And also functional components, class based components and hooks. All those changes were a pain to follow along.

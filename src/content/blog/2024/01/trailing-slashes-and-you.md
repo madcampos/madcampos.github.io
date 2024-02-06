@@ -77,10 +77,10 @@ And that is where we ended up on the debate about having trailing slashes or not
 
 Nowadays search engines will not care and will index your pages whatever they contain slashes or not. The problem is again, a page with a trailing slash is _technically different_ than a page without one.
 
-To solve the technicality, you have to specify a [canonical URL](https://en.wikipedia.org/wiki/Canonical_link_element) for your page and SEOs will treat both as the same thing.
+To solve the technicality, you have to specify a [canonical URL](https://en.wikipedia.org/wiki/Canonical_link_element) for your page and SEO will treat both as the same thing.
 
 Nowadays it doesn't really matter, but one rule of thumb is to be consistent on what you chose and stick with it.
 
 As a closing note, if you are looking for more thorough insights trailing slashes, this is the post I used as reference, give it a read: https://www.zachleat.com/web/trailing-slash/
 
-[^1]: There is more to it and technically an url does not have to map one-to-one to a file on someone else's computer. But for the sake of this post, let's pretend it does.
+[^1]: There is more to it and technically an URL does not have to map one-to-one to a file on someone else's computer. But for the sake of this post, let's pretend it does.

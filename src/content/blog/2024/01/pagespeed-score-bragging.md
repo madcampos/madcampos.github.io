@@ -40,10 +40,8 @@ The most interesting ones are:
 <dl>
 	<dt>First Contentful Paint</dt>
 	<dd>This shows how much time until something draws on the screen. If your CSS and HTML are small enough, this will be fast.</dd>
-	
 	<dt>Largest Contentful Paint</dt>
 	<dd>It is how much time it takes to load the largest content on the page, be it a image or text. This tells how fast your page is to load big things.</dd>
-	
 	<dt>Cumulative Layout Shift</dt>
 	<dd>It tells how much the content jumps around due to new images, fonts and other assets finishing loading. Shouldn't be a problem if your fonts match in size and if your image tags contain the image intended size.</dd>
 </dl>
@@ -54,7 +52,7 @@ Here are my results:
 
 ## All about speed
 
-[PageSpeed](https://pagespeed.web.dev/) is the online version of Google's lighthouse tool. In it you can test a url in a headless browser and see how that will perform. In this case it is basically a "dark-mode-less" version of Lighthouse.
+[PageSpeed](https://pagespeed.web.dev/) is the online version of Google's lighthouse tool. In it you can test a URL in a headless browser and see how that will perform. In this case it is basically a "dark-mode-less" version of Lighthouse.
 
 Here are my results:
 
@@ -66,7 +64,7 @@ Here are my results:
 
 The web is inherently accessible, it is designed to be used by everyone and take into consideration things we usually don't think about. The problem is in our pursue to make things pretty and shiny we end up stripping much of that inherent context and functionality.
 
-In short, as long as you add descriptions to images, use semantic html and don't try to reinvent the wheel it will work more or less reasonably.
+In short, as long as you add descriptions to images, use semantic HTML and don't try to reinvent the wheel it will work more or less reasonably.
 
 Here are my results by the way:
 
@@ -80,7 +78,7 @@ So, the question now is:
 
 ![A "doge meme". It shows a close up photo of a shiba dog's face with the dog looking to the camera. Overlaid on the image, in comic sans, are the phrases "Much speed!", "Such accessible!", "Many score!", "WOW!", and "100/100".](./assets/doge-score.jpg)
 
-The secret sauce is simplicity and no Javascript! Don't get me wrong, I earn a living by programming in Javascript. _BUT_, when it comes to tools, I must choose the one that is better suited to my use case.
+The secret sauce is simplicity and no JavaScript! Don't get me wrong, I earn a living by programming in JavaScript. _BUT_, when it comes to tools, I must choose the one that is better suited to my use case.
 
 In the case of my site, I want to show it to people on the go, have a couple of relevant links, my picture, and a short description.
 To achieve all of those things I only need HTML and a sprinkle of CSS on top. It doesn't _need_ to be highly dynamic and use something like react.
@@ -89,7 +87,7 @@ _BUT_... I'm cheating here as my site is built with nice react-y components usin
 
 ## Version 1.0
 
-It is interesting to think about how the site came to be. Before using astro for building it the first attempt of producing a site was in plain HTML and using [vite](https://vitejs.dev/). It still didn't have any Javascript and was blazingly fast.
+It is interesting to think about how the site came to be. Before using astro for building it the first attempt of producing a site was in plain HTML and using [Vite](https://vitejs.dev/). It still didn't have any JavaScript and was blazingly fast.
 
 The whole philosophy on how I approach building things is to keep it simple and use the tools available in the best way possible. That means my [first markup](https://github.com/madcampos/madcampos.github.io/blob/f6193b99dec205c840a92088ddb463ae0c6b486b/src/index.html) was already quite accessible.
 

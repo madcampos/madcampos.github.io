@@ -50,7 +50,7 @@ HTML is a neat language and it has some basic functionality to add extra informa
 
 The most basic tag to add is [`<title>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title), it is your page's title and what will show on the browser tab bar.
 
-You can also add [`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link), you can say what the link is about with the [`rel`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel) attribute. Two super important values for that attribute are [`alternate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel#alternate) and [`cnanonical`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel#canonical), they provide an alternative version of the document and the reference url for the document, respectively.
+You can also add [`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link), you can say what the link is about with the [`rel`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel) attribute. Two super important values for that attribute are [`alternate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel#alternate) and [`cnanonical`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel#canonical), they provide an alternative version of the document and the reference URL for the document, respectively.
 
 The most _meta_ of all the tags is [`<meta>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta). It provides a mechanism to set extra _metadata_ about the content, specifically using the attributes [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#name) and [`content`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#content).
 
@@ -102,7 +102,7 @@ Here is an example of the OpenGraph tags on the head of my home page:
 Most of the tags are duplicated, with the exception of the description that uses the original tag and only adds the `property` attribute.
 ### Other social networks
 
-Luckly for us most social media platforms use the OpenGraph tags and only add things if needed be.
+Luckily for us most social media platforms use the OpenGraph tags and only add things if needed be.
 
 But for completeness sake, here are some links on documentation for other properties and social networks:
 - [Twitter](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started)
@@ -117,7 +117,7 @@ What makes this format really nice is the _extensive_ vocabulary for it in [Sche
 
 They also provide a nice validator tool: https://validator.schema.org/
 
-Here is the html, now with microdata properties (`itemprop`, `itemscope`, and `itemtype`) added (some of the content is omitted for brevity):
+Here is the HTML, now with Microdata properties (`itemprop`, `itemscope`, and `itemtype`) added (some of the content is omitted for brevity):
 
 ```html
 <html lang="en-US" itemscope itemtype="https://schema.org/ProfilePage">
@@ -173,7 +173,7 @@ Here is the html, now with microdata properties (`itemprop`, `itemscope`, and `i
 
 There are yet another set of formats to annotate our data, [Microformats](https://microformats.org/)! To make things even more confusing it is actually a set of evolving formats. So to tag your home page with user information it is good to add [`h-card`](https://microformats.org/wiki/h-card) data but also the deprecated yet still backwards compatible [`hCard`](https://microformats.org/wiki/hcard)
 
-I won't add an example here as it is quite similar to Microdata in the sense that it just annotates the html, but with `class` names instead of a specific property. This is mostly useful for [Webmentions](https://indieweb.org/Webmention) the [IndieWeb](https://indieweb.org/).
+I won't add an example here as it is quite similar to Microdata in the sense that it just annotates the HTML, but with `class` names instead of a specific property. This is mostly useful for [Webmentions](https://indieweb.org/Webmention) the [IndieWeb](https://indieweb.org/).
 
 ## Search and you will find
 
