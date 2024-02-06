@@ -1,5 +1,5 @@
 #post-header {
-	max-width: 86rem;
+	max-width: 76rem;
 	margin-inline: auto;
 }
 
@@ -30,7 +30,7 @@
 	justify-self: stretch;
 	display: grid;
 	place-items: end center;
-	gap: var(--spacing-medium);
+	gap: var(--spacing-large);
 	grid-template-rows: auto 1fr auto auto auto;
 	grid-template-columns: 1fr 1fr;
 	grid-template-areas:
