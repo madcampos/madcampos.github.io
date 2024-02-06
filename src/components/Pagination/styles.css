@@ -1,9 +1,11 @@
 #pagination {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	gap: 2rem;
+	gap: var(--spacing-medium);
+	margin: var(--spacing-large);
 }
 
 #pagination ol {
@@ -37,4 +39,8 @@
 #pagination-info {
 	text-align: center;
 	padding: var(--padding-inline) var(--padding-block);
+}
+
+@media (max-width: 768px) {
+	.pagination-link-text { display: none; }
 }

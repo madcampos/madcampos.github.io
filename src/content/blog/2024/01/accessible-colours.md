@@ -2,7 +2,7 @@
 title: Making colours more accessible
 summary: Sharing a problem I got at work and how I solved it
 image: ./assets/rainbow-eye.jpg
-imageAlt: AI generates image of an eye with a radial gradient of a rainbow on it's iris
+imageAlt: AI generated image of an eye with a radial gradient of a rainbow on it's iris
 createdAt: 2024-01-29
 tags:
   - a11y
@@ -47,7 +47,7 @@ After that I set some pre-selection criteria to make my life easier: All colours
 
 Here is the end result:
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="Color contrast list checking" src="https://codepen.io/madcampos/embed/preview/abMVLXm?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin">
+<iframe height="300" width="400" scrolling="no" title="Color contrast list checking" src="https://codepen.io/madcampos/embed/preview/abMVLXm?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin">
   See the Pen <a href="https://codepen.io/madcampos/pen/abMVLXm">
   Color contrast list checking</a> by Marco Campos (<a href="https://codepen.io/madcampos">@madcampos</a>)
   on <a href="https://codepen.io">CodePen</a>.

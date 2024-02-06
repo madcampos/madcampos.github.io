@@ -13,7 +13,10 @@ export interface Post extends Omit<CollectionEntry<'blog'>, 'slug' | 'relatedPos
 	month: string,
 	day: string,
 	url: string,
-	relatedPosts: RelatedPost[]
+	relatedPosts: RelatedPost[],
+	readingTime: number,
+	wordCount: number,
+	letterCount: number
 }
 
 function sortPostsByDate(first: Post, second: Post) {

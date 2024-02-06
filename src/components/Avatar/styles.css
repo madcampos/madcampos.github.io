@@ -1,5 +1,5 @@
 .user-avatar {
-	--image-size: 15rem;
+	--image-size: 10rem;
 
 	display: block;
 
@@ -39,5 +39,5 @@
 }
 
 @media (max-width: 768px) {
-	.user-avatar { --image-size: 8rem; }
+	.user-avatar { --image-size: 6rem; }
 }

@@ -1,4 +1,6 @@
 ---
+import type { RelatedPost } from '../utils/post';
+
 import { BLOG_TAGS_URL, BLOG_URL } from '../constants';
 
 import '../assets/css/pages/blog-post.css';
@@ -18,10 +20,14 @@ interface Props {
 	updatedAt?: Date,
 	updates?: { date: Date, changes: string }[],
 	tags?: string[],
-	url: string
+	url: string,
+	relatedPosts?: RelatedPost[],
+	readingTime?: number,
+	wordCount?: number,
+	letterCount?: number
 }
 
-const { title, summary, image, imageAlt, createdAt, updatedAt, updates, url, tags } = Astro.props;
+const { title, summary, image, imageAlt, createdAt, updatedAt, updates, url, tags, readingTime, wordCount, letterCount } = Astro.props;
 const postUrl = `${BLOG_URL}${url}`;
 ---
 <BaseLayout
@@ -47,6 +53,9 @@ const postUrl = `${BLOG_URL}${url}`;
 		createdAt={createdAt}
 		updatedAt={updatedAt}
 		hasUpdates={updates && updates.length > 0}
+		readingTime={readingTime}
+		wordCount={wordCount}
+		letterCount={letterCount}
 	/>
 
 	<article id="post-contents" itemprop="articleBody" class="e-content">
@@ -75,16 +84,11 @@ const postUrl = `${BLOG_URL}${url}`;
 		<slot></slot>
 	</article>
 
+	<hr/>
+
 	<footer slot="footer" id="post-footer">
-		<hr/>
 
-		<aside id="post-license">
-			<small><em>Unless otherwise noted, all content on this site is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="u-license">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</em></small>
-		</aside>
-
-		<hr/>
 		<AuthorCard author="marco" />
-		<hr/>
 
 		{tags && tags.length > 0 && (
 			<TagList
@@ -107,5 +111,9 @@ const postUrl = `${BLOG_URL}${url}`;
 				<summary>Comments and mentions</summary>
 			</details>
 		</aside> -->
+
+		<aside id="post-license">
+			<small><em>Unless otherwise noted, all content on this site is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="u-license">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</em></small>
+		</aside>
 	</footer>
 </BaseLayout>

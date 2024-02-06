@@ -45,6 +45,7 @@ const { posts, title = '', baseUrl, currentUrl, currentPage, lastPage, prevUrl, 
 		{posts.map((post) => (
 			<PostCard
 				url={`${BLOG_URL}${post.url}`}
+				title={post.data.title}
 				createdAt={post.data.createdAt.toISOString()}
 				image={post.data.image}
 				imageAlt={post.data.imageAlt}

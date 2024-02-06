@@ -52,6 +52,7 @@ html, body {
 a {
 	color: var(--link-color);
 	overflow-wrap: break-word;
+	word-break: break-word;
 	text-underline-offset: 0.15em;
 	text-decoration-skip-ink: auto;
 	text-decoration-thickness: 0.08em;

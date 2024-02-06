@@ -15,16 +15,23 @@ interface Props {
 	updatedAt?: Date,
 	hasUpdates?: boolean,
 	image?: ImageMetadata,
-	imageAlt?: string
+	imageAlt?: string,
+	readingTime?: number,
+	wordCount?: number,
+	letterCount?: number
 }
 
-const { url, title, summary, createdAt, updatedAt, hasUpdates, image, imageAlt } = Astro.props;
+const { url, title, summary, createdAt, updatedAt, hasUpdates, image, imageAlt, readingTime, wordCount } = Astro.props;
 
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 ---
 <div id="post-header">
-	<BlogNav />
 	<header>
+		<BlogNav />
+		<a id="post-title" class="u-uid u-url" href={url}>
+			<h1 class="p-name" itemprop="headline">{title}</h1>
+		</a>
+
 		{image && (
 			<Image
 				itemprop="image"
@@ -36,24 +43,41 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 			/>
 		)}
 
-		<div>
-			<a class="u-uid u-url" href={url}>
-				<h1 class="p-name" itemprop="headline">{title}</h1>
-			</a>
+		<blockquote id="post-summary" class="p-summary" itemprop="description">
+			<p>{summary}</p>
+		</blockquote>
 
-			<aside>Published on <time itemprop="datePublished" class="dt-published" datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time>.</aside>
-			{ updatedAt && (
-				<aside>
-					Updated on <time itemprop="dateModified" class="dt-updated" datetime={updatedAt.toISOString()}>{formatter.format(updatedAt)}</time>
-					{hasUpdates && (
-						<a href="#update-history" aria-label="Jump to updates section">
-							<Icon name="uil:sync-exclamation" />
-						</a>
+		<aside id="post-metadata">
+			<small>
+				<span>
+					Published on <time itemprop="datePublished" class="dt-published" datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time>.
+				</span>
+
+				{ updatedAt && (
+					<span>
+						Updated on <time itemprop="dateModified" class="dt-updated" datetime={updatedAt.toISOString()}>{formatter.format(updatedAt)}</time>
+						{hasUpdates && (
+							<a href="#update-history" aria-label="Jump to updates section">
+								<Icon name="uil:sync-exclamation" />
+							</a>
+						)}
+					</span>
+				)}
+			</small>
+
+			{readingTime && (
+				<small>
+					<time itemprop="timeRequired" class="dt-duration" datetime={`PT${readingTime}M`}>
+						{readingTime} minute read
+					</time>
+					{wordCount && (
+						<span> &mdash; {wordCount} words</span>
 					)}
-				</aside>
+				</small>
 			)}
-		</div>
-		<aside id="post-share">
+		</aside>
+
+		<nav id="post-share" aria-label="Share menu">
 			<ul>
 				<li>
 					<button
@@ -87,10 +111,6 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 				</li>
 			</ul>
 			<script src="../../assets/js/share.ts"></script>
-		</aside>
-
-		<blockquote id="post-summary" class="p-summary" itemprop="description">
-			<p>{summary}</p>
-		</blockquote>
+		</nav>
 	</header>
 </div>

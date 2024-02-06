@@ -1,15 +1,6 @@
-#hero-image {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	object-position: center;
-	position: absolute;
-	z-index: -1;
-}
-
 main, #post-footer {
 	max-width: 76rem;
-	margin-inline: min(10vw,8rem);
+	margin-inline: auto;
 }
 
 #post-contents {
@@ -17,6 +8,7 @@ main, #post-footer {
 
 	text-wrap: pretty;
 	overflow-wrap: break-word;
+	margin-inline: min(10vw, 8rem);
 }
 
 #post-contents h1:first-of-type {
@@ -56,9 +48,9 @@ iframe {
 
 	display: block;
 	margin-inline: auto;
-	min-width: 10rem;
+	min-width: 5rem;
 	min-height: 5rem;
-	width: clamp(10rem, 100%, 70rem);
+	width: clamp(5rem, 100%, 70rem);
 	height: auto;
 	aspect-ratio: 3 / 2;
 }
@@ -66,17 +58,20 @@ iframe {
 hr {
 	border: none;
 	border-top: var(--border-width) dashed var(--theme-color);
-	margin-block: var(--spacing-large);
+	margin: calc(var(--spacing-large) * 2) min(15vw, 12rem) var(--spacing-large);
 }
 
-footer aside {
-	margin-block-end: 1rem;
+#post-footer {
+	padding: var(--spacing-large);
+	margin-block-end: var(--spacing-large);
 }
 
 #post-license {
 	font-size: smaller;
 	background: var(--bg-color);
 	padding: var(--spacing-large);
+	margin-block-start: var(--spacing-large);
+	text-align: center;
 }
 
 @media (max-width: 768px) {
