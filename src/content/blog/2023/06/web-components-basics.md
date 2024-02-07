@@ -23,6 +23,8 @@ tags:
   - BreakIntoTech
   - LearnToCode
   - FrontendDevelopment
+relatedPosts:
+  - tabs-web-component
 ---
 **Note**: Please don't take this post seriously, it contains irony. If you are _not_ immune to it, go vaccinate yourself and come back later.
 

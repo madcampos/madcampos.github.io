@@ -66,6 +66,34 @@ hr {
 	margin-block-end: var(--spacing-large);
 }
 
+#related-posts {
+	margin-block: var(--spacing-large);
+}
+
+#related-posts #related-posts-wrapper {
+	display: block;
+	margin-inline: auto;
+	max-width: 76rem;
+	width: calc(100cqw - var(--spacing-large) * 4);
+	overflow-x: auto;
+}
+
+#related-posts ul {
+	display: flex;
+	list-style: none;
+	gap: var(--spacing-large);
+	padding: 0;
+	margin: 0;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+}
+
+#related-posts li {
+	scroll-margin: var(--spacing-large);
+	scroll-snap-align: center;
+	scroll-snap-stop: always;
+}
+
 #post-license {
 	font-size: smaller;
 	background: var(--bg-color);

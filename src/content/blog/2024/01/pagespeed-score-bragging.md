@@ -1,15 +1,17 @@
 ---
 title: How I got 100 score on PageSpeed
-summary: Bragging and breakdown on how I optimized my site.
 createdAt: 2024-01-26
+summary: Bragging and breakdown on how I optimized my site.
+image: ./assets/doge-score.jpg
+imageAlt: A "doge meme". It shows a close up photo of a shiba dog's face with the dog looking to the camera. Overlaid on the image, in comic sans, are the phrases "Much speed!", "Such accessible!", "Many score!", "WOW!", and "100/100".
 tags:
   - astro
   - BuildInTheOpen
   - FrontendDevelopment
   - meta
   - web
-image: ./assets/doge-score.jpg
-imageAlt: A "doge meme". It shows a close up photo of a shiba dog's face with the dog looking to the camera. Overlaid on the image, in comic sans, are the phrases "Much speed!", "Such accessible!", "Many score!", "WOW!", and "100/100".
+relatedPosts:
+  - going-astro
 ---
 [Now this is a story all about how I got a perfect score and assets size down...](https://youtu.be/1nCqRmx3Dnw?si=QhtnwGRPyCN0u_rE) 🎤🎶
 

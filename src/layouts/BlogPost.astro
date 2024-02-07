@@ -10,6 +10,7 @@ import BaseLayout from './Base.astro';
 import PostHeader from '../components/PostHeader/index.astro';
 import TagList from '../components/TagList/index.astro';
 import AuthorCard from '../components/AuthorCard/index.astro';
+import PostCardSmall from '../components/PostCardSmall/index.astro';
 
 interface Props {
 	title: string,
@@ -27,7 +28,7 @@ interface Props {
 	letterCount?: number
 }
 
-const { title, summary, image, imageAlt, createdAt, updatedAt, updates, url, tags, readingTime, wordCount, letterCount } = Astro.props;
+const { title, summary, image, imageAlt, createdAt, updatedAt, updates, url, tags, readingTime, wordCount, letterCount, relatedPosts } = Astro.props;
 const postUrl = `${BLOG_URL}${url}`;
 ---
 <BaseLayout
@@ -90,12 +91,6 @@ const postUrl = `${BLOG_URL}${url}`;
 
 		<AuthorCard author="marco" />
 
-		{tags && tags.length > 0 && (
-			<TagList
-				tags={Object.fromEntries(tags.map((tag) => [tag, `${BLOG_TAGS_URL}/${tag}`]))}
-				isOpen={true}
-			/>
-		)}
 		<!-- <aside>
 			<details>
 				<summary>This post in other platforms</summary>
@@ -111,6 +106,35 @@ const postUrl = `${BLOG_URL}${url}`;
 				<summary>Comments and mentions</summary>
 			</details>
 		</aside> -->
+
+		{tags && tags.length > 0 && (
+			<TagList
+				tags={Object.fromEntries(tags.map((tag) => [tag, `${BLOG_TAGS_URL}/${tag}`]))}
+				isOpen={true}
+			/>
+		)}
+
+		{relatedPosts && relatedPosts.length > 0 && (
+			<details id="related-posts" open>
+				<summary>Related Posts</summary>
+				<div id="related-posts-wrapper">
+					<ul>
+						{relatedPosts.map((post) => (
+							<li>
+								<PostCardSmall
+									url={post.url}
+									image={post.image}
+									imageAlt={post.imageAlt}
+								>
+									<span slot="title">{post.title}</span>
+									{post.summary}
+								</PostCardSmall>
+							</li>
+						))}
+					</ul>
+				</div>
+			</details>
+		)}
 
 		<aside id="post-license">
 			<small><em>Unless otherwise noted, all content on this site is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="u-license">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</em></small>

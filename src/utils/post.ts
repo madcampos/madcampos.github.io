@@ -4,7 +4,12 @@ export const MAX_POSTS_PER_PAGE = 10;
 
 export interface RelatedPost {
 	slug: string,
-	url: string
+	url: string,
+	title: string,
+	summary: string,
+	image?: ImageMetadata,
+	imageAlt?: string,
+	createdAt: Date
 }
 
 export interface Post extends Omit<CollectionEntry<'blog'>, 'slug' | 'relatedPosts'> {
@@ -61,11 +66,18 @@ async function getRelatedPosts(post: CollectionEntry<'blog'>) {
 
 	const relatedPosts: RelatedPost[] = [];
 
-	for (const otherPost of posts) {
-		if (post.data.relatedPosts?.includes(otherPost.slug)) {
+	for (const relatedPost of post.data.relatedPosts ?? []) {
+		const otherPost = posts.find((entry) => formatPostSlug(entry) === relatedPost);
+
+		if (otherPost) {
 			relatedPosts.push({
 				slug: formatPostSlug(otherPost),
-				url: getPostUrl(otherPost)
+				url: getPostUrl(otherPost),
+				title: otherPost.data.title,
+				summary: otherPost.data.summary,
+				image: otherPost.data.image,
+				imageAlt: otherPost.data.imageAlt,
+				createdAt: otherPost.data.createdAt
 			});
 		}
 	}

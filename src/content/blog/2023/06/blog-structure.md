@@ -21,6 +21,9 @@ tags:
   - BreakIntoTech
   - LearnToCode
   - FrontendDevelopment
+relatedPosts:
+  - hello-world
+  - going-astro
 ---
 Building an HTML page is fun... until you find yourself lost in a sea of meaningless `<div>`s.
 

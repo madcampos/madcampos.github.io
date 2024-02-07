@@ -2,6 +2,8 @@
 title: Going astro 🚀
 createdAt: 2024-01-14
 summary: A tale of how I went from a vite site to an astro site and the hurdles along the way.
+image: ./assets/astro-corgi.jpg
+imageAlt: AI generated image of a corgi on a red rocket costume flying through space with planets and rainbows on the background.
 tags:
   - BuildInTheOpen
   - BuildingInPublic
@@ -10,8 +12,10 @@ tags:
   - astro
   - vite
   - 11ty
-image: ./assets/astro-corgi.jpeg
-imageAlt: AI generated image of a corgi on a red rocket costume flying through space with planets and rainbows on the background.
+relatedPosts:
+  - hello-world
+  - blog-structure
+  - pagespeed-score-bragging
 ---
 So, I migrated my blog and website to [Astro](https://astro.build)...
 

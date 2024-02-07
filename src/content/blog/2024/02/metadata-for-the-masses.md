@@ -1,7 +1,7 @@
 ---
 title: Metadata for the masses
-summary: A guide on tools and how to add metadata to your website
 createdAt: 2024-02-02
+summary: A guide on tools and how to add metadata to your website
 image: ./assets/web-pages.jpg
 imageAlt: AI generated image of a pile of books covered in spider webs with mountains shining on the horizon in the background.
 draft: true
@@ -13,6 +13,10 @@ tags:
   - meta
   - web
   - VintageTech
+relatedPosts:
+  - going-astro
+  - blog-structure
+  - xml-is-not-dead
 ---
 After my [explorations on RSS](https://madcampos.dev/blog/2023/06/xml-is-not-dead) I was dragged into yet another rabbit hole... Metadata!
 

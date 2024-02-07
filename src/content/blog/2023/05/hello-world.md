@@ -17,6 +17,9 @@ tags:
   - coding
   - vite
   - TS
+relatedPosts:
+  - blog-structure
+  - going-astro
 ---
 This is how I built this blog, or at least the first iteration of it. So please ride along on this journey of sweet success and sorrowful cryptic error messages.
 But first let me vent out on my frustrations on modern front-end tooling...

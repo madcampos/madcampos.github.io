@@ -1,7 +1,7 @@
 ---
 title: Yes, no, maybe 🎱
-summary: A study on intermediate state checkboxes and how to handle state in react.
 createdAt: 2024-02-05
+summary: A study on intermediate state checkboxes and how to handle state in react.
 draft: true
 tags:
   - BuildingInPublic
