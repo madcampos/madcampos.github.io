@@ -36,5 +36,7 @@ const { htmlTitle, title, description, url, tags, image, imageAlt, createdAt, up
 	<PageHeader slot="header">
 		<slot name="header"></slot>
 	</PageHeader>
-	<slot></slot>
+	<div id="contents">
+		<slot></slot>
+	</div>
 </BaseLayout>

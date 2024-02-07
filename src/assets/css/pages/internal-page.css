@@ -1,6 +1,11 @@
 main {
-	padding-inline: 1rem;
+	max-width: 76rem;
+	margin-inline: auto;
 	padding-block-end: 1rem;
+}
+
+#contents {
+	margin-inline: min(10vw, 8rem);
 }
 
 iframe {

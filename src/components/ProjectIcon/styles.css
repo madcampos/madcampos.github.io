@@ -1,0 +1,19 @@
+.project-icon {
+	display: block;
+
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1 / 1;
+	overflow: hidden;
+	mask: url('../../assets/images/squircle.svg');
+	mask-size: contain;
+	mask-position: center;
+	mask-repeat: no-repeat;
+}
+
+.project-icon img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: top center;
+}
