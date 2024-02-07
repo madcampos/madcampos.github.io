@@ -4,8 +4,6 @@ main, #post-footer {
 }
 
 #post-contents {
-	font-family: var(--sans-serif-font-family);
-
 	text-wrap: pretty;
 	overflow-wrap: break-word;
 	margin-inline: min(10vw, 8rem);
