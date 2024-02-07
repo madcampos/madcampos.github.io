@@ -15,6 +15,8 @@ techStack:
   - Regular Expressions
   - Unicode strings
 ---
-A study on how strings work, including UTF8 encoding, handling of accented characters and emoji.
+The project is a small tool to map text to other "writings" much like old text generators from the early 2000's era.
 
-The project is a small tool to map text to other "writings" much like old text generators from the MSN era.
+It is a study on how to work with strings in JavaScript. Topics includes string spliting, normalization, handling of accented characters, and emoji.
+
+Most of the work are inspired by the articles [Unicode strings in JavaScript](https://2ality.com/2013/09/javascript-unicode.html) by Dr. Axel Rauschmayer and [JavaScript has a Unicode problem](https://mathiasbynens.be/notes/javascript-unicode) by Mathias Bynens.
