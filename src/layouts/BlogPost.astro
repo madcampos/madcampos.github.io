@@ -122,7 +122,7 @@ const postUrl = `${BLOG_URL}${url}`;
 						{relatedPosts.map((post) => (
 							<li>
 								<PostCardSmall
-									url={post.url}
+									url={`${BLOG_URL}${post.url}`}
 									image={post.image}
 									imageAlt={post.imageAlt}
 								>
