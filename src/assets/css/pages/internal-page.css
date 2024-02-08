@@ -1,4 +1,5 @@
 main {
+	width: 100%;
 	max-width: 76rem;
 	margin-inline: auto;
 	padding-block-end: 1rem;
@@ -14,4 +15,10 @@ iframe {
 	height: 80vh;
 	margin-inline: auto;
 	display: block;
+}
+
+@media (max-width: 768px) {
+	#contents {
+		margin-inline: 0;
+	}
 }

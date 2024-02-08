@@ -42,6 +42,7 @@
 
 .project-card header aside {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	gap: var(--spacing-large);
 	margin-block-start: var(--spacing-small);
@@ -114,7 +115,7 @@
 
 @media (max-width: 850px) {
 	.project-card {
-		--image-size: 12rem;
+		--image-size: 10rem;
 
 		grid-template-areas:
 			'header'
