@@ -1,7 +1,5 @@
 import type { APIRoute } from 'astro';
 
-import { stat } from 'node:fs/promises';
-
 import rss, { type RSSFeedItem } from '@astrojs/rss';
 import { getImage } from 'astro:assets';
 
@@ -14,8 +12,6 @@ import { parseMarkdown } from '../../utils/markdown';
 export const GET: APIRoute = async (context) => {
 	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 	const ONE_WEEK_IN_MINUTES = 60 * 24 * 7;
-	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-	const TEN_KB_IN_BYTES = 10 * 1024;
 
 	const blogImage = await getImage({ src: defaultImage, format: 'png', width: 512, height: 512 });
 	const blogUrl = new URL(BLOG_URL, context.site).toString();
@@ -51,21 +47,9 @@ export const GET: APIRoute = async (context) => {
 		`,
 		items: await Promise.all(allPosts.map(async (post) => {
 			let image;
-			let imageSize = TEN_KB_IN_BYTES;
 
 			if (post.data.image) {
-				const sourceFilePath = post.data.image.src.replace(/^\/@fs/iu, '').replace(/\?.+$/iu, '');
-				const buildFilePath = import.meta.url.replace(/\/dist\/.*$/iu, `/dist${sourceFilePath}`).replace(/^file:\/\//iu, '');
-
 				image = await getImage({ src: post.data.image, format: 'png' });
-
-				// If we are in dev mode, the paths will be diferent.
-				// If we are in build mode, one will be part of the other.
-				if (buildFilePath.includes(sourceFilePath)) {
-					imageSize = (await stat(buildFilePath)).size;
-				} else {
-					imageSize = (await stat(sourceFilePath)).size;
-				}
 			}
 
 			const content = await parseMarkdown(post.body);
@@ -81,7 +65,7 @@ export const GET: APIRoute = async (context) => {
 					enclosure: {
 						url: new URL(image.src, context.site).toString(),
 						type: 'image/png',
-						length: imageSize
+						length: 0
 					},
 					customData: `
 						<media:content
