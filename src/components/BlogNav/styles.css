@@ -1,6 +1,7 @@
 #back-to-blog {
 	width: 6rem;
-	height: 6rem;
+	height: auto;
+	aspect-ratio: 1 / 1;
 	margin: 1rem;
 }
 
@@ -13,7 +14,11 @@
 #back-to-blog #link-mobile { display: none; }
 
 @media (max-width: 650px) {
-	#back-to-blog { width: clamp(10rem, 70vmin, 30rem); }
+	#back-to-blog {
+		width: 100%;
+		aspect-ratio: 4 / 2;
+	}
+
 	#back-to-blog #link-desktop { display: none; }
 	#back-to-blog #link-mobile { display: block; }
 }

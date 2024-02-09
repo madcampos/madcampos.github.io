@@ -1,4 +1,5 @@
 #post-header {
+	width: 100%;
 	max-width: 76rem;
 	margin-inline: auto;
 }
@@ -60,8 +61,9 @@
 #post-header #hero-image {
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
+	object-fit: contain;
 	grid-area: hero-image;
+	overflow: hidden;
 }
 
 #post-summary {
@@ -78,11 +80,12 @@
 }
 
 #post-metadata {
+	width: 100%;
 	grid-area: metadata;
 	text-align: center;
 	display: flex;
+	flex-flow: column wrap;
 	justify-content: center;
-	flex-direction: column;
 	gap: var(--spacing-medium);
 }
 
@@ -93,7 +96,9 @@
 #post-share { grid-area: share; }
 
 #post-share ul {
+	width: 100%;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	gap: var(--spacing-large);
 	list-style: none;
