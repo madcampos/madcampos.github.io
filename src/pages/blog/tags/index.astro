@@ -1,0 +1,41 @@
+---
+import { BLOG_DESCRIPTION, BLOG_TAGS, BLOG_TAGS_URL, BLOG_TITLE } from '../../../constants';
+
+import BaseLayout from '../../../layouts/Base.astro';
+import BlogPageHeader from '../../../components/BlogPageHeader/index.astro';
+
+import { listTags } from '../../../utils/post';
+
+import '../../../assets/css/pages/internal-page.css';
+import '../../../assets/css/pages/tags.css';
+
+const tags = await listTags();
+---
+<BaseLayout
+	htmlTitle={['Tags', ...BLOG_TITLE]}
+	title="Tags for Macro Campos' blog"
+	description={BLOG_DESCRIPTION}
+	url={BLOG_TAGS_URL}
+	tags={BLOG_TAGS}
+	hasFeed={true}
+	pageSchema="ItemList"
+>
+	<meta itemprop="name" content="Tags for Macro Campos' blog" />
+	<link itemprop="itemListOrder" href="https://schema.org/ItemListUnordered" />
+	<meta itemprop="numberOfItems" content={tags.length.toString()} />
+
+	<BlogPageHeader title="Tags for Macro Campos' blog" slot="header" />
+
+
+	<div id="contents">
+		<ul id="tag-list">
+			{tags.map((tag) => (
+				<li class="tag">
+					<a href={`${BLOG_TAGS_URL}/${tag}`} itemprop="url">
+						<span itemprop="itemListElement">{tag}</span>
+					</a>
+				</li>
+			))}
+		</ul>
+	</div>
+</BaseLayout>

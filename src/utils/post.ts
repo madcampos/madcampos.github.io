@@ -210,3 +210,18 @@ export async function listPostPagesByTag() {
 
 	return tags;
 }
+
+export async function listTags() {
+	const posts = await listAllPosts();
+	const tags: string[] = [];
+
+	for (const post of posts) {
+		for (const tag of post.data.tags ?? []) {
+			if (!tags.includes(tag)) {
+				tags.push(tag);
+			}
+		}
+	}
+
+	return tags;
+}

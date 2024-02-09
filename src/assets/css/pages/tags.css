@@ -1,15 +1,16 @@
-.tag-list ul {
+#tag-list {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: start;
-	gap: var(--spacing-medium);
+	gap: var(--spacing-large);
 	list-style: none;
 	padding: 0;
+	margin: 0;
+	margin-block: var(--spacing-large);
 }
 
-.tag-list .tag {
-	--tag-width: var(--spacing-medium);
-	--tag-height: var(--spacing-medium);
+#tag-list .tag {
+	--tag-width: 0.7rem;
+	--tag-height: 0.7rem;
 
 	display: inline-block;
 	list-style: none;
@@ -17,19 +18,19 @@
 	padding: var(--spacing-small) var(--spacing-medium);
 	padding-inline-start: calc(var(--tag-width) + var(--spacing-medium));
 	margin: var(--spacing-small);
-	font-size: 0.75rem;
+	font-size: 1.3rem;
 	color: var(--text-color);
 	overflow: visible;
 }
 
-.tag-list .tag * {
+#tag-list .tag * {
 	position: relative;
 	color: inherit;
 	outline: none;
 	background-color: transparent;
 }
 
-.tag-list .tag::before {
+#tag-list .tag::before {
 	content: '';
 	position: absolute;
 	inset: 0;
@@ -50,15 +51,15 @@
 	);
 }
 
-.tag-list .tag:hover::before { background-color: var(--text-color); }
+#tag-list .tag:hover::before { background-color: var(--text-color); }
 
-.tag-list .tag:focus-within {
+#tag-list .tag:focus-within {
 	outline: var(--theme-color) solid var(--border-width);
 	outline-offset: var(--spacing-small);
 	color: var(--text-color);
 }
 
-.tag-list .tag:hover {
+#tag-list .tag:hover {
 	color: var(--link-hover-color);
 	outline-color: var(--link-hover-color);
 }
