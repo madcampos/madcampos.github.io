@@ -10,13 +10,13 @@
 }
 
 #metadata {
-	width: clamp(10rem, 80vw, 50rem);
+	width: clamp(5rem, 80vw, 50rem);
 	margin-block: 1rem;
 	margin-inline: auto;
 }
 
 main {
-	width: clamp(10rem, 80vw, 50rem);
+	width: clamp(5rem, 80vw, 50rem);
 	margin-inline: auto;
 }
 

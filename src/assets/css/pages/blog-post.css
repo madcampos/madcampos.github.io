@@ -17,7 +17,7 @@ main, #post-footer {
 #post-contents p > img:only-child {
 	display: block;
 	margin-inline: auto;
-	width: clamp(7rem, 35vw, 20rem);
+	width: clamp(5rem, 35vw, 20rem);
 	height: auto;
 }
 
@@ -124,6 +124,6 @@ hr {
 	}
 
 	#post-contents p > img:only-child {
-		width: clamp(7rem, 70vw, 20rem);
+		width: clamp(5rem, 70vw, 20rem);
 	}
 }

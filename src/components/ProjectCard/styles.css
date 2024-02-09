@@ -29,12 +29,14 @@
 	display: flex;
 	align-items: center;
 	gap: var(--spacing-medium);
+	overflow-wrap: break-word;
+	word-break: break-word;
 }
 
 .project-card .project-icon {
 	grid-area: picture;
-	max-width: var(--image-size);
-	justify-self: center;
+	max-width: 50vmin;
+	place-self: center center;
 }
 
 .project-card header { grid-area: header; }
@@ -51,7 +53,6 @@
 
 .project-card .project-status {
 	color: var(--dark-bg-color);
-	border-radius: 100vmax;
 	padding: var(--spacing-small) var(--spacing-medium);
 }
 
@@ -69,30 +70,6 @@
 .project-card .project-links { grid-area: links; }
 .project-card .project-info { grid-area: footer; }
 
-.project-card .project-info summary {
-	list-style: none;
-	display: flex;
-	align-items: center;
-	gap: var(--spacing-small);
-}
-
-.project-card .project-info summary::before {
-	--icon-size: 1.2rem;
-
-	content: '';
-	display: block;
-	width: var(--icon-size);
-	height: var(--icon-size);
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3Cpath fill='%230080ff' d='M15.54 11.29L9.88 5.64a1 1 0 0 0-1.42 0a1 1 0 0 0 0 1.41l4.95 5L8.46 17a1 1 0 0 0 0 1.41a1 1 0 0 0 .71.3a1 1 0 0 0 .71-.3l5.66-5.65a1 1 0 0 0 0-1.47'/%3E%3C/svg%3E");
-	background-size: contain;
-	background-position: center;
-	background-repeat: no-repeat;
-}
-
-.project-card .project-info details[open] summary::before {
-	transform: rotate(90deg);
-}
-
 .project-card .technology-tags {
 	display: flex;
 	flex-wrap: wrap;
@@ -107,7 +84,6 @@
 	list-style: none;
 	padding: var(--padding-small) var(--padding-inline);
 	margin: var(--margin-small);
-	border-radius: 100vmax;
 	font-size: 0.75rem;
 	background-color: var(--secondary-color);
 	color: #3c3c3c;

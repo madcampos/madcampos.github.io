@@ -6,7 +6,7 @@
 	align-items: center;
 	justify-content: space-between;
 
-	width: clamp(10rem, 50vw, 35rem);
+	width: clamp(10rem, 100%, 35rem);
 	inset-inline: 0;
 	inset-block-end: var(--margin-block);
 	margin-inline: auto;

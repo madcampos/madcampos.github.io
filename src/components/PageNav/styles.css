@@ -13,7 +13,7 @@
 #back-to-home #link-mobile { display: none; }
 
 @media (max-width: 768px) {
-	#back-to-home { width: clamp(10rem, 70vmin, 30rem); }
+	#back-to-home { width: clamp(5rem, 70vmin, 30rem); }
 	#back-to-home #link-desktop { display: none; }
 	#back-to-home #link-mobile { display: block; }
 }

@@ -5,7 +5,7 @@ body {
 }
 
 #about {
-	width: clamp(10rem, 80vw, 50rem);
+	width: clamp(5rem, 80vw, 50rem);
 	margin-inline: auto;
 	display: flex;
 	flex-direction: row;

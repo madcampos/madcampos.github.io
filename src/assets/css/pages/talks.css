@@ -28,8 +28,8 @@ main {
 }
 
 img {
-	width: clamp(10rem, 100%, 50rem);
-	height: clamp(10rem, 70vh, 50rem);
+	width: clamp(5rem, 100%, 50rem);
+	height: clamp(5rem, 70vh, 50rem);
 	object-fit: contain;
 	display: block;
 	margin-inline: auto;
