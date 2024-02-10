@@ -12,7 +12,7 @@ export interface RelatedPost {
 	createdAt: Date
 }
 
-export interface Post extends Omit<CollectionEntry<'blog'>, 'slug' | 'relatedPosts'> {
+export interface Post extends Omit<CollectionEntry<'blog'>, 'relatedPosts' | 'slug'> {
 	slug: string,
 	year: string,
 	month: string,
@@ -147,9 +147,7 @@ export async function listPostPagesByYear() {
 	for (const post of posts) {
 		const year = post.year.toString();
 
-		if (!years[year]) {
-			years[year] = [];
-		}
+		years[year] ??= [];
 
 		years[year]?.push(post as Post);
 	}
@@ -171,16 +169,12 @@ export async function listPostsPagesByMonth() {
 		for (const post of posts[year] as Post[]) {
 			const month = post.month.toString();
 
-			if (!months[month]) {
-				months[month] = [];
-			}
+			months[month] ??= [];
 
 			months[month]?.push(post);
 		}
 
-		if (!postsByMonth[year]) {
-			postsByMonth[year] = {};
-		}
+		postsByMonth[year] ??= {};
 
 		postsByMonth[year] = months;
 	}
@@ -195,9 +189,7 @@ export async function listPostPagesByTag() {
 
 	for (const post of posts) {
 		for (const tag of post.data.tags ?? []) {
-			if (!tags[tag]) {
-				tags[tag] = [];
-			}
+			tags[tag] ??= [];
 
 			tags[tag]?.push(post as Post);
 		}

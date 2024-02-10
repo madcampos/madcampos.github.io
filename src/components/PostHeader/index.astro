@@ -21,7 +21,14 @@ interface Props {
 	letterCount?: number
 }
 
-const { url, title, summary, createdAt, updatedAt, hasUpdates, image, imageAlt, readingTime, wordCount } = Astro.props;
+const {
+	url,
+	title, summary,
+	createdAt, updatedAt,
+	hasUpdates,
+	image, imageAlt,
+	readingTime, wordCount
+} = Astro.props;
 
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 ---

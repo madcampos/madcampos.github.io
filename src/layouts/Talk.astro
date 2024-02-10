@@ -32,7 +32,16 @@ interface Props {
 }
 
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
-const { title, description, url, event, eventUrl, date, slides, video, code, demo, relatedContent, techStack, image, imageAlt } = Astro.props;
+const {
+	title, description,
+	url,
+	event, eventUrl,
+	date,
+	slides, video, code, demo,
+	relatedContent,
+	techStack,
+	image, imageAlt
+} = Astro.props;
 ---
 <InternalPage
 	htmlTitle={[title, ...TALKS_TITLE]}

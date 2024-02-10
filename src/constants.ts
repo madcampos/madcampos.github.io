@@ -1,7 +1,16 @@
 export const SITE_URL = '/';
 export const SITE_TITLE = 'Marco Campos';
 export const SITE_DESCRIPTION = 'Marco Campos - Senior Web Developer - Vue.js, Node.js, TypeScript, JavaScript';
-export const SITE_TAGS = ['Senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev'];
+export const SITE_TAGS = [
+	'Senior web developer',
+	'web developer',
+	'vue.js',
+	'vue',
+	'node.js',
+	'javascript',
+	'typescript',
+	'webdev'
+];
 
 export const LOGO_ALT = 'My moniker, "madcampos", on a monospaced font, in blue, between curly braces.';
 export const LOGO_MINI_ALT = 'The letters "madc" on a monospaced font, in blue, between curly braces.';

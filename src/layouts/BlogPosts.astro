@@ -26,7 +26,14 @@ interface Props {
 	size: number
 }
 
-const { posts, title = '', baseUrl, currentUrl, currentPage, lastPage, prevUrl, nextUrl, start, end, total, size } = Astro.props;
+const {
+	title = '',
+	posts,
+	baseUrl, currentUrl,
+	currentPage, lastPage,
+	prevUrl, nextUrl,
+	start, end, total, size
+} = Astro.props;
 ---
 <BaseLayout
 	htmlTitle={[title, ...BLOG_TITLE].filter(Boolean)}

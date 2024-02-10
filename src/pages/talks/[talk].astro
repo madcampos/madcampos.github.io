@@ -18,7 +18,18 @@ export const getStaticPaths = (async () => (await listAllTalks()).map((talk) => 
 	}))) satisfies GetStaticPaths;
 
 // eslint-disable-next-line @typescript-eslint/unbound-method
-const { render, data: { title, summary, date, event, eventUrl, image, imageAlt, slides, video, code, demo, relatedContent, techStack } } = Astro.props;
+const {
+	render,
+	data: {
+		title, summary,
+		date,
+		event, eventUrl,
+		image, imageAlt,
+		slides, video, code, demo,
+		relatedContent,
+		techStack
+	}
+} = Astro.props;
 const { talk: slug } = Astro.params;
 const { Content } = await render();
 ---

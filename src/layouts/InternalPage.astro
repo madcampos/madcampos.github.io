@@ -18,7 +18,16 @@ interface Props {
 	pageSchema?: string
 }
 
-const { htmlTitle, title, description, url, tags, image, imageAlt, createdAt, updatedAt, hasFeed, pageSchema } = Astro.props;
+const {
+	htmlTitle, title,
+	description,
+	url,
+	tags,
+	image, imageAlt,
+	createdAt, updatedAt,
+	hasFeed,
+	pageSchema
+} = Astro.props;
 ---
 <BaseLayout
 	htmlTitle={htmlTitle}

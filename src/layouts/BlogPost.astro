@@ -28,7 +28,15 @@ interface Props {
 	letterCount?: number
 }
 
-const { title, summary, image, imageAlt, createdAt, updatedAt, updates, url, tags, readingTime, wordCount, letterCount, relatedPosts } = Astro.props;
+const {
+	url,
+	title, summary,
+	image, imageAlt,
+	createdAt, updatedAt, updates,
+	tags,
+	readingTime, wordCount, letterCount,
+	relatedPosts
+} = Astro.props;
 const postUrl = `${BLOG_URL}${url}`;
 ---
 <BaseLayout
@@ -85,7 +93,7 @@ const postUrl = `${BLOG_URL}${url}`;
 		<slot></slot>
 	</article>
 
-	<hr/>
+	<hr />
 
 	<footer slot="footer" id="post-footer">
 

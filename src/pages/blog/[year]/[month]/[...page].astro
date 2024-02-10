@@ -23,7 +23,12 @@ export const getStaticPaths = (async ({ paginate }: { paginate: PaginateFunction
 	})));
 }) satisfies GetStaticPaths;
 
-const { data: posts, url, currentPage, lastPage, start, end, total, size } = Astro.props.page;
+const {
+	data: posts,
+	url,
+	currentPage, lastPage,
+	start, end, total, size
+} = Astro.props.page;
 const { year, month } = Astro.params;
 const formatter = new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric' });
 ---

@@ -28,7 +28,7 @@ const description = await parseMarkdown(body);
 	<div class="author-bio">
 		<small>
 			{/* eslint-disable-next-line astro/no-set-html-directive */}
-			<Fragment set:html={description}>
+			<Fragment set:html={description} />
 		</small>
 	</div>
 </div>

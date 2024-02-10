@@ -14,7 +14,12 @@ interface Props {
 	size: number
 }
 
-const { currentPage, lastPage, baseUrl, prevUrl, nextUrl, start, end, total, size } = Astro.props;
+const {
+	currentPage, lastPage,
+	baseUrl,
+	prevUrl, nextUrl,
+	start, end, total, size
+} = Astro.props;
 
 const TRIM_PAGE_NUMBER = 2;
 const firstPageInNav = Math.max(1, currentPage - TRIM_PAGE_NUMBER);
@@ -23,11 +28,11 @@ const lastPageInNav = Math.min(lastPage, currentPage + TRIM_PAGE_NUMBER);
 <nav>
 	<div id="pagination">
 		<a {...(currentPage > 1 && { href: `${baseUrl}/` })} id="first-page" aria-label="First page">
-			<Icon name="uil:angle-double-left" aria-hidden="true"/>
+			<Icon name="uil:angle-double-left" aria-hidden="true" />
 			<span class="pagination-link-text" aria-hidden="true">First</span>
 		</a>
 		<a {...(prevUrl && { href: prevUrl })} id="prev-page" aria-label="Previous page">
-			<Icon name="uil:angle-left" aria-hidden="true"/>
+			<Icon name="uil:angle-left" aria-hidden="true" />
 			<span class="pagination-link-text" aria-hidden="true">Previous</span>
 		</a>
 
@@ -60,11 +65,11 @@ const lastPageInNav = Math.min(lastPage, currentPage + TRIM_PAGE_NUMBER);
 
 		<a {...(nextUrl && { href: nextUrl })} id="next-page" aria-label="Next page">
 			<span class="pagination-link-text" aria-hidden="true">Next</span>
-			<Icon name="uil:angle-right" aria-hidden="true"/>
+			<Icon name="uil:angle-right" aria-hidden="true" />
 		</a>
 		<a {...(currentPage < lastPage && { href: `${baseUrl}/${lastPage}` })} id="last-page" aria-label="Last page">
 			<span class="pagination-link-text" aria-hidden="true">Last</span>
-			<Icon name="uil:angle-double-right" aria-hidden="true"/>
+			<Icon name="uil:angle-double-right" aria-hidden="true" />
 		</a>
 	</div>
 	<aside id="pagination-info">

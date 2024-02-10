@@ -19,7 +19,13 @@ interface Props {
 	repository?: string
 }
 
-const { status, createdAt, updatedAt, version, url, image, imageAlt, techStack, repository } = Astro.props;
+const {
+ status, version,
+ createdAt, updatedAt,
+ image, imageAlt,
+ url, repository,
+ techStack
+} = Astro.props;
 
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 ---
@@ -43,17 +49,19 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 
 	<header>
 		{/* eslint-disable-next-line multiline-ternary */}
-		{url ? (
-			<a href={url} rel="noopener noreferrer">
+		{url
+			? (
+				<a href={url} rel="noopener noreferrer">
+					<h2 itemprop="name">
+						<slot name="title"></slot>
+					</h2>
+				</a>
+			)
+			: (
 				<h2 itemprop="name">
 					<slot name="title"></slot>
 				</h2>
-			</a>
-		) : (
-			<h2 itemprop="name">
-				<slot name="title"></slot>
-			</h2>
-		)}
+			)}
 		<aside>
 			<span>
 				<Icon name="uil:calendar-alt" title="Date started" />

@@ -9,7 +9,7 @@ import '../assets/css/pages/home.css';
 
 import logo from '../assets/images/logo.svg';
 
-import { BLOG_URL, PROJECTS_URL, TALKS_URL } from '../constants';
+import { BLOG_URL, PROJECTS_URL, SITE_TAGS, TALKS_URL } from '../constants';
 
 const { data: { avatar, avatarAlt, name } } = (await getEntry('authors', 'marco'));
 ---
@@ -18,7 +18,7 @@ const { data: { avatar, avatarAlt, name } } = (await getEntry('authors', 'marco'
 	title={name}
 	description="Marco Campos - Senior Web Developer - Vue.js, Node.js, TypeScript, JavaScript"
 	url="/"
-	tags={['Senior web developer', 'web developer', 'vue.js', 'vue', 'node.js', 'javascript', 'typescript', 'webdev']}
+	tags={SITE_TAGS}
 	pageSchema="ProfilePage"
 >
 	<div class="h-card vcard">
@@ -41,7 +41,7 @@ const { data: { avatar, avatarAlt, name } } = (await getEntry('authors', 'marco'
 				<div class="p-note note" itemprop="description">
 					<p>
 						Hi there! My name is <em class="p-name fn n" itemprop="name"><span class="p-given-name given-name" itemprop="givenName">Marco</span> <span class="p-family-name family-name" itemprop="familyName">Campos</span></em> (<em>@</em><em class="p-nickname nickname" itemprop="alternateName">madcampos</em> on most social networks) and my pronoums are he/him!
-						<br/>
+						<br />
 						I'm a <span class="p-category category p-job-title" itemprop="jobTitle">Senior Web Developer</span> based in <span class="p-adr adr" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span class="p-locality locality" itemprop="addressLocality">Toronto</span>, <span class="p-country-name country-name" itemprop="addressCountry">Canada</span></span>.
 					</p>
 

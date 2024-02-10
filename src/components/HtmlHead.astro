@@ -16,7 +16,14 @@ interface Props {
 	hasFeed?: boolean
 }
 
-const { htmlTitle, title, url, description, tags, image, imageAlt, createdAt: publishedDate, updatedAt: updatedDate, hasFeed = false } = Astro.props;
+const {
+ htmlTitle, title, url,
+ description, tags,
+ image, imageAlt,
+ createdAt: publishedDate,
+ updatedAt: updatedDate,
+ hasFeed = false
+} = Astro.props;
 
 const baseUrl = Astro.site?.toString() ?? '/';
 const fullUrl = new URL(url, baseUrl).toString();
@@ -36,7 +43,7 @@ const socialImage = `${baseUrl}${(image ?? defaultSocialImage.src).replace(/^\//
 	<!-- App Metadata -->
 	<link rel="icon" href={`${baseUrl}icons/favicon.svg`} sizes="any" type="image/svg+xml" />
 	<link rel="icon" href={`${baseUrl}favicon.ico`} sizes="48x48" type="image/x-icon" />
-	<meta name="theme-color" content="#0080ff">
+	<meta name="theme-color" content="#0080ff" />
 
 	{/* eslint-disable-next-line astro/no-set-html-directive */}
 	{pwaInfo && (<Fragment set:html={pwaInfo.webManifest.linkTag} />)}
@@ -59,10 +66,10 @@ const socialImage = `${baseUrl}${(image ?? defaultSocialImage.src).replace(/^\//
 	<meta property="article:author" name="author" content="Marco Campos" />
 	<meta name="twitter:creator" content="@madcampos" />
 
-	<meta name="twitter:dnt" content="on">
-	<meta name="twitter:widgets:csp" content="on">
-	<meta name="twitter:widgets:autoload" content="off">
-	<meta name="twitter:widgets:theme" content="dark">
+	<meta name="twitter:dnt" content="on" />
+	<meta name="twitter:widgets:csp" content="on" />
+	<meta name="twitter:widgets:autoload" content="off" />
+	<meta name="twitter:widgets:theme" content="dark" />
 
 	{tags && (<meta name="keywords" itemprop="keywords" property="article:tag" content={tags.join(', ')} />)}
 	{publishedDate && (<meta property="article:published_time" content={publishedDate.toISOString()} />)}
@@ -73,11 +80,11 @@ const socialImage = `${baseUrl}${(image ?? defaultSocialImage.src).replace(/^\//
 	<link rel="pingback" href="https://webmention.io/madcampos.dev/xmlrpc" />
 
 	<!-- Changelog -->
-	<link rel="alternate" type="application/rss+xml" href={`${baseUrl}changelog.xml`} title="Changelog (Version History)">
+	<link rel="alternate" type="application/rss+xml" href={`${baseUrl}changelog.xml`} title="Changelog (Version History)" />
 
 	<!-- Apple icons -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	<link rel="apple-touch-icon" href={`${baseUrl}apple-touch-icon-180x180.png`} />
 
 	<link
