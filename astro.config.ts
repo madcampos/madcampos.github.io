@@ -60,12 +60,7 @@ export default defineConfig({
 					skipWaiting: true,
 					navigateFallback: '/offline',
 					navigateFallbackDenylist: [/\.(?:png|gif|jpg|jpeg|webp|svg|ico)$/iu],
-					runtimeCaching: [
-						externalResourcesCache,
-						assetsCache,
-						scriptsCache,
-						pagesCache
-					]
+					runtimeCaching: [externalResourcesCache, assetsCache, scriptsCache, pagesCache]
 				},
 				devOptions: {
 					enabled: false

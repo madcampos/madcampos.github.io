@@ -1,0 +1,38 @@
+{
+  "parser": {
+    ".astro$": "@markuplint/astro-parser"
+  },
+  "rules": {
+    "attr-duplication": true,
+    "attr-value-quotes": false,
+    "case-sensitive-attr-name": false,
+    "case-sensitive-tag-name": false,
+    "character-reference": true,
+    "class-naming": false,
+    "deprecated-attr": true,
+    "deprecated-element": true,
+    "disallowed-element": [],
+    "doctype": "always",
+    "end-tag": false,
+    "id-duplication": true,
+    "ineffective-attr": false,
+    "invalid-attr": true,
+    "label-has-control": false,
+    "landmark-roles": false,
+    "no-boolean-attr-value": false,
+    "no-default-value": false,
+    "no-empty-palpable-content": false,
+    "no-hard-code-id": false,
+    "no-refer-to-non-existent-id": true,
+    "no-use-event-handler-attr": false,
+    "permitted-contents": false,
+    "placeholder-label-option": true,
+    "require-accessible-name": true,
+    "require-datetime": true,
+    "required-attr": [],
+    "required-element": [],
+    "required-h1": true,
+    "use-list": false,
+    "wai-aria": true
+  }
+}

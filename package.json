@@ -20,7 +20,9 @@
 		"typecheck": "tsc --noEmit",
 		"lint:js": "eslint src --ext .js,.mjs,.ts,.mts,.astro --fix --ignore-path .gitignore",
 		"lint:css": "stylelint **/*.{css,astro} --fix",
-		"lint": "npm run typecheck && npm run lint:js && npm run lint:css && astro check",
+		"lint:md": "astro check",
+		"lint:html": "markuplint **/*.{html,astro} --fix",
+		"lint": "npm run typecheck && npm run lint:js && npm run lint:css && npm run lint:md && npm run lint:html",
 		"lint-staged": "lint-staged",
 		"build:assets": "pwa-assets-generator --config ./pwa-assets-generator.config.ts"
 	},
@@ -32,6 +34,7 @@
 		"@commitlint/config-conventional": "^18.6.0",
 		"@iconify-json/brandico": "^1.1.8",
 		"@iconify-json/uil": "^1.1.8",
+		"@markuplint/astro-parser": "^4.0.2",
 		"@stylistic/eslint-plugin": "^1.6.1",
 		"@types/node": "^20.11.17",
 		"@typescript-eslint/eslint-plugin": "^6.21.0",
@@ -46,6 +49,7 @@
 		"husky": "^9.0.10",
 		"lint-staged": "^15.2.2",
 		"marked": "^12.0.0",
+		"markuplint": "^4.0.3",
 		"postcss-html": "^1.6.0",
 		"rehype-external-links": "^3.0.0",
 		"remark-breaks": "^4.0.0",
@@ -63,10 +67,12 @@
 		"*.astro": [
 			"astro check",
 			"eslint --ext .astro --fix",
-			"stylelint **/*.astro --fix"
+			"stylelint **/*.astro --fix",
+			"markuplint **/*.astro --fix"
 		],
 		"*.css": "stylelint **/*.css --fix",
-		"*.md": "astro check"
+		"*.md": "astro check",
+		"*.html": "markuplint **/*.html --fix"
 	},
 	"commitlint": {
 		"extends": [
