@@ -1,5 +1,5 @@
 ---
-import { BLOG_DESCRIPTION, BLOG_TAGS, BLOG_TAGS_URL, BLOG_TITLE } from '../../../constants';
+import { BLOG_TAGS, BLOG_TAGS_DESCRIPTION, BLOG_TAGS_TITLE, BLOG_TAGS_TITLE_STRING, BLOG_TAGS_URL } from '../../../constants';
 
 import BaseLayout from '../../../layouts/Base.astro';
 import BlogPageHeader from '../../../components/BlogPageHeader/index.astro';
@@ -12,19 +12,19 @@ import '../../../assets/css/pages/tags.css';
 const tags = await listTags();
 ---
 <BaseLayout
-	htmlTitle={['Tags', ...BLOG_TITLE]}
-	title="Tags for Macro Campos' blog"
-	description={BLOG_DESCRIPTION}
+	htmlTitle={BLOG_TAGS_TITLE}
+	title={BLOG_TAGS_TITLE_STRING}
+	description={BLOG_TAGS_DESCRIPTION}
 	url={BLOG_TAGS_URL}
 	tags={BLOG_TAGS}
 	hasFeed={true}
 	pageSchema="ItemList"
 >
-	<meta itemprop="name" content="Tags for Macro Campos' blog" />
+	<meta itemprop="name" content={BLOG_TAGS_TITLE_STRING} />
 	<link itemprop="itemListOrder" href="https://schema.org/ItemListUnordered" />
 	<meta itemprop="numberOfItems" content={tags.length.toString()} />
 
-	<BlogPageHeader title="Tags for Macro Campos' blog" slot="header" />
+	<BlogPageHeader title={BLOG_TAGS_TITLE_STRING} slot="header" />
 
 
 	<div id="contents">

@@ -1,16 +1,15 @@
 ---
-import { SITE_DESCRIPTION, SITE_TAGS, SITE_TITLE } from '../constants';
+import { OFFLINE_DESCRIPTION, OFFLINE_TITLE, OFFLINE_TITLE_STRING, OFFLINE_URL, SITE_TAGS } from '../constants';
 
 import BaseLayout from '../layouts/Base.astro';
 
 import '../assets/css/404.css';
 ---
 <BaseLayout
-	htmlTitle={['Offline Page', SITE_TITLE]}
-	title="Offline Page"
-	url="/offline"
-	description={SITE_DESCRIPTION}
-	url="/404"
+	htmlTitle={OFFLINE_TITLE}
+	title={OFFLINE_TITLE_STRING}
+	url={OFFLINE_URL}
+	description={OFFLINE_DESCRIPTION}
 	tags={SITE_TAGS}
 >
 <svg viewBox="0 0 1101 900">

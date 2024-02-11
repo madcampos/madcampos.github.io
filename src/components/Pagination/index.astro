@@ -38,10 +38,10 @@ const lastPageInNav = Math.min(lastPage, currentPage + TRIM_PAGE_NUMBER);
 
 		<ol>
 			{firstPageInNav > 1 && (
-				<>
+				<Fragment>
 					<li><a href={`${baseUrl}/`}>1</a></li>
 					<li><span>…</span></li>
-				</>
+				</Fragment>
 			)}
 
 			{Array(lastPageInNav - firstPageInNav + 1).fill(null).map((_, i) => {
@@ -56,10 +56,10 @@ const lastPageInNav = Math.min(lastPage, currentPage + TRIM_PAGE_NUMBER);
 			})}
 
 			{lastPageInNav < lastPage && (
-				<>
+				<Fragment>
 					<li><span>…</span></li>
 					<li><a href={`${baseUrl}/${lastPage}`}>{lastPage}</a></li>
-				</>
+				</Fragment>
 			)}
 		</ol>
 

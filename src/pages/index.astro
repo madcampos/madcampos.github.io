@@ -1,5 +1,4 @@
 ---
-import { getEntry } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 
 import BaseLayout from '../layouts/Base.astro';
@@ -7,17 +6,26 @@ import Avatar from '../components/Avatar/index.astro';
 
 import '../assets/css/pages/home.css';
 
+import avatar from '../assets/images/me.jpg';
 import logo from '../assets/images/logo.svg';
 
-import { BLOG_URL, PROJECTS_URL, SITE_TAGS, TALKS_URL } from '../constants';
-
-const { data: { avatar, avatarAlt, name } } = (await getEntry('authors', 'marco'));
+import {
+	BLOG_URL,
+	LOGO_ALT,
+	PROJECTS_URL,
+	SITE_DESCRIPTION,
+	SITE_TAGS,
+	SITE_TITLE,
+	SITE_TITLE_STRING,
+	SITE_URL,
+	TALKS_URL
+} from '../constants';
 ---
 <BaseLayout
-	htmlTitle={[name, 'Senior Web Developer']}
-	title={name}
-	description="Marco Campos - Senior Web Developer - Vue.js, Node.js, TypeScript, JavaScript"
-	url="/"
+	htmlTitle={SITE_TITLE}
+	title={SITE_TITLE_STRING}
+	description={SITE_DESCRIPTION}
+	url={SITE_URL}
 	tags={SITE_TAGS}
 	pageSchema="ProfilePage"
 >
@@ -29,13 +37,13 @@ const { data: { avatar, avatarAlt, name } } = (await getEntry('authors', 'marco'
 					src={logo.src}
 					width={logo.width}
 					height={logo.height}
-					alt="My moniker, &quot;madcampos&quot;, written between curly braces on a monospaced font."
+					alt={LOGO_ALT}
 				/>
 			</a>
 		</h1>
 		<section id="about" itemprop="mainEntity" itemtype="https://schema.org/Person" itemscope>
 			<aside>
-				<Avatar image={avatar} imageAlt={avatarAlt} />
+				<Avatar image={avatar} imageAlt="A picture of my face with a smile looking at the camera. I&apos;m wearing aviator glasses, a fake fur winter hat and an orange scarf." />
 			</aside>
 			<article>
 				<div class="p-note note" itemprop="description">
@@ -70,19 +78,19 @@ const { data: { avatar, avatarAlt, name } } = (await getEntry('authors', 'marco'
 					</li>
 					<li>
 						<a href="https://github.com/madcampos" rel="noreferrer noopener me authn" itemprop="sameAs">
-							<Icon name="uil:github-alt" title="An icon with Github's logo." />
+							<Icon name="uil:github-alt" title="An icon with Github&apos;s logo." />
 							GitHub
 						</a>
 					</li>
 					<li>
 						<a href="https://codepen.io/madcampos" rel="noreferrer noopener me" itemprop="sameAs">
-							<Icon name="brandico:codepen" title="An icon with CodePen's logo." />
+							<Icon name="brandico:codepen" title="An icon with CodePen&apos;s logo." />
 							CodePen
 						</a>
 					</li>
 					<li>
 						<a href="https://www.linkedin.com/in/madcampos/" rel="noreferrer noopener" itemprop="sameAs">
-							<Icon name="uil:linkedin-alt" title="An icon with LinkedIn's logo." />
+							<Icon name="uil:linkedin-alt" title="An icon with LinkedIn&apos;s logo." />
 							LinkedIn
 						</a>
 					</li>

@@ -1,6 +1,8 @@
 ---
 import { pwaInfo } from 'virtual:pwa-info';
 
+import { BLOG_TITLE_STRING, BLOG_URL, LOGO_MICRO_ALT } from '../constants';
+
 import defaultSocialImage from '../assets/images/logo-micro.png';
 
 interface Props {
@@ -17,26 +19,30 @@ interface Props {
 }
 
 const {
- htmlTitle, title, url,
- description, tags,
- image, imageAlt,
- createdAt: publishedDate,
- updatedAt: updatedDate,
- hasFeed = false
+	htmlTitle, title, url,
+	description, tags,
+
+	image, imageAlt,
+
+	createdAt: publishedDate,
+	updatedAt: updatedDate,
+
+	hasFeed = false
 } = Astro.props;
 
 const baseUrl = Astro.site?.toString() ?? '/';
 const fullUrl = new URL(url, baseUrl).toString();
 
-const socialImageAlt = imageAlt ?? 'Logo for madcampos\' site consisting of stylized "{m}" in blue.';
+const socialImageAlt = imageAlt ?? LOGO_MICRO_ALT;
 const socialImage = `${baseUrl}${(image ?? defaultSocialImage.src).replace(/^\//iu, '')}`;
 ---
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<link rel="canonical" href={fullUrl} />
-	{ hasFeed && <link rel="alternate" type="application/rss+xml" href={`${baseUrl}blog/feed.xml`} title="Marco Campos' Blog" /> }
 	<link rel="sitemap" href={`${baseUrl}sitemap-index.xml`} />
+
+	{ hasFeed && <link rel="alternate" type="application/rss+xml" href={`${BLOG_URL}/feed.xml`} title={BLOG_TITLE_STRING} /> }
 
 	<title>{htmlTitle?.join(' | ') ?? title}</title>
 

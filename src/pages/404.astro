@@ -1,15 +1,15 @@
 ---
-import { SITE_DESCRIPTION, SITE_TAGS, SITE_TITLE } from '../constants';
+import { ERROR_DESCRIPTION, ERROR_TITLE, ERROR_TITLE_STRING, ERROR_URL, SITE_TAGS } from '../constants';
 
 import BaseLayout from '../layouts/Base.astro';
 
 import '../assets/css/404.css';
 ---
 <BaseLayout
-	htmlTitle={['404 - Not found', SITE_TITLE]}
-	title="404 - Not found"
-	description={SITE_DESCRIPTION}
-	url="/404"
+	htmlTitle={ERROR_TITLE}
+	title={ERROR_TITLE_STRING}
+	description={ERROR_DESCRIPTION}
+	url={ERROR_URL}
 	tags={SITE_TAGS}
 >
 	<svg viewBox="0 0 1101 900">

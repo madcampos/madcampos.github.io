@@ -2,7 +2,7 @@
 import InternalPage from '../../layouts/InternalPage.astro';
 import TalkCard from '../../components/TalkCard/index.astro';
 
-import { TALKS_TITLE, TALKS_URL } from '../../constants';
+import { TALKS_DESCRIPTION, TALKS_TITLE, TALKS_TITLE_STRING, TALKS_URL } from '../../constants';
 
 import { listAllTalks } from '../../utils/talks';
 
@@ -11,11 +11,11 @@ const talks = await listAllTalks();
 
 <InternalPage
 	htmlTitle={TALKS_TITLE}
-	title={TALKS_TITLE[0] ?? ''}
-	description="Talks I've given at conferences and meetups."
+	title={TALKS_TITLE_STRING}
+	description={TALKS_DESCRIPTION}
 	url={TALKS_URL}
 >
-	<span slot="header">Talks and Events</span>
+	<span slot="header">{TALKS_TITLE_STRING}</span>
 
 	{ talks.map((talk) => (
 		<TalkCard

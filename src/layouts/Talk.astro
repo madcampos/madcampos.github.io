@@ -92,7 +92,7 @@ const {
 	</ul>
 
 	{relatedContent && (
-		<>
+		<Fragment>
 			<h2><Icon name="uil:file-share-alt" title="Icon of a file with a sharing badge" /> Related content</h2>
 			<ul class="related-content">
 				{relatedContent?.map(({ url: contentUrl, title: contentTitle }) => (
@@ -101,7 +101,7 @@ const {
 					</li>
 				))}
 			</ul>
-		</>
+		</Fragment>
 	)}
 
 	<h2><Icon name="uil:cog" title="Icon of a cog" /> Technologies used</h2>
@@ -112,12 +112,12 @@ const {
 	</ul>
 
 	{demo && (
-		<>
+		<Fragment>
 			<h2><Icon name="uil:flask" title="Icon of a chemistry flask" />Demo</h2>
 
 			<iframe src={demo} loading="lazy" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin" title={`Demo for ${title}`}>
 				A local running demo of the project.
 			</iframe>
-		</>
+		</Fragment>
 	)}
 </InternalPage>
