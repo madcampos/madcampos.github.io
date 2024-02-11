@@ -7,17 +7,18 @@ import { parseMarkdown } from '../../utils/markdown';
 import './styles.css';
 
 interface Props {
-	author: string
+	author: string,
+	url?: string
 }
 
-const { author } = Astro.props;
+const { author, url } = Astro.props;
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const { data: { avatar, avatarAlt, name, website: url }, body } = (await getEntry('authors', author))!;
+const { data: { avatar, avatarAlt, name, website }, body } = (await getEntry('authors', author))!;
 const description = await parseMarkdown(body);
 ---
 <div class="author-card" itemprop="author" itemscope itemtype="https://schema.org/Person">
-	<a class="author-picture" href={url}>
+	<a class="author-picture" href={url ?? website}>
 		<Avatar image={avatar} imageAlt={avatarAlt} />
 	</a>
 

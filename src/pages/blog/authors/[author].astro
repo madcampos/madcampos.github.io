@@ -1,0 +1,54 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
+import { getCollection } from 'astro:content';
+
+import { BLOG_AUTHOR_TITLE, BLOG_TAGS } from '../../../constants';
+
+import BaseLayout from '../../../layouts/Base.astro';
+import BlogPageHeader from '../../../components/BlogPageHeader/index.astro';
+import Avatar from '../../../components/Avatar/index.astro';
+
+import { parseMarkdown } from '../../../utils/markdown';
+
+import '../../../assets/css/pages/internal-page.css';
+import '../../../assets/css/pages/authors.css';
+
+// eslint-disable-next-line @typescript-eslint/no-use-before-define
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+export const getStaticPaths = (async () => (await getCollection('authors')).map(((author) => ({
+	params: { author: author.slug },
+	props: { ...author.data, body: author.body, slug: author.slug }
+})))) satisfies GetStaticPaths;
+
+const {
+	name,
+	body,
+	avatar, avatarAlt
+} = Astro.props;
+const description = await parseMarkdown(body);
+
+---
+<BaseLayout
+	htmlTitle={[name, ...BLOG_AUTHOR_TITLE]}
+	title={name}
+	description={name}
+	url={Astro.url.toString()}
+	tags={BLOG_TAGS}
+	hasFeed={true}
+	pageSchema="ProfilePage"
+>
+	<BlogPageHeader title={name} slot="header" />
+
+	<div id="contents" itemprop="about mainEntity" itemscope itemtype="https://schema.org/Person">
+		<meta itemprop="name" content={name} />
+		<a id="author-picture" class="p-author h-card author-name" rel="author" itemprop="url" href={Astro.url}>
+			<Avatar image={avatar} imageAlt={avatarAlt} />
+		</a>
+
+		<article id="author-bio">
+			{/* eslint-disable-next-line astro/no-set-html-directive */}
+			<Fragment set:html={description} />
+		</article>
+	</div>
+</BaseLayout>

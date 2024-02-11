@@ -46,6 +46,12 @@ export const BLOG_TAGS_TITLE_STRING = "Tags for Marco Campos' blog";
 export const BLOG_TAGS_TITLE = ['Tags', ...BLOG_TITLE];
 export const BLOG_TAGS_DESCRIPTION = "Marco Campos' Blog — Tags for my blog posts";
 
+// "Blog author" constants
+export const BLOG_AUTHOR_URL = `${BLOG_URL}/authors`;
+export const BLOG_AUTHOR_TITLE_STRING = "Authors for Marco Campos' blog";
+export const BLOG_AUTHOR_TITLE = ['Authors', ...BLOG_TITLE];
+export const BLOG_AUTHOR_DESCRIPTION = "Marco Campos' Blog — Authors for the blog";
+
 // "Projects" constants
 export const PROJECTS_URL = '/projects';
 export const PROJECTS_TITLE = ['Projects', ...SITE_TITLE];

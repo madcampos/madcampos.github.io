@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+
+import { BLOG_AUTHOR_DESCRIPTION, BLOG_AUTHOR_TITLE, BLOG_AUTHOR_TITLE_STRING, BLOG_AUTHOR_URL, BLOG_TAGS } from '../../../constants';
+
+import BaseLayout from '../../../layouts/Base.astro';
+import BlogPageHeader from '../../../components/BlogPageHeader/index.astro';
+import AuthorCard from '../../../components/AuthorCard/index.astro';
+
+import '../../../assets/css/pages/internal-page.css';
+import '../../../assets/css/pages/authors.css';
+
+const authors = await getCollection('authors');
+
+---
+<BaseLayout
+	htmlTitle={BLOG_AUTHOR_TITLE}
+	title={BLOG_AUTHOR_TITLE_STRING}
+	description={BLOG_AUTHOR_DESCRIPTION}
+	url={BLOG_AUTHOR_URL}
+	tags={BLOG_TAGS}
+	hasFeed={true}
+	pageSchema="ItemList"
+>
+	<meta itemprop="name" content={BLOG_AUTHOR_TITLE_STRING} />
+	<link itemprop="itemListOrder" href="https://schema.org/ItemListUnordered" />
+	<meta itemprop="numberOfItems" content={authors.length.toString()} />
+
+	<BlogPageHeader title={BLOG_AUTHOR_TITLE_STRING} slot="header" />
+
+
+	<div id="contents">
+		<ul id="author-list">
+			{authors.map(({ slug }) => (
+				<li itemprop="itemListElement">
+					<AuthorCard
+						author={slug}
+						url={`${BLOG_AUTHOR_URL}/${slug}`}
+					/>
+				</li>
+			))}
+		</ul>
+	</div>
+</BaseLayout>
