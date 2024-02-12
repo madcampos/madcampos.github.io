@@ -17,7 +17,7 @@ body {
 #about *:has(> svg) {
 	display: inline-flex;
 	align-items: center;
-	gap: var(--padding-inline);
+	gap: 0.3em;
 }
 
 #about picture {
@@ -28,10 +28,8 @@ body {
 #about ul { padding: 0; }
 
 #about li {
-	margin: var(--margin-inline);
-	display: flex;
-	align-items: center;
-	gap: var(--padding-inline);
+	margin: var(--spacing-medium);
+	display: block;
 }
 
 #about li svg {

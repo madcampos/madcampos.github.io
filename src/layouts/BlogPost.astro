@@ -12,6 +12,7 @@ import TagList from '../components/TagList/index.astro';
 import AuthorCard from '../components/AuthorCard/index.astro';
 import PostCardSmall from '../components/PostCardSmall/index.astro';
 import SkipToContent from '../components/SkipToContent/index.astro';
+import SiteNav from '../components/SiteNav/index.astro';
 
 interface Props {
 	title: string,
@@ -102,7 +103,6 @@ const postUrl = `${BLOG_URL}${url}`;
 	<hr />
 
 	<footer slot="footer" id="post-footer">
-
 		<AuthorCard author="marco" />
 
 		<!-- <aside>
@@ -130,22 +130,24 @@ const postUrl = `${BLOG_URL}${url}`;
 
 		{relatedPosts && relatedPosts.length > 0 && (
 			<details id="related-posts" open>
-				<summary>Related Posts</summary>
+				<summary id="related-posts-title">Related Posts</summary>
 				<div id="related-posts-wrapper">
-					<ul>
-						{relatedPosts.map((post) => (
-							<li>
-								<PostCardSmall
-									url={`${BLOG_URL}${post.url}`}
-									image={post.image}
-									imageAlt={post.imageAlt}
-								>
-									<span slot="title">{post.title}</span>
-									{post.summary}
-								</PostCardSmall>
-							</li>
-						))}
-					</ul>
+					<nav aria-labelledby="related-posts-title">
+						<ul>
+							{relatedPosts.map((post) => (
+								<li>
+									<PostCardSmall
+										url={`${BLOG_URL}${post.url}`}
+										image={post.image}
+										imageAlt={post.imageAlt}
+									>
+										<span slot="title">{post.title}</span>
+										{post.summary}
+									</PostCardSmall>
+								</li>
+							))}
+						</ul>
+					</nav>
 				</div>
 			</details>
 		)}
@@ -153,5 +155,7 @@ const postUrl = `${BLOG_URL}${url}`;
 		<aside id="post-license">
 			<small><em>Unless otherwise noted, all content on this site is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="u-license">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</em></small>
 		</aside>
+
+		<SiteNav />
 	</footer>
 </BaseLayout>

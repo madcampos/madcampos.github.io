@@ -127,14 +127,13 @@ details[open] summary::before {
 
 nav ul {
 	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: var(--spacing-large);
+	padding: 0 var(--spacing-large);
+	margin: var(--spacing-large) auto;
 	list-style: none;
-	padding: 0;
-	margin-block: 2rem;
-	margin-inline: auto;
-	width: clamp(5rem, 50vw, 20rem);
+	width: 100%;
 }
 
 .visually-hidden {

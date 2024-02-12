@@ -1,0 +1,13 @@
+---
+import { BLOG_URL, PROJECTS_URL, SITE_URL, TALKS_URL } from '../../constants';
+---
+<nav id="site-nav" aria-label="Site Links">
+	<ul>
+		<li><a href={SITE_URL}>Home</a></li>
+		<li><a href={BLOG_URL}>Blog</a></li>
+		<li><a href={PROJECTS_URL}>Projects</a></li>
+		<li><a href={TALKS_URL}>Talks</a></li>
+		<li><a href={`${SITE_URL}accessibility`}>Accessibility</a></li>
+		<li><a href={`${SITE_URL}license`}>License</a></li>
+	</ul>
+</nav>

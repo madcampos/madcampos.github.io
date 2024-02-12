@@ -95,18 +95,6 @@
 
 #post-share { grid-area: share; }
 
-#post-share ul {
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: var(--spacing-large);
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	margin-block: var(--spacing-medium);
-}
-
 #post-share button {
 	--button-size: 2rem;
 

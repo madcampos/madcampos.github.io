@@ -28,7 +28,7 @@
 .project-card *:has(> svg) {
 	display: flex;
 	align-items: center;
-	gap: var(--spacing-medium);
+	gap: 0.3em;
 	overflow-wrap: break-word;
 	word-break: break-word;
 }

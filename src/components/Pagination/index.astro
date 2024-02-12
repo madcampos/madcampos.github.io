@@ -25,7 +25,7 @@ const TRIM_PAGE_NUMBER = 2;
 const firstPageInNav = Math.max(1, currentPage - TRIM_PAGE_NUMBER);
 const lastPageInNav = Math.min(lastPage, currentPage + TRIM_PAGE_NUMBER);
 ---
-<nav>
+<nav aria-label="Pagination">
 	<div id="pagination">
 		<a {...(currentPage > 1 && { href: `${baseUrl}/` })} id="first-page" aria-label="First page">
 			<Icon name="uil:angle-double-left" aria-hidden="true" />

@@ -1,11 +1,10 @@
 ---
 import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 
 import BlogNav from '../BlogNav/index.astro';
 
 import './styles.css';
-
-import { Icon } from 'astro-icon/components';
 
 interface Props {
 	url: string,
@@ -83,7 +82,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 			)}
 		</aside>
 
-		<nav id="post-share" aria-label="Share menu">
+		<nav id="post-share" aria-label="Share options">
 			<ul>
 				<li>
 					<button

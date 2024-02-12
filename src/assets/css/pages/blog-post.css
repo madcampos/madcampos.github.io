@@ -87,8 +87,8 @@ hr {
 }
 
 #related-posts ul {
-	display: flex;
-	list-style: none;
+	justify-content: start;
+	flex-wrap: nowrap;
 	gap: var(--spacing-large);
 	padding: 0;
 	margin: 0;

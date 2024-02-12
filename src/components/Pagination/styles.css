@@ -24,7 +24,7 @@
 #pagination *:has(> svg) {
 	display: inline-flex;
 	align-items: center;
-	gap: var(--padding-inline);
+	gap: 0.3em;
 }
 
 #pagination svg {
