@@ -1,5 +1,5 @@
 ---
-import { Picture } from 'astro:assets';
+import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 
 import './styles.css';
@@ -16,33 +16,42 @@ interface Props {
 const { url, event, date, image, imageAlt } = Astro.props;
 
 // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-const IMAGE_WIDTHS = [256, 512, 768, image?.width ?? 1024];
+const IMAGE_WIDTHS = [128, 256, 512, 768, image?.width ?? 1024];
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 ---
-<article class="talk-card">
+<article class="talk-card" itemscope itemtype="https://schema.org/EducationEvent">
 	{image && (
-		<Picture
-			src={image}
-			alt={imageAlt ?? ''}
-			widths={[...IMAGE_WIDTHS, image.width]}
-			sizes={`(max-width: 360px) 256px, (max-width: 720px) 512px, (max-width: 1280px) 768px, ${image.width}px`}
-			quality="high"
-		/>
+		<picture
+			class="project-icon"
+			itemprop="image"
+			itemscope
+			itemtype="https://schema.org/ImageObject"
+		>
+			<Image
+				itemprop="contentUrl"
+				src={image}
+				alt={imageAlt ?? ''}
+				loading="lazy"
+				widths={IMAGE_WIDTHS}
+				sizes={`(max-width: 360px) 128px, (max-width: 720px) 256px, (max-width: 1280px) 512px, (max-width: 2160px) 768px ${image.width}px`}
+				quality={75}
+			/>
+		</picture>
 	)}
 
 	<header>
 		<a href={url}>
-			<h2>
+			<h2 itemprop="name">
 				<slot name="title"></slot>
 			</h2>
 		</a>
 		<aside>
 			<small>
 				<Icon name="uil:calendar-alt" title="An icon of a calendar" />
-				<time datetime={date.toISOString()}>{formatter.format(date)}</time>
+				<time datetime={date.toISOString()} itemprop="startDate">{formatter.format(date)}</time>
 			</small>
 			{event && (
-				<small>
+				<small itemprop="superEvent">
 					<Icon name="uil:presentation-play" title="Icon of a presentation board with a play symbol in it&apos;s center." />
 					{event}
 				</small>
@@ -50,15 +59,12 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 		</aside>
 	</header>
 
-	<div class="talk-content">
+	<div class="talk-content" itemprop="description">
 		<slot></slot>
 	</div>
 	<div id="talk-links">
 		{url && (
-				<a
-					href={url}
-					rel="noopener noreferrer"
-				>
+				<a href={url} itemprop="url">
 					<Icon name="uil:presentation-plus" title="Icon of a presentation board with a plus symbol in it&apos;s center." />
 					View Talk Info
 				</a>

@@ -52,8 +52,9 @@ const {
 	image={image}
 	imageAlt={imageAlt}
 	createdAt={date}
+	pageSchema="EducationEvent"
 >
-	<span slot="header">{title}</span>
+	<span slot="header" itemprop="name">{title}</span>
 
 	<slot></slot>
 
@@ -62,20 +63,24 @@ const {
 		Talk info
 	</h2>
 	<ul id="talk-info">
-		<li>
-			<strong>
-				<Icon name="uil:presentation-play" title="Icon of a presentation board with a play symbol in it&apos;s center." />
-				Event:
-			</strong>
-			{eventUrl ? (<a href={eventUrl} rel="noopener noreferrer">{event}</a>) : event}
-		</li>
+		{event && (
+			<li>
+				<strong>
+					<Icon name="uil:presentation-play" title="Icon of a presentation board with a play symbol in it&apos;s center." />
+					Event:
+				</strong>
+				<span itemprop="superEvent">
+					{eventUrl ? (<a href={eventUrl} rel="noopener noreferrer">{event}</a>) : event}
+				</span>
+			</li>
+		)}
 
 		<li>
 			<strong>
 				<Icon name="uil:calendar-alt" title="Icon of a calendar" />
 				Date:
 			</strong>
-			<time datetime={date.toISOString()}>{formatter.format(date)}</time>
+			<time datetime={date.toISOString()} itemprop="startDate">{formatter.format(date)}</time>
 		</li>
 
 		{slides && (
