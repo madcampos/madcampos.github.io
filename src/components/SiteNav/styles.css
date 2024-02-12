@@ -1,0 +1,4 @@
+#site-nav {
+	display: flex;
+	background-color: var(--bg-color);
+}

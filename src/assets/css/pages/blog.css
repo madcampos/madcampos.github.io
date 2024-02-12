@@ -2,3 +2,7 @@
 	width: clamp(5rem, 70vw, 60rem);
 	margin-inline: auto;
 }
+
+#site-nav {
+	margin: var(--spacing-large);
+}
