@@ -6,6 +6,7 @@ import { BLOG_AUTHOR_DESCRIPTION, BLOG_AUTHOR_TITLE, BLOG_AUTHOR_TITLE_STRING, B
 import BaseLayout from '../../../layouts/Base.astro';
 import BlogPageHeader from '../../../components/BlogPageHeader/index.astro';
 import AuthorCard from '../../../components/AuthorCard/index.astro';
+import SiteNav from '../../../components/SiteNav/index.astro';
 
 import '../../../assets/css/pages/internal-page.css';
 import '../../../assets/css/pages/authors.css';
@@ -41,4 +42,8 @@ const authors = await getCollection('authors');
 			))}
 		</ul>
 	</div>
+
+	<footer slot="footer">
+		<SiteNav />
+	</footer>
 </BaseLayout>

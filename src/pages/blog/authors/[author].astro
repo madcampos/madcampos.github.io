@@ -7,6 +7,7 @@ import { BLOG_AUTHOR_TITLE, BLOG_TAGS } from '../../../constants';
 import BaseLayout from '../../../layouts/Base.astro';
 import BlogPageHeader from '../../../components/BlogPageHeader/index.astro';
 import Avatar from '../../../components/Avatar/index.astro';
+import SiteNav from '../../../components/SiteNav/index.astro';
 
 import { parseMarkdown } from '../../../utils/markdown';
 
@@ -51,4 +52,8 @@ const description = await parseMarkdown(body);
 			<Fragment set:html={description} />
 		</article>
 	</div>
+
+	<footer slot="footer">
+		<SiteNav />
+	</footer>
 </BaseLayout>

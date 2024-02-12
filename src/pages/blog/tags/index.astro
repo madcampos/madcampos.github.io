@@ -3,6 +3,7 @@ import { BLOG_TAGS, BLOG_TAGS_DESCRIPTION, BLOG_TAGS_TITLE, BLOG_TAGS_TITLE_STRI
 
 import BaseLayout from '../../../layouts/Base.astro';
 import BlogPageHeader from '../../../components/BlogPageHeader/index.astro';
+import SiteNav from '../../../components/SiteNav/index.astro';
 
 import { listTags } from '../../../utils/post';
 
@@ -38,4 +39,8 @@ const tags = await listTags();
 			))}
 		</ul>
 	</div>
+
+	<footer slot="footer">
+		<SiteNav />
+	</footer>
 </BaseLayout>

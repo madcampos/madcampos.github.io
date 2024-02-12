@@ -1,15 +1,46 @@
 ---
+import { Icon } from 'astro-icon/components';
 import { BLOG_URL, PROJECTS_URL, SITE_URL, TALKS_URL } from '../../constants';
 
 import './styles.css';
 ---
 <nav id="site-nav" aria-label="Site Links">
 	<ul>
-		<li><a href={SITE_URL}>Home</a></li>
-		<li><a href={BLOG_URL}>Blog</a></li>
-		<li><a href={PROJECTS_URL}>Projects</a></li>
-		<li><a href={TALKS_URL}>Talks</a></li>
-		<li><a href={`${SITE_URL}accessibility`}>Accessibility</a></li>
-		<li><a href={`${SITE_URL}license`}>License</a></li>
+		<li>
+			<a href={SITE_URL}>
+				<Icon name="uil:home-alt" title="An icon of a house." />
+				Home
+			</a>
+		</li>
+		<li>
+			<a href={BLOG_URL}>
+				<Icon name="uil:file-edit-alt" title="An icon of a sheet of paper with a pen." />
+				Blog
+			</a>
+		</li>
+		<li>
+			<a href={PROJECTS_URL}>
+				<Icon name="uil:flask" title="An icon of chemical flask." />
+				Projects
+			</a>
+		</li>
+		<li>
+			<a href={TALKS_URL}>
+				<Icon name="uil:presentation-check" title="An icon of presentation stand with a checkmark inside." />
+				Talks
+			</a>
+		</li>
+		<li>
+			<a href={`${SITE_URL}accessibility`}>
+				<Icon name="uil:accessible-icon-alt" title="An icon of a person on a wheelchair." />
+				Accessibility
+			</a>
+		</li>
+		<li>
+			<a href={`${SITE_URL}license`}>
+				<Icon name="uil:award-alt" title="An icon of a ribbon." />
+				License
+			</a>
+		</li>
 	</ul>
 </nav>
