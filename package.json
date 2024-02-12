@@ -19,9 +19,9 @@
 		"preview": "astro preview --site=http://localhost:3000/",
 		"typecheck": "tsc --noEmit",
 		"lint:js": "eslint src --ext .js,.mjs,.ts,.mts,.astro --fix --ignore-path .gitignore",
-		"lint:css": "stylelint **/*.{css,astro} --fix",
+		"lint:css": "stylelint src/**/*.{css,astro} --fix",
 		"lint:md": "astro check",
-		"lint:html": "markuplint **/*.{html,astro} --fix",
+		"lint:html": "markuplint src/**/*.{html,astro} --fix",
 		"lint": "npm run typecheck && npm run lint:js && npm run lint:css && npm run lint:md && npm run lint:html",
 		"lint-staged": "lint-staged",
 		"build:assets": "pwa-assets-generator --config ./pwa-assets-generator.config.ts"
@@ -59,21 +59,21 @@
 		"typescript": "^5.3.3"
 	},
 	"lint-staged": {
-		"*.ts": "eslint --ext .ts --fix",
-		"*.cts": "eslint --ext .cts --fix",
-		"*.mts": "eslint --ext .mts --fix",
-		"*.js": "eslint --ext .js --fix",
-		"*.cjs": "eslint --ext .cjs --fix",
-		"*.mjs": "eslint --ext .mjs --fix",
+		"*.ts": "eslint src --ext .ts --fix",
+		"*.cts": "eslint src --ext .cts --fix",
+		"*.mts": "eslint src --ext .mts --fix",
+		"*.js": "eslint src --ext .js --fix",
+		"*.cjs": "eslint src --ext .cjs --fix",
+		"*.mjs": "eslint src --ext .mjs --fix",
 		"*.astro": [
 			"astro check",
-			"eslint --ext .astro --fix",
-			"stylelint **/*.astro --fix",
-			"markuplint **/*.astro --fix"
+			"eslint src --ext .astro --fix",
+			"stylelint src/**/*.astro --fix",
+			"markuplint src/**/*.astro --fix"
 		],
-		"*.css": "stylelint **/*.css --fix",
+		"*.css": "stylelint src/**/*.css --fix",
 		"*.md": "astro check",
-		"*.html": "markuplint **/*.html --fix"
+		"*.html": "markuplint src/**/*.html --fix"
 	},
 	"commitlint": {
 		"extends": [
