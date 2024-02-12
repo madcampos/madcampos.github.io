@@ -61,10 +61,11 @@ export default defineConfig({
 					maximumFileSizeToCacheInBytes: 1024 * 128,
 					cleanupOutdatedCaches: true,
 					clientsClaim: true,
-					navigationPreload: false,
+					navigationPreload: true,
 					skipWaiting: true,
 					navigateFallback: '/offline',
 					navigateFallbackDenylist: [/\.(?:png|gif|jpg|jpeg|webp|svg|ico)$/iu],
+					directoryIndex: 'index.html',
 					runtimeCaching: [externalResourcesCache, assetsCache, scriptsCache, pagesCache]
 				},
 				devOptions: {
