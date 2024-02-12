@@ -30,7 +30,7 @@ const {
 	hasFeed = false
 } = Astro.props;
 
-const fullUrl = new URL(url, SITE_URL).toString();
+const fullUrl = new URL(url, new URL(SITE_URL, Astro.site)).toString();
 
 const socialImageAlt = imageAlt ?? LOGO_MICRO_ALT;
 const socialImage = `${SITE_URL}${(image ?? defaultSocialImage.src).replace(/^\//iu, '')}`;
