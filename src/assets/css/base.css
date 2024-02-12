@@ -40,6 +40,11 @@ html, body {
 	word-break: break-word;
 }
 
+*:has(> svg) svg {
+	min-width: 1em;
+	min-height: 1em;
+}
+
 ::selection {
 	background-color: var(--theme-color);
 	color: var(--bg-color);
@@ -148,16 +153,16 @@ nav ul {
 	width: 100%;
 }
 
-.visually-hidden {
-	position: absolute;
-	clip: rect(1px, 1px, 1px, 1px);
-	padding: 0;
-	border: 0;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	white-space: nowrap;
-	opacity: 0.01;
+iframe {
+	border: solid var(--border-width) var(--theme-color);
+	display: block;
+	margin-inline: auto;
+	min-width: 5rem;
+	min-height: 5rem;
+	width: clamp(5rem, 100%, 70rem);
+	height: auto;
+	max-height: 100%;
+	aspect-ratio: 3 / 2;
 }
 
 @media (prefers-reduced-motion: no-preference) {

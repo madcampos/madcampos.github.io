@@ -57,35 +57,53 @@ const {
 
 	<slot></slot>
 
-	<h2><Icon name="uil:info-circle" title="Info sign" /> Talk info</h2>
-	<ul>
+	<h2>
+		<Icon name="uil:info-circle" title="Info sign" />
+		Talk info
+	</h2>
+	<ul id="talk-info">
 		<li>
-			<strong>Event:</strong>
+			<strong>
+				<Icon name="uil:presentation-play" title="Icon of a presentation board with a play symbol in it&apos;s center." />
+				Event:
+			</strong>
 			{eventUrl ? (<a href={eventUrl} rel="noopener noreferrer">{event}</a>) : event}
 		</li>
 
 		<li>
-			<strong>Date:</strong>
+			<strong>
+				<Icon name="uil:calendar-alt" title="Icon of a calendar" />
+				Date:
+			</strong>
 			<time datetime={date.toISOString()}>{formatter.format(date)}</time>
 		</li>
 
 		{slides && (
 			<li>
-				<strong>Slides:</strong>
+				<strong>
+					<Icon name="uil:clapper-board" title="Icon of a clapper board, representing a slide presentation." />
+					Slides:
+				</strong>
 				<a href={slides} rel="noopener noreferrer">{slides}</a>
 			</li>
 		)}
 
 		{video && (
 			<li>
-				<strong>Video:</strong>
+				<strong>
+					<Icon name="uil:video" title="Icon of a video camera" />
+					Video:
+				</strong>
 				<a href={video} rel="noopener noreferrer">{video}</a>
 			</li>
 		)}
 
 		{code && (
 			<li>
-				<strong>Code:</strong>
+				<strong>
+					<Icon name="uil:brackets-curly" title="Icon of a code snippet" />
+					Code:
+				</strong>
 				<a href={code} rel="noopener noreferrer">{code}</a>
 			</li>
 		)}
@@ -93,8 +111,11 @@ const {
 
 	{relatedContent && (
 		<Fragment>
-			<h2><Icon name="uil:file-share-alt" title="Icon of a file with a sharing badge" /> Related content</h2>
-			<ul class="related-content">
+			<h2>
+				<Icon name="uil:file-share-alt" title="Icon of a file with a sharing badge" />
+				Related content
+			</h2>
+			<ul id="related-content">
 				{relatedContent?.map(({ url: contentUrl, title: contentTitle }) => (
 					<li>
 						<a href={contentUrl} rel="noopener noreferrer">{contentTitle}</a>
@@ -104,7 +125,10 @@ const {
 		</Fragment>
 	)}
 
-	<h2><Icon name="uil:cog" title="Icon of a cog" /> Technologies used</h2>
+	<h2>
+		<Icon name="uil:cog" title="Icon of a cog" />
+		Technologies used
+	</h2>
 	<ul id="technology-tags">
 		{techStack?.map((tech) => (
 			<li class="tag">{tech}</li>
@@ -113,9 +137,18 @@ const {
 
 	{demo && (
 		<Fragment>
-			<h2><Icon name="uil:flask" title="Icon of a chemistry flask" />Demo</h2>
+			<h2>
+				<Icon name="uil:flask" title="Icon of a chemistry flask" />
+				Demo
+			</h2>
 
-			<iframe src={demo} loading="lazy" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin" title={`Demo for ${title}`}>
+			<iframe
+				src={demo}
+				loading="lazy"
+				referrerpolicy="no-referrer"
+				sandbox="allow-forms allow-scripts allow-same-origin"
+				title={`Demo for ${title}`}
+			>
 				A local running demo of the project.
 			</iframe>
 		</Fragment>

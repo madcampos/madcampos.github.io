@@ -1,35 +1,45 @@
 .talk-card {
-	--image-size: 10rem;
+	--image-size: 15rem;
 
+	background-color: var(--bg-color);
 	display: grid;
 	grid-template-areas:
 		'header header'
-		'picture content';
+		'picture content'
+		'picture links';
 	grid-template-columns: var(--image-size) 1fr;
-	grid-template-rows: auto 1fr;
-	gap: var(--padding-inline);
-
-	margin: 3rem 0;
+	grid-template-rows: auto 1fr auto;
+	gap: var(--spacing-large);
+	padding: var(--spacing-large);
+	margin: var(--spacing-large);
 }
 
 .talk-card:not(:has( picture)) {
 	grid-template-areas:
-		'header header'
-		'content content';
+		'header'
+		'content'
+		'links';
 	grid-template-columns: 1fr;
-	grid-template-rows: auto 1fr;
+	grid-template-rows: auto 1fr auto;
 }
 
 
 .talk-card header { grid-area: header; }
-.talk-card header h2 { color: var(--theme-color); }
+
+.talk-card header h2 {
+	margin: 0;
+	margin-block-end: var(--spacing-medium);
+}
+
+.talk-card header aside small {
+	display: flex;
+}
+
 
 .talk-card picture {
 	grid-area: picture;
-	place-self: start center;
+	place-self: center center;
 
-	border-radius: 1rem;
-	border: solid thin var(--theme-color);
 	overflow: hidden;
 
 	width: var(--image-size);
@@ -50,21 +60,22 @@
 .talk-card .talk-content { grid-area: content; }
 .talk-card .talk-content > *:first-child { margin-block-start: 0; }
 
-*:has(> svg) {
-	display: flex;
-	align-items: center;
-	gap: var(--margin-inline);
-}
+.talk-card .talk-links { grid-area: links; }
 
-@media (max-width: 500px) {
+@media (max-width: 850px) {
 	.talk-card {
-		--image-size: 8rem;
+		--image-size: 10rem;
 
 		grid-template-areas:
 			'header'
 			'picture'
-			'content';
+			'content'
+			'links';
 		grid-template-columns: 1fr;
-		grid-template-rows: auto var(--image-size) 1fr;
+		grid-template-rows: auto var(--image-size) auto auto;
+	}
+
+	.talk-card picture {
+		align-self: center center;
 	}
 }

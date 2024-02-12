@@ -50,19 +50,6 @@ blockquote > p {
 	padding-block: 1rem;
 }
 
-iframe {
-	border: thin solid black;
-	border-radius: 0.2rem;
-
-	display: block;
-	margin-inline: auto;
-	min-width: 5rem;
-	min-height: 5rem;
-	width: clamp(5rem, 100%, 70rem);
-	height: auto;
-	aspect-ratio: 3 / 2;
-}
-
 hr {
 	border: none;
 	border-top: var(--border-width) dashed var(--theme-color);
