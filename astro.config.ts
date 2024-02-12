@@ -40,7 +40,12 @@ export default defineConfig({
 	markdown: {
 		syntaxHighlight: 'shiki',
 		shikiConfig: {
-			theme: 'dark-plus'
+			theme: 'css-variables',
+			experimentalThemes: {
+				light: 'light-plus',
+				dark: 'dark-plus'
+			},
+			wrap: true
 		},
 		remarkPlugins: [remarkBreaks],
 		rehypePlugins: [[rehypeExternalLinks, { rel: ['external', 'noopener', 'noreferrer'] }]]

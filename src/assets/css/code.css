@@ -14,10 +14,9 @@ code {
 }
 
 pre {
-	background-color: #1E1E1E;
+	background-color: var(--bg-color);
 	padding: 0.6rem 0.4rem;
-	border: thin solid black;
-	border-radius: 0.2rem;
+	border: solid var(--border-color) var(--border-width);
 }
 
 code .line::before {
@@ -28,10 +27,24 @@ code .line::before {
 	width: var(--line-counter-width);
 	display: inline-block;
 	text-align: right;
-	color: rgba(115,138,148,.4)
+	color: var(--border-color);
 }
 
 code .line {
 	display: inline-block;
 	padding-left: calc(var(--line-counter-width) + var(--line-counter-margin-right));
+}
+
+@media (prefers-color-scheme: dark) {
+	pre {
+		/* stylelint-disable-next-line declaration-no-important */
+		color: var(--shiki-dark) !important;
+		/* stylelint-disable-next-line declaration-no-important */
+		background-color: var(--shiki-dark-bg) !important;
+	}
+
+	pre .line * {
+		/* stylelint-disable-next-line declaration-no-important */
+		color: var(--shiki-dark) !important;
+	}
 }
