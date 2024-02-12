@@ -22,14 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 	});
 
-	copyShareButton?.addEventListener('click', () => {
+	copyShareButton?.addEventListener('click', async () => {
 		const url = window.location.href;
-		const input = document.createElement('input');
 
-		document.body.appendChild(input);
-		input.value = url;
-		input.select();
-		document.execCommand('copy');
-		document.body.removeChild(input);
+		await navigator.clipboard.writeText(url);
 	});
 });
