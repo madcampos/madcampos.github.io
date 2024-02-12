@@ -36,7 +36,7 @@
 .project-card .project-icon {
 	grid-area: picture;
 	max-width: 50vmin;
-	place-self: center center;
+	place-self: start center;
 }
 
 .project-card header { grid-area: header; }
@@ -101,5 +101,9 @@
 			'footer';
 		grid-template-columns: 1fr;
 		grid-template-rows: auto var(--image-size) auto auto auto;
+	}
+
+	.project-card .project-icon {
+		place-self: center center;
 	}
 }
