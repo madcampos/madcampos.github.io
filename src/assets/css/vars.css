@@ -1,7 +1,19 @@
 :root {
 	/* Sizes */
 	--body-text: 20px;
-	--small-text: 0.8rem;
+	--small-text: 0.75rem;
+
+	--min-width: 5rem;
+	--medium-width: 30rem;
+	--max-width: 76rem;
+
+	--iframe-size: var(--min-width);
+	--tag-size: 0.7rem;
+	--button-size: 2.5rem;
+
+	--avatar-size: calc(var(--medium-width) * 0.45);
+	--avatar-small-size: var(--min-width);
+	--avatar-size-mini: calc(var(--avatar-size) * 0.6);
 
 	/* Spacing */
 	--spacing-large: 1rem;
@@ -10,16 +22,6 @@
 
 	/* Border */
 	--border-width: 0.1rem;
-
-	/* Padding */
-	--padding-inline: 0.5rem;
-	--padding-block: 0.3rem;
-	--padding-small: 0.1rem;
-
-	/* Margin */
-	--margin-inline: 0.5rem;
-	--margin-block: 0.3rem;
-	--margin-small: 0.1rem;
 
 	/* Theme colors */
 	--theme-color: #0080ff;

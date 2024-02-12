@@ -1,13 +1,13 @@
 main, #post-footer {
 	width: 100%;
-	max-width: 76rem;
+	max-width: var(--max-width);
 	margin-inline: auto;
 }
 
 #post-contents {
 	text-wrap: pretty;
 	overflow-wrap: break-word;
-	margin-inline: min(10vw, 8rem);
+	margin-inline: min(10vw,var(--min-width));
 }
 
 #post-contents h1:first-of-type {
@@ -15,14 +15,16 @@ main, #post-footer {
 }
 
 #post-contents p > img:only-child {
+	--image-size: 35vw;
+
 	display: block;
 	margin-inline: auto;
-	width: clamp(5rem, 35vw, 20rem);
+	width: clamp(var(--min-width), var(--image-size), var(--max-width));
 	height: auto;
 }
 
 a[rel~="external"]::after {
-	--external-icon-size: 0.6rem;
+	--external-icon-size: 0.65em;
 
 	content: '';
 	display: inline-block;
@@ -37,23 +39,24 @@ a[rel~="external"]::after {
 }
 
 blockquote {
-	border-left: var(--border-width) solid var(--theme-color);
-	padding-inline: var(--padding-inline);
-	margin-inline: var(--padding-inline);
-	margin-block: var(--padding-block);
+	border: var(--border-width) solid var(--border-color);
+	border-inline-end-color: var(--theme-color);
+	border-block-end-color: var(--theme-color);
+	padding-inline: var(--spacing-medium);
+	margin: var(--spacing-medium);
 
 	font-style: italic;
 }
 
 blockquote > p {
 	margin-block: 0;
-	padding-block: 1rem;
+	padding-block: var(--spacing-large);
 }
 
 hr {
 	border: none;
 	border-top: var(--border-width) dashed var(--theme-color);
-	margin: calc(var(--spacing-large) * 2) min(15vw, 12rem) var(--spacing-large);
+	margin: calc(var(--spacing-large) * 2) calc(var(--spacing-large) * 4) var(--spacing-large);
 }
 
 #post-footer {
@@ -68,7 +71,7 @@ hr {
 #related-posts #related-posts-wrapper {
 	display: block;
 	margin-inline: auto;
-	max-width: 76rem;
+	max-width: var(--max-width);
 	width: calc(100cqw - var(--spacing-large) * 4);
 	overflow-x: auto;
 }
@@ -98,19 +101,9 @@ hr {
 }
 
 @media (max-width: 768px) {
-	#post-header {
-		flex-direction: column;
-	}
+	#post-header { flex-direction: column; }
+	#post-header header { margin-inline-end: 0; }
+	#post-header #back-to-blog { margin-block-start: var(--spacing-large); }
 
-	#post-header header {
-		margin-inline-end: 0;
-	}
-
-	#post-header #back-to-blog {
-		margin-block-start: 1rem;
-	}
-
-	#post-contents p > img:only-child {
-		width: clamp(5rem, 70vw, 20rem);
-	}
+	#post-contents p > img:only-child { --image-size: 70vw; }
 }

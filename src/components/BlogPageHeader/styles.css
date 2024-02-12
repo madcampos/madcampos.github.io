@@ -1,7 +1,7 @@
 #blog-page-header {
 	display: flex;
 	align-items: center;
-	gap: 1rem;
+	gap: var(--spacing-large);
 }
 
 #blog-page-header h1 {
@@ -16,7 +16,7 @@
 
 	text-wrap: balance;
 
-	padding: 1rem;
+	padding: var(--spacing-large);
 }
 
 @media (max-width: 768px) {

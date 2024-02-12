@@ -1,12 +1,12 @@
 main {
 	width: 100%;
-	max-width: 76rem;
+	max-width: var(--max-width);
 	margin-inline: auto;
-	padding-block-end: 1rem;
+	padding-block-end: var(--spacing-large);
 }
 
 #contents {
-	margin-inline: min(10vw, 8rem);
+	margin-inline: min(10vw,var(--min-width));
 }
 
 #site-nav {

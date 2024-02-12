@@ -1,5 +1,5 @@
 .post-card {
-	--image-size: 10rem;
+	--image-size: var(--avatar-size);
 
 	display: grid;
 	grid-template-areas:
@@ -9,9 +9,11 @@
 		'footer footer';
 	grid-template-columns: var(--image-size) 1fr;
 	grid-template-rows: auto 1fr auto auto;
-	gap: var(--padding-inline);
+	gap: var(--spacing-large);
 
-	margin: 3rem 0;
+	margin: var(--spacing-large) 0;
+	padding: var(--spacing-large);
+	background-color: var(--bg-color);
 }
 
 .post-card:not(:has( picture)) {
@@ -55,7 +57,7 @@
 
 @media (max-width: 500px) {
 	.post-card {
-		--image-size: 8rem;
+		--image-size: var(--avatar-small-size);
 
 		grid-template-areas:
 			'header'

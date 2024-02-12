@@ -5,18 +5,18 @@ body {
 }
 
 #about {
-	width: clamp(5rem, 80vw, 50rem);
+	width: clamp(var(--min-width), 80vw, var(--max-width));
 	margin-inline: auto;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: flex-start;
-	gap: 2rem;
+	gap: var(--spacing-large);
 }
 
 #about picture {
-	width: clamp(5rem, 30vw, 20rem);
-	height: clamp(5rem, 30vw, 20rem);
+	width: clamp(var(--min-width), 30vw, var(--medium-width));
+	height: clamp(var(--min-width), 30vw, var(--medium-width));
 }
 
 #about ul { padding: 0; }
@@ -26,11 +26,6 @@ body {
 	display: block;
 }
 
-#about li svg {
-	width: 1rem;
-	height: 1rem;
-}
-
 @media (max-width: 650px) {
 	#about {
 		flex-direction: column;
@@ -38,7 +33,7 @@ body {
 	}
 
 	#about picture {
-		width: clamp(5rem, 60vw, 20rem);
-		height: clamp(5rem, 60vw, 20rem);
+		width: clamp(var(--min-width), 60vw, var(--medium-width));
+		height: clamp(var(--min-width), 60vw, var(--medium-width));
 	}
 }

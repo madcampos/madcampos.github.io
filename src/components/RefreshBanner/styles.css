@@ -2,15 +2,15 @@
 	visibility: hidden;
 	position: fixed;
 	display: flex;
-	gap: var(--padding-inline);
+	gap: var(--spacing-medium);
 	align-items: center;
 	justify-content: space-between;
 
-	width: clamp(10rem, 100%, 35rem);
+	width: clamp(var(--min-width), 100%, var(--medium-width));
 	inset-inline: 0;
-	inset-block-end: var(--margin-block);
+	inset-block-end: var(--spacing-small);
 	margin-inline: auto;
-	padding: var(--padding-block) var(--padding-inline);
+	padding: var(--spacing-medium) var(--spacing-large);
 
 	background-color: var(--bg-color);
 
@@ -32,10 +32,10 @@
 	border-radius: 100vmax;
 	display: none;
 	place-items: center;
-	padding: 0.25rem;
+	padding: var(--spacing-small);
 	color: var(--text-color);
-	width: 2.5rem;
-	height: 2.5rem;
+	width: var(--button-size);
+	height: var(--button-size);
 	cursor: pointer;
 }
 

@@ -1,6 +1,6 @@
 #glitched-logo-svg {
-	width: 12rem;
-	height: 12rem;
+	width: var(--avatar-size);
+	height: var(--avatar-size);
 }
 
 #glitched-logo-svg #logo {

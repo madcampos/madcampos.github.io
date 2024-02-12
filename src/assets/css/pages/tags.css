@@ -9,8 +9,9 @@
 }
 
 #tag-list .tag {
-	--tag-width: 0.7rem;
-	--tag-height: 0.7rem;
+	--tag-width: var(--tag-size);
+	--tag-height: var(--tag-size);
+	--tag-hole-size: 0.3;
 
 	display: inline-block;
 	list-style: none;
@@ -18,7 +19,7 @@
 	padding: var(--spacing-small) var(--spacing-medium);
 	padding-inline-start: calc(var(--tag-width) + var(--spacing-medium));
 	margin: var(--spacing-small);
-	font-size: 1.3rem;
+	font-size: larger;
 	color: var(--text-color);
 	overflow: visible;
 }
@@ -44,10 +45,10 @@
 		0 calc(50% - (var(--tag-height) * 0.5))
 	);
 	mask: radial-gradient(
-		circle at calc(var(--tag-width) * 0.7) center,
+		circle at calc(var(--tag-width) * (1 - var(--tag-hole-size))) center,
 		transparent 0,
-		transparent calc((var(--tag-height) * 0.3)),
-		black calc((var(--tag-height) * 0.3))
+		transparent calc((var(--tag-height) * var(--tag-hole-size))),
+		black calc((var(--tag-height) * var(--tag-hole-size)))
 	);
 }
 

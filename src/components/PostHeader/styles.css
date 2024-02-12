@@ -1,12 +1,12 @@
 #post-header {
 	width: 100%;
-	max-width: 76rem;
+	max-width: var(--max-width);
 	margin-inline: auto;
 }
 
 #post-header h1 {
 	height: auto;
-	font-size: clamp(2rem, 5vw, 4rem);
+	font-size: 2.5em;
 	font-weight: bold;
 
 	overflow-wrap: break-word;
@@ -96,8 +96,6 @@
 #post-share { grid-area: share; }
 
 #post-share button {
-	--button-size: 2rem;
-
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -148,6 +146,4 @@
 			'metadata'
 			'share';
 	}
-
-	#post-share button { --button-size: 2.5rem; }
 }

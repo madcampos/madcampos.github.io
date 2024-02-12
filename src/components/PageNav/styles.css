@@ -1,7 +1,7 @@
 #back-to-home {
-	width: 6rem;
-	height: 6rem;
-	margin: 1rem;
+	width: var(--avatar-small-size);
+	height: var(--avatar-small-size);
+	margin: var(--spacing-large);
 }
 
 #back-to-home :is(a, img) {
@@ -13,7 +13,7 @@
 #back-to-home #link-mobile { display: none; }
 
 @media (max-width: 768px) {
-	#back-to-home { width: clamp(5rem, 70vmin, 30rem); }
+	#back-to-home { width: clamp(var(--min-width), 70vmin, var(--medium-width)); }
 	#back-to-home #link-desktop { display: none; }
 	#back-to-home #link-mobile { display: block; }
 }

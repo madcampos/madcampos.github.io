@@ -1,5 +1,5 @@
 main {
-	padding-inline: min(10vw,8rem);
+	padding-inline: min(10vw,var(--min-width));
 }
 
 ul li {
@@ -18,16 +18,16 @@ ul li {
 #technology-tags .tag {
 	display: inline-block;
 	list-style: none;
-	padding: var(--padding-small) var(--padding-inline);
-	margin: var(--margin-small);
-	font-size: 0.75rem;
+	padding: var(--spacing-small) var(--spacing-medium);
+	margin: 0;
+	font-size: var(--small-text);
 	background-color: var(--secondary-color);
 	color: #3c3c3c;
 }
 
 img {
-	width: clamp(5rem, 100%, 50rem);
-	height: clamp(5rem, 70vh, 50rem);
+	width: clamp(var(--min-width), 100%, var(--medium-width));
+	height: clamp(var(--min-width), 70vh, var(--medium-width));
 	object-fit: contain;
 	display: block;
 	margin-inline: auto;

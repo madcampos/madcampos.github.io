@@ -15,7 +15,7 @@ code {
 
 pre {
 	background-color: var(--bg-color);
-	padding: 0.6rem 0.4rem;
+	padding: var(--spacing-medium) var(--spacing-small);
 	border: solid var(--border-color) var(--border-width);
 }
 

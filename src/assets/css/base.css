@@ -57,7 +57,7 @@ html, body {
 
 :focus {
 	outline: var(--theme-color) solid var(--border-width);
-	outline-offset: var(--margin-block);
+	outline-offset: var(--spacing-small);
 	background-color: var(--bg-color);
 	color: var(--text-color);
 }
@@ -95,14 +95,14 @@ a:focus:has(img) {
 h1 {
 	text-align: center;
 	color: var(--theme-color);
-	margin-block: 1rem;
+	margin-block: var(--spacing-large);
 	margin-inline: auto;
 }
 
 h1 img {
 	height: 100%;
 	object-fit: contain;
-	width: clamp(5rem, 70vmin, 30rem);
+	width: clamp(var(--min-width), 70vmin, var(--medium-width));
 }
 
 h1, h2, h3, h4, h5, h6, summary {
@@ -126,7 +126,7 @@ summary::-webkit-details-marker { display: none; }
 summary::marker { display: none; }
 
 summary::before {
-	--icon-size: 1.2rem;
+	--icon-size: 1.2em;
 
 	content: '';
 	display: inline-block;
@@ -157,9 +157,9 @@ iframe {
 	border: solid var(--border-width) var(--theme-color);
 	display: block;
 	margin-inline: auto;
-	min-width: 5rem;
-	min-height: 5rem;
-	width: clamp(5rem, 100%, 70rem);
+	min-width: var(--iframe-size);
+	min-height: var(--iframe-size);
+	width: clamp(var(--iframe-size), 100%, var(--max-width));
 	height: auto;
 	max-height: 100%;
 	aspect-ratio: 3 / 2;

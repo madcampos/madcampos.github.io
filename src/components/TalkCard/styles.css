@@ -1,5 +1,5 @@
 .talk-card {
-	--image-size: 15rem;
+	--image-size: var(--avatar-size);
 
 	background-color: var(--bg-color);
 	display: grid;
@@ -64,7 +64,7 @@
 
 @media (max-width: 850px) {
 	.talk-card {
-		--image-size: 10rem;
+		--image-size: var(--avatar-small-size);
 
 		grid-template-areas:
 			'header'

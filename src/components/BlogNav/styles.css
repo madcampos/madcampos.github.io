@@ -1,8 +1,8 @@
 #back-to-blog {
-	width: 6rem;
+	width: var(--avatar-size);
 	height: auto;
 	aspect-ratio: 1 / 1;
-	margin: 1rem;
+	margin: var(--spacing-large);
 }
 
 #back-to-blog :is(a, img) {
@@ -12,6 +12,10 @@
 }
 
 #back-to-blog #link-mobile { display: none; }
+
+@media (max-width: 768px) {
+	#back-to-blog { width: var(--avatar-small-size); }
+}
 
 @media (max-width: 650px) {
 	#back-to-blog {

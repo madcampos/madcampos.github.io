@@ -17,7 +17,7 @@
 	padding: var(--spacing-small) var(--spacing-medium);
 	padding-inline-start: calc(var(--tag-width) + var(--spacing-medium));
 	margin: var(--spacing-small);
-	font-size: 0.75rem;
+	font-size: var(--small-text);
 	color: var(--text-color);
 	overflow: visible;
 }

@@ -10,18 +10,18 @@
 }
 
 #metadata {
-	width: clamp(5rem, 80vw, 50rem);
-	margin-block: 1rem;
+	width: clamp(var(--min-width), 80vw, var(--max-width));
+	margin-block: var(--spacing-large);
 	margin-inline: auto;
 }
 
 main {
-	width: clamp(5rem, 80vw, 50rem);
+	width: clamp(var(--min-width), 80vw, var(--max-width));
 	margin-inline: auto;
 }
 
 .item {
-	--image-size: 10rem;
+	--image-size: var(--avatar-size);
 
 	display: grid;
 	grid-template-areas:
@@ -30,9 +30,9 @@ main {
 		'footer footer';
 	grid-template-columns: var(--image-size) 1fr;
 	grid-template-rows: auto 1fr auto;
-	gap: var(--padding-inline);
+	gap: var(--spacing-medium);
 
-	margin: 3rem 0;
+	margin: var(--spacing-large) 0;
 }
 
 .item:not(:has( img)) {
@@ -49,15 +49,13 @@ main {
 
 .item .item-metadata {
 	font-size: small;
-	margin-block: 0.5rem;
+	margin-block: var(--spacing-medium);
 }
 
 .item picture {
 	grid-area: picture;
 	place-self: center center;
 
-	border-radius: 1rem;
-	border: solid thin var(--theme-color);
 	overflow: hidden;
 
 	width: var(--image-size);
@@ -81,20 +79,18 @@ main {
 .item footer ul {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 1rem;
+	gap: var(--spacing-large);
 	list-style: none;
 	padding: 0;
-	margin: 1rem 0;
+	margin: var(--spacing-large) 0;
 }
 
 .item .tag {
 	display: inline-block;
 	list-style: none;
-	padding: var(--padding-small) var(--padding-inline);
-	margin: var(--margin-small);
-	border-radius: 100vmax;
-	font-size: 0.75rem;
-	border: solid thin var(--theme-color);
+	padding: var(--spacing-small) var(--spacing-medium);
+	margin: var(--spacing-small);
+	font-size: var(--small-text);
 	background-color: var(--secondary-color);
 	color: #3c3c3c;
 }
@@ -106,7 +102,7 @@ main {
 
 @media (max-width: 500px) {
 	.item {
-		--image-size: 8rem;
+		--image-size: var(--avatar-small-size);
 
 		grid-template-areas:
 			'header'
