@@ -98,6 +98,10 @@ h1, h2, h3, h4, h5, h6, summary {
 	color: var(--theme-color);
 }
 
+main {
+	flex-grow: 1;
+}
+
 summary {
 	list-style: none;
 	display: flex;
