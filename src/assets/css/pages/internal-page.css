@@ -17,6 +17,14 @@ iframe {
 	display: block;
 }
 
+*:has(> svg) {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3em;
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
 @media (max-width: 768px) {
 	#contents {
 		margin-inline: 0;

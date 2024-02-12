@@ -1,0 +1,58 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE_TAGS, SITE_TITLE } from '../constants';
+import InternalPage from '../layouts/InternalPage.astro';
+---
+
+<InternalPage
+	htmlTitle={['License & Legal information', ...SITE_TITLE]}
+	title="License & Legal information"
+	description="License & Legal information for Marco Campos website."
+	url="/license"
+	tags={['legal', 'license', ...SITE_TAGS]}
+>
+	<Fragment slot="header">
+		<Icon name="fa6-brands:creative-commons" title="The Creative Commons icon, with two letters &quot;c&quot; inside." />
+		License &amp; Legal information
+	</Fragment>
+
+	<p>This website and its content are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)</a>.</p>
+
+	<p>This means you are free to:</p>
+
+	<ul>
+		<li><strong>Share:</strong> copy and redistribute the material in any medium or format.</li>
+		<li><strong>Adapt:</strong> remix, transform, and build upon the material.</li>
+	</ul>
+
+	<p>As long as you follow these terms:</p>
+
+	<ul>
+		<li>
+			<strong>
+				<Icon name="fa6-brands:creative-commons-by" title="The Creative Commons icon for attibution, with a circle containing a person icon inside." />
+				Attribution:
+			</strong>
+			You must give appropriate credit to the original author(s) and the website, provide a link to the license, and indicate if changes were made.
+			You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+		</li>
+		<li>
+			<strong>
+				<Icon name="fa6-brands:creative-commons-nc" title="The Creative Commons icon for non-commercial use, with a circle containing a dollar sign crossed out." />
+				NonCommercial:
+			</strong>
+			You may not use the material for commercial purposes, such as selling, advertising, or promoting products or services.
+		</li>
+		<li>
+			<strong>
+				<Icon name="fa6-brands:creative-commons-sa" title="The Creative Commons icon for share alike, with a circle containing a circular arrow inside." />
+				ShareAlike:
+			</strong>
+			If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+		</li>
+	</ul>
+
+	<p>You may not apply any additional restrictions or legal terms that prevent others from doing anything the license permits.</p>
+
+	<p>For more information, please visit the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">license page</a> or read the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode">full legal code</a>.</p>
+</InternalPage>

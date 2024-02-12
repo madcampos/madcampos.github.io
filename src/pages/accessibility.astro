@@ -1,0 +1,23 @@
+---
+import { SITE_TAGS, SITE_TITLE } from '../constants';
+import InternalPage from '../layouts/InternalPage.astro';
+---
+
+<InternalPage
+	htmlTitle={['Accessibility Statement', ...SITE_TITLE]}
+	title="Accessibility Statement"
+	description="Accesibility Statement for Marco Campos website."
+	url="/accessibility"
+	tags={['accessibility', 'a11y', ...SITE_TAGS]}
+>
+	<Fragment slot="header">Accessibility Statement</Fragment>
+
+	<p>This site is made for people. As such I try my best to be AA compliant with <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility Guidelines (WCAG)</a> and by doing that try to make the web more accessible and inclusive.</p>
+
+	<p>That said, I'm not perfect and I'm always learning and improving the website.</p>
+	<p>I run automated testing for accessibility issues regularly, as well as testing on desktop and mobile browsers with different zoom levels.</p>
+
+	<p>If you have any issues with the site, please contact me at <em><a href="mailto:me@madcampos.dev">me@madcampos.dev</a></em>.</p>
+
+	<p>If you have the technical knowledge, feel free to open an issue <a href="https://github.com/madcampos/madcampos.github.io/issues/new">on GitHub</a>.</p>
+</InternalPage>
