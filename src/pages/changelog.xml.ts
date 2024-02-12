@@ -4,6 +4,8 @@ import rss, { type RSSFeedItem } from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { getImage } from 'astro:assets';
 
+import { BLOG_URL } from '../constants';
+
 import { parseMarkdown } from '../utils/markdown';
 
 import defaultImage from '../assets/images/logo-micro.png';
@@ -34,7 +36,7 @@ export const GET: APIRoute = async (context) => {
 
 			return item;
 		})),
-		stylesheet: '/blog/feed.xsl',
+		stylesheet: `${BLOG_URL}/feed.xsl`,
 		customData: `
 		<language>en-us</language>
 		<image>
