@@ -14,12 +14,6 @@ body {
 	gap: 2rem;
 }
 
-#about *:has(> svg) {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.3em;
-}
-
 #about picture {
 	width: clamp(5rem, 30vw, 20rem);
 	height: clamp(5rem, 30vw, 20rem);

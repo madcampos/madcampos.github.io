@@ -32,6 +32,14 @@ html, body {
 	font-family: inherit;
 }
 
+*:has(> svg) {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3em;
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
 ::selection {
 	background-color: var(--theme-color);
 	color: var(--bg-color);

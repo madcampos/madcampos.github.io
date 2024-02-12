@@ -2,12 +2,6 @@ main {
 	padding-inline: min(10vw,8rem);
 }
 
-*:has(> svg) {
-	display: inline-flex;
-	align-items: center;
-	gap: var(--padding-inline);
-}
-
 #technology-tags {
 	display: flex;
 	flex-wrap: wrap;

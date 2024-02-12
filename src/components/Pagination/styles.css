@@ -21,12 +21,6 @@
 	display: none;
 }
 
-#pagination *:has(> svg) {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.3em;
-}
-
 #pagination svg {
 	width: 2rem;
 	height: 2rem;
