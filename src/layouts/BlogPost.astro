@@ -11,6 +11,7 @@ import PostHeader from '../components/PostHeader/index.astro';
 import TagList from '../components/TagList/index.astro';
 import AuthorCard from '../components/AuthorCard/index.astro';
 import PostCardSmall from '../components/PostCardSmall/index.astro';
+import SkipToContent from '../components/SkipToContent/index.astro';
 
 interface Props {
 	title: string,
@@ -52,6 +53,11 @@ const postUrl = `${BLOG_URL}${url}`;
 	pageSchema="BlogPosting"
 	hasFeed={true}
 >
+	<SkipToContent
+		slot="header"
+		title="Skip to post content"
+		target="post-contents"
+	/>
 	<PostHeader
 		slot="header"
 		url={postUrl}

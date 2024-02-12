@@ -1,0 +1,20 @@
+#skip-to-main {
+	position: absolute;
+	inset-inline: var(--spacing-medium);
+	inset-block-start: -100%;
+	text-align: center;
+	background-color: var(--text-color);
+	padding: var(--spacing-medium);
+	z-index: 9999;
+	color: var(--bg-color);
+	display: block;
+}
+
+#skip-to-main:focus {
+	inset-block-start: var(--spacing-medium);
+}
+
+:target {
+	scroll-snap-align: start;
+	scroll-margin: var(--spacing-large);
+}

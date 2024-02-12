@@ -5,5 +5,5 @@
 	list-style: none;
 	padding: 0;
 	margin-block: 0;
-	gap: var(--sizing-large);
+	gap: var(--spacing-large);
 }
