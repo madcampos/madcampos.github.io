@@ -14,7 +14,13 @@ export const GET: APIRoute = async (context) => {
 	const ONE_WEEK_IN_MINUTES = 60 * 24 * 7;
 
 	const blogImage = await getImage({ src: defaultImage, format: 'png', width: 512, height: 512 });
-	const blogUrl = new URL(BLOG_URL, context.site).toString();
+
+	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+	const baseUrl = new URL(context.site!);
+
+	baseUrl.protocol = 'https:';
+
+	const blogUrl = new URL(BLOG_URL, baseUrl).toString();
 
 	const allPosts = await listAllPosts();
 
@@ -30,9 +36,9 @@ export const GET: APIRoute = async (context) => {
 		stylesheet: `${blogUrl}/feed.xsl`,
 		customData: `
 			<language>en-us</language>
-			<atom:link href="${new URL(blogImage.src, context.site).toString()}" rel="self" type="application/rss+xml" />
+			<atom:link href="${new URL(blogImage.src, baseUrl).toString()}" rel="self" type="application/rss+xml" />
 			<image>
-				<url>${new URL(blogImage.src, context.site).toString()}</url>
+				<url>${new URL(blogImage.src, baseUrl).toString()}</url>
 				<title>Marco Campos' Blog</title>
 				<description>${BLOG_LOGO_MICRO_ALT}</description>
 				<link>${blogUrl}</link>
@@ -63,13 +69,13 @@ export const GET: APIRoute = async (context) => {
 				content,
 				...(image && {
 					enclosure: {
-						url: new URL(image.src, context.site).toString(),
+						url: new URL(image.src, baseUrl).toString(),
 						type: 'image/png',
 						length: 0
 					},
 					customData: `
 						<media:content
-							url="${new URL(image.src, context.site).toString()}"
+							url="${new URL(image.src, baseUrl).toString()}"
 							type="image/png"
 							medium="image"
 							height="${image.options.height ?? '512'}"

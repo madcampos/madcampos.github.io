@@ -16,10 +16,15 @@ export const GET: APIRoute = async (context) => {
 
 	const siteImage = await getImage({ src: defaultImage, format: 'png', width: 512, height: 512 });
 
+	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+	const baseUrl = new URL(context.site!);
+
+	baseUrl.protocol = 'https:';
+
 	return rss({
 		title: "Marco Campos' Site Changelog",
 		description: 'Changelog (Version History) for Marco Campos\' Website, containing all recent changes.',
-		site: context.site ?? '',
+		site: baseUrl.toString(),
 		items: await Promise.all((await getCollection('changelog')).map(async (changelog) => {
 			const versionNumber = changelog.id.replace('.md', '');
 			const { versionName } = changelog.data;
@@ -31,7 +36,7 @@ export const GET: APIRoute = async (context) => {
 				description: content,
 				content,
 				pubDate: changelog.data.date,
-				link: new URL(`/changelog.xml#${versionNumber}`, context.site).toString()
+				link: new URL(`/changelog.xml#${versionNumber}`, baseUrl).toString()
 			};
 
 			return item;
@@ -40,7 +45,7 @@ export const GET: APIRoute = async (context) => {
 		customData: `
 		<language>en-us</language>
 		<image>
-			<url>${new URL(siteImage.src, context.site).toString()}</url>
+			<url>${new URL(siteImage.src, baseUrl).toString()}</url>
 			<title>Marco Campos' Website Changelog</title>
 			<description>Changelog (Version History) for Marco Campos' Website, containing all recent changes.</description>
 			<link>http://madcampos.dev/changelog.xml</link>
