@@ -20,7 +20,7 @@
 	padding-inline-start: calc(var(--tag-width) + var(--spacing-medium));
 	margin: var(--spacing-small);
 	font-size: larger;
-	color: var(--text-color);
+	color: var(--bg-color);
 	overflow: visible;
 }
 
@@ -35,7 +35,7 @@
 	content: '';
 	position: absolute;
 	inset: 0;
-	background-color: var(--bg-color);
+	background-color: var(--secondary-color);
 	clip-path: polygon(
 		var(--tag-width) 0,
 		100% 0,
@@ -57,7 +57,7 @@
 #tag-list .tag:focus-within {
 	outline: var(--theme-color) solid var(--border-width);
 	outline-offset: var(--spacing-small);
-	color: var(--text-color);
+	color: var(--dark-bg-color);
 }
 
 #tag-list .tag:hover {
