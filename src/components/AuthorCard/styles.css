@@ -1,13 +1,14 @@
 .author-card {
 	display: grid;
 	padding-inline: var(--spacing-large);
-	grid-template-columns: auto 1fr;
-	grid-template-rows: auto 1fr;
+	grid-template-columns: 1fr auto;
+	grid-template-rows: 1fr auto;
 	gap: var(--spacing-large);
 	place-items: center;
 	grid-template-areas:
 		"avatar name"
 		"avatar bio";
+	margin: var(--spacing-large) 0;
 }
 
 .author-card .author-name * { margin: 0; }
@@ -26,7 +27,7 @@
 @media (max-width: 768px) {
 	.author-card {
 		grid-template-columns: 1fr;
-		grid-template-rows: auto auto 1fr;
+		grid-template-rows: 1fr auto auto;
 		grid-template-areas:
 			"avatar"
 			"name"
