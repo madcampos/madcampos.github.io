@@ -55,7 +55,7 @@ export const BLOG_AUTHOR_DESCRIPTION = "Marco Campos' Blog — Authors for the b
 // "Projects" constants
 export const PROJECTS_URL = '/projects';
 export const PROJECTS_TITLE = ['Projects', ...SITE_TITLE];
-export const PROJECTS_TITLE_STRING = 'Projects';
+export const PROJECTS_TITLE_STRING = 'Project Highlight';
 export const PROJECTS_DESCRIPTION = "Marco Campos' Projects — A list of projects I've worked on, or am currently working on. Mostly web development";
 export const PROJECTS_TAGS = ['projects', ...SITE_TAGS];
 

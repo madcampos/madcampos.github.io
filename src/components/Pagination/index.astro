@@ -25,15 +25,27 @@ const TRIM_PAGE_NUMBER = 2;
 const firstPageInNav = Math.max(1, currentPage - TRIM_PAGE_NUMBER);
 const lastPageInNav = Math.min(lastPage, currentPage + TRIM_PAGE_NUMBER);
 ---
-<nav aria-label="Pagination">
+<nav aria-label="Post list pages">
 	<div id="pagination">
-		<a {...(currentPage > 1 && { href: `${baseUrl}/` })} id="first-page" aria-label="First page">
-			<Icon name="uil:angle-double-left" aria-hidden="true" />
-			<span class="pagination-link-text" aria-hidden="true">First</span>
+		<a
+			{...(currentPage > 1
+				? { href: `${baseUrl}/` }
+				: { 'aria-disabled': 'true' }
+			)}
+			id="first-page"
+		>
+			<Icon name="uil:angle-double-left" title="Two chevrons pointing to the left" />
+			<span class="pagination-link-text">First<span class="visually-hidden"> page</span></span>
 		</a>
-		<a {...(prevUrl && { href: prevUrl })} id="prev-page" aria-label="Previous page">
-			<Icon name="uil:angle-left" aria-hidden="true" />
-			<span class="pagination-link-text" aria-hidden="true">Previous</span>
+		<a
+			{...(prevUrl
+					? { href: prevUrl }
+					: { 'aria-disabled': 'true' }
+			)}
+			id="prev-page"
+		>
+			<Icon name="uil:angle-left" title="A chevron pointing to the left" />
+			<span class="pagination-link-text">Previous<span class="visually-hidden"> page</span></span>
 		</a>
 
 		<ol>
@@ -49,7 +61,12 @@ const lastPageInNav = Math.min(lastPage, currentPage + TRIM_PAGE_NUMBER);
 				const href = currentPageNumber === 1 ? '' : currentPageNumber;
 
 				if (currentPageNumber === currentPage) {
-					return <li><span>{currentPageNumber}</span></li>;
+					return (
+						<li aria-current="page">
+							<span>{currentPageNumber}</span>
+							<span class="visually-hidden">(Current page)</span>
+						</li>
+					);
 				}
 
 				return <li><a href={`${baseUrl}/${href}`}>{currentPageNumber}</a></li>;
@@ -63,16 +80,28 @@ const lastPageInNav = Math.min(lastPage, currentPage + TRIM_PAGE_NUMBER);
 			)}
 		</ol>
 
-		<a {...(nextUrl && { href: nextUrl })} id="next-page" aria-label="Next page">
-			<span class="pagination-link-text" aria-hidden="true">Next</span>
-			<Icon name="uil:angle-right" aria-hidden="true" />
+		<a
+			{...(nextUrl
+				? { href: nextUrl }
+				: { 'aria-disabled': 'true' }
+			)}
+			id="next-page"
+		>
+			<span class="pagination-link-text">Next<span class="visually-hidden"> page</span></span>
+			<Icon name="uil:angle-right" title="A chevron pointing to the right" />
 		</a>
-		<a {...(currentPage < lastPage && { href: `${baseUrl}/${lastPage}` })} id="last-page" aria-label="Last page">
-			<span class="pagination-link-text" aria-hidden="true">Last</span>
-			<Icon name="uil:angle-double-right" aria-hidden="true" />
+		<a
+			{...(currentPage < lastPage
+				? { href: `${baseUrl}/${lastPage}` }
+				: { 'aria-disabled': 'true' }
+			)}
+			id="last-page"
+		>
+			<span class="pagination-link-text">Last<span class="visually-hidden"> page</span></span>
+			<Icon name="uil:angle-double-right" title="Two chevrons pointing to the right" />
 		</a>
 	</div>
 	<aside id="pagination-info">
-		{start + 1}-{end + 1} of {total} ({size} per page)
+		{start + 1} &mdash; {end + 1} of {total} ({size} per page)
 	</aside>
 </nav>

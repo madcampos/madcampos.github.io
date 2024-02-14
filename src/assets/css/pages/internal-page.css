@@ -9,10 +9,6 @@ main {
 	margin-inline: min(10vw,var(--min-width));
 }
 
-#site-nav {
-	margin: var(--spacing-large);
-}
-
 @media (max-width: 768px) {
 	#contents {
 		margin-inline: 0;

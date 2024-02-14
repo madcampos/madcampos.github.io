@@ -4,10 +4,9 @@ import { ERROR_DESCRIPTION, ERROR_TITLE, ERROR_TITLE_STRING, ERROR_URL, SITE_TAG
 import BaseLayout from '../layouts/Base.astro';
 import SiteNav from '../components/SiteNav/index.astro';
 import GlitchLogo from '../components/GlitchLogo/index.astro';
+import SkipToContent from '../components/SkipToContent/index.astro';
 
 import '../assets/css/404.css';
-
-
 ---
 <BaseLayout
 	htmlTitle={ERROR_TITLE}
@@ -16,15 +15,19 @@ import '../assets/css/404.css';
 	url={ERROR_URL}
 	tags={SITE_TAGS}
 >
-	<GlitchLogo />
-
-	<h1>404 - Not found</h1>
-	<p>Looks like you hit a dead end.</p>
-	<p>
-		<a href="/">Go back home</a>
-	</p>
-
-	<footer slot="footer">
+	<SkipToContent slot="header" />
+	<header slot="header">
 		<SiteNav />
-	</footer>
+		<div>
+			<GlitchLogo />
+		</div>
+		<h1>404 - Not found</h1>
+	</header>
+
+	<div id="contents">
+		<p>Looks like you hit a dead end.</p>
+		<p>
+			<a href="/">Go back home</a>
+		</p>
+	</div>
 </BaseLayout>

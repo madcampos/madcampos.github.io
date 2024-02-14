@@ -1,4 +1,7 @@
 #site-nav {
 	display: flex;
 	background-color: var(--bg-color);
+	width: 100%;
+	max-width: var(--max-width);
+	margin-inline: auto;
 }

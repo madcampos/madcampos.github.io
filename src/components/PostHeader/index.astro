@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 
-import BlogNav from '../BlogNav/index.astro';
+import SiteNav from '../SiteNav/index.astro';
 
 import './styles.css';
 
@@ -31,9 +31,9 @@ const {
 
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 ---
-<div id="post-header">
-	<header>
-		<BlogNav />
+<SiteNav />
+<header id="post-header">
+	<div id="post-header-wrapper">
 		<a id="post-title" class="u-uid u-url" href={url}>
 			<h1 class="p-name" itemprop="headline">{title}</h1>
 		</a>
@@ -62,7 +62,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 					<span>
 						Updated on <time itemprop="dateModified" class="dt-updated" datetime={updatedAt.toISOString()}>{formatter.format(updatedAt)}</time>
 						{hasUpdates && (
-							<a href="#update-history" aria-label="Jump to updates section">
+							<a href="#update-history" aria-label="Go to updates section">
 								<Icon name="uil:sync-exclamation" />
 							</a>
 						)}
@@ -82,40 +82,32 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 			)}
 		</aside>
 
-		<nav id="post-share" aria-label="Share options">
-			<ul>
-				<li>
-					<button
-						id="ps-copy"
-						type="button"
-						title="Copy link to clipboard"
-						aria-label="Copy link to clipboard"
-					>
-						<Icon name="uil:link" />
-					</button>
-				</li>
-				<li>
-					<button
-						id="ps-email"
-						type="button"
-						title="Send an email"
-						aria-label="Send an email"
-					>
-						<Icon name="uil:envelope-share" />
-					</button>
-				</li>
-				<li>
-					<button
-						id="ps-native"
-						type="button"
-						title="Share on your platform"
-						aria-label="Share on your platform"
-					>
-						<Icon name="uil:share-alt" />
-					</button>
-				</li>
-			</ul>
+		<aside id="post-share" aria-label="Share options">
+			<button
+				id="ps-copy"
+				type="button"
+				title="Copy link to clipboard"
+			>
+				<Icon name="uil:link" title="An icon of a link." />
+				<span class="visually-hidden">Copy link to clipboard</span>
+			</button>
+			<button
+				id="ps-email"
+				type="button"
+				title="Send post by email"
+			>
+				<Icon name="uil:envelope-share" title="An icon of an mail envelope." />
+				<span class="visually-hidden">Send post by email</span>
+			</button>
+			<button
+				id="ps-native"
+				type="button"
+				title="Share using native app"
+			>
+				<Icon name="uil:share-alt" title="An icon of a share symbol, containing three dots arranged as an arrow pointing left with lines connecting them." />
+				<span class="visually-hidden">Share using native app</span>
+			</button>
 			<script src="../../assets/js/share.ts"></script>
-		</nav>
-	</header>
-</div>
+		</aside>
+	</div>
+</header>

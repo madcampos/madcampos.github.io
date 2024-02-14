@@ -1,6 +1,10 @@
+header div:has(> svg) {
+	width: 100%;
+	justify-content: center;
+}
+
 main {
 	text-align: center;
-	display: block;
 }
 
 ul {

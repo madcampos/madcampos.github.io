@@ -1,21 +1,33 @@
 ---
-import InternalPage from '../../layouts/InternalPage.astro';
+import InternalPageLayout from '../../layouts/InternalPage.astro';
 import ProjectCard from '../../components/ProjectCard/index.astro';
 
-import { PROJECTS_TITLE, PROJECTS_URL } from '../../constants';
+import { PROJECTS_DESCRIPTION, PROJECTS_LOGO_ALT, PROJECTS_TITLE, PROJECTS_TITLE_STRING, PROJECTS_URL } from '../../constants';
 
 import { listAllProjects } from '../../utils/projects';
+
+import logoProjects from '../../assets/images/logo-projects.svg';
 
 const projects = await listAllProjects();
 ---
 
-<InternalPage
+<InternalPageLayout
 	htmlTitle={PROJECTS_TITLE}
-	title={PROJECTS_TITLE[0] ?? ''}
-	description="A list of all my projects"
+	title={PROJECTS_TITLE_STRING}
+	description={PROJECTS_DESCRIPTION}
 	url={PROJECTS_URL}
 >
-	<span slot="header">Project Highlights</span>
+	<a href={PROJECTS_URL} slot="logo">
+		<img
+			src={logoProjects.src}
+			width={logoProjects.width}
+			height={logoProjects.height}
+			alt={PROJECTS_LOGO_ALT}
+		/>
+	</a>
+	<Fragment slot="header">
+		{PROJECTS_TITLE_STRING}
+	</Fragment>
 
 	{ projects.map(async (project) => {
 		const { Content } = await project.render();
@@ -38,4 +50,4 @@ const projects = await listAllProjects();
 			</ProjectCard>
 		);
 	}) }
-</InternalPage>
+</InternalPageLayout>

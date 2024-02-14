@@ -51,7 +51,10 @@ const {
 		<main>
 			<slot></slot>
 		</main>
-		<slot name="footer"></slot>
-		<RefreshBanner />
+
+		<footer slot="footer">
+			<slot name="footer"></slot>
+			<RefreshBanner />
+		</footer>
 	</body>
 </html>

@@ -1,10 +1,13 @@
 ---
-import PageNav from '../PageNav/index.astro';
+import SiteNav from '../SiteNav/index.astro';
 
 import './styles.css';
 ---
+<SiteNav />
 <header id="page-header">
-	<PageNav />
+	<div id="logo-wrapper">
+		<slot name="logo"></slot>
+	</div>
 	<h1>
 		<slot></slot>
 	</h1>

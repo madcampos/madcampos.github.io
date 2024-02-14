@@ -1,16 +1,25 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { SITE_TAGS, SITE_TITLE } from '../constants';
-import InternalPage from '../layouts/InternalPage.astro';
+import { LOGO_ALT, SITE_TAGS, SITE_TITLE, SITE_URL } from '../constants';
+import InternalPageLayout from '../layouts/InternalPage.astro';
+import logo from '../assets/images/logo.svg';
 ---
 
-<InternalPage
+<InternalPageLayout
 	htmlTitle={['License & Legal information', ...SITE_TITLE]}
 	title="License & Legal information"
 	description="License & Legal information for Marco Campos website."
 	url="/license"
 	tags={['legal', 'license', ...SITE_TAGS]}
 >
+	<a href={SITE_URL} slot="logo">
+		<img
+			src={logo.src}
+			width={logo.width}
+			height={logo.height}
+			alt={LOGO_ALT}
+		/>
+	</a>
 	<Fragment slot="header">
 		<Icon name="fa6-brands:creative-commons" title="The Creative Commons icon, with two letters &quot;c&quot; inside." />
 		License &amp; Legal information
@@ -55,4 +64,4 @@ import InternalPage from '../layouts/InternalPage.astro';
 	<p>You may not apply any additional restrictions or legal terms that prevent others from doing anything the license permits.</p>
 
 	<p>For more information, please visit the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">license page</a> or read the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode">full legal code</a>.</p>
-</InternalPage>
+</InternalPageLayout>

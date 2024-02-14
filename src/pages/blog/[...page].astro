@@ -3,7 +3,7 @@ import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from '
 
 import BlogPostsLayout from '../../layouts/BlogPosts.astro';
 
-import { BLOG_LOGO_ALT, BLOG_URL } from '../../constants';
+import { BLOG_LOGO_ALT, BLOG_TITLE_STRING, BLOG_URL } from '../../constants';
 import { listAllPosts, MAX_POSTS_PER_PAGE } from '../../utils/post.ts';
 
 import logoBlog from '../../assets/images/logo-blog.svg';
@@ -40,16 +40,16 @@ const {
 	total={total}
 	size={size}
 >
-	<header slot="header">
-		<h1>
-			<a href={BLOG_URL}>
-				<img
-					src={logoBlog.src}
-					width={logoBlog.width}
-					height={logoBlog.height}
-					alt={BLOG_LOGO_ALT}
-				/>
-			</a>
-		</h1>
-	</header>
+	<a href={BLOG_URL} aria-label="Blog" slot="logo">
+		<img
+			src={logoBlog.src}
+			width={logoBlog.width}
+			height={logoBlog.height}
+			alt={BLOG_LOGO_ALT}
+		/>
+	</a>
+
+	<Fragment slot="header">
+		{BLOG_TITLE_STRING}
+	</Fragment>
 </BlogPostsLayout>

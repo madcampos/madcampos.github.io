@@ -1,14 +1,23 @@
 ---
-import { BLOG_TAGS, BLOG_TAGS_DESCRIPTION, BLOG_TAGS_TITLE, BLOG_TAGS_TITLE_STRING, BLOG_TAGS_URL } from '../../../constants';
+import {
+	BLOG_LOGO_ALT,
+	BLOG_TAGS,
+	BLOG_TAGS_DESCRIPTION,
+	BLOG_TAGS_TITLE,
+	BLOG_TAGS_TITLE_STRING,
+	BLOG_TAGS_URL,
+	BLOG_URL
+} from '../../../constants';
 
 import BaseLayout from '../../../layouts/Base.astro';
-import BlogPageHeader from '../../../components/BlogPageHeader/index.astro';
-import SiteNav from '../../../components/SiteNav/index.astro';
+import PageHeader from '../../../components/PageHeader/index.astro';
 
 import { listTags } from '../../../utils/post';
 
 import '../../../assets/css/pages/internal-page.css';
 import '../../../assets/css/pages/tags.css';
+
+import logoBlog from '../../../assets/images/logo-blog.svg';
 
 const tags = await listTags();
 ---
@@ -25,7 +34,17 @@ const tags = await listTags();
 	<link itemprop="itemListOrder" href="https://schema.org/ItemListUnordered" />
 	<meta itemprop="numberOfItems" content={tags.length.toString()} />
 
-	<BlogPageHeader title={BLOG_TAGS_TITLE_STRING} slot="header" />
+	<PageHeader slot="header">
+		<a href={BLOG_URL} slot="logo">
+			<img
+				src={logoBlog.src}
+				width={logoBlog.width}
+				height={logoBlog.height}
+				alt={BLOG_LOGO_ALT}
+			/>
+		</a>
+		{BLOG_TAGS_TITLE_STRING}
+	</PageHeader>
 
 
 	<div id="contents">
@@ -39,8 +58,4 @@ const tags = await listTags();
 			))}
 		</ul>
 	</div>
-
-	<footer slot="footer">
-		<SiteNav />
-	</footer>
 </BaseLayout>

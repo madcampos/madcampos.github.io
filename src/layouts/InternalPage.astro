@@ -3,7 +3,7 @@ import '../assets/css/pages/internal-page.css';
 
 import BaseLayout from './Base.astro';
 import PageHeader from '../components/PageHeader/index.astro';
-import SiteNav from '../components/SiteNav/index.astro';
+import SkipToContent from '../components/SkipToContent/index.astro';
 
 interface Props {
 	htmlTitle?: string[],
@@ -43,15 +43,16 @@ const {
 	hasFeed={hasFeed}
 	pageSchema={pageSchema}
 >
+
+	<SkipToContent slot="header" />
 	<PageHeader slot="header">
+		<slot name="logo" slot="logo"></slot>
 		<slot name="header"></slot>
 	</PageHeader>
+
 	<div id="contents">
 		<slot></slot>
 	</div>
 
-	<footer slot="footer">
-		<slot name="footer"></slot>
-		<SiteNav />
-	</footer>
+	<slot name="footer" slot="footer"></slot>
 </BaseLayout>

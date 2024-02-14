@@ -1,21 +1,33 @@
 ---
-import InternalPage from '../../layouts/InternalPage.astro';
+import InternalPageLayout from '../../layouts/InternalPage.astro';
 import TalkCard from '../../components/TalkCard/index.astro';
 
-import { TALKS_DESCRIPTION, TALKS_TITLE, TALKS_TITLE_STRING, TALKS_URL } from '../../constants';
+import { TALKS_DESCRIPTION, TALKS_LOGO_ALT, TALKS_TITLE, TALKS_TITLE_STRING, TALKS_URL } from '../../constants';
 
 import { listAllTalks } from '../../utils/talks';
+
+import logoTalks from '../../assets/images/logo-talks.svg';
 
 const talks = await listAllTalks();
 ---
 
-<InternalPage
+<InternalPageLayout
 	htmlTitle={TALKS_TITLE}
 	title={TALKS_TITLE_STRING}
 	description={TALKS_DESCRIPTION}
 	url={TALKS_URL}
 >
-	<span slot="header">{TALKS_TITLE_STRING}</span>
+	<a href={TALKS_URL} slot="logo">
+		<img
+			src={logoTalks.src}
+			width={logoTalks.width}
+			height={logoTalks.height}
+			alt={TALKS_LOGO_ALT}
+		/>
+	</a>
+	<Fragment slot="header">
+		{TALKS_TITLE_STRING}
+	</Fragment>
 
 	{ talks.map((talk) => (
 		<TalkCard
@@ -29,4 +41,4 @@ const talks = await listAllTalks();
 			{talk.data.summary}
 		</TalkCard>
 	)) }
-</InternalPage>
+</InternalPageLayout>

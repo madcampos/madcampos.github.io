@@ -4,6 +4,7 @@ import { OFFLINE_DESCRIPTION, OFFLINE_TITLE, OFFLINE_TITLE_STRING, OFFLINE_URL, 
 import BaseLayout from '../layouts/Base.astro';
 import SiteNav from '../components/SiteNav/index.astro';
 import GlitchLogo from '../components/GlitchLogo/index.astro';
+import SkipToContent from '../components/SkipToContent/index.astro';
 
 import '../assets/css/404.css';
 ---
@@ -14,24 +15,27 @@ import '../assets/css/404.css';
 	description={OFFLINE_DESCRIPTION}
 	tags={SITE_TAGS}
 >
-	<GlitchLogo />
-
-	<h1>404 - Not found</h1>
-
-	<p>Looks like you hit a dead-end. It seems though the site is downloaded <em>or</em> you are offline.</p>
-
-	<p>All pages are still navegable and you should have <strong>no problems</strong> visiting most pages.</p>
-	<p>If you are completely offline, you won't be able to see or use:</p>
-	<ul>
-		<li>Images from pages not visited before.</li>
-		<li>Some dynamic content, like adding comments.</li>
-	</ul>
-
-	<p>
-		<a href="/">Go back home</a>
-	</p>
-
-	<footer slot="footer">
+	<SkipToContent slot="header" />
+	<header slot="header">
 		<SiteNav />
-	</footer>
+		<div>
+			<GlitchLogo />
+		</div>
+		<h1>404 - Not found</h1>
+	</header>
+
+	<div id="contents">
+		<p>Looks like you hit a dead-end. It seems though the site is downloaded <em>or</em> you are offline.</p>
+
+		<p>All pages are still navegable and you should have <strong>no problems</strong> visiting most pages.</p>
+		<p>If you are completely offline, you won't be able to see or use:</p>
+		<ul>
+			<li>Images from pages not visited before.</li>
+			<li>Some dynamic content, like adding comments.</li>
+		</ul>
+
+		<p>
+			<a href="/">Go back home</a>
+		</p>
+	</div>
 </BaseLayout>

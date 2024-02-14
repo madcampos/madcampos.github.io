@@ -4,9 +4,37 @@
 	margin-inline: auto;
 }
 
+#post-header-wrapper {
+	justify-self: stretch;
+	display: grid;
+	place-items: end center;
+	gap: var(--spacing-large);
+	grid-template-rows: auto 1fr auto auto auto;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas:
+		'menu hero-image'
+		'title hero-image'
+		'summary hero-image'
+		'metadata metadata'
+		'share share';
+	padding: var(--spacing-large);
+	margin: var(--spacing-large);
+	background: var(--bg-color);
+}
+
+#post-header-wrapper:not(:has(#hero-image)) {
+	grid-template-rows: 1fr auto auto auto;
+	grid-template-columns: auto 1fr;
+	grid-template-areas:
+		'menu title'
+		'summary summary'
+		'metadata metadata'
+		'share share';
+}
+
 #post-header h1 {
 	height: auto;
-	font-size: 2.5em;
+	font-size: clamp(2rem, 5vmax, 4rem);
 	font-weight: bold;
 
 	overflow-wrap: break-word;
@@ -25,34 +53,6 @@
 	text-wrap: balance;
 	margin: 0;
 	padding: 0;
-}
-
-#post-header header {
-	justify-self: stretch;
-	display: grid;
-	place-items: end center;
-	gap: var(--spacing-large);
-	grid-template-rows: auto 1fr auto auto auto;
-	grid-template-columns: 1fr 1fr;
-	grid-template-areas:
-		'menu hero-image'
-		'title hero-image'
-		'summary hero-image'
-		'metadata metadata'
-		'share share';
-	padding: var(--spacing-large);
-	margin: var(--spacing-large);
-	background: var(--bg-color);
-}
-
-#post-header header:not(:has(#hero-image)) {
-	grid-template-rows: 1fr auto auto auto;
-	grid-template-columns: auto 1fr;
-	grid-template-areas:
-		'menu title'
-		'summary summary'
-		'metadata metadata'
-		'share share';
 }
 
 #post-header #back-to-blog { grid-area: menu; }
@@ -93,7 +93,13 @@
 	vertical-align: middle;
 }
 
-#post-share { grid-area: share; }
+#post-share {
+	grid-area: share;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--spacing-large);
+}
 
 #post-share button {
 	display: flex;
@@ -135,11 +141,10 @@
 }
 
 @media (max-width: 650px) {
-	#post-header header {
-		grid-template-rows: auto 1fr auto auto auto auto;
+	#post-header-wrapper {
+		grid-template-rows: 1fr auto auto auto auto;
 		grid-template-columns: 1fr;
 		grid-template-areas:
-			'menu'
 			'hero-image'
 			'title'
 			'summary'

@@ -25,7 +25,7 @@ ul li {
 	color: #3c3c3c;
 }
 
-img {
+main img {
 	width: clamp(var(--min-width), 100%, var(--medium-width));
 	height: clamp(var(--min-width), 70vh, var(--medium-width));
 	object-fit: contain;

@@ -12,7 +12,6 @@ import TagList from '../components/TagList/index.astro';
 import AuthorCard from '../components/AuthorCard/index.astro';
 import PostCardSmall from '../components/PostCardSmall/index.astro';
 import SkipToContent from '../components/SkipToContent/index.astro';
-import SiteNav from '../components/SiteNav/index.astro';
 
 interface Props {
 	title: string,
@@ -155,7 +154,5 @@ const postUrl = `${BLOG_URL}${url}`;
 		<aside id="post-license">
 			<small><em>Unless otherwise noted, all content on this site is licensed under a <a href="/license" class="u-license">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</em></small>
 		</aside>
-
-		<SiteNav />
 	</footer>
 </BaseLayout>

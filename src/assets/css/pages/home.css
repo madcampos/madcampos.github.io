@@ -19,7 +19,10 @@ body {
 	height: clamp(var(--min-width), 30vw, var(--medium-width));
 }
 
-#about ul { padding: 0; }
+#about ul {
+	padding: 0;
+	display: initial;
+}
 
 #about li {
 	margin: var(--spacing-medium);

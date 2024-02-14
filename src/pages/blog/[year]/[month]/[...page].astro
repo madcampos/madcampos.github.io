@@ -1,12 +1,12 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from 'astro';
 
-import { BLOG_URL } from '../../../../constants';
+import { BLOG_LOGO_ALT, BLOG_URL } from '../../../../constants';
 
 import BlogPostsLayout from '../../../../layouts/BlogPosts.astro';
-import BlogPageHeader from '../../../../components/BlogPageHeader/index.astro';
 
 import { listPostsPagesByMonth, MAX_POSTS_PER_PAGE } from '../../../../utils/post.ts';
+import logoBlog from '../../../../assets/images/logo-blog.svg';
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -46,5 +46,15 @@ const formatter = new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric'
 	total={total}
 	size={size}
 >
-	<BlogPageHeader slot="header" title={`Posts from ${formatter.format(new Date(`${year}-${month}-01T00:00:00`))}`} />
+	<a href={BLOG_URL} slot="logo">
+		<img
+			src={logoBlog.src}
+			width={logoBlog.width}
+			height={logoBlog.height}
+			alt={BLOG_LOGO_ALT}
+		/>
+	</a>
+	<Fragment slot="header">
+		{`Posts from ${formatter.format(new Date(`${year}-${month}-01T00:00:00`))}`}
+	</Fragment>
 </BlogPostsLayout>

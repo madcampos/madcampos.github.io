@@ -41,11 +41,11 @@ import {
 				/>
 			</a>
 		</h1>
-		<section id="about" itemprop="mainEntity" itemtype="https://schema.org/Person" itemscope>
+		<article id="about" itemprop="mainEntity" itemtype="https://schema.org/Person" itemscope>
 			<aside>
 				<Avatar image={avatar} imageAlt="A picture of my face with a smile looking at the camera. I&apos;m wearing aviator glasses, a fake fur winter hat and an orange scarf." />
 			</aside>
-			<article>
+			<div>
 				<div class="p-note note" itemprop="description">
 					<p>
 						Hi there! My name is <em class="p-name fn n" itemprop="name"><span class="p-given-name given-name" itemprop="givenName">Marco</span> <span class="p-family-name family-name" itemprop="familyName">Campos</span></em> (<em>@</em><em class="p-nickname nickname" itemprop="alternateName">madcampos</em> on most social networks) and my pronoums are he/him!
@@ -57,51 +57,53 @@ import {
 				</div>
 
 				<p>You can find my projects, personal work, blog and some social networks on the links below:</p>
-				<ul>
-					<li>
-						<a href={BLOG_URL} rel="noreferrer noopener">
-							<Icon name="uil:file-edit-alt" title="An icon of a sheet of paper with a pen." />
-							My Blog
-						</a>
-					</li>
-					<li>
-						<a href={PROJECTS_URL} rel="noreferrer noopener">
-							<Icon name="uil:flask" title="An icon of chemical flask." />
-							Project Highlights
-						</a>
-					</li>
-					<li>
-						<a href={TALKS_URL} rel="noreferrer noopener">
-							<Icon name="uil:presentation-check" title="An icon of presentation stand with a checkmark inside." />
-							Talks I've given
-						</a>
-					</li>
-					<li>
-						<a href="https://github.com/madcampos" rel="noreferrer noopener me authn" itemprop="sameAs">
-							<Icon name="uil:github-alt" title="An icon with Github&apos;s logo." />
-							GitHub
-						</a>
-					</li>
-					<li>
-						<a href="https://codepen.io/madcampos" rel="noreferrer noopener me" itemprop="sameAs">
-							<Icon name="brandico:codepen" title="An icon with CodePen&apos;s logo." />
-							CodePen
-						</a>
-					</li>
-					<li>
-						<a href="https://www.linkedin.com/in/madcampos/" rel="noreferrer noopener" itemprop="sameAs">
-							<Icon name="uil:linkedin-alt" title="An icon with LinkedIn&apos;s logo." />
-							LinkedIn
-						</a>
-					</li>
-					<li>
-						<a href="mailto:me@madcampos.dev" rel="noreferrer noopener me">
-							<Icon name="uil:envelope" title="An icon with an envelope." />
-							<span class="u-email email" itemprop="email">me@madcampos.dev</span>
-						</a>
-					</li>
-				</ul>
-			</article>
-		</section>
+				<nav>
+					<ul>
+						<li>
+							<a href={BLOG_URL} rel="noreferrer noopener">
+								<Icon name="uil:file-edit-alt" title="An icon of a sheet of paper with a pen." />
+								My Blog
+							</a>
+						</li>
+						<li>
+							<a href={PROJECTS_URL} rel="noreferrer noopener">
+								<Icon name="uil:flask" title="An icon of chemical flask." />
+								Project Highlights
+							</a>
+						</li>
+						<li>
+							<a href={TALKS_URL} rel="noreferrer noopener">
+								<Icon name="uil:presentation-check" title="An icon of presentation stand with a checkmark inside." />
+								Talks I've given
+							</a>
+						</li>
+						<li>
+							<a href="https://github.com/madcampos" rel="noreferrer noopener me authn" itemprop="sameAs">
+								<Icon name="uil:github-alt" title="An icon with Github&apos;s logo." />
+								GitHub
+							</a>
+						</li>
+						<li>
+							<a href="https://codepen.io/madcampos" rel="noreferrer noopener me" itemprop="sameAs">
+								<Icon name="brandico:codepen" title="An icon with CodePen&apos;s logo." />
+								CodePen
+							</a>
+						</li>
+						<li>
+							<a href="https://www.linkedin.com/in/madcampos/" rel="noreferrer noopener" itemprop="sameAs">
+								<Icon name="uil:linkedin-alt" title="An icon with LinkedIn&apos;s logo." />
+								LinkedIn
+							</a>
+						</li>
+						<li>
+							<a href="mailto:me@madcampos.dev" rel="noreferrer noopener me">
+								<Icon name="uil:envelope" title="An icon with an envelope." />
+								<span class="u-email email" itemprop="email">me@madcampos.dev</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</article>
 	</div>
 </BaseLayout>

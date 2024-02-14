@@ -2,7 +2,3 @@
 	width: clamp(var(--min-width), 70vw, var(--max-width));
 	margin-inline: auto;
 }
-
-#site-nav {
-	margin: var(--spacing-large);
-}

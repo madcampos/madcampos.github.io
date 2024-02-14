@@ -1,12 +1,12 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from 'astro';
 
-import { BLOG_TAGS_URL } from '../../../../constants';
+import { BLOG_LOGO_ALT, BLOG_TAGS_URL, BLOG_URL } from '../../../../constants';
 
 import BlogPostsLayout from '../../../../layouts/BlogPosts.astro';
-import BlogPageHeader from '../../../../components/BlogPageHeader/index.astro';
 
 import { listPostPagesByTag, MAX_POSTS_PER_PAGE } from '../../../../utils/post';
+import logoBlog from '../../../../assets/images/logo-blog.svg';
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -42,5 +42,15 @@ const { tag } = Astro.params;
 	total={total}
 	size={size}
 >
-	<BlogPageHeader slot="header" title={`Posts tagged with: "${tag ?? ''}"`} />
+	<a href={BLOG_URL} slot="logo">
+		<img
+			src={logoBlog.src}
+			width={logoBlog.width}
+			height={logoBlog.height}
+			alt={BLOG_LOGO_ALT}
+		/>
+	</a>
+	<Fragment slot="header">
+		{`Posts tagged with: "${tag ?? ''}"`}
+	</Fragment>
 </BlogPostsLayout>

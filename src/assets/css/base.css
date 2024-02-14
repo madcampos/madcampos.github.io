@@ -95,7 +95,7 @@ a:focus:has(img) {
 h1 {
 	text-align: center;
 	color: var(--theme-color);
-	margin-block: var(--spacing-large);
+	margin-block: 0;
 	margin-inline: auto;
 }
 
@@ -163,6 +163,20 @@ iframe {
 	height: auto;
 	max-height: 100%;
 	aspect-ratio: 3 / 2;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+	opacity: 0;
+	pointer-events: none;
+	z-index: -1;
 }
 
 @media (prefers-reduced-motion: no-preference) {

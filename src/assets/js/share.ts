@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		});
 	} else {
-		nativeShareButton?.parentElement?.remove();
+		nativeShareButton?.remove();
 	}
 
 	emailShareButton?.addEventListener('click', () => {
