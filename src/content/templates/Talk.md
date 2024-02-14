@@ -1,0 +1,15 @@
+---
+title: 
+summary: 
+event: 
+eventUrl: 
+date: 
+image: 
+imageAlt: 
+slides: 
+video: 
+code: 
+demo: 
+relatedContent: 
+techStack:
+---
