@@ -3,8 +3,7 @@ title:
 summary: 
 image: 
 imageAlt: 
-createdAt: 
-updatedAt: 
+createdAt: {{date}}
 draft: true
 tags:
 ---

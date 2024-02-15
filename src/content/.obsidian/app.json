@@ -5,5 +5,10 @@
   "useMarkdownLinks": true,
   "attachmentFolderPath": "./assets",
   "alwaysUpdateLinks": true,
-  "newLinkFormat": "relative"
+  "newLinkFormat": "relative",
+  "showInlineTitle": true,
+  "readableLineLength": true,
+  "strictLineBreaks": false,
+  "spellcheck": true,
+  "showUnsupportedFiles": false
 }
