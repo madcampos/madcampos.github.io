@@ -66,14 +66,14 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--spacing-large);
-	list-style: none;
+	list-style-type: "";
 	padding: 0;
 	margin: var(--spacing-large) 0;
 }
 
 .project-card .tag {
 	display: inline-block;
-	list-style: none;
+	list-style-type: "";
 	padding: var(--spacing-small) var(--spacing-medium);
 	margin: 0;
 	font-size: var(--small-text);

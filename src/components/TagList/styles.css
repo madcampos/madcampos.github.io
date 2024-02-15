@@ -3,7 +3,7 @@
 	flex-wrap: wrap;
 	justify-content: start;
 	gap: var(--spacing-medium);
-	list-style: none;
+	list-style-type: "";
 	padding: 0;
 }
 
@@ -12,7 +12,7 @@
 	--tag-height: var(--spacing-medium);
 
 	display: inline-block;
-	list-style: none;
+	list-style-type: "";
 	position: relative;
 	padding: var(--spacing-small) var(--spacing-medium);
 	padding-inline-start: calc(var(--tag-width) + var(--spacing-medium));

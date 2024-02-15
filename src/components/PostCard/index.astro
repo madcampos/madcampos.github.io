@@ -47,7 +47,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 		<slot></slot>
 	</div>
 
-	<a class="read-more-link" href={url} aria-label={title}>Read more...</a>
+	<a class="read-more-link" href={url}><span class="visually-hidden">({title}) </span>Read more...</a>
 
 	<footer>
 		{tags && tags.length > 0 && (

@@ -2,7 +2,7 @@
 	display: flex;
 	flex-flow: column wrap;
 	align-items: center;
-	list-style: none;
+	list-style-type: "";
 	padding: 0;
 	margin-block: 0;
 	gap: var(--spacing-large);

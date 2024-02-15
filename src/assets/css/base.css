@@ -149,7 +149,7 @@ nav ul {
 	gap: var(--spacing-large);
 	padding: 0 var(--spacing-large);
 	margin: var(--spacing-large) auto;
-	list-style: none;
+	list-style-type: "";
 	width: 100%;
 }
 
