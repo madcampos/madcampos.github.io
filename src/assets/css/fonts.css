@@ -23,7 +23,7 @@
 	font-style: normal;
 	font-weight: 100 900;
 	font-display: swap;
-	src: url('./fonts/selawik-variable.woff2') format('woff2-variations');
+	src: url('./fonts/selawik.woff2') format('woff2-variations');
 	font-variant-ligatures: none;
 	font-variant-numeric: diagonal-fractions;
 }
