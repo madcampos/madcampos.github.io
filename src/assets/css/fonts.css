@@ -19,7 +19,7 @@
 }
 
 @font-face {
-	font-family: Selawik;
+	font-family: 'Selawik Variable';
 	font-style: normal;
 	font-weight: 100 900;
 	font-display: swap;
@@ -30,5 +30,5 @@
 
 :root {
 	--monospace-font-family: 'Cascadia Code', 'Fira Code', 'Roboto Mono', 'Monaco', 'Courier New', 'Courier', monospace;
-	--sans-serif-font-family: 'Selawik', 'Segoe UI', 'Roboto', 'Open Sans', 'Arial', system-ui, sans-serif;
+	--sans-serif-font-family: 'Selawik Variable', 'Selawik', 'Segoe UI', 'Roboto', 'Open Sans', 'Arial', system-ui, sans-serif;
 }
