@@ -1,0 +1,26 @@
+{
+  "types": {
+    "aliases": "aliases",
+    "cssclasses": "multitext",
+    "tags": "tags",
+    "createdAt": "datetime",
+    "relatedPosts": "multitext",
+    "imageAlt": "text",
+    "image": "text",
+    "summary": "text",
+    "title": "text",
+    "versionName": "text",
+    "date": "datetime",
+    "updatedAt": "datetime",
+    "version": "text",
+    "url": "text",
+    "techStack": "multitext",
+    "repository": "text",
+    "status": "text",
+    "slides": "text",
+    "video": "text",
+    "code": "text",
+    "demo": "text",
+    "relatedContent": "multitext"
+  }
+}
