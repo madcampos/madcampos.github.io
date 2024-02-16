@@ -3,7 +3,7 @@
 	font-style: normal;
 	font-weight: 100 900;
 	font-display: swap;
-	src: url('./fonts/CascadiaCodePL.woff2') format('woff2-variations');
+	src: url('./fonts/cascadia-code.woff2') format('woff2-variations');
 	font-variant-alternates: styleset('ss01') styleset('ss02') styleset('ss03') styleset('ss19') styleset('ss20');
 	font-variant-ligatures: common-ligatures contextual;
 }
@@ -13,7 +13,7 @@
 	font-style: italic;
 	font-weight: 100 900;
 	font-display: swap;
-	src: url('./fonts/CascadiaCodePLItalic.woff2') format('woff2-variations');
+	src: url('./fonts/cascadia-code-italic.woff2') format('woff2-variations');
 	font-variant-alternates: styleset('ss01') styleset('ss02') styleset('ss03') styleset('ss19') styleset('ss20');
 	font-variant-ligatures: common-ligatures contextual;
 }
@@ -23,51 +23,12 @@
 	font-style: normal;
 	font-weight: 100 900;
 	font-display: swap;
-	src: url('./fonts/Selawik-variable.woff2') format('woff2-variations');
+	src: url('./fonts/selawik-variable.woff2') format('woff2-variations');
 	font-variant-ligatures: none;
+	font-variant-numeric: diagonal-fractions;
 }
-
-/* @font-face {
-	font-family: 'Selawik';
-	font-style: normal;
-	font-weight: 100;
-	font-display: swap;
-	src: url('./fonts/selawkl.woff2') format('woff2');
-}
-
-@font-face {
-	font-family: 'Selawik';
-	font-style: normal;
-	font-weight: 300;
-	font-display: swap;
-	src: url('./fonts/selawksl.woff2') format('woff2');
-}
-
-@font-face {
-	font-family: 'Selawik';
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url('./fonts/selawk.woff2') format('woff2');
-}
-
-@font-face {
-	font-family: 'Selawik';
-	font-style: normal;
-	font-weight: 700;
-	font-display: swap;
-	src: url('./fonts/selawksb.woff2') format('woff2');
-}
-
-@font-face {
-	font-family: 'Selawik';
-	font-style: normal;
-	font-weight: 900;
-	font-display: swap;
-	src: url('./fonts/selawkb.woff2') format('woff2');
-} */
 
 :root {
 	--monospace-font-family: 'Cascadia Code', 'Fira Code', 'Roboto Mono', 'Monaco', 'Courier New', 'Courier', monospace;
-	--sans-serif-font-family: 'Selawik', system-ui, -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+	--sans-serif-font-family: 'Selawik', 'Segoe UI', 'Roboto', 'Open Sans', 'Arial', system-ui, sans-serif;
 }
