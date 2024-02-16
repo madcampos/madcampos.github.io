@@ -53,7 +53,7 @@ HTML is a neat language and it has some basic functionality to add extra informa
 
 The most basic tag to add is [`<title>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title), it is your page's title and what will show on the browser tab bar.
 
-You can also add [`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link), you can say what the link is about with the [`rel`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel) attribute. Two super important values for that attribute are [`alternate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel#alternate) and [`cnanonical`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel#canonical), they provide an alternative version of the document and the reference URL for the document, respectively.
+You can also add [`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link), you can say what the link is about with the [`rel`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel) attribute. Two super important values for that attribute are [`alternate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel#alternate) and [`canonical`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel#canonical), they provide an alternative version of the document and the reference URL for the document, respectively.
 
 The most _meta_ of all the tags is [`<meta>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta). It provides a mechanism to set extra _metadata_ about the content, specifically using the attributes [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#name) and [`content`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#content).
 
