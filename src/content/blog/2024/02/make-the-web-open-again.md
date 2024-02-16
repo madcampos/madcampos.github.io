@@ -1,5 +1,5 @@
 ---
-title: Make the web weird Again! 🧢
+title: Make the web open again!
 createdAt: 2024-02-16T00:14:00
 summary: Thoughts on how the web should be open. It is also an ode to the IndieWeb movement and the breaking of silos.
 image: ./assets/punk-world.jpg
