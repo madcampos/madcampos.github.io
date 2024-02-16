@@ -43,7 +43,11 @@ import {
 		</h1>
 		<article id="about" itemprop="mainEntity" itemtype="https://schema.org/Person" itemscope>
 			<aside>
-				<Avatar image={avatar} imageAlt="A picture of my face with a smile looking at the camera. I&apos;m wearing aviator glasses, a fake fur winter hat and an orange scarf." />
+				<Avatar
+					image={avatar}
+					imageAlt="A picture of my face with a smile looking at the camera. I&apos;m wearing aviator glasses, a fake fur winter hat and an orange scarf."
+					loading="eager"
+				/>
 			</aside>
 			<div>
 				<div class="p-note note" itemprop="description">
