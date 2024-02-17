@@ -3,7 +3,7 @@ title: My CSS Reset
 createdAt: 2024-01-18T11:00:00.000-05:00
 updatedAt: 2024-02-02T03:21:00.000-05:00
 updates:
-  - date: 2024-02-02
+  - date: 2024-02-02T03:21:00.000-05:00
     changes: Added an image to the post.
 summary: A breakdown of my CSS reset file and why each piece is there.
 image: ./assets/pixel-unicorn.jpg

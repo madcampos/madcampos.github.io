@@ -3,9 +3,9 @@ title: "Hello, World!"
 createdAt: 2023-05-05T01:59:12.000-04:00
 updatedAt: 2024-02-02T03:21:00.000-05:00
 updates:
-  - date: 2023-06-05
+  - date: 2023-06-05T18:48:45.000-04:00
     changes: Formatted post after proof reading.
-  - date: 2024-02-02
+  - date: 2024-02-02T03:21:00.000-05:00
     changes: Added an image to the post.
 summary: Summary of the experience and hurdles of coding this blog.
 image: ./assets/new-waters.jpg

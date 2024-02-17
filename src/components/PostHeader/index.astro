@@ -29,7 +29,7 @@ const {
 	readingTime, wordCount
 } = Astro.props;
 
-const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
+const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyle: 'long' });
 ---
 <SiteNav />
 <header id="post-header">

@@ -17,7 +17,7 @@ const { url, event, date, image, imageAlt } = Astro.props;
 
 // eslint-disable-next-line @typescript-eslint/no-magic-numbers
 const IMAGE_WIDTHS = [128, 256, 512, 768, image?.width ?? 1024];
-const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
+const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyle: 'short' });
 ---
 <article class="talk-card" itemscope itemtype="https://schema.org/EducationEvent">
 	{image && (

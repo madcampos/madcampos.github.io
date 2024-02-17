@@ -82,10 +82,13 @@ const postUrl = `${BLOG_URL}${url}`;
 						{updates.map((update) => (
 							<li>
 								<time
-									datetime={new Date(update.date).toISOString()}
-									title={new Date(update.date).toISOString()}
+									datetime={update.date.toISOString()}
+									title={update.date.toISOString()}
 								>
-									{new Date(update.date).toLocaleDateString()}
+									{new Intl.DateTimeFormat('en-US', {
+										dateStyle: 'long',
+										timeStyle: 'short'
+									}).format(update.date)}
 								</time>
 								<span>&mdash;</span>
 								<span>{update.changes}</span>

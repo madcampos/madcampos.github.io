@@ -3,9 +3,9 @@ title: The Semantics of Blogging
 createdAt: 2023-06-05T20:54:23.000-04:00
 updatedAt: 2024-02-02T03:21:00.000-05:00
 updates:
-  - date: 2023-06-07
+  - date: 2023-06-07T19:39:00.000-04:00
     changes: Slight review of the content.
-  - date: 2024-02-02
+  - date: 2024-02-02T03:21:00.000-05:00
     changes: Added an image to the post.
 summary: A dive into the semantic html of a blog.
 image: ./assets/arcane-writings.jpg

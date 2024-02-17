@@ -3,11 +3,11 @@ title: "Web Components: A (Not So) Gentle Introduction"
 createdAt: 2023-06-26T22:55:28.000-04:00
 updatedAt: 2024-02-02T03:21:00.000-05:00
 updates:
-  - date: 2023-07-20
+  - date: 2023-07-21T02:11:12.000-04:00
     changes: Added cross-link to tabs post.
-  - date: 2024-01-29
+  - date: 2024-01-29T00:36:05.000-05:00
     changes: Updated embedded codepen iframe.
-  - date: 2024-02-02
+  - date: 2024-02-02T03:21:00.000-05:00
     changes: Added an image to the post.
 summary: A brief introduction to web components.
 image: ./assets/dad-jokes.jpg
