@@ -1,7 +1,7 @@
 ---
 title: "Web Components: A (Not So) Gentle Introduction"
-createdAt: 2023-06-26
-updatedAt: 2024-02-02
+createdAt: 2023-06-26T22:55:28.000-04:00
+updatedAt: 2024-02-02T03:21:00.000-05:00
 updates:
   - date: 2023-07-20
     changes: Added cross-link to tabs post.

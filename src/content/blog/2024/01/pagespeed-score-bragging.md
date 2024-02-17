@@ -1,6 +1,6 @@
 ---
 title: How I got 100 score on PageSpeed
-createdAt: 2024-01-26
+createdAt: 2024-01-26T01:26:00.000-05:00
 summary: Bragging and breakdown on how I optimized my site.
 image: ./assets/doge-score.jpg
 imageAlt: A "doge meme". It shows a close up photo of a shiba dog's face with the dog looking to the camera. Overlaid on the image, in comic sans, are the phrases "Much speed!", "Such accessible!", "Many score!", "WOW!", and "100/100".

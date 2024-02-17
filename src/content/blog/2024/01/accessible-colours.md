@@ -1,6 +1,6 @@
 ---
 title: Making colours more accessible
-createdAt: 2024-01-29
+createdAt: 2024-01-29T12:39:00.000-05:00
 summary: Sharing a problem I got at work and how I solved it
 image: ./assets/rainbow-eye.jpg
 imageAlt: AI generated image of an eye with a radial gradient of a rainbow on it's iris

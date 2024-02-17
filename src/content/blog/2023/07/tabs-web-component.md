@@ -1,7 +1,7 @@
 ---
 title: Tabs, Tabs, Tabs
-createdAt: 2023-07-20
-updatedAt: 2024-02-02
+createdAt: 2023-07-21T02:11:12.000-04:00
+updatedAt: 2024-02-02T03:21:00.000-05:00
 updates:
   - date: 2024-02-02
     changes: Added an image to the post.

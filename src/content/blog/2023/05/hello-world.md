@@ -1,7 +1,7 @@
 ---
 title: "Hello, World!"
-createdAt: 2023-05-05
-updatedAt: 2024-02-02
+createdAt: 2023-05-05T01:59:12.000-04:00
+updatedAt: 2024-02-02T03:21:00.000-05:00
 updates:
   - date: 2023-06-05
     changes: Formatted post after proof reading.

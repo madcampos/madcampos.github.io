@@ -1,6 +1,6 @@
 ---
 title: Metadata for the masses
-createdAt: 2024-02-12
+createdAt: 2024-02-12T03:22:18.915-05:00
 summary: A guide on tools and how to add metadata to your website.
 image: ./assets/web-pages.jpg
 imageAlt: AI generated image of a pile of books covered in spider webs with mountains shining on the horizon in the background.
