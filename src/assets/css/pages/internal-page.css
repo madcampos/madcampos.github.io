@@ -11,6 +11,6 @@ main {
 
 @media (max-width: 768px) {
 	#contents {
-		margin-inline: 0;
+		margin-inline: var(--spacing-large);
 	}
 }
