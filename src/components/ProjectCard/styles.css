@@ -77,8 +77,8 @@
 	padding: var(--spacing-small) var(--spacing-medium);
 	margin: 0;
 	font-size: var(--small-text);
-	background-color: var(--secondary-color);
-	color: #3c3c3c;
+	background-color: var(--tag-bg);
+	color: var(--tag-color);
 }
 
 @media (max-width: 550px) {

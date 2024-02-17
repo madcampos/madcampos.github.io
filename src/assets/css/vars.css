@@ -36,6 +36,10 @@
 	--border-color: dimgray;
 	--scrollbar-bg: rgba(255, 255, 255, 0.1);
 
+	/* Tag colors */
+	--tag-bg: var(--secondary-color);
+	--tag-color: var(--text-color);
+
 	/* Link colors */
 	--link-color: #065bd1;
 	--link-visited-color: #0080ff;
@@ -54,6 +58,10 @@
 		--dark-bg-color: #252525;
 		--border-color: #505050;
 		--scrollbar-bg: rgba(255, 255, 255, 0.1);
+
+		/* Tag colors */
+		--tag-bg: var(--secondary-color);
+		--tag-color: var(--dark-bg-color);
 
 		/* Link colors */
 		--link-color: #70b8ff;
