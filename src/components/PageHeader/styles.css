@@ -1,7 +1,7 @@
 #page-header {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	place-items: center stretch;
 	gap: var(--spacing-large);
 }
 
@@ -20,10 +20,17 @@
 	padding: var(--spacing-large);
 }
 
-#page-header #logo-wrapper:has(img) { padding: var(--spacing-large); }
+#page-header:has(img) { padding: var(--spacing-large); }
 
-#page-header #logo-wrapper img {
+#page-header img {
 	width: clamp(var(--min-width), 70vmin, var(--medium-width));
 	height: 100%;
 	object-fit: contain;
+}
+
+@media (max-width: 500px) {
+	#page-header img {
+		width: calc(100vw - var(--spacing-large) * 2);
+		height: auto;
+	}
 }
