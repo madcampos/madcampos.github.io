@@ -23,7 +23,8 @@
 		"lint:md": "astro check",
 		"lint:html": "markuplint src/**/*.{html,astro} --fix",
 		"lint": "npm run typecheck && npm run lint:js && npm run lint:css && npm run lint:md && npm run lint:html",
-		"lint-staged": "lint-staged"
+		"lint-staged": "lint-staged",
+		"version": "changelogen"
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.5.1",
@@ -42,6 +43,7 @@
 		"@vite-pwa/astro": "^0.2.0",
 		"astro": "^4.3.5",
 		"astro-icon": "^1.1.0",
+		"changelogen": "^0.5.5",
 		"eslint": "^8.56.0",
 		"eslint-plugin-astro": "^0.31.4",
 		"eslint-plugin-jsx-a11y": "^6.8.0",
