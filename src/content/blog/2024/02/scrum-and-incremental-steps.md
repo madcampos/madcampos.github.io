@@ -1,7 +1,7 @@
 ---
 title: Scrum and Incremental Steps
 createdAt: 2024-02-01T00:00:00.000-05:00
-description: A small thought on experiences with Scrum and how to implement it in a new team.
+summary: A small thought on experiences with Scrum and how to implement it in a new team.
 draft: true
 tags:
   - LearnToCode
