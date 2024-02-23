@@ -1,0 +1,31 @@
+---
+import { LOGO_ALT, SITE_TAGS, SITE_TITLE, SITE_URL } from '../constants';
+import InternalPageLayout from '../layouts/InternalPage.astro';
+import logo from '../assets/images/logo.svg';
+---
+
+<InternalPageLayout
+	htmlTitle={['Now', ...SITE_TITLE]}
+	title="What I'm doing now"
+	description="What I'm doing now, my current focus and priorities."
+	url="/now"
+	tags={['now', ...SITE_TAGS]}
+>
+	<a href={SITE_URL} slot="logo">
+		<img
+			src={logo.src}
+			width={logo.width}
+			height={logo.height}
+			alt={LOGO_ALT}
+		/>
+	</a>
+	<Fragment slot="header">What I'm doing now?</Fragment>
+
+	<p>Here’s what I’m currently focused on, in no particular order:</p>
+
+	<ul>
+		<li>Helping on the toronto JS community (Take a look at the <a href="https://github.com/torontojs/proposals">proposals repo</a>).</li>
+		<li>Working on this site to make it more "<a href="https://indieweb.org/">IndieWeb</a>-ed".</li>
+		<li>Saving to buy a new computer.</li>
+	</ul>
+</InternalPageLayout>
