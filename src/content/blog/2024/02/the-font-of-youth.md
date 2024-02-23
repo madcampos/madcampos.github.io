@@ -85,7 +85,7 @@ For that I've used [FontDrop!](https://fontdrop.info/),  a neat tool to view pro
 
 Now that the font works, we add it to our site CSS using the following snippet:
 
-```CSS
+```css
 @font-face {
 	font-family: '<FONT NAME>';
 	font-style: normal;
