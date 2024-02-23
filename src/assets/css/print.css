@@ -1,5 +1,10 @@
 @media print {
 	:root {
+		--body-text: 12pt;
+
+		--monospace-font-family: monospace;
+		--sans-serif-font-family: sans-serif;
+
 		/* Base colors */
 		--text-color: black;
 		--bg-color: white;
@@ -15,6 +20,19 @@
 		--link-hover-color: var(--link-color);
 		--link-active-color: var(--link-color);
 		color-scheme: light;
+	}
+
+	@page {
+		margin-block: 3rem;
+		margin-inline: 1.5rem;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		page-break-after: avoid;
+	}
+
+	p, li, blockquote, figure, img, pre .line {
+		page-break-inside: avoid;
 	}
 
 	a {
@@ -33,7 +51,9 @@
 		vertical-align: baseline;
 	}
 
-		#post-share {
+	iframe { display: none; }
+
+	#post-share {
 		/* stylelint-disable-next-line declaration-no-important */
 		display: none !important;
 	}
@@ -42,7 +62,7 @@
 		flex-wrap: wrap;
 	}
 
-	#post-contents p>img:only-child {
+	#post-contents p > img:only-child {
 		--image-size: 10rem;
 	}
 }
