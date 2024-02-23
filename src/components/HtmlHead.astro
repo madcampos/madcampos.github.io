@@ -4,6 +4,7 @@ import { pwaInfo } from 'virtual:pwa-info';
 import { BLOG_TITLE_STRING, BLOG_URL, LOGO_MICRO_ALT, SITE_URL } from '../constants';
 
 import defaultSocialImage from '../assets/images/logo-micro.png';
+import printStylesheet from '../assets/css/print.css';
 
 interface Props {
 	htmlTitle?: string[],
@@ -91,4 +92,7 @@ const socialImage = `${SITE_URL}${(image ?? defaultSocialImage.src).replace(/^\/
 	<!-- Apple icons -->
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<!-- Print Stylesheet -->
+	<link rel="stylesheet" type="text/css" href={printStylesheet} media="print" />
 </head>

@@ -35,7 +35,7 @@ code .line {
 	padding-left: calc(var(--line-counter-width) + var(--line-counter-margin-right));
 }
 
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
 	pre {
 		/* stylelint-disable-next-line declaration-no-important */
 		color: var(--shiki-dark) !important;

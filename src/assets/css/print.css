@@ -1,0 +1,48 @@
+@media print {
+	:root {
+		/* Base colors */
+		--text-color: black;
+		--bg-color: white;
+		--dark-bg-color: white;
+		--border-color: black;
+		--scrollbar-bg: transparent;
+		/* Tag colors */
+		--tag-bg: var(--secondary-color);
+		--tag-color: var(--text-color);
+		/* Link colors */
+		--link-color: #065bd1;
+		--link-visited-color: #4c2c92;
+		--link-hover-color: var(--link-color);
+		--link-active-color: var(--link-color);
+		color-scheme: light;
+	}
+
+	a {
+		text-decoration: underline;
+	}
+
+	a:not(:has(> :is(img, picture)))[href]::after {
+		content: ' (' attr(href) ')';
+		font-size: smaller;
+	}
+
+	a[rel~='external']::after {
+		display: inline;
+		font-size: smaller;
+		background: none;
+		vertical-align: baseline;
+	}
+
+		#post-share {
+		/* stylelint-disable-next-line declaration-no-important */
+		display: none !important;
+	}
+
+	#related-posts ul {
+		flex-wrap: wrap;
+	}
+
+	#post-contents p>img:only-child {
+		--image-size: 10rem;
+	}
+}

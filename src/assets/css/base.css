@@ -142,6 +142,14 @@ details[open] summary::before {
 	transform: rotate(90deg);
 }
 
+ul { list-style: '◆ '; }
+ul ul { list-style: '◇ '; }
+ul ul ul { list-style: '✢ '; }
+
+ol { list-style: decimal-leading-zero; }
+ol ol { list-style: lower-latin; }
+ol ol ol { list-style: lower-roman; }
+
 nav ul {
 	display: flex;
 	flex-wrap: wrap;
