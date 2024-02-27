@@ -3,8 +3,7 @@ title: More Meta, More Data
 summary: An adenda about using metadata with react and other frameworks.
 image: ./assets/distiling-the-eye.jpg
 imageAlt: AI generated image of a collection of chemistry flasks with a bubbling blue liquid inside. The flaks are connected to a computer keyboard and behind them is a large CRT monitor with the image of an eye. The eye is magnified by a round flask, making it the focal point of the image.
-createdAt: 2024-02-20T22:58:34.760-05:00
-draft: true
+createdAt: 2024-02-27T01:06:43+00:00
 tags:
   - BuildingInPublic
   - BuildInTheOpen
