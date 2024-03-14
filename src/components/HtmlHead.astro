@@ -39,12 +39,13 @@ const socialImage = `${SITE_URL}${(image ?? defaultSocialImage.src).replace(/^\/
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<link rel="canonical" href={fullUrl} />
-	<link rel="sitemap" href={`${SITE_URL}sitemap-index.xml`} />
-
-	{ hasFeed && <link rel="alternate" type="application/rss+xml" href={`${BLOG_URL}/feed.xml`} title={BLOG_TITLE_STRING} /> }
 
 	<title>{htmlTitle?.join(' | ') ?? title}</title>
+
+	<!-- URLs -->
+	<link rel="canonical" href={fullUrl} />
+	<link rel="sitemap" href={`${SITE_URL}sitemap-index.xml`} />
+	{ hasFeed && <link rel="alternate" type="application/rss+xml" href={`${BLOG_URL}/feed.xml`} title={BLOG_TITLE_STRING} /> }
 
 	<!-- App Metadata -->
 	<link rel="icon" href={`${SITE_URL}icons/favicon.svg`} sizes="any" type="image/svg+xml" />
