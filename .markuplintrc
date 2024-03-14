@@ -42,6 +42,12 @@
 				"character-reference": false,
 				"end-tag": false
 			}
+		},
+		{
+			"selector": "meta[name=\"pinterest\"]",
+			"rules": {
+				"invalid-attr": false
+			}
 		}
 	]
 }
