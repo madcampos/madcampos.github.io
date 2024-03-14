@@ -16,6 +16,7 @@ relatedPosts:
   - going-astro
   - blog-structure
   - xml-is-not-dead
+  - more-meta-more-data
 ---
 After my [explorations on RSS](https://madcampos.dev/blog/2023/06/xml-is-not-dead) I was dragged into yet another rabbit hole... Metadata!
 
