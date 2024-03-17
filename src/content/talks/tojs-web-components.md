@@ -8,7 +8,7 @@ eventUrl: https://guild.host/events/js-tech-talk-web-fonts-l8sro4
 date: 2023-07-27
 slides: https://1drv.ms/p/s!AivyfQGK_lAivM8OCk3qDJg1UgiFYw?e=BjN5Ob
 code: https://github.com/madcampos/tojs-web-components-talk
-demo: https://madcampos.dev/tojs-web-components-talk/
+demo: https://tojs-talk.madcampos.dev/
 techStack:
   - Typescript
   - Web Components
