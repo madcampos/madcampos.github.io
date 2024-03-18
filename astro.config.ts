@@ -1,8 +1,3 @@
-/// <reference types="mdast-util-directive" />
-
-import type { Root } from 'mdast';
-import type { VFile } from 'vfile';
-
 import { readFileSync } from 'node:fs';
 
 import sitemap from '@astrojs/sitemap';
@@ -10,53 +5,26 @@ import astroPWA, { type PwaOptions } from '@vite-pwa/astro';
 import astroIcon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 
+import rehypeShiki from '@shikijs/rehype';
+import {
+	transformerMetaHighlight,
+	transformerMetaWordHighlight,
+	transformerNotationDiff,
+	transformerNotationErrorLevel,
+	transformerNotationFocus,
+	transformerNotationHighlight,
+	transformerNotationWordHighlight,
+	transformerRenderWhitespace
+} from '@shikijs/transformers';
+import { transformerTwoslash } from '@shikijs/twoslash';
 import rehypeExternalLinks from 'rehype-external-links';
 import remarkBreaks from 'remark-breaks';
-import remarkDirective from 'remark-directive';
-import { visit } from 'unist-util-visit';
 
 import { assetsCache, externalResourcesCache, pagesCache, scriptsCache } from './src/sw-caching';
 
 const manifest: PwaOptions['manifest'] = JSON.parse(readFileSync('./src/manifest.json', { encoding: 'utf8' }));
 
 const mode = process.env['NODE_ENV'] === 'production' ? 'production' : 'development';
-
-function remarkYoutube() {
-	return (tree: Root, file: VFile) => {
-		visit(tree, (node) => {
-			if (node.type === 'textDirective' || node.type === 'containerDirective' || node.type === 'leafDirective') {
-				if (node.name !== 'youtube') {
-					return;
-				}
-
-				const data = node.data ?? {};
-				const attributes = node.attributes ?? {};
-				const { id } = attributes;
-
-				if (node.type === 'textDirective') {
-					file.fail(
-						'Unexpected `:youtube` text directive, use two colons for a leaf directive',
-						node
-					);
-				}
-
-				if (!id) {
-					file.fail('Unexpected missing `id` on `youtube` directive', node);
-				}
-
-				data.hName = 'iframe';
-				data.hProperties = {
-					src: `https://www.youtube.com/embed/${id}`,
-					width: 200,
-					height: 200,
-					frameBorder: 0,
-					allow: 'picture-in-picture',
-					allowFullScreen: true
-				};
-			}
-		});
-	};
-}
 
 export default defineConfig({
 	site: 'https://madcampos.dev/',
@@ -85,14 +53,28 @@ export default defineConfig({
 		syntaxHighlight: 'shiki',
 		shikiConfig: {
 			theme: 'css-variables',
-			experimentalThemes: {
+			themes: {
 				light: 'light-plus',
 				dark: 'dark-plus'
 			},
-			wrap: true
+			wrap: true,
+			transformers: [
+				transformerTwoslash({
+					explicitTrigger: true,
+					rendererRich: { errorRendering: 'hover' }
+				}),
+				transformerNotationDiff(),
+				transformerNotationHighlight(),
+				transformerNotationWordHighlight(),
+				transformerNotationFocus(),
+				transformerNotationErrorLevel(),
+				transformerRenderWhitespace({ position: 'boundary' }),
+				transformerMetaHighlight(),
+				transformerMetaWordHighlight()
+			]
 		},
-		remarkPlugins: [remarkBreaks, remarkDirective, remarkYoutube],
-		rehypePlugins: [[rehypeExternalLinks, { rel: ['external', 'noopener', 'noreferrer'] }]]
+		remarkPlugins: [remarkBreaks],
+		rehypePlugins: [rehypeShiki, [rehypeExternalLinks, { rel: ['external', 'noopener', 'noreferrer'] }]]
 	},
 	integrations: [
 		astroPWA({

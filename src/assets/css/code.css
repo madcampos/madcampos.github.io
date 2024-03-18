@@ -5,7 +5,7 @@ code {
 	counter-reset: step;
 	counter-increment: step 0;
 
-	white-space: pre-wrap;
+	white-space: normal;
 	overflow-wrap: break-word;
 	word-break: break-word;
 	tab-size: 2;
@@ -32,7 +32,61 @@ code .line::before {
 
 code .line {
 	display: inline-block;
+	width: 100%;
 	padding-left: calc(var(--line-counter-width) + var(--line-counter-margin-right));
+}
+
+code .line:empty {
+	display: none;
+}
+
+code .line.diff.add {
+	background-color: rgba(0, 100, 0, 0.3);
+}
+
+code .line.diff.remove {
+	background-color: rgba(139, 0, 0, 0.3);
+}
+
+code .line.highlighted {
+	background-color: rgba(255, 255, 0, 0.2);
+	filter: contrast(0.5) brightness(1.2);
+}
+
+code .line.highlighted.error {
+	background-color: rgba(255, 99, 71, 0.3);
+}
+
+code .line.highlighted.warning {
+	background-color: rgba(255, 217, 0, 0.3);
+}
+
+code .line .highlighted-word {
+	background-color: rgba(255, 255, 0, 0.2);
+	filter: contrast(0.5) brightness(1.2);
+	outline: 0.05rem solid rgba(255, 255, 0, 0.5);
+}
+
+pre.has-focused .line {
+	filter: contrast(0.5) brightness(0.5);
+	opacity: 0.7;
+}
+
+pre.has-focused .line.focused {
+	filter: none;
+	opacity: 1;
+}
+
+.line :is(.tab, .space)::before {
+	opacity: 0.1;
+}
+
+.line .tab::before {
+	content: '⇥\00A0\00A0';
+}
+
+.line .space::before {
+	content: '·';
 }
 
 @media screen and (prefers-color-scheme: dark) {
