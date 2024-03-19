@@ -1,0 +1,39 @@
+@media (prefers-contrast: more) {
+	:root {
+		/* Theme colors */
+		--theme-color: orangered;
+		--secondary-color: goldenrod;
+		--accent-color: maroon;
+		--complementary-color: darkorange;
+
+		/* Base colors */
+		--text-color: yellow;
+		--bg-color: #383838;
+		--dark-bg-color: black;
+		--border-color: dimgray;
+		--scrollbar-bg: rgba(255, 255, 255, 0.1);
+
+		/* Tag colors */
+		--tag-bg: dimgray;
+		--tag-color: var(--text-color);
+
+		/* Link colors */
+		--link-color: lightyellow;
+		--link-visited-color: goldenrod;
+		--link-hover-color: firebrick;
+		--link-active-color: maroon;
+
+		color-scheme: dark;
+		accent-color: var(--theme-color);
+	}
+
+	::selection {
+		background-color: var(--theme-color);
+		color: black;
+	}
+
+	::target-text {
+		background-color: var(--secondary-color);
+		color: black;
+	}
+}

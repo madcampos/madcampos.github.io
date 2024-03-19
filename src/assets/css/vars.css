@@ -31,8 +31,8 @@
 
 	/* Base colors */
 	--text-color: black;
-	--bg-color: silver;
-	--dark-bg-color: whitesmoke;
+	--bg-color: #c5cad3;
+	--dark-bg-color: #f2f7ff;
 	--border-color: dimgray;
 	--scrollbar-bg: rgba(255, 255, 255, 0.1);
 
@@ -41,10 +41,10 @@
 	--tag-color: var(--text-color);
 
 	/* Link colors */
-	--link-color: #065bd1;
-	--link-visited-color: #0080ff;
-	--link-hover-color: #ff8100;
-	--link-active-color: #cf4f00;
+	--link-color: #002eaa;
+	--link-visited-color: #073869;
+	--link-hover-color: #C72800;
+	--link-active-color: #8F3237;
 
 	color-scheme: dark light;
 	accent-color: var(--theme-color);
@@ -54,8 +54,8 @@
 	:root {
 		/* Base colors */
 		--text-color: whitesmoke;
-		--bg-color: #3c3c3c;
-		--dark-bg-color: #252525;
+		--bg-color: #1b1b2c;
+		--dark-bg-color: #00001f;
 		--border-color: #505050;
 		--scrollbar-bg: rgba(255, 255, 255, 0.1);
 

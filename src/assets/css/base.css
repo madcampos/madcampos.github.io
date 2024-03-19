@@ -30,6 +30,7 @@ html, body {
 *, *::after, *::before {
 	box-sizing: inherit;
 	font-family: inherit;
+	-webkit-tap-highlight-color: transparent;
 }
 
 *:has(> svg) {
