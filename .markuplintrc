@@ -33,7 +33,18 @@
 		"required-element": false,
 		"required-h1": { "options": { "expected-once": true, "in-document-fragment": false } },
 		"use-list": true,
-		"wai-aria": true
+		"wai-aria": {
+			"options": {
+				"checkingValue": true,
+				"checkingDeprecatedRole": true,
+				"checkingDeprecatedProps": true,
+				"permittedAriaRoles": true,
+				"disallowSetImplicitRole": false,
+				"disallowSetImplicitProps": false,
+				"disallowDefaultValue": true,
+				"version": "1.2"
+			}
+		}
 	},
 	"nodeRules": [
 		{

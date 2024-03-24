@@ -517,7 +517,13 @@
 		"astro/jsx-a11y/aria-unsupported-elements": "error",
 		"astro/jsx-a11y/autocomplete-valid": "error",
 		"astro/jsx-a11y/click-events-have-key-events": "warn",
-		"astro/jsx-a11y/control-has-associated-label": ["error", { "ignoreElements": ["audio", "canvas", "embed", "tr", "video", "a"] }],
+		"astro/jsx-a11y/control-has-associated-label": [ "error", {
+				"labelAttributes": [ "label", "aria-label", "aria-labelledby", "aria-describedby", "aria-details", "aria-roledescription" ],
+				"ignoreElements": [ "audio", "canvas", "embed", "tr", "video", "a" ],
+				"ignoreRoles": [ "grid", "listbox", "menu", "menubar", "radiogroup", "row", "tablist", "toolbar", "tree", "treegrid" ],
+				"depth": 3
+			}
+		],
 		"astro/jsx-a11y/heading-has-content": "error",
 		"astro/jsx-a11y/html-has-lang": "error",
 		"astro/jsx-a11y/iframe-has-title": "error",
