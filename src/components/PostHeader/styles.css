@@ -115,7 +115,7 @@
 	color: var(--theme-color);
 }
 
-#post-share button:focus {
+#post-share button:focus-visible {
 	background-color: var(--theme-color);
 	color: var(--text-color);
 	border-color: var(--text-color);

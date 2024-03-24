@@ -39,7 +39,7 @@
 	cursor: pointer;
 }
 
-#pwa-toast button:focus {
+#pwa-toast button:focus-visible {
 	background-color: var(--theme-color);
 	color: var(--text-color);
 	border-color: var(--text-color);

@@ -56,7 +56,7 @@ html, body {
 	color: var(--bg-color);
 }
 
-:focus {
+:focus-visible {
 	outline: var(--theme-color) solid var(--border-width);
 	outline-offset: var(--spacing-small);
 	background-color: var(--bg-color);
@@ -73,7 +73,7 @@ a {
 }
 
 a:visited { color: var(--link-visited-color); }
-a:focus { color: var(--text-color); }
+a:focus-visible { color: var(--text-color); }
 
 a:hover {
 	color: var(--link-hover-color);
@@ -89,7 +89,7 @@ a:has(img) {
 	display: inline-flex;
 }
 
-a:focus:has(img) {
+a:focus-visible:has(img) {
 	background-color: var(--bg-color);
 }
 

@@ -10,7 +10,7 @@
 	display: block;
 }
 
-#skip-to-main:focus {
+#skip-to-main:focus-visible {
 	inset-block-start: var(--spacing-medium);
 }
 
