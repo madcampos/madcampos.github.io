@@ -1,6 +1,10 @@
 ---
 title: Going astro 🚀
 createdAt: 2024-01-14T11:45:00.000-05:00
+updatedAt: 2024-03-24T10:46:00.000-05:00
+updates:
+  - date: 2024-03-24T10:46:00.000-05:00
+    changes: Added a conclusion to the RSS image size validation and how it was propperly fixed.
 summary: A tale of how I went from a vite site to an astro site and the hurdles along the way.
 image: ./assets/astro-corgi.jpg
 imageAlt: AI generated image of a corgi on a red rocket costume flying through space with planets and rainbows on the background.
@@ -82,6 +86,14 @@ In the end I had to still use the `fs.stat` call, but have to do some processing
 That processing is different for both the dev server and the build for production. There is where the hack lives.
 
 I'm not proud of the hack, but it works!
+
+## RSS Wars: Return of the Validation
+
+Turns out I didn't need to be so hacky... After opening a [Pull Request with Astro's repository](https://github.com/withastro/astro/pull/9749) and some back and forth about what the best solution would be, I was directed to a best practice from the [RSS Board themselves](https://www.rssboard.org/rss-profile#element-channel-item-enclosure:~:text=When%20an%20enclosure%27s%20size%20cannot%20be%20determined%2C%20a%20publisher%20SHOULD%20use%20a%20length%20of%200) that said:
+
+> When an enclosure's size cannot be determined, a publisher SHOULD use a length of 0.
+
+It turns out the problem was in Astro's _validation_ that didn't allow for a `length` of `0`. I sent a [Pull Request with the fix](https://github.com/withastro/astro/pull/9967) and that is it.
 
 ## Conclusion
 
