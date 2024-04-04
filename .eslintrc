@@ -266,7 +266,7 @@
 		"require-await": "off",
 		"require-unicode-regexp": "warn",
 		"require-yield": "error",
-		"sort-imports": ["warn", { "ignoreCase": true, "ignoreDeclarationSort": true }],
+		"sort-imports": [ "off", { "ignoreCase": true, "ignoreDeclarationSort": true } ],
 		"sort-keys": "off",
 		"sort-vars": "warn",
 		"strict": "off",

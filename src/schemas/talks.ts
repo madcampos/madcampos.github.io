@@ -1,4 +1,4 @@
-import { type SchemaContext, z as zod } from 'astro:content';
+import { z as zod, type SchemaContext } from 'astro:content';
 
 export const talksSchema = ({ image }: SchemaContext) => zod.object({
 	title: zod.string().describe('The talk title displayed in the talks list.'),
@@ -6,6 +6,7 @@ export const talksSchema = ({ image }: SchemaContext) => zod.object({
 	event: zod.string().describe('The event the talk was given.'),
 	eventUrl: zod.string().url().optional().describe('The event URL.'),
 	date: zod.date().describe('The talk date.'),
+	draft: zod.boolean().optional().describe('Whether the is a draft or not.'),
 
 	image: image().optional().describe('The talk main image path, relative to the site root.'),
 	imageAlt: zod.string().optional().describe('The talk main image alt text.'),
