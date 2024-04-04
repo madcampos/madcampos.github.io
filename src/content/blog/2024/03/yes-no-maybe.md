@@ -1,6 +1,10 @@
 ---
 title: Yes, no, maybe 🎱
 createdAt: 2024-03-19T01:36:22.635-04:00
+updatedAt: 2024-04-04T07:28:00.000-04:00
+updates:
+  - date: 2024-04-04T07:28:00.000-04:00
+    changes: Added a new section about how web component have different philosophy than react.
 image: ./assets/8ball.jpg
 imageAlt: A close shot of a shiny billiard "8 ball" in a snow pile with northern lights in the background.
 summary: A study on intermediate state checkboxes and how to handle state in react.
@@ -77,6 +81,15 @@ In the examples it may seem silly and not show why web components have a better 
 Using web components, the solution is to use `<slot>`s and do the same query for the children state but from the slots. A huge chunk of the logic is already implemented in a pretty generic way.
 
 On the other hand, implementing a tree component like that using react is much more complex and leads to tight coupling of the components logic together or the centralization of all data in the root component.
+
+## The DOM _is_ the state
+
+Recently I had a conversation with other developers and we were talking about attributes representing state and that being reflected on the DOM.
+We also spoke about how to use CSS _as a query language_ to style and pick up the elements based on those attributes/state.
+
+Having state reflected in the DOM and letting other parts of the browser deal with this is something that is lacking in react and where web components thrive.
+
+This fundamental idea makes logic to handle children component easier. You define a contract, that is the boundary between your component internals and the outside world. Those attributes exposed there are a way to communicate between components without a hierarchical and tightly coupled structure, and _that_ is powerful.
 
 [^1]: React's rendering system does not have granular control on small changes and will re-render everything, even if no changes have happened, which causes performance issues. This is more pronounced on slow devices or large lists, using the `key` prop helps with lists but doesn't solve all problems.
 [^2]: You can actually use [custom events](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent) _reliably_ since Internet Explorer 10 days, but react just didn't make the jump and decided to keep using it's synthetic events because _reasons_... 🤷‍♂️
