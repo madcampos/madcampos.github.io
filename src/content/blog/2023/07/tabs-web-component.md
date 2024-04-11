@@ -344,5 +344,6 @@ The keyboard navigation is handled by the `keydown` event listener. It will filt
 
 ## Demo
 
-You can check out the full code on CodePen: [https://codepen.io/madcampos/pen/WNxYoPv](https://codepen.io/madcampos/pen/NWEzogQ)
-<iframe src="https://codepen.io/madcampos/embed/NWEzogQ?default-tab=result&editable=true" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin">See the Pen <a href="https://codepen.io/madcampos/pen/NWEzogQ">Dad Jokes - Infinite Scroller</a> by Marco Campos (<a href="https://codepen.io/madcampos">@madcampos</a>) on <a href="https://codepen.io">CodePen</a>.</iframe>
+You can check out the full code on CodePen: https://codepen.io/madcampos/pen/NWEzogQ
+
+::codepen[Tabs Web Component]{#NWEzogQ username=madcampos}
