@@ -4,8 +4,6 @@ import sitemap from '@astrojs/sitemap';
 import astroPWA, { type PwaOptions } from '@vite-pwa/astro';
 import astroIcon from 'astro-icon';
 import { defineConfig } from 'astro/config';
-
-import rehypeShiki from '@shikijs/rehype';
 import {
 	transformerMetaHighlight,
 	transformerMetaWordHighlight,
@@ -19,8 +17,11 @@ import {
 import { transformerTwoslash } from '@shikijs/twoslash';
 import rehypeExternalLinks from 'rehype-external-links';
 import remarkBreaks from 'remark-breaks';
+import remarkBehead from 'remark-behead';
+import remarkDirective from 'remark-directive';
 
 import { assetsCache, externalResourcesCache, pagesCache, scriptsCache } from './src/sw-caching';
+import { codepenEmbed, youtubeEmbed } from './src/utils/markdown.ts';
 
 const manifest: PwaOptions['manifest'] = JSON.parse(readFileSync('./src/manifest.json', { encoding: 'utf8' }));
 
@@ -73,8 +74,8 @@ export default defineConfig({
 				transformerMetaWordHighlight()
 			]
 		},
-		remarkPlugins: [remarkBreaks],
-		rehypePlugins: [rehypeShiki, [rehypeExternalLinks, { rel: ['external', 'noopener', 'noreferrer'] }]]
+		remarkPlugins: [[remarkBehead, { minDepth: 2 }], remarkBreaks, remarkDirective, youtubeEmbed, codepenEmbed],
+		rehypePlugins: [[rehypeExternalLinks, { rel: ['external', 'noopener', 'noreferrer'] }]]
 	},
 	integrations: [
 		astroPWA({
