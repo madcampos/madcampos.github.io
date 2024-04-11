@@ -48,7 +48,7 @@
 		"astro": "^4.6.0",
 		"astro-icon": "^1.1.0",
 		"changelogen": "^0.5.5",
-		"eslint": "^8.57.0",
+		"eslint": "^9.0.0",
 		"eslint-plugin-astro": "^0.34.0",
 		"eslint-plugin-jsx-a11y": "^6.8.0",
 		"husky": "^9.0.11",
