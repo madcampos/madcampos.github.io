@@ -81,7 +81,7 @@ export default defineConfig({
 		astroPWA({
 			registerType: 'prompt',
 				minify: true,
-				includeAssets: ['/icons/favicon.svg'],
+				includeAssets: ['/icons/icon.svg'],
 				manifest,
 				workbox: {
 					// eslint-disable-next-line @typescript-eslint/no-magic-numbers

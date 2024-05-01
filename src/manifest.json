@@ -46,34 +46,95 @@
 			"purpose": "any"
 		},
 		{
-			"src": "/icons/maskable-icon.svg",
+			"src": "/icons/icon-mask.svg",
 			"sizes": "any",
 			"type": "image/svg+xml",
 			"purpose": "maskable"
 		},
 		{
-			"src": "/icons/maskable-icon-1024x1024.png",
+			"src": "/icons/icon-mask-1024x1024.png",
 			"sizes": "1024x1024",
 			"type": "image/png",
 			"purpose": "maskable"
 		},
 		{
-			"src": "/icons/maskable-icon-512x512.png",
+			"src": "/icons/icon-mask-512x512.png",
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "maskable"
 		},
 		{
-			"src": "/icons/maskable-icon-192x192.png",
+			"src": "/icons/icon-mask-192x192.png",
 			"sizes": "192x192",
 			"type": "image/png",
 			"purpose": "maskable"
 		},
 		{
-			"src": "/icons/maskable-icon-64x64.png",
+			"src": "/icons/icon-mask-64x64.png",
 			"sizes": "64x64",
 			"type": "image/png",
 			"purpose": "maskable"
+		},
+
+		{
+			"src": "/icons/icon-mono.svg",
+			"sizes": "any",
+			"type": "image/svg+xml",
+			"purpose": "monochrome"
+		},
+		{
+			"src": "/icons/icon-mono-1024x1024.png",
+			"sizes": "1024x1024",
+			"type": "image/png",
+			"purpose": "monochrome"
+		},
+		{
+			"src": "/icons/icon-mono-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "monochrome"
+		},
+		{
+			"src": "/icons/icon-mono-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "monochrome"
+		},
+		{
+			"src": "/icons/icon-mono-64x64.png",
+			"sizes": "64x64",
+			"type": "image/png",
+			"purpose": "monochrome"
+		},
+		{
+			"src": "/icons/icon-mask-mono.svg",
+			"sizes": "any",
+			"type": "image/svg+xml",
+			"purpose": "maskable monochrome"
+		},
+		{
+			"src": "/icons/icon-mask-mono-1024x1024.png",
+			"sizes": "1024x1024",
+			"type": "image/png",
+			"purpose": "maskable monochrome"
+		},
+		{
+			"src": "/icons/icon-mask-mono-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable monochrome"
+		},
+		{
+			"src": "/icons/icon-mask-mono-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "maskable monochrome"
+		},
+		{
+			"src": "/icons/icon-mask-mono-64x64.png",
+			"sizes": "64x64",
+			"type": "image/png",
+			"purpose": "maskable monochrome"
 		}
 	],
 	"shortcuts": [
@@ -84,22 +145,76 @@
 			"url": "/blog/?utm_source=pwa&utm_medium=shortcut&utm_campaign=blog",
 			"icons": [
 				{
-					"src": "/icons/shortcuts/blog.svg",
+					"src": "/shortcuts/icon-blog.svg",
 					"sizes": "any",
 					"type": "image/svg+xml",
 					"purpose": "any"
 				},
 				{
-					"src": "/icons/shortcuts/blog-512x512.png",
+					"src": "/shortcuts/icon-blog-512x512.png",
 					"sizes": "512x512",
 					"type": "image/png",
 					"purpose": "any"
 				},
 				{
-					"src": "/icons/shortcuts/blog-96x96.png",
+					"src": "/shortcuts/icon-blog-96x96.png",
 					"sizes": "96x96",
 					"type": "image/png",
 					"purpose": "any"
+				},
+				{
+					"src": "/shortcuts/icon-mask-blog.svg",
+					"sizes": "any",
+					"type": "image/svg+xml",
+					"purpose": "maskable"
+				},
+				{
+					"src": "/shortcuts/icon-mask-blog-512x512.png",
+					"sizes": "512x512",
+					"type": "image/png",
+					"purpose": "maskable"
+				},
+				{
+					"src": "/shortcuts/icon-mask-blog-96x96.png",
+					"sizes": "96x96",
+					"type": "image/png",
+					"purpose": "maskable"
+				},
+				{
+					"src": "/shortcuts/icon-mono-blog.svg",
+					"sizes": "any",
+					"type": "image/svg+xml",
+					"purpose": "monochrome"
+				},
+				{
+					"src": "/shortcuts/icon-mono-blog-512x512.png",
+					"sizes": "512x512",
+					"type": "image/png",
+					"purpose": "monochrome"
+				},
+				{
+					"src": "/shortcuts/icon-mono-blog-96x96.png",
+					"sizes": "96x96",
+					"type": "image/png",
+					"purpose": "monochrome"
+				},
+				{
+					"src": "/shortcuts/icon-mask-mono-blog.svg",
+					"sizes": "any",
+					"type": "image/svg+xml",
+					"purpose": "maskable monochrome"
+				},
+				{
+					"src": "/shortcuts/icon-mask-mono-blog-512x512.png",
+					"sizes": "512x512",
+					"type": "image/png",
+					"purpose": "maskable monochrome"
+				},
+				{
+					"src": "/shortcuts/icon-mask-mono-blog-96x96.png",
+					"sizes": "96x96",
+					"type": "image/png",
+					"purpose": "maskable monochrome"
 				}
 			]
 		},
@@ -110,22 +225,76 @@
 			"url": "/projects?utm_source=pwa&utm_medium=shortcut&utm_campaign=projects",
 			"icons": [
 				{
-					"src": "/icons/shortcuts/projects.svg",
+					"src": "/shortcuts/icon-proj.svg",
 					"sizes": "any",
 					"type": "image/svg+xml",
 					"purpose": "any"
 				},
 				{
-					"src": "/icons/shortcuts/projects-512x512.png",
+					"src": "/shortcuts/icon-proj-512x512.png",
 					"sizes": "512x512",
 					"type": "image/png",
 					"purpose": "any"
 				},
 				{
-					"src": "/icons/shortcuts/projects-96x96.png",
+					"src": "/shortcuts/icon-proj-96x96.png",
 					"sizes": "96x96",
 					"type": "image/png",
 					"purpose": "any"
+				},
+				{
+					"src": "/shortcuts/icon-mask-proj.svg",
+					"sizes": "any",
+					"type": "image/svg+xml",
+					"purpose": "maskable"
+				},
+				{
+					"src": "/shortcuts/icon-mask-proj-512x512.png",
+					"sizes": "512x512",
+					"type": "image/png",
+					"purpose": "maskable"
+				},
+				{
+					"src": "/shortcuts/icon-mask-proj-96x96.png",
+					"sizes": "96x96",
+					"type": "image/png",
+					"purpose": "maskable"
+				},
+				{
+					"src": "/shortcuts/icon-mono-proj.svg",
+					"sizes": "any",
+					"type": "image/svg+xml",
+					"purpose": "monochrome"
+				},
+				{
+					"src": "/shortcuts/icon-mono-proj-512x512.png",
+					"sizes": "512x512",
+					"type": "image/png",
+					"purpose": "monochrome"
+				},
+				{
+					"src": "/shortcuts/icon-mono-proj-96x96.png",
+					"sizes": "96x96",
+					"type": "image/png",
+					"purpose": "monochrome"
+				},
+				{
+					"src": "/shortcuts/icon-mask-mono-proj.svg",
+					"sizes": "any",
+					"type": "image/svg+xml",
+					"purpose": "maskable monochrome"
+				},
+				{
+					"src": "/shortcuts/icon-mask-mono-proj-512x512.png",
+					"sizes": "512x512",
+					"type": "image/png",
+					"purpose": "maskable monochrome"
+				},
+				{
+					"src": "/shortcuts/icon-mask-mono-proj-96x96.png",
+					"sizes": "96x96",
+					"type": "image/png",
+					"purpose": "maskable monochrome"
 				}
 			]
 		},
@@ -136,22 +305,76 @@
 			"url": "/talks?utm_source=pwa&utm_medium=shortcut&utm_campaign=talks",
 			"icons": [
 				{
-					"src": "/icons/shortcuts/talks.svg",
+					"src": "/shortcuts/icon-talks.svg",
 					"sizes": "any",
 					"type": "image/svg+xml",
 					"purpose": "any"
 				},
 				{
-					"src": "/icons/shortcuts/talks-512x512.png",
+					"src": "/shortcuts/icon-talks-512x512.png",
 					"sizes": "512x512",
 					"type": "image/png",
 					"purpose": "any"
 				},
 				{
-					"src": "/icons/shortcuts/talks-96x96.png",
+					"src": "/shortcuts/icon-talks-96x96.png",
 					"sizes": "96x96",
 					"type": "image/png",
 					"purpose": "any"
+				},
+				{
+					"src": "/shortcuts/icon-mask-talks.svg",
+					"sizes": "any",
+					"type": "image/svg+xml",
+					"purpose": "maskable"
+				},
+				{
+					"src": "/shortcuts/icon-mask-talks-512x512.png",
+					"sizes": "512x512",
+					"type": "image/png",
+					"purpose": "maskable"
+				},
+				{
+					"src": "/shortcuts/icon-mask-talks-96x96.png",
+					"sizes": "96x96",
+					"type": "image/png",
+					"purpose": "maskable"
+				},
+				{
+					"src": "/shortcuts/icon-mono-talks.svg",
+					"sizes": "any",
+					"type": "image/svg+xml",
+					"purpose": "monochrome"
+				},
+				{
+					"src": "/shortcuts/icon-mono-talks-512x512.png",
+					"sizes": "512x512",
+					"type": "image/png",
+					"purpose": "monochrome"
+				},
+				{
+					"src": "/shortcuts/icon-mono-blog-96x96.png",
+					"sizes": "96x96",
+					"type": "image/png",
+					"purpose": "monochrome"
+				},
+				{
+					"src": "/shortcuts/icon-mask-mono-talks.svg",
+					"sizes": "any",
+					"type": "image/svg+xml",
+					"purpose": "maskable monochrome"
+				},
+				{
+					"src": "/shortcuts/icon-mask-mono-talks-512x512.png",
+					"sizes": "512x512",
+					"type": "image/png",
+					"purpose": "maskable monochrome"
+				},
+				{
+					"src": "/shortcuts/icon-mask-mono-talks-96x96.png",
+					"sizes": "96x96",
+					"type": "image/png",
+					"purpose": "maskable monochrome"
 				}
 			]
 		}
