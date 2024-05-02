@@ -2,36 +2,39 @@
 import InternalPageLayout from '../../layouts/InternalPage.astro';
 import TalkCard from '../../components/TalkCard/index.astro';
 
-import { TALKS_DESCRIPTION, TALKS_LOGO_ALT, TALKS_TITLE, TALKS_TITLE_STRING, TALKS_URL } from '../../constants';
+import { TALKS } from '../../constants';
 
 import { listAllTalks } from '../../utils/talks';
 
-import logoTalks from '../../assets/images/logo-talks.svg';
+import logoTalks from '../../assets/images/logo/logo-talks.svg';
+import talksSocialImage from '../../assets/images/social/social-talks.png';
 
 const talks = await listAllTalks();
 ---
 
 <InternalPageLayout
-	htmlTitle={TALKS_TITLE}
-	title={TALKS_TITLE_STRING}
-	description={TALKS_DESCRIPTION}
-	url={TALKS_URL}
+	htmlTitle={TALKS.title}
+	title={TALKS.titleString}
+	description={TALKS.description}
+	url={TALKS.url}
+	image={talksSocialImage.src}
+	imageAlt={TALKS.logoAltText?.micro}
 >
-	<a href={TALKS_URL} slot="logo">
+	<a href={TALKS.url} slot="logo">
 		<img
 			src={logoTalks.src}
 			width={logoTalks.width}
 			height={logoTalks.height}
-			alt={TALKS_LOGO_ALT}
+			alt={TALKS.logoAltText?.regular}
 		/>
 	</a>
 	<Fragment slot="header">
-		{TALKS_TITLE_STRING}
+		{TALKS.titleString}
 	</Fragment>
 
 	{ talks.map((talk) => (
 		<TalkCard
-			url={`${TALKS_URL}/${talk.slug}`}
+			url={`${TALKS.url}/${talk.slug}`}
 			event={talk.data.event}
 			date={talk.data.date}
 			image={talk.data.image}

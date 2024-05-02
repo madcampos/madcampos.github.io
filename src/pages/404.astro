@@ -1,5 +1,5 @@
 ---
-import { ERROR_DESCRIPTION, ERROR_TITLE, ERROR_TITLE_STRING, ERROR_URL, SITE_TAGS } from '../constants';
+import { ERROR } from '../constants';
 
 import BaseLayout from '../layouts/Base.astro';
 import SiteNav from '../components/SiteNav/index.astro';
@@ -9,11 +9,11 @@ import SkipToContent from '../components/SkipToContent/index.astro';
 import '../assets/css/404.css';
 ---
 <BaseLayout
-	htmlTitle={ERROR_TITLE}
-	title={ERROR_TITLE_STRING}
-	description={ERROR_DESCRIPTION}
-	url={ERROR_URL}
-	tags={SITE_TAGS}
+	htmlTitle={ERROR.title}
+	title={ERROR.titleString}
+	description={ERROR.description}
+	url={ERROR.url}
+	tags={ERROR.tags}
 >
 	<SkipToContent slot="header" />
 	<header slot="header">

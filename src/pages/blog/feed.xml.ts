@@ -3,10 +3,10 @@ import type { APIRoute } from 'astro';
 import rss, { type RSSFeedItem } from '@astrojs/rss';
 import { getImage } from 'astro:assets';
 
-import { BLOG_DESCRIPTION, BLOG_LOGO_MICRO_ALT, BLOG_URL } from '../../constants';
+import { BLOG } from '../../constants';
 import { listAllPosts } from '../../utils/post';
 
-import defaultImage from '../../assets/images/logo-blog-micro.png';
+import defaultImage from '../../assets/images/logo/logo-blog-micro.png';
 import { parseMarkdown } from '../../utils/markdown';
 
 export const GET: APIRoute = async (context) => {
@@ -20,13 +20,13 @@ export const GET: APIRoute = async (context) => {
 
 	baseUrl.protocol = 'https:';
 
-	const blogUrl = new URL(BLOG_URL, baseUrl).toString();
+	const blogUrl = new URL(BLOG.url, baseUrl).toString();
 
 	const allPosts = await listAllPosts();
 
 	return rss({
 		title: "Marco Campos' Blog",
-		description: BLOG_DESCRIPTION,
+		description: BLOG.description,
 		site: blogUrl,
 		xmlns: {
 			atom: 'http://www.w3.org/2005/Atom',
@@ -40,7 +40,7 @@ export const GET: APIRoute = async (context) => {
 			<image>
 				<url>${new URL(blogImage.src, baseUrl).toString()}</url>
 				<title>Marco Campos' Blog</title>
-				<description>${BLOG_LOGO_MICRO_ALT}</description>
+				<description>${BLOG.logoAltText?.micro}</description>
 				<link>${blogUrl}</link>
 				<width>142</width>
 				<height>116</height>

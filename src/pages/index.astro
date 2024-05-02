@@ -7,26 +7,16 @@ import Avatar from '../components/Avatar/index.astro';
 import '../assets/css/pages/home.css';
 
 import avatar from '../assets/images/me.jpg';
-import logo from '../assets/images/logo.svg';
+import logo from '../assets/images/logo/logo.svg';
 
-import {
-	BLOG_URL,
-	LOGO_ALT,
-	PROJECTS_URL,
-	SITE_DESCRIPTION,
-	SITE_TAGS,
-	SITE_TITLE,
-	SITE_TITLE_STRING,
-	SITE_URL,
-	TALKS_URL
-} from '../constants';
+import { GLOBALS, BLOG, PROJECTS, TALKS } from '../constants';
 ---
 <BaseLayout
-	htmlTitle={SITE_TITLE}
-	title={SITE_TITLE_STRING}
-	description={SITE_DESCRIPTION}
-	url={SITE_URL}
-	tags={SITE_TAGS}
+	htmlTitle={GLOBALS.title}
+	title={GLOBALS.titleString}
+	description={GLOBALS.description}
+	url={GLOBALS.url}
+	tags={GLOBALS.tags}
 	pageSchema="ProfilePage"
 >
 	<div class="h-card vcard">
@@ -37,7 +27,7 @@ import {
 					src={logo.src}
 					width={logo.width}
 					height={logo.height}
-					alt={LOGO_ALT}
+					alt={GLOBALS.logoAltText?.regular}
 				/>
 			</a>
 		</h1>
@@ -64,19 +54,19 @@ import {
 				<nav>
 					<ul>
 						<li>
-							<a href={BLOG_URL} rel="noreferrer noopener">
+							<a href={BLOG.url} rel="noreferrer noopener">
 								<Icon name="uil:file-edit-alt" title="An icon of a sheet of paper with a pen." />
 								My Blog
 							</a>
 						</li>
 						<li>
-							<a href={PROJECTS_URL} rel="noreferrer noopener">
+							<a href={PROJECTS.url} rel="noreferrer noopener">
 								<Icon name="uil:flask" title="An icon of chemical flask." />
 								Project Highlights
 							</a>
 						</li>
 						<li>
-							<a href={TALKS_URL} rel="noreferrer noopener">
+							<a href={TALKS.url} rel="noreferrer noopener">
 								<Icon name="uil:presentation-check" title="An icon of presentation stand with a checkmark inside." />
 								Talks I've given
 							</a>

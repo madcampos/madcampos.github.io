@@ -1,43 +1,43 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { BLOG_URL, PROJECTS_URL, SITE_URL, TALKS_URL } from '../../constants';
+import { GLOBALS, BLOG, TALKS, PROJECTS } from '../../constants';
 
 import './styles.css';
 ---
 <nav id="site-nav" aria-label="Primary navigation">
 	<ul>
 		<li>
-			<a href={SITE_URL}>
+			<a href={GLOBALS.url}>
 				<Icon name="uil:home-alt" title="An icon of a house." />
 				Home
 			</a>
 		</li>
 		<li>
-			<a href={BLOG_URL}>
+			<a href={BLOG.url}>
 				<Icon name="uil:file-edit-alt" title="An icon of a sheet of paper with a pen." />
 				Blog
 			</a>
 		</li>
 		<li>
-			<a href={PROJECTS_URL}>
+			<a href={PROJECTS.url}>
 				<Icon name="uil:flask" title="An icon of chemical flask." />
 				Projects
 			</a>
 		</li>
 		<li>
-			<a href={TALKS_URL}>
+			<a href={TALKS.url}>
 				<Icon name="uil:presentation-check" title="An icon of presentation stand with a checkmark inside." />
 				Talks
 			</a>
 		</li>
 		<li>
-			<a href={`${SITE_URL}accessibility`}>
+			<a href={`${GLOBALS.url}accessibility`}>
 				<Icon name="uil:accessible-icon-alt" title="An icon of a person on a wheelchair." />
 				Accessibility
 			</a>
 		</li>
 		<li>
-			<a href={`${SITE_URL}license`}>
+			<a href={`${GLOBALS.url}license`}>
 				<Icon name="uil:award-alt" title="An icon of a ribbon." />
 				License
 			</a>

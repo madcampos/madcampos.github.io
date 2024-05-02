@@ -2,31 +2,34 @@
 import InternalPageLayout from '../../layouts/InternalPage.astro';
 import ProjectCard from '../../components/ProjectCard/index.astro';
 
-import { PROJECTS_DESCRIPTION, PROJECTS_LOGO_ALT, PROJECTS_TITLE, PROJECTS_TITLE_STRING, PROJECTS_URL } from '../../constants';
+import { PROJECTS } from '../../constants';
 
 import { listAllProjects } from '../../utils/projects';
 
-import logoProjects from '../../assets/images/logo-projects.svg';
+import logoProjects from '../../assets/images/logo/logo-proj.svg';
+import projectsSocialImage from '../../assets/images/social/social-proj.png';
 
 const projects = await listAllProjects();
 ---
 
 <InternalPageLayout
-	htmlTitle={PROJECTS_TITLE}
-	title={PROJECTS_TITLE_STRING}
-	description={PROJECTS_DESCRIPTION}
-	url={PROJECTS_URL}
+	htmlTitle={PROJECTS.title}
+	title={PROJECTS.titleString}
+	description={PROJECTS.description}
+	url={PROJECTS.url}
+	image={projectsSocialImage.src}
+	imageAlt={PROJECTS.logoAltText?.micro}
 >
-	<a href={PROJECTS_URL} slot="logo">
+	<a href={PROJECTS.url} slot="logo">
 		<img
 			src={logoProjects.src}
 			width={logoProjects.width}
 			height={logoProjects.height}
-			alt={PROJECTS_LOGO_ALT}
+			alt={PROJECTS.logoAltText?.regular}
 		/>
 	</a>
 	<Fragment slot="header">
-		{PROJECTS_TITLE_STRING}
+		{PROJECTS.titleString}
 	</Fragment>
 
 	{ projects.map(async (project) => {

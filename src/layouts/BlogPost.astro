@@ -1,7 +1,7 @@
 ---
 import type { RelatedPost } from '../utils/post';
 
-import { BLOG_TAGS_URL, BLOG_URL } from '../constants';
+import { BLOG, BLOG_TAGS } from '../constants';
 
 import '../assets/css/pages/blog-post.css';
 import '../assets/css/code.css';
@@ -38,7 +38,7 @@ const {
 	readingTime, wordCount, letterCount,
 	relatedPosts
 } = Astro.props;
-const postUrl = `${BLOG_URL}${url}`;
+const postUrl = `${BLOG.url}${url}`;
 ---
 <BaseLayout
 	htmlTitle={[title, 'Blog', 'Marco Campos']}
@@ -125,7 +125,7 @@ const postUrl = `${BLOG_URL}${url}`;
 
 		{tags && tags.length > 0 && (
 			<TagList
-				tags={Object.fromEntries(tags.map((tag) => [tag, `${BLOG_TAGS_URL}/${tag}`]))}
+				tags={Object.fromEntries(tags.map((tag) => [tag, `${BLOG_TAGS.url}/${tag}`]))}
 				isOpen={true}
 			/>
 		)}
@@ -139,7 +139,7 @@ const postUrl = `${BLOG_URL}${url}`;
 							{relatedPosts.map((post) => (
 								<li>
 									<PostCardSmall
-										url={`${BLOG_URL}${post.url}`}
+										url={`${BLOG.url}${post.url}`}
 										image={post.image}
 										imageAlt={post.imageAlt}
 									>

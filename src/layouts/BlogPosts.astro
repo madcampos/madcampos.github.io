@@ -7,11 +7,11 @@ import Pagination from '../components/Pagination/index.astro';
 import PageHeader from '../components/PageHeader/index.astro';
 import SkipToContent from '../components/SkipToContent/index.astro';
 
-import { BLOG_DESCRIPTION, BLOG_LOGO_MICRO_ALT, BLOG_TAGS, BLOG_TITLE, BLOG_URL } from '../constants';
+import { BLOG } from '../constants';
 
 import '../assets/css/pages/blog.css';
 
-import blogSocialImage from '../assets/images/logo-blog-micro.png';
+import blogSocialImage from '../assets/images/social/social-blog.png';
 
 interface Props {
 	posts: Post[],
@@ -38,14 +38,14 @@ const {
 } = Astro.props;
 ---
 <BaseLayout
-	htmlTitle={[title, ...BLOG_TITLE].filter(Boolean)}
-	title={title ?? BLOG_TITLE[0] ?? ''}
-	description={BLOG_DESCRIPTION}
-	tags={BLOG_TAGS}
+	htmlTitle={[title, ...BLOG.title].filter(Boolean)}
+	title={title ?? BLOG.titleString ?? ''}
+	description={BLOG.description}
+	tags={BLOG.tags}
 	url={currentUrl}
 	hasFeed={true}
 	image={blogSocialImage.src}
-	imageAlt={BLOG_LOGO_MICRO_ALT}
+	imageAlt={BLOG.logoAltText?.micro}
 	pageSchema="Blog"
 >
 	<SkipToContent
@@ -60,7 +60,7 @@ const {
 	<div id="posts-list">
 		{posts.map((post) => (
 			<PostCard
-				url={`${BLOG_URL}${post.url}`}
+				url={`${BLOG.url}${post.url}`}
 				title={post.data.title}
 				createdAt={post.data.createdAt.toISOString()}
 				image={post.data.image}

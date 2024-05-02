@@ -1,22 +1,22 @@
 ---
-import logo from '../assets/images/logo.svg';
-import { LOGO_ALT, SITE_TAGS, SITE_TITLE, SITE_URL } from '../constants';
+import logo from '../assets/images/logo/logo.svg';
+import { GLOBALS } from '../constants';
 import InternalPageLayout from '../layouts/InternalPage.astro';
 ---
 
 <InternalPageLayout
-	htmlTitle={['To-Do', ...SITE_TITLE]}
+	htmlTitle={['To-Do', ...GLOBALS.title]}
 	title="To-Do"
 	description="To-Do and work in progress items for Marco Campos website."
 	url="/todo/"
-	tags={['todo', 'wip', 'work in progress', ...SITE_TAGS]}
+	tags={['todo', 'wip', 'work in progress', ...GLOBALS.tags]}
 >
-	<a href={SITE_URL} slot="logo">
+	<a href={GLOBALS.url} slot="logo">
 		<img
 			src={logo.src}
 			width={logo.width}
 			height={logo.height}
-			alt={LOGO_ALT}
+			alt={GLOBALS.logoAltText?.regular}
 		/>
 	</a>
 	<Fragment slot="header">To-Do</Fragment>

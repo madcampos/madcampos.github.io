@@ -2,7 +2,7 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 import { getCollection } from 'astro:content';
 
-import { BLOG_AUTHOR_TITLE, BLOG_LOGO_ALT, BLOG_TAGS, BLOG_URL } from '../../../constants';
+import { BLOG, BLOG_AUTHOR } from '../../../constants';
 
 import BaseLayout from '../../../layouts/Base.astro';
 import PageHeader from '../../../components/PageHeader/index.astro';
@@ -12,7 +12,7 @@ import { parseMarkdown } from '../../../utils/markdown';
 
 import '../../../assets/css/pages/internal-page.css';
 import '../../../assets/css/pages/authors.css';
-import logoBlog from '../../../assets/images/logo-blog.svg';
+import logoBlog from '../../../assets/images/logo/logo-blog.svg';
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -31,21 +31,23 @@ const description = await parseMarkdown(body);
 
 ---
 <BaseLayout
-	htmlTitle={[name, ...BLOG_AUTHOR_TITLE]}
+	htmlTitle={[name, ...BLOG_AUTHOR.title]}
 	title={name}
 	description={name}
 	url={Astro.url.toString()}
-	tags={BLOG_TAGS}
+	tags={BLOG_AUTHOR.tags}
 	hasFeed={true}
 	pageSchema="ProfilePage"
+	image={avatar.src}
+	imageAlt={avatarAlt}
 >
 	<PageHeader slot="header">
-		<a href={BLOG_URL} slot="logo">
+		<a href={BLOG.url} slot="logo">
 			<img
 				src={logoBlog.src}
 				width={logoBlog.width}
 				height={logoBlog.height}
-				alt={BLOG_LOGO_ALT}
+				alt={BLOG.logoAltText?.regular}
 			/>
 		</a>
 		{name}

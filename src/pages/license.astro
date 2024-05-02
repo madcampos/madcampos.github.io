@@ -1,23 +1,23 @@
 ---
 import { Icon } from 'astro-icon/components';
-import logo from '../assets/images/logo.svg';
-import { LOGO_ALT, SITE_TAGS, SITE_TITLE, SITE_URL } from '../constants';
+import logo from '../assets/images/logo/logo.svg';
+import { GLOBALS } from '../constants';
 import InternalPageLayout from '../layouts/InternalPage.astro';
 ---
 
 <InternalPageLayout
-	htmlTitle={['License & Disclaimer', ...SITE_TITLE]}
+	htmlTitle={['License & Disclaimer', ...GLOBALS.title]}
 	title="License & Disclaimer"
 	description="License & Disclaimer for Marco Campos website."
 	url="/license"
-	tags={['legal', 'license', ...SITE_TAGS]}
+	tags={['legal', 'license', ...GLOBALS.tags]}
 >
-	<a href={SITE_URL} slot="logo">
+	<a href={GLOBALS.url} slot="logo">
 		<img
 			src={logo.src}
 			width={logo.width}
 			height={logo.height}
-			alt={LOGO_ALT}
+			alt={GLOBALS.logoAltText?.regular}
 		/>
 	</a>
 	<Fragment slot="header">

@@ -1,9 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 
-import {
- BLOG_AUTHOR_DESCRIPTION, BLOG_AUTHOR_TITLE, BLOG_AUTHOR_TITLE_STRING, BLOG_AUTHOR_URL, BLOG_LOGO_ALT, BLOG_TAGS, BLOG_URL
-} from '../../../constants';
+import { BLOG_AUTHOR, BLOG } from '../../../constants';
 
 import BaseLayout from '../../../layouts/Base.astro';
 import PageHeader from '../../../components/PageHeader/index.astro';
@@ -11,34 +9,38 @@ import AuthorCard from '../../../components/AuthorCard/index.astro';
 
 import '../../../assets/css/pages/internal-page.css';
 import '../../../assets/css/pages/authors.css';
-import logoBlog from '../../../assets/images/logo-blog.svg';
+
+import logoBlog from '../../../assets/images/logo/logo-blog.svg';
+import blogSocialImage from '../../../assets/images/social/social-blog.png';
 
 const authors = await getCollection('authors');
 
 ---
 <BaseLayout
-	htmlTitle={BLOG_AUTHOR_TITLE}
-	title={BLOG_AUTHOR_TITLE_STRING}
-	description={BLOG_AUTHOR_DESCRIPTION}
-	url={BLOG_AUTHOR_URL}
-	tags={BLOG_TAGS}
+	htmlTitle={BLOG_AUTHOR.title}
+	title={BLOG_AUTHOR.titleString}
+	description={BLOG_AUTHOR.description}
+	url={BLOG_AUTHOR.url}
+	tags={BLOG_AUTHOR.tags}
 	hasFeed={true}
 	pageSchema="ItemList"
+	image={blogSocialImage.src}
+	imageAlt={BLOG.logoAltText?.micro}
 >
-	<meta itemprop="name" content={BLOG_AUTHOR_TITLE_STRING} />
+	<meta itemprop="name" content={BLOG_AUTHOR.titleString} />
 	<link itemprop="itemListOrder" href="https://schema.org/ItemListUnordered" />
 	<meta itemprop="numberOfItems" content={authors.length.toString()} />
 
 	<PageHeader slot="header">
-		<a href={BLOG_URL} slot="logo">
+		<a href={BLOG.url} slot="logo">
 			<img
 				src={logoBlog.src}
 				width={logoBlog.width}
 				height={logoBlog.height}
-				alt={BLOG_LOGO_ALT}
+				alt={BLOG.logoAltText?.regular}
 			/>
 		</a>
-		{BLOG_AUTHOR_TITLE_STRING}
+		{BLOG_AUTHOR.titleString}
 	</PageHeader>
 
 
@@ -48,7 +50,7 @@ const authors = await getCollection('authors');
 				<li itemprop="itemListElement">
 					<AuthorCard
 						author={slug}
-						url={`${BLOG_AUTHOR_URL}/${slug}`}
+						url={`${BLOG_AUTHOR.url}/${slug}`}
 					/>
 				</li>
 			))}

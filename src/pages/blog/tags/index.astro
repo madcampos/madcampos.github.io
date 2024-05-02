@@ -1,13 +1,5 @@
 ---
-import {
-	BLOG_LOGO_ALT,
-	BLOG_TAGS,
-	BLOG_TAGS_DESCRIPTION,
-	BLOG_TAGS_TITLE,
-	BLOG_TAGS_TITLE_STRING,
-	BLOG_TAGS_URL,
-	BLOG_URL
-} from '../../../constants';
+import { BLOG_TAGS, BLOG } from '../../../constants';
 
 import BaseLayout from '../../../layouts/Base.astro';
 import PageHeader from '../../../components/PageHeader/index.astro';
@@ -17,33 +9,36 @@ import { listTags } from '../../../utils/post';
 import '../../../assets/css/pages/internal-page.css';
 import '../../../assets/css/pages/tags.css';
 
-import logoBlog from '../../../assets/images/logo-blog.svg';
+import logoBlog from '../../../assets/images/logo/logo-blog.svg';
+import blogSocialImage from '../../../assets/images/social/social-blog.png';
 
 const tags = await listTags();
 ---
 <BaseLayout
-	htmlTitle={BLOG_TAGS_TITLE}
-	title={BLOG_TAGS_TITLE_STRING}
-	description={BLOG_TAGS_DESCRIPTION}
-	url={BLOG_TAGS_URL}
-	tags={BLOG_TAGS}
+	htmlTitle={BLOG_TAGS.title}
+	title={BLOG_TAGS.titleString}
+	description={BLOG_TAGS.description}
+	url={BLOG_TAGS.url}
+	tags={BLOG_TAGS.tags}
 	hasFeed={true}
 	pageSchema="ItemList"
+	image={blogSocialImage.src}
+	imageAlt={BLOG.logoAltText?.micro}
 >
-	<meta itemprop="name" content={BLOG_TAGS_TITLE_STRING} />
+	<meta itemprop="name" content={BLOG_TAGS.titleString} />
 	<link itemprop="itemListOrder" href="https://schema.org/ItemListUnordered" />
 	<meta itemprop="numberOfItems" content={tags.length.toString()} />
 
 	<PageHeader slot="header">
-		<a href={BLOG_URL} slot="logo">
+		<a href={BLOG.url} slot="logo">
 			<img
 				src={logoBlog.src}
 				width={logoBlog.width}
 				height={logoBlog.height}
-				alt={BLOG_LOGO_ALT}
+				alt={BLOG.logoAltText?.regular}
 			/>
 		</a>
-		{BLOG_TAGS_TITLE_STRING}
+		{BLOG_TAGS.titleString}
 	</PageHeader>
 
 
@@ -51,7 +46,7 @@ const tags = await listTags();
 		<ul id="tag-list">
 			{tags.map((tag) => (
 				<li class="tag">
-					<a href={`${BLOG_TAGS_URL}/${tag}`} itemprop="url">
+					<a href={`${BLOG_TAGS.url}/${tag}`} itemprop="url">
 						<span itemprop="itemListElement">{tag}</span>
 					</a>
 				</li>

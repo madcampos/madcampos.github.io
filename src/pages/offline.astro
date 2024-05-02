@@ -1,5 +1,5 @@
 ---
-import { OFFLINE_DESCRIPTION, OFFLINE_TITLE, OFFLINE_TITLE_STRING, OFFLINE_URL, SITE_TAGS } from '../constants';
+import { OFFLINE } from '../constants';
 
 import BaseLayout from '../layouts/Base.astro';
 import SiteNav from '../components/SiteNav/index.astro';
@@ -9,11 +9,11 @@ import SkipToContent from '../components/SkipToContent/index.astro';
 import '../assets/css/404.css';
 ---
 <BaseLayout
-	htmlTitle={OFFLINE_TITLE}
-	title={OFFLINE_TITLE_STRING}
-	url={OFFLINE_URL}
-	description={OFFLINE_DESCRIPTION}
-	tags={SITE_TAGS}
+	htmlTitle={OFFLINE.title}
+	title={OFFLINE.titleString}
+	url={OFFLINE.url}
+	description={OFFLINE.description}
+	tags={OFFLINE.tags}
 >
 	<SkipToContent slot="header" />
 	<header slot="header">

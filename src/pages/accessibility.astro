@@ -1,22 +1,22 @@
 ---
-import { LOGO_ALT, SITE_TAGS, SITE_TITLE, SITE_URL } from '../constants';
+import { GLOBALS } from '../constants';
 import InternalPageLayout from '../layouts/InternalPage.astro';
-import logo from '../assets/images/logo.svg';
+import logo from '../assets/images/logo/logo.svg';
 ---
 
 <InternalPageLayout
-	htmlTitle={['Accessibility Statement', ...SITE_TITLE]}
+	htmlTitle={['Accessibility Statement', ...GLOBALS.title]}
 	title="Accessibility Statement"
 	description="Accesibility Statement for Marco Campos website."
 	url="/accessibility"
-	tags={['accessibility', 'a11y', ...SITE_TAGS]}
+	tags={['accessibility', 'a11y', ...GLOBALS.tags]}
 >
-	<a href={SITE_URL} slot="logo">
+	<a href={GLOBALS.url} slot="logo">
 		<img
 			src={logo.src}
 			width={logo.width}
 			height={logo.height}
-			alt={LOGO_ALT}
+			alt={GLOBALS.logoAltText?.regular}
 		/>
 	</a>
 	<Fragment slot="header">Accessibility Statement</Fragment>

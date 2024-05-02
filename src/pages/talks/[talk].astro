@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 
-import { TALKS_LOGO_ALT, TALKS_TAGS, TALKS_TITLE, TALKS_URL } from '../../constants';
+import { TALKS } from '../../constants';
 
 import { listAllTalks } from '../../utils/talks';
 
@@ -10,7 +10,7 @@ import { Icon } from 'astro-icon/components';
 
 import '../../assets/css/pages/talks.css';
 
-import logoTalks from '../../assets/images/logo-talks.svg';
+import logoTalks from '../../assets/images/logo/logo-talks.svg';
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -40,23 +40,23 @@ const { Content } = await render();
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyle: 'long' });
 ---
 <InternalPageLayout
-	htmlTitle={[title, ...TALKS_TITLE]}
+	htmlTitle={[title, ...TALKS.title]}
 	title={title}
 	description={summary}
-	url={`${TALKS_URL}/${slug}`}
-	tags={TALKS_TAGS}
+	url={`${TALKS.url}/${slug}`}
+	tags={TALKS.tags}
 	image={image?.src}
 	imageAlt={imageAlt}
 	createdAt={date}
 	pageSchema="EducationEvent"
 >
 
-	<a href={TALKS_URL} slot="logo">
+	<a href={TALKS.url} slot="logo">
 		<img
 			src={logoTalks.src}
 			width={logoTalks.width}
 			height={logoTalks.height}
-			alt={TALKS_LOGO_ALT}
+			alt={TALKS.logoAltText?.regular}
 		/>
 	</a>
 	<Fragment slot="header" itemprop="name">{title}</Fragment>
