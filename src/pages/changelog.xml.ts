@@ -25,7 +25,7 @@ export const GET: APIRoute = async (context) => {
 		title: "Marco Campos' Site Changelog",
 		description: 'Changelog (Version History) for Marco Campos\' Website, containing all recent changes.',
 		site: baseUrl.toString(),
-		items: await Promise.all((await getCollection('changelog')).map(async (changelog) => {
+		items: (await Promise.all((await getCollection('changelog')).map(async (changelog) => {
 			const versionNumber = changelog.id.replace('.md', '');
 			const { versionName } = changelog.data;
 			const content = await parseMarkdown(changelog.body);
@@ -40,7 +40,7 @@ export const GET: APIRoute = async (context) => {
 			};
 
 			return item;
-		})),
+		}))).sort(({ pubDate: prevPubDate = new Date() }, { pubDate: nextPubDate = new Date() }) => nextPubDate.getTime() - prevPubDate.getTime()),
 		stylesheet: `${BLOG.url}/feed.xsl`,
 		customData: `
 		<language>en-us</language>
