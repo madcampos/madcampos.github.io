@@ -81,8 +81,14 @@ const socialImage = `${GLOBALS.url}${(image ?? defaultSocialImage.src).replace(/
 	<meta name="twitter:widgets:theme" content="dark" />
 
 	{tags && (<meta name="keywords" itemprop="keywords" property="article:tag" content={tags.join(', ')} />)}
-	{publishedDate && (<meta property="article:published_time" content={publishedDate.toISOString()} />)}
-	{updatedDate && (<meta property="article:modified_time" content={updatedDate.toISOString()} />)}
+	{publishedDate && (
+		<meta property="article:published_time" content={publishedDate.toISOString()} />
+		<meta name="publish_date" property="og:publish_date" content={publishedDate.toISOString()} />
+	)}
+	{updatedDate && (
+		<meta property="article:modified_time" content={updatedDate.toISOString()} />
+		<meta name="updated_date" property="og:updated_date" content={updatedDate.toISOString()} />
+	)}
 
 	<!-- Webmention -->
 	<link rel="webmention" href="https://webmention.io/madcampos.dev/webmention" />
