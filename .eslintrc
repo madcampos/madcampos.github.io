@@ -400,7 +400,7 @@
 		"@typescript-eslint/no-magic-numbers": ["warn", { "enforceConst": true, "ignoreDefaultValues": true, "ignoreArrayIndexes": true, "ignore": [-1, 0, 1, 16, 1000000, "-1n", "0n", "1n"], "ignoreEnums": true, "ignoreNumericLiteralTypes": true, "ignoreReadonlyClassProperties": true }],
 		"@typescript-eslint/no-meaningless-void-operator": ["error", { "checkNever": false }],
 		"@typescript-eslint/no-misused-new": "error",
-		"@typescript-eslint/no-misused-promises": "off",
+		"@typescript-eslint/no-misused-promises": [ "error", { "checksVoidReturn": false } ],
 		"@typescript-eslint/no-mixed-enums": "error",
 		"@typescript-eslint/no-namespace": ["error", { "allowDeclarations": false, "allowDefinitionFiles": true }],
 		"@typescript-eslint/no-non-null-asserted-nullish-coalescing": "error",
@@ -489,7 +489,7 @@
 		"@typescript-eslint/require-array-sort-compare": ["error", { "ignoreStringArrays": true }],
 		"@typescript-eslint/require-await": ["error"],
 		"@typescript-eslint/restrict-plus-operands": ["error", { "skipCompoundAssignments": true, "allowNumberAndString": true }],
-		"@typescript-eslint/restrict-template-expressions": ["warn", {
+		"@typescript-eslint/restrict-template-expressions": [ "off", {
 			"allowNumber": true,
 			"allowBoolean": false,
 			"allowAny": false,
