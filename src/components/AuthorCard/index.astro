@@ -2,7 +2,6 @@
 import { getEntry } from 'astro:content';
 
 import Avatar from '../Avatar/index.astro';
-import { parseMarkdown } from '../../utils/markdown';
 
 import './styles.css';
 
@@ -14,8 +13,8 @@ interface Props {
 const { author, url } = Astro.props;
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const { data: { avatar, avatarAlt, name, website }, body } = (await getEntry('authors', author))!;
-const description = await parseMarkdown(body);
+const { data: { avatar, avatarAlt, name, website }, render } = (await getEntry('authors', author))!;
+const { Content } = await render();
 ---
 <div class="author-card" itemprop="author" itemscope itemtype="https://schema.org/Person">
 	<a class="author-picture" href={url ?? website}>
@@ -28,8 +27,7 @@ const description = await parseMarkdown(body);
 
 	<div class="author-bio">
 		<small>
-			{/* eslint-disable-next-line astro/no-set-html-directive */}
-			<Fragment set:html={description} />
+			<Content />
 		</small>
 	</div>
 </div>

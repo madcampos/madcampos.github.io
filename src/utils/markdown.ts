@@ -5,42 +5,7 @@ import type { ContainerDirective } from 'mdast-util-directive';
 import type { LeafDirective, TextDirective } from 'mdast-util-directive/lib/index';
 import type { VFile } from 'vfile';
 
-import { marked } from 'marked';
 import { visit } from 'unist-util-visit';
-
-export async function parseMarkdown(content: string) {
-	return marked(content, { gfm: true, breaks: true });
-}
-
-export async function extractLinks(content: string) {
-	const links: string[] = [];
-	const renderer = new marked.Renderer();
-
-	renderer.link = (href) => {
-		links.push(href);
-
-		return '';
-	};
-
-	await marked(content, { gfm: true, breaks: true, renderer });
-
-	return links;
-}
-
-export function getExternalLinks(links: string[], internalOrigin: string) {
-	const externalLinks = links.filter((link) => {
-		const isAbsolute = link.startsWith('/');
-		const isRelative = link.startsWith('../') || link.startsWith('./');
-		const isAnchor = link.startsWith('#');
-		const isProtocol = link.includes('://');
-		const isInternal = !isAbsolute && !isRelative && !isAnchor;
-		const isExternal = !isInternal && isProtocol && !link.startsWith(internalOrigin);
-
-		return isExternal;
-	});
-
-	return externalLinks;
-}
 
 function testDirectiveType(node: { type: string }, directiveType: 'container' | 'leaf' | 'text', directiveName: string, file: VFile) {
 	// eslint-disable-next-line no-nested-ternary

@@ -8,8 +8,6 @@ import BaseLayout from '../../../layouts/Base.astro';
 import PageHeader from '../../../components/PageHeader/index.astro';
 import Avatar from '../../../components/Avatar/index.astro';
 
-import { parseMarkdown } from '../../../utils/markdown';
-
 import '../../../assets/css/pages/internal-page.css';
 import '../../../assets/css/pages/authors.css';
 import logoBlog from '../../../assets/images/logo/logo-blog.svg';
@@ -19,15 +17,16 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 export const getStaticPaths = (async () => (await getCollection('authors')).map(((author) => ({
 	params: { author: author.slug },
-	props: { ...author.data, body: author.body, slug: author.slug }
+	props: { ...author.data, render: author.render, slug: author.slug }
 })))) satisfies GetStaticPaths;
 
 const {
 	name,
-	body,
+	render,
 	avatar, avatarAlt
 } = Astro.props;
-const description = await parseMarkdown(body);
+
+const { Content } = await render();
 
 ---
 <BaseLayout
@@ -60,8 +59,7 @@ const description = await parseMarkdown(body);
 		</a>
 
 		<article id="author-bio">
-			{/* eslint-disable-next-line astro/no-set-html-directive */}
-			<Fragment set:html={description} />
+			<Content />
 		</article>
 	</div>
 </BaseLayout>

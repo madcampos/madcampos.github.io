@@ -1,12 +1,10 @@
-import type { APIRoute } from 'astro';
+import type { APIRoute, MarkdownInstance } from 'astro';
 
 import rss, { type RSSFeedItem } from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { getImage } from 'astro:assets';
 
 import { BLOG } from '../constants';
-
-import { parseMarkdown } from '../utils/markdown';
 
 import defaultImage from '../assets/images/logo/logo-micro.png';
 
@@ -21,26 +19,29 @@ export const GET: APIRoute = async (context) => {
 
 	baseUrl.protocol = 'https:';
 
+	const changelogFiles = import.meta.glob<MarkdownInstance<{}>>('../content/changelog/*.md', { eager: true });
+
 	return rss({
 		title: "Marco Campos' Site Changelog",
 		description: 'Changelog (Version History) for Marco Campos\' Website, containing all recent changes.',
 		site: baseUrl.toString(),
-		items: (await Promise.all((await getCollection('changelog')).map(async (changelog) => {
+		items: (await getCollection('changelog')).map((changelog) => {
 			const versionNumber = changelog.id.replace('.md', '');
 			const { versionName } = changelog.data;
-			const content = await parseMarkdown(changelog.body);
+
+			const [, changelogMarkdown] = Object.entries(changelogFiles).find(([filePath]) => filePath.includes(changelog.id)) ?? [];
 
 			const item: RSSFeedItem = {
 				// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 				title: `${versionNumber}${versionName ? ` (${versionName})` : ''}`,
-				description: content,
-				content,
+				description: changelogMarkdown?.compiledContent(),
+				content: changelogMarkdown?.compiledContent(),
 				pubDate: changelog.data.date,
 				link: new URL(`/changelog.xml#${versionNumber}`, baseUrl).toString()
 			};
 
 			return item;
-		}))).sort(({ pubDate: prevPubDate = new Date() }, { pubDate: nextPubDate = new Date() }) => nextPubDate.getTime() - prevPubDate.getTime()),
+		}).sort(({ pubDate: prevPubDate = new Date() }, { pubDate: nextPubDate = new Date() }) => nextPubDate.getTime() - prevPubDate.getTime()),
 		stylesheet: `${BLOG.url}/feed.xsl`,
 		customData: `
 		<language>en-us</language>

@@ -1,4 +1,4 @@
-import type { APIRoute } from 'astro';
+import type { APIRoute, MarkdownInstance } from 'astro';
 
 import rss, { type RSSFeedItem } from '@astrojs/rss';
 import { getImage } from 'astro:assets';
@@ -7,7 +7,6 @@ import { BLOG } from '../../constants';
 import { listAllPosts } from '../../utils/post';
 
 import defaultImage from '../../assets/images/logo/logo-blog-micro.png';
-import { parseMarkdown } from '../../utils/markdown';
 
 export const GET: APIRoute = async (context) => {
 	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
@@ -23,6 +22,7 @@ export const GET: APIRoute = async (context) => {
 	const blogUrl = new URL(BLOG.url, baseUrl).toString();
 
 	const allPosts = await listAllPosts();
+	const postFiles = import.meta.glob<MarkdownInstance<{}>>('../../content/blog/**/*.md', { eager: true });
 
 	return rss({
 		title: "Marco Campos' Blog",
@@ -58,7 +58,7 @@ export const GET: APIRoute = async (context) => {
 				image = await getImage({ src: post.data.image, format: 'png' });
 			}
 
-			const content = await parseMarkdown(post.body);
+			const [, postMarkdown] = Object.entries(postFiles).find(([filePath]) => filePath.includes(post.url)) ?? [];
 
 			const item: RSSFeedItem = {
 				title: post.data.title,
@@ -66,7 +66,7 @@ export const GET: APIRoute = async (context) => {
 				pubDate: post.data.createdAt,
 				categories: post.data.tags,
 				link: `${blogUrl}${post.url}`,
-				content,
+				...(postMarkdown && { content: postMarkdown.compiledContent() }),
 				...(image && {
 					enclosure: {
 						url: new URL(image.src, baseUrl).toString(),
