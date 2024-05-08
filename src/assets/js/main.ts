@@ -1,5 +1,7 @@
 import { registerSW } from 'virtual:pwa-register';
 
+const params = new URLSearchParams(document.location.search.substring(1));
+
 function setPwaMessage(type: 'offline' | 'refresh') {
 	const pwaToast = document.querySelector('#pwa-toast') as HTMLDivElement;
 	const pwaToastMessage = pwaToast.querySelector('#toast-message') as HTMLDivElement;
@@ -39,15 +41,19 @@ window.addEventListener('DOMContentLoaded', () => {
 			requestAnimationFrame(() => {
 				document.body.removeEventListener('click', pwaEventListener);
 				document.querySelector('#pwa-toast')?.remove();
+
+				params.delete('debug');
+				document.location.search = params.toString();
 			});
 		}
 
 		if (target.matches('#pwa-refresh')) {
+			params.delete('debug');
+			document.location.search = params.toString();
+
 			requestAnimationFrame(async () => refreshSW(true));
 		}
 	};
-
-	const params = new URLSearchParams(document.location.search.substring(1));
 
 	if (params.get('debug')?.startsWith('pwa-')) {
 		setPwaMessage((params.get('debug')?.replace('pwa-', '') ?? '') as 'offline' | 'refresh');
