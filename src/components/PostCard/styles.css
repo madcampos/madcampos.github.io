@@ -14,6 +14,7 @@
 	margin: var(--spacing-large) 0;
 	padding: var(--spacing-large);
 	background-color: var(--bg-color);
+	border: solid var(--highlight-border-color) var(--border-width);
 }
 
 .post-card:not(:has( picture)) {

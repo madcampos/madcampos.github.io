@@ -17,7 +17,7 @@
 
 #glitched-logo-svg #glitch-logo {
 	color: var(--accent-color);
-	filter: url("#glitch-filter");
+	/* filter: url("#glitch-filter"); */
 }
 
 #glitched-logo-svg #overlay-logo {

@@ -20,6 +20,7 @@
 	padding: var(--spacing-large);
 	margin: var(--spacing-large);
 	background: var(--bg-color);
+	border: solid var(--highlight-border-color) var(--border-width);
 }
 
 #post-header-wrapper:not(:has(#hero-image)) {

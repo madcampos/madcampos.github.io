@@ -13,6 +13,7 @@
 	gap: var(--spacing-large);
 	padding: var(--spacing-large);
 	margin: var(--spacing-large);
+	border: solid var(--highlight-border-color) var(--border-width);
 }
 
 .project-card:not(:has( picture)) {

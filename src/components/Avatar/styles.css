@@ -29,7 +29,7 @@
 		var(--accent-color),
 		var(--theme-color)
 	);
-	top: 0;
+	inset: 0;
 	opacity: 0.2;
 	transition: all 0.2s ease-in-out;
 }
@@ -40,4 +40,16 @@
 
 @media (max-width: 768px) {
 	.user-avatar { --image-size: var(--avatar-small-size); }
+}
+
+@media (prefers-contrast: more) {
+	.user-avatar::after {
+		background: radial-gradient(
+			circle at bottom,
+			transparent,
+			var(--theme-color)
+		);
+		backdrop-filter: contrast(200%);
+		opacity: 0.4;
+	}
 }
