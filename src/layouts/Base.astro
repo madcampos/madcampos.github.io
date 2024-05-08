@@ -48,6 +48,7 @@ const {
 		hasFeed={hasFeed}
 	/>
 	<body class:list={[{ 'h-entry': hasFeed }]}>
+		<RefreshBanner />
 		<slot name="header"></slot>
 		<main>
 			<slot></slot>
@@ -55,7 +56,6 @@ const {
 
 		<footer slot="footer">
 			<slot name="footer"></slot>
-			<RefreshBanner />
 		</footer>
 	</body>
 </html>
