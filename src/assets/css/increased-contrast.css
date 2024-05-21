@@ -10,7 +10,7 @@
 		--text-color: yellow;
 		--dark-bg-color: black;
 		--bg-color: var(--dark-bg-color);
-		--border-color: dimgray;
+		--border-color: var(--theme-color);
 		--scrollbar-bg: rgba(255, 255, 255, 0.1);
 		--highlight-border-color: var(--theme-color);
 

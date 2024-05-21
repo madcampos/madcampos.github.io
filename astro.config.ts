@@ -23,6 +23,8 @@ import remarkDirective from 'remark-directive';
 import { assetsCache, externalResourcesCache, pagesCache, scriptsCache } from './src/sw-caching';
 import { codepenEmbed, youtubeEmbed } from './src/utils/markdown.ts';
 
+import hcShikiTheme from './src/assets/css/hc-shiki-theme.json';
+
 const manifest: PwaOptions['manifest'] = JSON.parse(readFileSync('./src/manifest.json', { encoding: 'utf8' }));
 
 const mode = process.env['NODE_ENV'] === 'production' ? 'production' : 'development';
@@ -56,7 +58,8 @@ export default defineConfig({
 			theme: 'css-variables',
 			themes: {
 				light: 'light-plus',
-				dark: 'dark-plus'
+				dark: 'dark-plus',
+				contrast: hcShikiTheme
 			},
 			wrap: true,
 			transformers: [
