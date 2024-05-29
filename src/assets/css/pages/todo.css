@@ -1,0 +1,15 @@
+#todo-list label:has(input:checked) {
+	text-decoration: line-through;
+	text-decoration-style: solid;
+	text-decoration-thickness: calc(var(--border-width) * 0.5);
+}
+
+#todo-list label:has(input[aria-disabled]) {
+	text-decoration-style: double;
+	text-decoration-line: line-through;
+}
+
+#todo-list input[aria-disabled] {
+	pointer-events: none;
+	filter: grayscale(1);
+}

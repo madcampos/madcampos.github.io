@@ -2,6 +2,8 @@
 import logo from '../assets/images/logo/logo.svg';
 import { GLOBALS } from '../constants';
 import InternalPageLayout from '../layouts/InternalPage.astro';
+
+import '../assets/css/pages/todo.css';
 ---
 
 <InternalPageLayout
@@ -23,7 +25,7 @@ import InternalPageLayout from '../layouts/InternalPage.astro';
 
 	<p>Based on <a href="https://jamesg.blog/2024/02/19/personal-website-ideas/">this post</a> and <a href="https://shellsharks.com/notes/2023/08/15/website-component-checklist">this checklist</a>.</p>
 
-	<ul>
+	<ul id="todo-list">
 		<li>
 			<label id="label-todo-1" for="todo-1">
 				<input type="checkbox" id="todo-1" name="todo-1" aria-labelledby="label-todo-1" />
@@ -50,25 +52,25 @@ import InternalPageLayout from '../layouts/InternalPage.astro';
 		</li>
 		<li>
 			<label id="label-todo-5" for="todo-5">
-				<input type="checkbox" id="todo-5" name="todo-5" aria-labelledby="label-todo-5" />
+				<input type="checkbox" id="todo-5" name="todo-5" aria-labelledby="label-todo-5" checked />
 				<span>Improve <a href="https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/">high contrast mode</a> (fix things that are in the wrong colors)</span>
 			</label>
 			<ul>
 				<li>
 					<label id="label-todo-5-1" for="todo-5-1">
-						<input type="checkbox" id="todo-5-1" name="todo-5-1" aria-labelledby="label-todo-5-1" />
+						<input type="checkbox" id="todo-5-1" name="todo-5-1" aria-labelledby="label-todo-5-1" checked />
 						<span>Keep orange but make it brighter (add white)</span>
 					</label>
 				</li>
 				<li>
 					<label id="label-todo-5-2" for="todo-5-2">
-						<input type="checkbox" id="todo-5-2" name="todo-5-2" aria-labelledby="label-todo-5-2" />
+						<input type="checkbox" id="todo-5-2" name="todo-5-2" aria-labelledby="label-todo-5-2" checked />
 						<span>Small text should not be so small</span>
 					</label>
 				</li>
 				<li>
 					<label id="label-todo-5-3" for="todo-5-3">
-						<input type="checkbox" id="todo-5-3" name="todo-5-3" aria-labelledby="label-todo-5-3" />
+						<input type="checkbox" id="todo-5-3" name="todo-5-3" aria-labelledby="label-todo-5-3" checked />
 						<span>Medium dark grey background should be darker (add black). (Maybe add a border instead)</span>
 					</label>
 				</li>
@@ -268,7 +270,7 @@ import InternalPageLayout from '../layouts/InternalPage.astro';
 		</li>
 		<li>
 			<label id="label-todo-21" for="todo-21">
-				<input type="checkbox" id="todo-21" name="todo-21" aria-labelledby="label-todo-21" />
+				<input type="checkbox" id="todo-21" name="todo-21" aria-labelledby="label-todo-21" checked />
 				<span>Add roadmap page/board</span>
 			</label>
 			<ul>
@@ -280,7 +282,7 @@ import InternalPageLayout from '../layouts/InternalPage.astro';
 				</li>
 				<li>
 					<label id="label-todo-21-2" for="todo-21-2">
-						<input type="checkbox" id="todo-21-2" name="todo-21-2" aria-labelledby="label-todo-21-2" />
+						<input type="checkbox" id="todo-21-2" name="todo-21-2" aria-labelledby="label-todo-21-2" checked />
 						<span>Save in local storage</span>
 					</label>
 				</li>
@@ -397,6 +399,66 @@ import InternalPageLayout from '../layouts/InternalPage.astro';
 				<input type="checkbox" id="todo-33" name="todo-33" aria-labelledby="label-todo-33" />
 				<span>Add <a href="https://meiert.com/en/blog/april-24-is-js-naked-day/">JS Naked day</a></span>
 			</label>
+		</li>
+		<li>
+			<label id="label-todo-34" for="todo-34">
+				<input type="checkbox" id="todo-34" name="todo-34" aria-labelledby="label-todo-34" />
+				<span>High Contrast Theme</span>
+			</label>
+
+			<ul>
+				<li>
+					<label id="label-todo-34-1" for="todo-34-1">
+						<input type="checkbox" id="todo-34-1" name="todo-34-1" aria-labelledby="label-todo-34-1" checked />
+						<span>Make underline solid</span>
+					</label>
+				</li>
+				<li>
+					<label id="label-todo-34-2" for="todo-34-2">
+						<input type="checkbox" id="todo-34-2" name="todo-34-2" aria-labelledby="label-todo-34-2" checked />
+						<span>Make underline distance from text larger</span>
+					</label>
+				</li>
+				<li>
+					<label id="label-todo-34-3" for="todo-34-3">
+						<input type="checkbox" id="todo-34-3" name="todo-34-3" aria-labelledby="label-todo-34-3" checked />
+						<span>Make "tags" text bold</span>
+					</label>
+				</li>
+				<li>
+					<label id="label-todo-34-4" for="todo-34-4">
+						<input type="checkbox" id="todo-34-4" name="todo-34-4" aria-labelledby="label-todo-34-4" />
+						<span>Code theme: Dracula at Night</span>
+					</label>
+				</li>
+				<li>
+					<label id="label-todo-34-5" for="todo-34-5">
+						<input type="checkbox" id="todo-34-5" name="todo-34-5" aria-labelledby="label-todo-34-5" checked />
+						<span>Increase line height and letter spacing</span>
+					</label>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<label id="label-todo-35" for="todo-35">
+				<input type="checkbox" id="todo-35" name="todo-35" aria-labelledby="label-todo-35" checked />
+				<span>Forced colors</span>
+			</label>
+
+			<ul>
+				<li>
+					<label id="label-todo-35-1" for="todo-35-1">
+						<input type="checkbox" id="todo-35-1" name="todo-35-1" aria-labelledby="label-todo-35-1" checked />
+						<span>Fix tagsand add grayscale filter to avatars</span>
+					</label>
+				</li>
+				<li>
+					<label id="label-todo-35-2" for="todo-35-2">
+						<input type="checkbox" id="todo-35-2" name="todo-35-2" aria-labelledby="label-todo-35-2" checked />
+						<span>SVGs added by CSS need to change color</span>
+					</label>
+				</li>
+			</ul>
 		</li>
 	</ul>
 
