@@ -44,7 +44,7 @@ I'm excited to read the support across the board be of [90% and improving](https
 
 ## What does that mean for me?
 
-As a developer it means not having to worry that some browser and screen reader combination does a weird thing makes testing easier and less time consuming. It makes me feel confident that I'm delivering a product that is accessible and doesn't exclude people.
+As a developer it means not having to worry that some browser and screen reader combination does a weird thing, it makes testing easier and less time consuming, also makes me feel confident that I'm delivering a product that is accessible and doesn't exclude people.
 
 We should all be writing our code in an accessible way, it _helps everyone_! Including _you_ when you don't have your glasses on, or when you are cooking and have greasy hands. It is similar to elevators being essential for wheelchair users but still useful for people carrying luggage or pushing a stroller.
 
