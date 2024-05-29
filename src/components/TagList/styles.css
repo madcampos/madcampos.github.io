@@ -62,3 +62,18 @@
 	color: var(--link-hover-color);
 	outline-color: var(--link-hover-color);
 }
+
+@media (prefers-contrast: more) {
+	.tag-list { font-weight: bolder; }
+}
+
+@media (forced-colors: active) {
+	.tag-list .tag {
+		border: solid currentcolor var(--border-width);
+		padding-inline-start: var(--spacing-medium);
+	}
+
+	.tag-list .tag::before {
+		display: none;
+	}
+}

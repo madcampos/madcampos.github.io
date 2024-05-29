@@ -82,7 +82,7 @@ hr::before {
 hr::after {
 	content: '';
 	display: block;
-	border-top: var(--border-width) dashed var(--theme-color);
+	border-top: var(--border-width) solid var(--theme-color);
 }
 
 #post-footer {
@@ -132,4 +132,17 @@ hr::after {
 	#post-header #back-to-blog { margin-block-start: var(--spacing-large); }
 
 	#post-contents p > img:only-child { --image-size: 70vw; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	hr::after { border-top-style: dashed; }
+}
+
+@media (prefers-contrast: more) {
+	hr::after { border-top-style: solid; }
+}
+
+
+@media (forced-colors: active) {
+	hr::after { border-top-style: solid; }
 }

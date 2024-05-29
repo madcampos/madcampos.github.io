@@ -13,6 +13,7 @@ html, body {
 	font-family: var(--sans-serif-font-family);
 	font-size: var(--body-text);
 	font-weight: normal;
+	line-height: 1.5;
 
 	display: flex;
 	flex-direction: column;
@@ -25,6 +26,7 @@ html, body {
 	scrollbar-width: thin;
 	scrollbar-color: var(--theme-color) var(--scrollbar-bg);
 	overscroll-behavior-y: contain;
+
 }
 
 *, *::after, *::before {
@@ -110,6 +112,7 @@ h1, h2, h3, h4, h5, h6, summary {
 	font-family: var(--monospace-font-family);
 	font-weight: bold;
 	color: var(--theme-color);
+	line-height: 1.2;
 }
 
 main {
