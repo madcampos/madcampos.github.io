@@ -154,3 +154,9 @@
 			'share';
 	}
 }
+
+@media (forced-colors: active) {
+	#post-header #hero-image {
+		filter: grayscale(1) contrast(120%) brightness(110%);
+	}
+}
