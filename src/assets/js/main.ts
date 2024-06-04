@@ -43,13 +43,19 @@ window.addEventListener('DOMContentLoaded', () => {
 				document.querySelector('#pwa-toast')?.remove();
 
 				params.delete('debug');
-				document.location.search = params.toString();
+
+				if (params.size > 0) {
+					document.location.search = params.toString();
+				}
 			});
 		}
 
 		if (target.matches('#pwa-refresh')) {
 			params.delete('debug');
-			document.location.search = params.toString();
+
+			if (params.size > 0) {
+				document.location.search = params.toString();
+			}
 
 			requestAnimationFrame(async () => refreshSW(true));
 		}
