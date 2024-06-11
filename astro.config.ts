@@ -62,6 +62,7 @@ export default defineConfig({
 				// @ts-expect-error - Astro is fussy about custom theme
 				contrast: hcShikiTheme
 			},
+			defaultColor: false,
 			wrap: true,
 			transformers: [
 				transformerTwoslash({
