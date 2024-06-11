@@ -32,7 +32,7 @@ const mode = process.env['NODE_ENV'] === 'production' ? 'production' : 'developm
 export default defineConfig({
 	site: 'https://madcampos.dev/',
 	base: '/',
-	trailingSlash: 'never',
+	trailingSlash: 'always',
 	devToolbar: { enabled: false },
 	compressHTML: true,
 	build: {
