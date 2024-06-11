@@ -51,7 +51,12 @@ code .line.diff.remove {
 
 code .line.highlighted {
 	background-color: rgba(255, 255, 0, 0.2);
-	filter: contrast(0.5) brightness(1.2);
+	/* filter: contrast(0.5) brightness(1.2); */
+	}
+
+	code .line.highlighted span {
+	/* stylelint-disable-next-line declaration-no-important */
+	background-color: transparent !important;
 }
 
 code .line.highlighted.error {
@@ -91,11 +96,14 @@ pre.has-focused .line.focused {
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	pre, pre span {
-		/* stylelint-disable-next-line declaration-no-important */
-		color: var(--shiki-dark) !important;
+	pre {
 		/* stylelint-disable-next-line declaration-no-important */
 		background-color: var(--shiki-dark-bg) !important;
+	}
+
+	pre span {
+		/* stylelint-disable-next-line declaration-no-important */
+		color: var(--shiki-dark) !important;
 		/* stylelint-disable-next-line declaration-no-important */
 		font-style: var(--shiki-dark-font-style) !important;
 		/* stylelint-disable-next-line declaration-no-important */
