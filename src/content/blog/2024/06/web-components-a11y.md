@@ -1,8 +1,8 @@
 ---
 title: Web Components Accessibility
 summary: A summary of what tools and accessibility there is for web components
-image: 
-imageAlt: 
+image: ./assets/sunglass-tree.jpg
+imageAlt: A tree made out of circuit lines, in some branches there are colorful sunglasses.
 createdAt: 2024-06-07T11:13:08.054-04:00
 draft: true
 tags:
@@ -52,7 +52,7 @@ Okay, back to the Shadow DOM, you can either use it, or not. Below are two examp
 
 Both examples will handle the button focus as expected and show the button focus on the accessibility tree. But the one with the Shadow DOM will not add the `h1` and `p` tags to the accessibility tree.
 
-So, let's answer this first part about accessibility with a quote: 
+So, let's answer this first part about accessibility with a quote:
 
 >"It depends"
 >-- Senior Developer
