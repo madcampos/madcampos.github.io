@@ -85,23 +85,24 @@ export default defineConfig({
 	integrations: [
 		astroPWA({
 			registerType: 'prompt',
-				minify: true,
-				includeAssets: ['/icons/icon.svg'],
-				manifest,
-				workbox: {
-					// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-					maximumFileSizeToCacheInBytes: 1024 * 128,
-					cleanupOutdatedCaches: true,
-					clientsClaim: true,
-					skipWaiting: false,
-					navigateFallback: '/offline',
-					navigateFallbackDenylist: [/\.(?:png|gif|jpg|jpeg|webp|svg|ico)$/iu],
-					directoryIndex: 'index.html',
-					runtimeCaching: [externalResourcesCache, assetsCache, scriptsCache, pagesCache]
-				},
-				devOptions: {
-					enabled: false
-				}
+			experimental: { directoryAndTrailingSlashHandler: true },
+			minify: true,
+			includeAssets: ['/icons/icon.svg'],
+			manifest,
+			workbox: {
+				// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+				maximumFileSizeToCacheInBytes: 1024 * 128,
+				cleanupOutdatedCaches: true,
+				clientsClaim: true,
+				skipWaiting: false,
+				navigateFallback: '/offline',
+				navigateFallbackDenylist: [/\.(?:png|gif|jpg|jpeg|webp|svg|ico)$/iu],
+				directoryIndex: 'index.html',
+				runtimeCaching: [externalResourcesCache, assetsCache, scriptsCache, pagesCache]
+			},
+			devOptions: {
+				enabled: false
+			}
 		}),
 		sitemap({
 			changefreq: 'weekly',
