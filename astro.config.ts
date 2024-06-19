@@ -95,7 +95,7 @@ export default defineConfig({
 				cleanupOutdatedCaches: true,
 				clientsClaim: true,
 				skipWaiting: false,
-				navigateFallback: '/offline',
+				navigateFallback: undefined,
 				navigateFallbackDenylist: [/\.(?:png|gif|jpg|jpeg|webp|svg|ico)$/iu],
 				directoryIndex: 'index.html',
 				runtimeCaching: [externalResourcesCache, assetsCache, scriptsCache, pagesCache]
