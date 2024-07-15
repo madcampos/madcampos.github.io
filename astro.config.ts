@@ -32,7 +32,7 @@ const mode = process.env['NODE_ENV'] === 'production' ? 'production' : 'developm
 export default defineConfig({
 	site: 'https://madcampos.dev/',
 	base: '/',
-	trailingSlash: 'always',
+	trailingSlash: 'never',
 	devToolbar: { enabled: false },
 	compressHTML: true,
 	build: {
@@ -102,7 +102,8 @@ export default defineConfig({
 			},
 			devOptions: {
 				enabled: false
-			}
+			},
+			selfDestroying: true
 		}),
 		sitemap({
 			changefreq: 'weekly',
