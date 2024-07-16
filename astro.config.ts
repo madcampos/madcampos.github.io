@@ -28,9 +28,11 @@ import hcShikiTheme from './src/assets/css/hc-shiki-theme.json';
 const manifest: PwaOptions['manifest'] = JSON.parse(readFileSync('./src/manifest.json', { encoding: 'utf8' }));
 
 const mode = process.env['NODE_ENV'] === 'production' ? 'production' : 'development';
+// eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+const siteUrl = process.env['SITE_URL'] || 'https://madcampos.dev/';
 
 export default defineConfig({
-	site: 'https://madcampos.dev/',
+	site: siteUrl,
 	base: '/',
 	trailingSlash: 'never',
 	devToolbar: { enabled: false },
