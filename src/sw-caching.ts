@@ -10,6 +10,8 @@ export const pagesCache: RuntimeCaching = {
 	urlPattern: ({ url }) => url.origin === location.origin && !(/\.(?:png|gif|jpg|jpeg|webp|svg|ico|woff2|js|json|xml|xsl|webmanifest|css)$/iu).test(url.pathname),
 	handler: 'NetworkFirst',
 	options: {
+		matchOptions: { ignoreSearch: true },
+		precacheFallback: { fallbackURL: '/offline/' },
 		cacheName: 'pages-cache',
 		expiration: {
 			maxAgeSeconds: 60 * 60 * 24,

@@ -2,6 +2,7 @@
 import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from 'astro';
 
 import { BLOG, BLOG_TAGS } from '../../../../constants';
+import { join } from '../../../../utils/path.ts';
 
 import BlogPostsLayout from '../../../../layouts/BlogPosts.astro';
 
@@ -36,7 +37,7 @@ const { tag } = Astro.params;
 	lastPage={lastPage}
 	prevUrl={url.prev}
 	nextUrl={url.next}
-	baseUrl={`${BLOG_TAGS.url}/${tag ?? ''}`}
+	baseUrl={join([BLOG_TAGS.url, tag ?? ''])}
 	start={start}
 	end={end}
 	total={total}

@@ -1,3 +1,5 @@
+import { join } from './utils/path.ts';
+
 interface ConstantsMap {
 	url: string,
 	title: string[],
@@ -42,7 +44,7 @@ export const ERROR: ConstantsMap = {
 };
 
 export const OFFLINE: ConstantsMap = {
-	url: '/offline',
+	url: '/offline/',
 	title: ['Offline Page', ...GLOBALS.title],
 	titleString: 'Offline Page',
 	description: 'Marco Campos — Offline Page',
@@ -50,7 +52,7 @@ export const OFFLINE: ConstantsMap = {
 };
 
 export const BLOG: ConstantsMap = {
-	url: '/blog',
+	url: '/blog/',
 	title: ['Blog', ...GLOBALS.title],
 	titleString: "Marco Campos' Blog",
 	description: "Marco Campos' Blog — A space where I talk about web development and other programming related (or not) things.",
@@ -63,7 +65,7 @@ export const BLOG: ConstantsMap = {
 };
 
 export const BLOG_TAGS: ConstantsMap = {
-	url: `${BLOG.url}/tags`,
+	url: join([BLOG.url, 'tags']),
 	title: ['Tags', ...BLOG.title],
 	titleString: "Tags for Marco Campos' blog",
 	description: "Marco Campos' Blog — Tags for my blog posts",
@@ -71,7 +73,7 @@ export const BLOG_TAGS: ConstantsMap = {
 };
 
 export const BLOG_AUTHOR: ConstantsMap = {
-	url: `${BLOG.url}/authors`,
+	url: join([BLOG.url, 'authors']),
 	title: ['Authors', ...BLOG.title],
 	titleString: "Authors for Marco Campos' blog",
 	description: "Marco Campos' Blog — Authors for the blog",
@@ -79,7 +81,7 @@ export const BLOG_AUTHOR: ConstantsMap = {
 };
 
 export const PROJECTS: ConstantsMap = {
-	url: '/projects',
+	url: '/projects/',
 	title: ['Projects', ...GLOBALS.title],
 	titleString: 'Project Highlight',
 	description: "Marco Campos' Projects — A list of projects I've worked on, or am currently working on. Mostly web development",
@@ -92,7 +94,7 @@ export const PROJECTS: ConstantsMap = {
 };
 
 export const TALKS: ConstantsMap = {
-	url: '/talks',
+	url: '/talks/',
 	title: ['Talks', ...GLOBALS.title],
 	titleString: 'Talks, Presentations & Workshops',
 	description: "Marco Campos' Talks — A list of talks I've given on meetups, conferences, or other events.",

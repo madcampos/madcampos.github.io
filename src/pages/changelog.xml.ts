@@ -5,6 +5,7 @@ import { getCollection } from 'astro:content';
 import { getImage } from 'astro:assets';
 
 import { BLOG } from '../constants';
+import { join } from '../utils/path.ts';
 
 import defaultImage from '../assets/images/logo/logo-micro.png';
 
@@ -42,7 +43,7 @@ export const GET: APIRoute = async (context) => {
 
 			return item;
 		}).sort(({ pubDate: prevPubDate = new Date() }, { pubDate: nextPubDate = new Date() }) => nextPubDate.getTime() - prevPubDate.getTime()),
-		stylesheet: `${BLOG.url}/feed.xsl`,
+		stylesheet: join([BLOG.url, 'feed.xsl']),
 		customData: `
 		<language>en-us</language>
 		<image>

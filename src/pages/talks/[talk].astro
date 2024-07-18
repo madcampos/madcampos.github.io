@@ -2,6 +2,7 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 
 import { TALKS } from '../../constants';
+import { join } from '../../utils/path.ts';
 
 import { listAllTalks } from '../../utils/talks';
 
@@ -43,7 +44,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 	htmlTitle={[title, ...TALKS.title]}
 	title={title}
 	description={summary}
-	url={`${TALKS.url}/${slug}`}
+	url={join([TALKS.url, slug])}
 	tags={TALKS.tags}
 	image={image?.src}
 	imageAlt={imageAlt}

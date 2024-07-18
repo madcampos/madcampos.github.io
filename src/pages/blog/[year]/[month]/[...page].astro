@@ -2,6 +2,7 @@
 import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from 'astro';
 
 import { BLOG } from '../../../../constants';
+import { join } from '../../../../utils/path.ts';
 
 import BlogPostsLayout from '../../../../layouts/BlogPosts.astro';
 
@@ -40,7 +41,7 @@ const formatter = new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric'
 	lastPage={lastPage}
 	prevUrl={url.prev}
 	nextUrl={url.next}
-	baseUrl={`${BLOG.url}/${year}/${month}`}
+	baseUrl={join([BLOG.url, year, month])}
 	start={start}
 	end={end}
 	total={total}

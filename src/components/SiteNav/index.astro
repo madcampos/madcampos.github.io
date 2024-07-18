@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { GLOBALS, BLOG, TALKS, PROJECTS } from '../../constants';
+import { join } from '../../utils/path.ts';
 
 import './styles.css';
 ---
@@ -31,13 +32,13 @@ import './styles.css';
 			</a>
 		</li>
 		<li>
-			<a href={`${GLOBALS.url}accessibility`}>
+			<a href={join([GLOBALS.url, 'accessibility'])}>
 				<Icon name="uil:accessible-icon-alt" title="An icon of a person on a wheelchair." />
 				Accessibility
 			</a>
 		</li>
 		<li>
-			<a href={`${GLOBALS.url}license`}>
+			<a href={join([GLOBALS.url, 'license'])}>
 				<Icon name="uil:award-alt" title="An icon of a ribbon." />
 				License
 			</a>

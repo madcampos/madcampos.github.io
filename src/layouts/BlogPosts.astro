@@ -8,6 +8,7 @@ import PageHeader from '../components/PageHeader/index.astro';
 import SkipToContent from '../components/SkipToContent/index.astro';
 
 import { BLOG } from '../constants';
+import { join } from '../utils/path.ts';
 
 import '../assets/css/pages/blog.css';
 
@@ -60,7 +61,7 @@ const {
 	<div id="posts-list">
 		{posts.map((post) => (
 			<PostCard
-				url={`${BLOG.url}${post.url}`}
+				url={join([BLOG.url, post.url])}
 				title={post.data.title}
 				createdAt={post.data.createdAt.toISOString()}
 				image={post.data.image}

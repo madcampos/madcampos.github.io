@@ -4,6 +4,7 @@ import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from '
 import BlogPostsLayout from '../../../layouts/BlogPosts.astro';
 
 import { BLOG } from '../../../constants';
+import { join } from '../../../utils/path.ts';
 
 import { listPostPagesByYear, MAX_POSTS_PER_PAGE } from '../../../utils/post.ts';
 import logoBlog from '../../../assets/images/logo/logo-blog.svg';
@@ -38,7 +39,7 @@ const { year } = Astro.params;
 	lastPage={lastPage}
 	prevUrl={url.prev}
 	nextUrl={url.next}
-	baseUrl={`${BLOG.url}/${year}`}
+	baseUrl={join([BLOG.url, year])}
 	start={start}
 	end={end}
 	total={total}

@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 
 import { BLOG_AUTHOR, BLOG } from '../../../constants';
+import { join } from '../../../utils/path.ts';
 
 import BaseLayout from '../../../layouts/Base.astro';
 import PageHeader from '../../../components/PageHeader/index.astro';
@@ -50,7 +51,7 @@ const authors = await getCollection('authors');
 				<li itemprop="itemListElement">
 					<AuthorCard
 						author={slug}
-						url={`${BLOG_AUTHOR.url}/${slug}`}
+						url={join([BLOG_AUTHOR.url, slug])}
 					/>
 				</li>
 			))}

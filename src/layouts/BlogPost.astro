@@ -2,6 +2,7 @@
 import type { RelatedPost } from '../utils/post';
 
 import { BLOG, BLOG_TAGS } from '../constants';
+import { join } from '../utils/path.ts';
 
 import '../assets/css/pages/blog-post.css';
 import '../assets/css/code.css';
@@ -38,7 +39,7 @@ const {
 	readingTime, wordCount, letterCount,
 	relatedPosts
 } = Astro.props;
-const postUrl = `${BLOG.url}${url}`;
+const postUrl = join([BLOG.url, url]);
 ---
 <BaseLayout
 	htmlTitle={[title, 'Blog', 'Marco Campos']}
@@ -125,7 +126,7 @@ const postUrl = `${BLOG.url}${url}`;
 
 		{tags && tags.length > 0 && (
 			<TagList
-				tags={Object.fromEntries(tags.map((tag) => [tag, `${BLOG_TAGS.url}/${tag}`]))}
+				tags={Object.fromEntries(tags.map((tag) => [tag, join([BLOG_TAGS.url, tag])]))}
 				isOpen={true}
 			/>
 		)}
@@ -139,7 +140,7 @@ const postUrl = `${BLOG.url}${url}`;
 							{relatedPosts.map((post) => (
 								<li>
 									<PostCardSmall
-										url={`${BLOG.url}${post.url}`}
+										url={join([BLOG.url, post.url])}
 										image={post.image}
 										imageAlt={post.imageAlt}
 									>

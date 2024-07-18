@@ -3,6 +3,8 @@ import { pwaInfo } from 'virtual:pwa-info';
 
 import { GLOBALS, BLOG } from '../constants';
 
+import { join } from '../utils/path.ts';
+
 import printStylesheet from '../assets/css/print.css?url';
 import defaultSocialImage from '../assets/images/social/social.png';
 
@@ -35,7 +37,7 @@ const fullUrl = new URL(url, new URL(GLOBALS.url, Astro.site)).toString();
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const socialImageAlt = imageAlt ?? GLOBALS.logoAltText!.micro;
-const socialImage = `${GLOBALS.url}${(image ?? defaultSocialImage.src).replace(/^\//iu, '')}`;
+const socialImage = join([GLOBALS.url, (image ?? defaultSocialImage.src)]);
 ---
 <head>
 	<meta charset="utf-8" />
@@ -45,14 +47,14 @@ const socialImage = `${GLOBALS.url}${(image ?? defaultSocialImage.src).replace(/
 
 	<!-- URLs -->
 	<link rel="canonical" href={fullUrl} />
-	<link rel="sitemap" href={`${GLOBALS.url}sitemap-index.xml`} />
-	{ hasFeed && <link rel="alternate" type="application/rss+xml" href={`${BLOG.url}/feed.xml`} title={BLOG.titleString} /> }
+	<link rel="sitemap" href={join([GLOBALS.url, 'sitemap-index.xml'])} />
+	{ hasFeed && <link rel="alternate" type="application/rss+xml" href={join([BLOG.url, 'feed.xml'])} title={BLOG.titleString} /> }
 
 	<!-- App Metadata -->
-	<link rel="icon" href={`${GLOBALS.url}icons/icon.svg`} sizes="any" type="image/svg+xml" />
-	<link rel="icon" href={`${GLOBALS.url}favicon.ico`} sizes="48x48" type="image/x-icon" />
+	<link rel="icon" href={join([GLOBALS.url, 'icons/icon.svg'])} sizes="any" type="image/svg+xml" />
+	<link rel="icon" href={join([GLOBALS.url, 'favicon.ico'])} sizes="48x48" type="image/x-icon" />
 	<meta name="theme-color" content="#0080ff" />
-	<link rel="license" href={`${GLOBALS.url}license`} />
+	<link rel="license" href={join([GLOBALS.url, 'license'])} />
 
 	{/* eslint-disable-next-line astro/no-set-html-directive */}
 	{pwaInfo && (<Fragment set:html={pwaInfo.webManifest.linkTag} />)}
@@ -95,7 +97,7 @@ const socialImage = `${GLOBALS.url}${(image ?? defaultSocialImage.src).replace(/
 	<link rel="pingback" href="https://webmention.io/madcampos.dev/xmlrpc" />
 
 	<!-- Changelog -->
-	<link rel="alternate" type="application/rss+xml" href={`${GLOBALS.url}changelog.xml`} title="Changelog (Version History)" />
+	<link rel="alternate" type="application/rss+xml" href={join([GLOBALS.url, 'changelog.xml'])} title="Changelog (Version History)" />
 
 	<!-- Apple icons -->
 	<meta name="apple-mobile-web-app-capable" content="yes" />

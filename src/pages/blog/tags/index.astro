@@ -1,5 +1,6 @@
 ---
 import { BLOG_TAGS, BLOG } from '../../../constants';
+import { join } from '../../../utils/path.ts';
 
 import BaseLayout from '../../../layouts/Base.astro';
 import PageHeader from '../../../components/PageHeader/index.astro';
@@ -46,7 +47,7 @@ const tags = await listTags();
 		<ul id="tag-list">
 			{tags.map((tag) => (
 				<li class="tag">
-					<a href={`${BLOG_TAGS.url}/${tag}`} itemprop="url">
+					<a href={join([BLOG_TAGS.url, tag])} itemprop="url">
 						<span itemprop="itemListElement">{tag}</span>
 					</a>
 				</li>
