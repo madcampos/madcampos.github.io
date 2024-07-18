@@ -34,7 +34,7 @@ const siteUrl = process.env['SITE_URL'] || 'https://madcampos.dev/';
 export default defineConfig({
 	site: siteUrl,
 	base: '/',
-	trailingSlash: 'never',
+	trailingSlash: 'always',
 	devToolbar: { enabled: false },
 	compressHTML: true,
 	build: {
