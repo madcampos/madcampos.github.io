@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+
+import BaseLayout from '../layouts/Base.astro';
+import SkipToContent from '../components/SkipToContent/index.astro';
+import SiteNav from '../components/SiteNav/index.astro';
+
+import { GLOBALS } from '../constants.ts';
+
+import '../assets/css/triangle.css';
+
+import triangleGuy from '../assets/images/stonks.png';
+
+// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+const IMAGE_WIDTHS = [128, 256, 512, 768, triangleGuy.width];
+---
+<BaseLayout
+	htmlTitle={['Get Rich', ...GLOBALS.title]}
+	title="Get Rich"
+	description="Get Rich Quickly using these tips!"
+	url="/triangle"
+	tags={['easter egg', 'joke', ...GLOBALS.tags]}
+>
+	<SkipToContent slot="header" />
+	<SiteNav slot="header" />
+
+	<div id="triangle-content">
+		<h1>Get rich!!! Quick!!! Ask me how?!</h1>
+
+		<Image
+			src={triangleGuy}
+			alt="A man with a happy face and his mouth open, holding a fist in front of his body. He is confident, he is strong, he is making money baby!"
+			loading="lazy"
+			widths={IMAGE_WIDTHS}
+			sizes={`(max-width: 360px) 128px, (max-width: 720px) 256px, (max-width: 1280px) 512px, (max-width: 2160px) 768px ${triangleGuy.width}px`}
+			quality={75}
+		/>
+
+		<blockquote>
+			<p>This is totally <em>not</em> a pyramid scheme!</p>
+			<small>Michael Scott</small>
+		</blockquote>
+
+		<form method="get" action="#">
+			{/* eslint-disable-next-line astro/jsx-a11y/control-has-associated-label */}
+			<input
+				id="email"
+				name="email"
+				type="email"
+				placeholder="Enter your email here"
+				aria-label="Your email"
+				required
+			/>
+			<button type="submit">Access now!</button>
+		</form>
+	</div>
+
+	<small slot="footer">By providing your email you subscribe to a lifetime suply of Sildenafil, also known as "Magic Blue Pills" or "Daddy Little Helpers".</small>
+	<script src="../assets/js/triangle.ts"></script>
+</BaseLayout>

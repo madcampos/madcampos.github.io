@@ -1,0 +1,91 @@
+body {
+	background: linear-gradient(to bottom right, var(--bg-color), var(--dark-bg-color));
+}
+
+#triangle-content {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr auto auto 1fr;
+	grid-template-areas:
+		'image title'
+		'image quote'
+		'image form'
+		'image .'
+	;
+	height: 100%;
+	max-width: var(--max-width);
+	justify-items: center;
+	padding-inline: var(--spacing-large);
+}
+
+#triangle-content img {
+	grid-area: image;
+	align-self: end;
+	height: 100%;
+	width: 100%;
+	object-position: center bottom;
+	object-fit: contain;
+}
+
+#triangle-content h1 {
+	font-size: 3em;
+	grid-area: title;
+	align-self: end;
+	font-family: var(--sans-serif-font-family);
+}
+
+#triangle-content blockquote small {
+	text-align: end;
+	width: 100%;
+	display: inline-block;
+}
+
+#triangle-content blockquote small::before {
+	content: '— ';
+}
+
+#triangle-content form {
+	text-align: center;
+}
+
+#triangle-content input {
+	border: solid var(--theme-color) var(--border-width);
+	font-size: 1.5em;
+	color: var(--text-color);
+	background-color: var(--dark-bg-color);
+	border-radius: var(--spacing-large);
+	padding: var(--spacing-small) var(--spacing-medium);
+	margin: var(--spacing-medium);
+}
+
+#triangle-content button {
+	border: solid transparent var(--border-width);
+	font-size: 1.5em;
+	color: var(--text-color);
+	background-color: var(--theme-color);
+	border-radius: var(--spacing-large);
+	padding: var(--spacing-small) var(--spacing-medium);
+	margin: var(--spacing-medium);
+}
+
+footer {
+	background-color: var(--bg-color);
+	width: 100%;
+	max-width: var(--max-width);
+	padding: var(--spacing-small);
+	margin-inline: auto;
+	text-align: center;
+}
+
+@media (max-width: 500px) {
+	#triangle-content {
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(4, auto);
+		grid-template-areas:
+			'title'
+			'quote'
+			'form'
+			'image'
+		;
+	}
+}
