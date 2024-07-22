@@ -12,7 +12,7 @@
 	},
 	"scripts": {
 		"postinstall": "husky install",
-		"start": "npm run dev",
+		"start": "npm run build",
 		"dev": "astro dev --site=http://localhost:3000/",
 		"build": "astro check && astro build",
 		"prepreview": "npm run build",
