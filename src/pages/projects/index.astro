@@ -1,6 +1,6 @@
 ---
-import InternalPageLayout from '../../layouts/InternalPage.astro';
 import ProjectCard from '../../components/ProjectCard/index.astro';
+import InternalPageLayout from '../../layouts/InternalPage.astro';
 
 import { PROJECTS } from '../../constants';
 
@@ -11,7 +11,6 @@ import projectsSocialImage from '../../assets/images/social/social-proj.png';
 
 const projects = await listAllProjects();
 ---
-
 <InternalPageLayout
 	htmlTitle={PROJECTS.title}
 	title={PROJECTS.titleString}
@@ -32,10 +31,13 @@ const projects = await listAllProjects();
 		{PROJECTS.titleString}
 	</Fragment>
 
-	{ projects.map(async (project) => {
-		const { Content } = await project.render();
+	{
+		(
+		<>
+			{projects.map(async (project) => {
+				const { Content } = await project.render();
 
-		return (
+				return (
 			<ProjectCard
 				status={project.data.status}
 				createdAt={project.data.createdAt}
@@ -52,5 +54,8 @@ const projects = await listAllProjects();
 				<Content />
 			</ProjectCard>
 		);
-	}) }
+				})}
+			</>
+		)
+	}
 </InternalPageLayout>

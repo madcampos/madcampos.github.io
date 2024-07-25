@@ -6,26 +6,20 @@ import ProjectIcon from '../ProjectIcon/index.astro';
 import './styles.css';
 
 interface Props {
-	status: 'finished' | 'ongoing',
-	createdAt: Date,
-	updatedAt?: Date,
-	version?: string,
-	url?: string,
+	status: 'finished' | 'ongoing';
+	createdAt: Date;
+	updatedAt?: Date;
+	version?: string;
+	url?: string;
 
-	image?: ImageMetadata,
-	imageAlt?: string,
+	image?: ImageMetadata;
+	imageAlt?: string;
 
-	techStack?: string[],
-	repository?: string
+	techStack?: string[];
+	repository?: string;
 }
 
-const {
- status, version,
- createdAt, updatedAt,
- image, imageAlt,
- url, repository,
- techStack
-} = Astro.props;
+const { status, version, createdAt, updatedAt, image, imageAlt, url, repository, techStack } = Astro.props;
 
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 ---
@@ -40,17 +34,22 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 	</div>
 	<meta itemprop="isAccessibleForFree" content="True" />
 
-	{image && (
-		<ProjectIcon
-			image={image}
-			imageAlt={imageAlt ?? ''}
-		/>
-	)}
+	{
+		image && (
+			<ProjectIcon
+				{image}
+				imageAlt={imageAlt ?? ''}
+			/>
+		)
+	}
 
 	<header>
 		{/* eslint-disable-next-line multiline-ternary */}
-		{url
-			? (
+		{
+			(
+			<>
+				{url
+					? (
 				<a href={url} rel="noopener noreferrer">
 					<h2 itemprop="name">
 						<slot name="title"></slot>
@@ -62,19 +61,20 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 					<slot name="title"></slot>
 				</h2>
 			)}
+				</>
+			)
+		}
 		<aside>
 			<span>
 				<Icon name="uil:calendar-alt" title="Date started" />
 				<time datetime={createdAt.toISOString()} itemprop="dateCreated">{formatter.format(createdAt)}</time>
-				{updatedAt && (<span>&mdash; <time datetime={updatedAt?.toISOString()} itemprop="dateModified">{formatter.format(updatedAt)}</time></span>)}
+				{updatedAt && <span>&mdash; <time datetime={updatedAt?.toISOString()} itemprop="dateModified">{formatter.format(updatedAt)}</time></span>}
 			</span>
 			<span itemprop="softwareVersion">
-				<Icon name="uil:box" title="Current version" />
-				{version}
+				<Icon name="uil:box" title="Current version" /> {version}
 			</span>
 			<span class:list={['project-status', status]}>
-				<Icon name={status === 'ongoing' ? 'uil:history' : 'uil:check-circle'} title="Project status" />
-				{status === 'ongoing' ? 'Ongoing' : 'Finished'}
+				<Icon name={status === 'ongoing' ? 'uil:history' : 'uil:check-circle'} title="Project status" /> {status === 'ongoing' ? 'Ongoing' : 'Finished'}
 			</span>
 		</aside>
 	</header>
@@ -84,19 +84,23 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 	</div>
 
 	<div class="project-links">
-		{url && (
-			<a href={url} rel="noopener noreferrer" class="view-project" itemprop="installUrl">
-				<Icon name="uil:link" title="An icon of a link." />
-				View Project
-			</a>
-		)}
+		{
+			url && (
+				<a href={url} rel="noopener noreferrer" class="view-project" itemprop="installUrl">
+					<Icon name="uil:link" title="An icon of a link." />
+					View Project
+				</a>
+			)
+		}
 
-		{repository && (
-			<a href={repository} rel="noopener noreferrer">
-				<Icon name="uil:github" title="GitHub&apos;s icon." />
-				View Repository
-			</a>
-		)}
+		{
+			repository && (
+				<a href={repository} rel="noopener noreferrer">
+					<Icon name="uil:github" title="GitHub&apos;s icon." />
+					View Repository
+				</a>
+			)
+		}
 	</div>
 
 	<footer class="project-info">
@@ -108,9 +112,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 				</span>
 			</summary>
 			<ul class="technology-tags">
-				{techStack?.map((tech) => (
-					<li class="tag">{tech}</li>
-				))}
+				{techStack?.map((tech) => <li class="tag">{tech}</li>)}
 			</ul>
 		</details>
 	</footer>

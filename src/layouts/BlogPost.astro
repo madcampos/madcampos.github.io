@@ -7,50 +7,42 @@ import { join } from '../utils/path.ts';
 import '../assets/css/pages/blog-post.css';
 import '../assets/css/code.css';
 
-import BaseLayout from './Base.astro';
-import PostHeader from '../components/PostHeader/index.astro';
-import TagList from '../components/TagList/index.astro';
 import AuthorCard from '../components/AuthorCard/index.astro';
 import PostCardSmall from '../components/PostCardSmall/index.astro';
+import PostHeader from '../components/PostHeader/index.astro';
 import SkipToContent from '../components/SkipToContent/index.astro';
+import TagList from '../components/TagList/index.astro';
+import BaseLayout from './Base.astro';
 
 interface Props {
-	title: string,
-	summary: string,
-	image?: ImageMetadata,
-	imageAlt?: string,
-	createdAt: Date,
-	updatedAt?: Date,
-	updates?: { date: Date, changes: string }[],
-	tags?: string[],
-	url: string,
-	relatedPosts?: RelatedPost[],
-	readingTime?: number,
-	wordCount?: number,
-	letterCount?: number
+	title: string;
+	summary: string;
+	image?: ImageMetadata;
+	imageAlt?: string;
+	createdAt: Date;
+	updatedAt?: Date;
+	updates?: { date: Date, changes: string }[];
+	tags?: string[];
+	url: string;
+	relatedPosts?: RelatedPost[];
+	readingTime?: number;
+	wordCount?: number;
+	letterCount?: number;
 }
 
-const {
-	url,
-	title, summary,
-	image, imageAlt,
-	createdAt, updatedAt, updates,
-	tags,
-	readingTime, wordCount, letterCount,
-	relatedPosts
-} = Astro.props;
+const { url, title, summary, image, imageAlt, createdAt, updatedAt, updates, tags, readingTime, wordCount, letterCount, relatedPosts } = Astro.props;
 const postUrl = join([BLOG.url, url]);
 ---
 <BaseLayout
 	htmlTitle={[title, 'Blog', 'Marco Campos']}
-	title={title}
+	{title}
 	description={summary}
-	tags={tags}
+	{tags}
 	url={postUrl}
 	image={image?.src}
-	imageAlt={imageAlt}
-	createdAt={createdAt}
-	updatedAt={updatedAt}
+	{imageAlt}
+	{createdAt}
+	{updatedAt}
 	pageSchema="BlogPosting"
 	hasFeed={true}
 >
@@ -62,43 +54,53 @@ const postUrl = join([BLOG.url, url]);
 	<PostHeader
 		slot="header"
 		url={postUrl}
-		title={title}
-		summary={summary}
-		image={image}
-		imageAlt={imageAlt}
-		createdAt={createdAt}
-		updatedAt={updatedAt}
+		{title}
+		{summary}
+		{image}
+		{imageAlt}
+		{createdAt}
+		{updatedAt}
 		hasUpdates={updates && updates.length > 0}
-		readingTime={readingTime}
-		wordCount={wordCount}
-		letterCount={letterCount}
+		{readingTime}
+		{wordCount}
+		{letterCount}
 	/>
 
 	<article id="post-contents" itemprop="articleBody" class="e-content">
-		{updates && (
-			<aside id="update-history">
-				<details open>
-					<summary>Update History</summary>
-					<ul>
-						{updates.map((update) => (
-							<li>
-								<time
-									datetime={update.date.toISOString()}
-									title={update.date.toISOString()}
-								>
-									{new Intl.DateTimeFormat('en-US', {
-										dateStyle: 'long',
-										timeStyle: 'short'
-									}).format(update.date)}
-								</time>
-								<span>&mdash;</span>
-								<span>{update.changes}</span>
-							</li>
-						))}
-					</ul>
-				</details>
-			</aside>
-		)}
+		{
+			updates && (
+				<aside id="update-history">
+					<details open>
+						<summary>Update History</summary>
+						<ul>
+							{
+								updates.map((update) => (
+									<li>
+										<time
+											datetime={update.date.toISOString()}
+											title={update.date.toISOString()}
+										>
+											{
+												(
+													<>
+														{new Intl.DateTimeFormat('en-US', {
+															dateStyle: 'long',
+															timeStyle: 'short'
+														}).format(update.date)}
+													</>
+												)
+											}
+										</time>
+										<span>&mdash;</span>
+										<span>{update.changes}</span>
+									</li>
+								))
+							}
+						</ul>
+					</details>
+				</aside>
+			)
+		}
 
 		<slot></slot>
 	</article>
@@ -124,39 +126,49 @@ const postUrl = join([BLOG.url, url]);
 			</details>
 		</aside> -->
 
-		{tags && tags.length > 0 && (
-			<TagList
-				tags={Object.fromEntries(tags.map((tag) => [tag, join([BLOG_TAGS.url, tag])]))}
-				isOpen={true}
-			/>
-		)}
+		{
+			tags && tags.length > 0 && (
+				<TagList
+					tags={Object.fromEntries(tags.map((tag) => [tag, join([BLOG_TAGS.url, tag])]))}
+					isOpen={true}
+				/>
+			)
+		}
 
-		{relatedPosts && relatedPosts.length > 0 && (
-			<details id="related-posts" open>
-				<summary id="related-posts-title">Related Posts</summary>
-				<div id="related-posts-wrapper">
-					<nav aria-labelledby="related-posts-title">
-						<ul>
-							{relatedPosts.map((post) => (
-								<li>
-									<PostCardSmall
-										url={join([BLOG.url, post.url])}
-										image={post.image}
-										imageAlt={post.imageAlt}
-									>
-										<span slot="title">{post.title}</span>
-										{post.summary}
-									</PostCardSmall>
-								</li>
-							))}
-						</ul>
-					</nav>
-				</div>
-			</details>
-		)}
+		{
+			relatedPosts && relatedPosts.length > 0 && (
+				<details id="related-posts" open>
+					<summary id="related-posts-title">Related Posts</summary>
+					<div id="related-posts-wrapper">
+						<nav aria-labelledby="related-posts-title">
+							<ul>
+								{
+									relatedPosts.map((post) => (
+										<li>
+											<PostCardSmall
+												url={join([BLOG.url, post.url])}
+												image={post.image}
+												imageAlt={post.imageAlt}
+											>
+												<span slot="title">{post.title}</span> {post.summary}
+											</PostCardSmall>
+										</li>
+									))
+								}
+							</ul>
+						</nav>
+					</div>
+				</details>
+			)
+		}
 
 		<aside id="post-license">
-			<small><em>Unless otherwise noted, all content on this site is licensed under a <a href="/license" class="u-license">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</em></small>
+			<small>
+				<em>
+					Unless otherwise noted, all content on this site is licensed under a
+					<a href="/license" class="u-license">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+				</em>
+			</small>
 		</aside>
 	</footer>
 </BaseLayout>
