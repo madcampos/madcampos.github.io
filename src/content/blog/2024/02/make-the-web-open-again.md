@@ -12,6 +12,7 @@ tags:
 relatedPosts:
   - metadata-for-the-masses
 ---
+
 I'm seeing some recent changes on the web. People seem to be getting bored by social media, I mean, they _are_ addictive and when you see it, you've been mindlessly scrolling some algorithmic for 2 hours.
 
 ## AI, algorithms and world dominance

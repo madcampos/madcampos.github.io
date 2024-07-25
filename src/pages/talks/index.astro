@@ -1,6 +1,6 @@
 ---
-import InternalPageLayout from '../../layouts/InternalPage.astro';
 import TalkCard from '../../components/TalkCard/index.astro';
+import InternalPageLayout from '../../layouts/InternalPage.astro';
 
 import { TALKS } from '../../constants';
 import { join } from '../../utils/path.ts';
@@ -33,16 +33,17 @@ const talks = await listAllTalks();
 		{TALKS.titleString}
 	</Fragment>
 
-	{ talks.map((talk) => (
-		<TalkCard
-			url={join([TALKS.url, talk.slug])}
-			event={talk.data.event}
-			date={talk.data.date}
-			image={talk.data.image}
-			imageAlt={talk.data.imageAlt}
-		>
-			<span slot="title">{talk.data.title}</span>
-			{talk.data.summary}
-		</TalkCard>
-	)) }
+	{
+		talks.map((talk) => (
+			<TalkCard
+				url={join([TALKS.url, talk.slug])}
+				event={talk.data.event}
+				date={talk.data.date}
+				image={talk.data.image}
+				imageAlt={talk.data.imageAlt}
+			>
+				<span slot="title">{talk.data.title}</span> {talk.data.summary}
+			</TalkCard>
+		))
+	}
 </InternalPageLayout>

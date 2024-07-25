@@ -25,6 +25,7 @@ relatedPosts:
   - hello-world
   - going-astro
 ---
+
 Building an HTML page is fun... until you find yourself lost in a sea of meaningless `<div>`s.
 
 The problem with HTML tags and, by extension the problem with language in general, is that _naming_ and _categorizing_ things _is hard_! There is a whole field of taxonomy and people spend years getting a PhD thesis studying how to name and classify things.
@@ -58,11 +59,13 @@ Let's start with the full markup for the article page and then break it down to 
 Interestingly, an `<article>` can mean more than a blog article, it can be also an item card on a e-commerce website, a recipe, or even a forum post. The idea is that an `<article>` is a standalone piece of content. It can be read on its own, and it makes sense on its own.
 
 To quote from the [html spec](https://html.spec.whatwg.org/multipage/sections.html#the-article-element):
+
 > _The article element represents a complete, or self-contained, composition in a document, page, application, or site and that is, in principle, independently distributable or reusable, e.g. in syndication. This could be a forum post, a magazine or newspaper article, a blog entry, a user-submitted comment, an interactive widget or gadget, or any other independent item of content._
 >
 > https://html.spec.whatwg.org/multipage/sections.html#the-article-element
 
 This gives us a basic structure for creating a post:
+
 ```html
 <article>
 	<!-- Article navigation, for example, a table of contents -->
@@ -76,6 +79,7 @@ This gives us a basic structure for creating a post:
 ```
 
 The card used on the post lists use a similar structure. (Other templates, including recipes and forum posts will be covered in a future article):
+
 ```html
 <article class="post-card">
 	<header>
@@ -125,19 +129,20 @@ The relevant tags inside the `<head>` looks somewhat like this:
 ```
 
 Thus,
+
 1. The regular HTML tags on the `<head>`,
-	- The more common `<title>` and `<link>` tags.
-	- They link to the canonical version of the page, i.e. the blog post itself.
-	- They also link to the RSS feed for the blog.
+   - The more common `<title>` and `<link>` tags.
+   - They link to the canonical version of the page, i.e. the blog post itself.
+   - They also link to the RSS feed for the blog.
 2. [Open Graph](https://ogp.me/) tags,
-	- Are the ones where `property` starts with `og:`.
-	- Used by social media sites to display a preview of the page when sharing it.
-	- Started as as a Facebook thing, but now are used by other social media sites and search engines to display rich content.
-2. [Schema.org](https://schema.org/) properties.
-	- Are the `itemprop` on the page.
-	- Used by search engines to display rich results.
-	- Are older than Open Graph, but more widely used by search engines, like Google and Bing.
-	- Provide a rich set of properties for different types of content.
+   - Are the ones where `property` starts with `og:`.
+   - Used by social media sites to display a preview of the page when sharing it.
+   - Started as as a Facebook thing, but now are used by other social media sites and search engines to display rich content.
+3. [Schema.org](https://schema.org/) properties.
+   - Are the `itemprop` on the page.
+   - Used by search engines to display rich results.
+   - Are older than Open Graph, but more widely used by search engines, like Google and Bing.
+   - Provide a rich set of properties for different types of content.
 
 ## Headings Levels And Table of Contents
 

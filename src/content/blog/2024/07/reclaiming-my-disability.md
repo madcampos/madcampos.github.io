@@ -8,6 +8,7 @@ tags:
   - meta
   - personal
 ---
+
 **⚠️ Trigger warning**: This post talks about disabilities, mental health and spoilers. If you are not comfortable with any of those topics, consider skipping this post.
 
 There is this Brazilian short story called ["O alienista"](https://en.wikipedia.org/wiki/O_alienista) (translated to English as "The Alienist" or "The Physician"). It is from one of the most acclaimed Brazilian authors, [Machado de Assis](https://en.wikipedia.org/wiki/Machado_de_Assis) and it is part of the literary cannon, that boring thing we _have to read_ in high school.

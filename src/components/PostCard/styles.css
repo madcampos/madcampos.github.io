@@ -1,7 +1,9 @@
 .post-card {
 	--image-size: var(--avatar-size);
-
+	background-color: var(--bg-color);
+	border: solid var(--highlight-border-color) var(--border-width);
 	display: grid;
+	gap: var(--spacing-large);
 	grid-template-areas:
 		'header header'
 		'picture content'
@@ -9,15 +11,11 @@
 		'footer footer';
 	grid-template-columns: var(--image-size) 1fr;
 	grid-template-rows: auto 1fr auto auto;
-	gap: var(--spacing-large);
-
 	margin: var(--spacing-large) 0;
 	padding: var(--spacing-large);
-	background-color: var(--bg-color);
-	border: solid var(--highlight-border-color) var(--border-width);
 }
 
-.post-card:not(:has( picture)) {
+.post-card:not(:has(picture)) {
 	grid-template-areas:
 		'header'
 		'content'
@@ -32,24 +30,21 @@
 .post-card time { font-size: small; }
 
 .post-card picture {
+	display: block;
 	grid-area: picture;
-	place-self: center center;
-
-	overflow: hidden;
-
-	width: var(--image-size);
 	height: var(--image-size);
 	object-fit: cover;
 	object-position: center;
-
-	display: block;
+	overflow: hidden;
+	place-self: center center;
+	width: var(--image-size);
 }
 
 .post-card img {
-	width: 100%;
 	height: 100%;
 	object-fit: cover;
 	object-position: center;
+	width: 100%;
 }
 
 .post-card .post-card-content { grid-area: content; }
@@ -59,7 +54,6 @@
 @media (max-width: 500px) {
 	.post-card {
 		--image-size: var(--avatar-small-size);
-
 		grid-template-areas:
 			'header'
 			'picture'

@@ -1,31 +1,31 @@
 @font-face {
+	font-display: swap;
 	font-family: 'Cascadia Code';
 	font-style: normal;
-	font-weight: 100 900;
-	font-display: swap;
-	src: url('./fonts/cascadia-code.woff2') format('woff2-variations');
 	font-variant-alternates: styleset('ss01') styleset('ss02') styleset('ss03') styleset('ss19') styleset('ss20');
 	font-variant-ligatures: common-ligatures contextual;
+	font-weight: 100 900;
+	src: url('./fonts/cascadia-code.woff2') format('woff2-variations');
 }
 
 @font-face {
+	font-display: swap;
 	font-family: 'Cascadia Code';
 	font-style: italic;
-	font-weight: 100 900;
-	font-display: swap;
-	src: url('./fonts/cascadia-code-italic.woff2') format('woff2-variations');
 	font-variant-alternates: styleset('ss01') styleset('ss02') styleset('ss03') styleset('ss19') styleset('ss20');
 	font-variant-ligatures: common-ligatures contextual;
+	font-weight: 100 900;
+	src: url('./fonts/cascadia-code-italic.woff2') format('woff2-variations');
 }
 
 @font-face {
+	font-display: swap;
 	font-family: 'Selawik Variable';
 	font-style: normal;
-	font-weight: 100 900;
-	font-display: swap;
-	src: url('./fonts/selawik.woff2') format('woff2-variations');
 	font-variant-ligatures: none;
 	font-variant-numeric: diagonal-fractions;
+	font-weight: 100 900;
+	src: url('./fonts/selawik.woff2') format('woff2-variations');
 }
 
 :root {

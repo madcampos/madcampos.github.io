@@ -26,6 +26,7 @@ tags:
 relatedPosts:
   - tabs-web-component
 ---
+
 **Note**: Please don't take this post seriously, it contains irony. If you are _not_ immune to it, go vaccinate yourself and come back later.
 
 ## What Are Web Components?
@@ -84,7 +85,7 @@ Here is where the magic happens, we will write the following pieces:
 1. Create a class that extends `HTMLElement`.
 2. Create a Shadow DOM that has a "container" and a "loader" element.
 3. Create a `IntersectionObserver` that will trigger when the loader element is visible. When the loader is visible, we will fetch more jokes and add them to the container.
-5. Register the component so it works.
+4. Register the component so it works.
 
 The base of the component is really simple, it just creates a new class that extends `HTMLElement`, and then we create a `constructor` method.
 

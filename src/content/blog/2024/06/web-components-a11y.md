@@ -12,6 +12,7 @@ tags:
   - WebDevelopment
   - FrontendDevelopment
 ---
+
 Yesterday I woke up to a notification on Slack, tagging me to answer a question:
 
 > How accessible are web components?
@@ -53,8 +54,8 @@ Both examples will handle the button focus as expected and show the button focus
 
 So, let's answer this first part about accessibility with a quote:
 
->"It depends"
->-- Senior Developer
+> "It depends"
+> -- Senior Developer
 
 Okay, _how_ does it depends? If you only care about focusability, it will be just fine, maybe a little bit weird though.
 
@@ -116,7 +117,7 @@ So, what this API does and why should we care? This API is a combination of two 
 
 It is a method that you call when constructing your component that gives you _full control_ over the component to expose it as a form element and to the accessibility tree.
 
-For forms it means you can implement all of the cool form validations and expose it to parent `form` element **_as if it was_** a regular form element (i.e. `input`, `select`, `button`, and `textarea`). That means, _if well implemented_[^2], you can just pop a web component that implements something complex as a date picker and it will work with your `form` _as if it were_ a boring and vanilla `input`.
+For forms it means you can implement all of the cool form validations and expose it to parent `form` element **_as if it was_** a regular form element (i.e. `input`, `select`, `button`, and `textarea`). That means, _if well implemented_[^2], you can just pop a web component that implements something complex as a date picker and it will work with your `form` _as if it were_ a boring and vanilla `input`.
 
 Now for the part we care more here, the accessibility of `attachInternals`. It exposes programatic equivalents to `role` and all of the static `aria-*` attributes. That means we can set that information when creating or manipulating the element.
 
@@ -124,7 +125,7 @@ I've wrote a full featured example for that on the post "[Tabs, Tabs, Tabs](http
 
 As an aside, this is the best reference ever for how to implement complex interactions on the web: [https://www.w3.org/WAI/ARIA/apg/patterns/](https://www.w3.org/WAI/ARIA/apg/patterns/). The pattern I used to implement the tabs web component is straight from this list and I got positive feedback that it is indeed accessible.
 
-The only "drawback" on `attachInternals` in my opinion is that it doesn't expose equivalents to ARIA attributes that _reference_ things, so you have an equivalent of `aria-label` _but not_ `aria-labeledby`! That functionality of finding an element and then referencing it has to be implemented by yourself using `querySelector` and friends and then setting the properties or attributes on the element yourself, like the [previous exemple](#the-first-rule-of-aria).
+The only "drawback" on `attachInternals` in my opinion is that it doesn't expose equivalents to ARIA attributes that _reference_ things, so you have an equivalent of `aria-label` _but not_ `aria-labeledby`! That functionality of finding an element and then referencing it has to be implemented by yourself using `querySelector` and friends and then setting the properties or attributes on the element yourself, like the [previous exemple](#the-first-rule-of-aria).
 
 ## Is it Focuses or Foci?[^3]
 

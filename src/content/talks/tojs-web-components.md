@@ -19,6 +19,7 @@ relatedContent:
   - title: Tabs, Tabs, Tabs
     url: https://madcampos.dev/blog/2023/07/tabs-web-component/
 ---
+
 ![A photo of me presenting to an audience. I'm on the background holding a microphone next to a projector with large windows behind me showing a great view of Toronto's summer. On the foreground there is a group of people viewed from the back turned at the presentation on the background.](./assets/web-components-talk.jpg)
 
 An intermediary level quick talk about Web Components, starting with a basic example on how they work, then describing how to integrate them with forms and add accessibility.

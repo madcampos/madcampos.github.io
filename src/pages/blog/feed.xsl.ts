@@ -1,17 +1,20 @@
 import type { APIRoute } from 'astro';
 
-import feedXsl from '../../assets/feed.xsl?raw';
-import cssVars from '../../assets/css/vars.css?raw';
-import cssFonts from '../../assets/css/fonts.css?raw';
 import cssBase from '../../assets/css/base.css?raw';
+import cssFonts from '../../assets/css/fonts.css?raw';
+import cssVars from '../../assets/css/vars.css?raw';
 import cssXmlFeed from '../../assets/css/xml-feed.css?raw';
+import feedXsl from '../../assets/feed.xsl?raw';
 
-const feedWithCss = feedXsl.replace('<!-- {{CSS}} -->', `<style>
+const feedWithCss = feedXsl.replace(
+	'<!-- {{CSS}} -->',
+	`<style>
 ${cssVars}
 ${cssFonts}
 ${cssBase}
 ${cssXmlFeed}
-</style>`);
+</style>`
+);
 
 const minifiedFeed = feedWithCss.replaceAll(/\t|\n/giu, '').replaceAll(/\s+/giu, ' ');
 

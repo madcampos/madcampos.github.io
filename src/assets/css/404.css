@@ -1,11 +1,9 @@
 header div:has(> svg) {
-	width: 100%;
 	justify-content: center;
+	width: 100%;
 }
 
-main {
-	text-align: center;
-}
+main { text-align: center; }
 
 ul {
 	display: inline-block;

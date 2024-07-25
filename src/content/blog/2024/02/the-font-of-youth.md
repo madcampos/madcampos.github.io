@@ -13,6 +13,7 @@ tags:
   - design
   - FrontendDevelopment
 ---
+
 One of the ways to keep a website _fresh_ and _new_ is to have custom _fonts_!
 
 Putting aside all the bad puns related to typography and the fountain of youth, let's talk about optimizing your fonts!
@@ -77,7 +78,7 @@ Note that every parameter passed have a `--` instead of a `-` in the beginning o
 
 Then there is the problem: how do I test if the new font works?
 
-For that I've used [FontDrop!](https://fontdrop.info/),  a neat tool to view properties of a font and test it out. If your font has variable axes you should see them like on the screenshot below:
+For that I've used [FontDrop!](https://fontdrop.info/), a neat tool to view properties of a font and test it out. If your font has variable axes you should see them like on the screenshot below:
 
 ![A screenshot of part of the UI for FontDrop showing multiple switches for the open type features of a font and two axes showing the weight and optical variations for the same font.](./assets/font-axes.png)
 
@@ -87,18 +88,16 @@ Now that the font works, we add it to our site CSS using the following snippet:
 
 ```css
 @font-face {
+	font-display: swap;
 	font-family: '<FONT NAME>';
 	font-style: normal;
-	font-weight: 100 900;
-	font-display: swap;
-	src: url('<FONT PATH>') format('woff2-variations');
 	font-variant-alternates: styleset('ss01') styleset('ss02') styleset('ss03') styleset('ss19') styleset('ss20');
 	font-variant-ligatures: common-ligatures contextual;
+	font-weight: 100 900;
+	src: url('<FONT PATH>') format('woff2-variations');
 }
 
-:root {
-	--sans-serif-font-family: '<FONT NAME>', 'Arial', system-ui, sans-serif;
-}
+:root { --sans-serif-font-family: '<FONT NAME>', 'Arial', system-ui, sans-serif; }
 ```
 
 You can read more about the the `@font-face` rule at the [MDN documentation for it](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face).

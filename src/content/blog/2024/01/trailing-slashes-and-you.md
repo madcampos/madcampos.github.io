@@ -12,6 +12,7 @@ tags:
   - meta
   - web
 ---
+
 As most interesting quests start, I was reading the chat on the [creatures.dev](https://creatures.dev) Discord server and people where talking about site maps.
 
 The problem arose from a comment that removing trailing slashes (e.g.: the last `/` in `https://example.com/`) caused the astro plugin for generating site maps to fail.
@@ -51,11 +52,12 @@ https://madcampos.dev/blog/2024/01/trailing-slashes-and-you
 ```
 
 That means that in the server's file system it would be inside this sequence of folders:
-- `/blog/`
-	- `/2024/`
-		- `/1/`
 
-And it means the post itself, the `trailing-slashes-and-you`  part, is an actual _file_. But in reality it **is not**. I'm cheating a little bit here as this is actually a folder with an `index.html` file inside it. See for yourself: [https://madcampos.dev/blog/2024/01/trailing-slashes-and-you/index.html](https://madcampos.dev/blog/2024/01/trailing-slashes-and-you/index.html)
+- `/blog/`
+  - `/2024/`
+    - `/1/`
+
+And it means the post itself, the `trailing-slashes-and-you` part, is an actual _file_. But in reality it **is not**. I'm cheating a little bit here as this is actually a folder with an `index.html` file inside it. See for yourself: [https://madcampos.dev/blog/2024/01/trailing-slashes-and-you/index.html](https://madcampos.dev/blog/2024/01/trailing-slashes-and-you/index.html)
 
 ## Directory indexing
 

@@ -15,6 +15,7 @@ techStack:
   - Regular Expressions
   - Unicode strings
 ---
+
 The project is a small tool to map text to other "writings" much like old text generators from the early 2000's era.
 
 It is a study on how to work with strings in JavaScript. Topics includes string spliting, normalization, handling of accented characters, and emoji.

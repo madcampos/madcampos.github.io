@@ -1,23 +1,21 @@
 .post-card {
 	--image-size: var(--avatar-small-size);
-
+	background: var(--bg-color);
+	border: solid var(--highlight-border-color) var(--border-width);
 	display: grid;
+	gap: var(--spacing-medium);
 	grid-template-areas:
 		'picture header'
 		'picture content';
 	grid-template-columns: var(--image-size) 1fr;
 	grid-template-rows: auto 1fr;
-	gap: var(--spacing-medium);
-
+	height: calc(100% - var(--spacing-large) * 3);
 	margin: var(--spacing-large) 0;
 	padding: var(--spacing-medium);
-	background: var(--bg-color);
 	width: clamp(var(--min-width), 35cqw, var(--medium-width));
-	height: calc(100% - (var(--spacing-large) * 3));
-	border: solid var(--highlight-border-color) var(--border-width);
 }
 
-.post-card:not(:has( picture)) {
+.post-card:not(:has(picture)) {
 	grid-template-areas:
 		'header'
 		'content';
@@ -28,35 +26,30 @@
 .post-card header { grid-area: header; }
 
 .post-card h3 {
-	margin: 0;
 	font-size: 1em;
+	margin: 0;
 }
 
 .post-card picture {
+	display: block;
 	grid-area: picture;
-
-	overflow: hidden;
-
-	width: var(--image-size);
 	height: var(--image-size);
 	object-fit: cover;
 	object-position: center;
-
-	display: block;
+	overflow: hidden;
+	width: var(--image-size);
 }
 
 .post-card img {
-	width: 100%;
 	height: 100%;
 	object-fit: cover;
 	object-position: center;
+	width: 100%;
 }
 
 .post-card .post-card-content {
-	grid-area: content;
 	font-size: var(--small-text);
+	grid-area: content;
 }
 
-@media (max-width: 600px) {
-	.post-card { --image-size: var(--avatar-mini-size); }
-}
+@media (max-width: 600px) { .post-card { --image-size: var(--avatar-mini-size); } }

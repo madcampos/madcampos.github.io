@@ -1,8 +1,9 @@
 .project-card {
 	--image-size: var(--avatar-size);
-
 	background-color: var(--bg-color);
+	border: solid var(--highlight-border-color) var(--border-width);
 	display: grid;
+	gap: var(--spacing-large);
 	grid-template-areas:
 		'header header'
 		'picture content'
@@ -10,13 +11,11 @@
 		'footer footer';
 	grid-template-columns: var(--image-size) 1fr;
 	grid-template-rows: auto 1fr auto auto;
-	gap: var(--spacing-large);
-	padding: var(--spacing-large);
 	margin: var(--spacing-large);
-	border: solid var(--highlight-border-color) var(--border-width);
+	padding: var(--spacing-large);
 }
 
-.project-card:not(:has( picture)) {
+.project-card:not(:has(picture)) {
 	grid-template-areas:
 		'header'
 		'content'
@@ -36,12 +35,12 @@
 .project-card header h2 { margin: 0; }
 
 .project-card header aside {
+	align-items: center;
 	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
+	font-size: var(--small-text);
 	gap: var(--spacing-large);
 	margin-block-start: var(--spacing-small);
-	font-size: var(--small-text);
 }
 
 .project-card .project-status {
@@ -49,13 +48,9 @@
 	padding: var(--spacing-small) var(--spacing-medium);
 }
 
-.project-card .project-status.finished {
-	background-color: limegreen;
-}
+.project-card .project-status.finished { background-color: limegreen; }
 
-.project-card .project-status.ongoing {
-	background-color: orange;
-}
+.project-card .project-status.ongoing { background-color: orange; }
 
 .project-card .project-content { grid-area: content; }
 .project-card .project-content > *:first-child { margin-block-start: 0; }
@@ -67,25 +62,24 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--spacing-large);
-	list-style-type: "";
-	padding: 0;
+	list-style-type: '';
 	margin: var(--spacing-large) 0;
+	padding: 0;
 }
 
 .project-card .tag {
-	display: inline-block;
-	list-style-type: "";
-	padding: var(--spacing-small) var(--spacing-medium);
-	margin: 0;
-	font-size: var(--small-text);
 	background-color: var(--tag-bg);
 	color: var(--tag-color);
+	display: inline-block;
+	font-size: var(--small-text);
+	list-style-type: '';
+	margin: 0;
+	padding: var(--spacing-small) var(--spacing-medium);
 }
 
 @media (max-width: 550px) {
 	.project-card {
 		--image-size: var(--avatar-small-size);
-
 		grid-template-areas:
 			'header'
 			'picture'
@@ -96,7 +90,5 @@
 		grid-template-rows: auto var(--image-size) auto auto auto;
 	}
 
-	.project-card .project-icon {
-		place-self: center center;
-	}
+	.project-card .project-icon { place-self: center center; }
 }

@@ -12,9 +12,11 @@ tags:
 image: ./assets/atlas.jpg
 imageAlt: An AI generated image of a marble statue of a man, sitting on a wheelchair leaning forward, he has his arms at his back, holding a stained glass globe.
 ---
+
 > This is a post for National AccessAbility Week and a late post for Global Accessibility Awareness Day (GAAD).
 
 For a few years now, browser vendors gather together for something called "Interop". This is a joint effort to make the web more _interoperable_, making things behave the same and in a predictable manner. Here is the link for Interop 2024: https://wpt.fyi/interop-2024.
+
 ## The good parts
 
 One of the things that I like most about Interop is that they don't look only to the shiny new features. There is also effort to make existing and legacy features work in the same way across browsers.
@@ -26,6 +28,7 @@ That effort includes revisiting things like forms, text encoding, and mouse even
 One of the focus areas in 2024 is _accessibility_!
 
 It includes:
+
 - Roles and announcing them consistently and correctly
 - SVG content[^1]
 - Forms[^2]

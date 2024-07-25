@@ -18,6 +18,7 @@ tags:
   - web-components
   - lit
 ---
+
 The other day I was working on a problem that required [indeterminate state checkboxes](https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate).
 
 Now that is not something we need everyday and can be tricky to work with. But I'm here to exercise my favourite sport: **bash on react!** 🏏
@@ -46,6 +47,7 @@ The other potential solution would be signals, but that sounds like just a _reac
 ## Show & Tell
 
 Here I'm going to give examples of the following methods:
+
 1. [React with state lifted](https://codepen.io/madcampos/pen/PogWNXd?editors=0010)
 2. [Web components with properties and custom events](https://codepen.io/madcampos/pen/MWRJmqg?editors=0010)[^3]
 

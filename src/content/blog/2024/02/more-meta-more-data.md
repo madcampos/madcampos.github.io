@@ -18,6 +18,7 @@ relatedPosts:
   - xml-is-not-dead
   - metadata-for-the-masses
 ---
+
 On my previous post about metadata, I got a comment from [Jack Zhou](https://www.linkedin.com/in/haopengzhou/) asking to expand on how that applies to dynamic content and frameworks like react and decided to cover this topic here.
 
 Well, in short meta tags don't work with react. Good night and thank you for coming to my TED talk.
@@ -46,103 +47,8 @@ Here is an example of how this works in [this blog](https://github.com/madcampos
 
 ```astro
 ---
-import { pwaInfo } from 'virtual:pwa-info';
 
-import { BLOG_TITLE_STRING, BLOG_URL, LOGO_MICRO_ALT, SITE_URL } from '../constants';
-
-import printStylesheet from '../assets/css/print.css?url';
-import defaultSocialImage from '../assets/images/logo-micro.png';
-
-interface Props {
-	htmlTitle?: string[],
-	title: string,
-	url: string,
-	description: string,
-	tags?: string[],
-	image?: string,
-	imageAlt?: string,
-	createdAt?: Date,
-	updatedAt?: Date,
-	hasFeed?: boolean
-}
-
-const {
-	htmlTitle, title, url,
-	description, tags,
-
-	image, imageAlt,
-
-	createdAt: publishedDate,
-	updatedAt: updatedDate,
-
-	hasFeed = false
-} = Astro.props;
-
-const fullUrl = new URL(url, new URL(SITE_URL, Astro.site)).toString();
-
-const socialImageAlt = imageAlt ?? LOGO_MICRO_ALT;
-const socialImage = `${SITE_URL}${(image ?? defaultSocialImage.src).replace(/^\//iu, '')}`;
 ---
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<link rel="canonical" href={fullUrl} />
-	<link rel="sitemap" href={`${SITE_URL}sitemap-index.xml`} />
-
-	{ hasFeed && <link rel="alternate" type="application/rss+xml" href={`${BLOG_URL}/feed.xml`} title={BLOG_TITLE_STRING} /> }
-
-	<title>{htmlTitle?.join(' | ') ?? title}</title>
-
-	<!-- App Metadata -->
-	<link rel="icon" href={`${SITE_URL}icons/favicon.svg`} sizes="any" type="image/svg+xml" />
-	<link rel="icon" href={`${SITE_URL}favicon.ico`} sizes="48x48" type="image/x-icon" />
-	<meta name="theme-color" content="#0080ff" />
-	<link rel="license" href={`${SITE_URL}license`} />
-
-	{/* eslint-disable-next-line astro/no-set-html-directive */}
-	{pwaInfo && (<Fragment set:html={pwaInfo.webManifest.linkTag} />)}
-
-	<!-- Social metadata -->
-	<meta property="og:title" name="twitter:title" itemprop="name" content={title} />
-
-	<meta property="og:type" content={hasFeed ? 'article' : 'website'} />
-	<meta name="twitter:card" content={socialImage ? 'summary_large_image' : 'summary'} />
-
-	<meta property="og:locale" itemprop="inLanguage" content="en_US" />
-	<meta property="og:url" itemprop="url" content={fullUrl} />
-
-	<meta property="og:description" name="description" itemprop="abstract" content={description} />
-	<meta name="twitter:description" content={description} />
-
-	<meta property="og:image" name="twitter:image" itemprop="image" content={socialImage} />
-	<meta property="og:image:alt" name="twitter:image:alt" content={socialImageAlt} />
-
-	<meta property="article:author" name="author" content="Marco Campos" />
-	<meta name="twitter:creator" content="@madcampos" />
-
-	<meta name="twitter:dnt" content="on" />
-	<meta name="twitter:widgets:csp" content="on" />
-	<meta name="twitter:widgets:autoload" content="off" />
-	<meta name="twitter:widgets:theme" content="dark" />
-
-	{tags && (<meta name="keywords" itemprop="keywords" property="article:tag" content={tags.join(', ')} />)}
-	{publishedDate && (<meta property="article:published_time" content={publishedDate.toISOString()} />)}
-	{updatedDate && (<meta property="article:modified_time" content={updatedDate.toISOString()} />)}
-
-	<!-- Webmention -->
-	<link rel="webmention" href="https://webmention.io/madcampos.dev/webmention" />
-	<link rel="pingback" href="https://webmention.io/madcampos.dev/xmlrpc" />
-
-	<!-- Changelog -->
-	<link rel="alternate" type="application/rss+xml" href={`${SITE_URL}changelog.xml`} title="Changelog (Version History)" />
-
-	<!-- Apple icons -->
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-	<!-- Print Stylesheet -->
-	<link rel="stylesheet" type="text/css" href={printStylesheet} media="print" />
-</head>
 ```
 
 On the other hand, if you have a "highly dynamic app" in the sense that everything lives on the same "page", like a game, a photo editor, or a podcast player, then build a dynamic app and don't mind much about meta tags.

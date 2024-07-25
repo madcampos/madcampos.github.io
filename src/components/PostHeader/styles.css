@@ -1,162 +1,151 @@
 #post-header {
-	width: 100%;
-	max-width: var(--max-width);
 	margin-inline: auto;
+	max-width: var(--max-width);
+	width: 100%;
 }
 
 #post-header-wrapper {
-	justify-self: stretch;
+	background: var(--bg-color);
+	border: solid var(--highlight-border-color) var(--border-width);
 	display: grid;
-	place-items: end center;
 	gap: var(--spacing-large);
-	grid-template-rows: auto 1fr auto auto auto;
-	grid-template-columns: 1fr 1fr;
 	grid-template-areas:
 		'menu hero-image'
 		'title hero-image'
 		'summary hero-image'
 		'metadata metadata'
 		'share share';
-	padding: var(--spacing-large);
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto 1fr auto auto auto;
+	justify-self: stretch;
 	margin: var(--spacing-large);
-	background: var(--bg-color);
-	border: solid var(--highlight-border-color) var(--border-width);
+	padding: var(--spacing-large);
+	place-items: end center;
 }
 
 #post-header-wrapper:not(:has(#hero-image)) {
-	grid-template-rows: 1fr auto auto auto;
-	grid-template-columns: auto 1fr;
 	grid-template-areas:
 		'menu title'
 		'summary summary'
 		'metadata metadata'
 		'share share';
+	grid-template-columns: auto 1fr;
+	grid-template-rows: 1fr auto auto auto;
 }
 
 #post-header h1 {
-	height: auto;
+	display: block;
 	font-size: clamp(2rem, 5vmax, 4rem);
 	font-weight: bold;
-
-	overflow-wrap: break-word;
-	word-break: break-word;
-	line-break: loose;
+	height: auto;
+	hyphenate-character: '-';
+	hyphenate-limit-chars: 8 3 2;
 	/* stylelint-disable-next-line property-no-vendor-prefix */
 	-webkit-hyphens: auto;
 	hyphens: auto;
-	hyphenate-character: '-';
-	hyphenate-limit-chars: 8 3 2;
-
-	width: 100%;
-	display: block;
-	margin-inline: auto;
-
-	text-wrap: balance;
+	line-break: loose;
 	margin: 0;
+	margin-inline: auto;
+	overflow-wrap: break-word;
 	padding: 0;
+	text-wrap: balance;
+	width: 100%;
+	word-break: break-word;
 }
 
 #post-header #back-to-blog { grid-area: menu; }
 #post-header #post-title { grid-area: title; }
 
 #post-header #hero-image {
-	width: 100%;
+	grid-area: hero-image;
 	height: 100%;
 	object-fit: contain;
-	grid-area: hero-image;
 	overflow: hidden;
+	width: 100%;
 }
 
 #post-summary {
-	border: none;
 	background: var(--dark-bg-color);
+	border: none;
 	font-size: smaller;
+	grid-area: summary;
 	margin: 0;
 	padding: var(--spacing-large);
-	grid-area: summary;
 }
 
-#post-summary p {
-	padding: 0;
-}
+#post-summary p { padding: 0; }
 
 #post-metadata {
-	width: 100%;
-	grid-area: metadata;
-	text-align: center;
 	display: flex;
 	flex-flow: column wrap;
-	justify-content: center;
 	gap: var(--spacing-medium);
+	grid-area: metadata;
+	justify-content: center;
+	text-align: center;
+	width: 100%;
 }
 
-#post-metadata a {
-	vertical-align: middle;
-}
+#post-metadata a { vertical-align: middle; }
 
 #post-share {
-	grid-area: share;
+	align-items: center;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
 	gap: var(--spacing-large);
+	grid-area: share;
+	justify-content: center;
 }
 
 #post-share button {
-	display: flex;
 	align-items: center;
-	justify-content: center;
-	width: var(--button-size);
-	height: var(--button-size);
-	padding: var(--spacing-medium);
-	border: solid var(--border-width) var(--theme-color);
 	background: var(--bg-color);
+	border: solid var(--border-width) var(--theme-color);
 	border-radius: 100vmax;
 	color: var(--theme-color);
+	display: flex;
+	height: var(--button-size);
+	justify-content: center;
+	padding: var(--spacing-medium);
+	width: var(--button-size);
 }
 
 #post-share button:focus-visible {
 	background-color: var(--theme-color);
-	color: var(--text-color);
 	border-color: var(--text-color);
+	color: var(--text-color);
 }
 
 #post-share button:hover {
 	background-color: var(--dark-bg-color);
-	color: var(--accent-color);
 	border-color: var(--accent-color);
+	color: var(--accent-color);
 	outline-color: var(--accent-color);
 }
 
 #post-share button:active {
 	background-color: var(--accent-color);
-	color: var(--text-color);
 	border-color: var(--text-color);
+	color: var(--text-color);
 	outline-color: var(--text-color);
 }
 
 #post-share button svg {
-	width: 100%;
 	height: 100%;
 	pointer-events: none;
+	width: 100%;
 }
 
 @media (max-width: 650px) {
 	#post-header-wrapper {
-		grid-template-rows: 1fr auto auto auto auto;
-		grid-template-columns: 1fr;
 		grid-template-areas:
 			'hero-image'
 			'title'
 			'summary'
 			'metadata'
 			'share';
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr auto auto auto auto;
 	}
 }
 
-@media (forced-colors: active) {
-	#post-header #hero-image {
-		filter: grayscale(1) contrast(120%) brightness(110%);
-	}
-}
+@media (forced-colors: active) { #post-header #hero-image { filter: grayscale(1) contrast(120%) brightness(110%); } }

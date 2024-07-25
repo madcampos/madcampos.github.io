@@ -18,6 +18,7 @@ tags:
   - BuildingInPublic
   - FrontendDevelopment
 ---
+
 While building this blog I included one of my favourite yet underrated features: [RSS feeds](https://aboutfeeds.com/) ([RSS Specification](https://www.rssboard.org/rss-specification)) support.
 
 While RSS feeds are old and I feel like a boomer to use it, they are a nice way to consume content _directly_ from the source. No ads, no tracking, no selling your soul to the [FAANG](https://en.wikipedia.org/wiki/Big_Tech) overlords.
@@ -39,6 +40,7 @@ The way the styling of a RSS feed is done is first through a [XSLT](https://deve
 ## XSLT Transformations
 
 The core idea behind XSLT transformations is to map an input XML file to some output, it can do things like:
+
 - [For loops](https://developer.mozilla.org/en-US/docs/Web/XSLT/Element/for-each)
 - [If statements](https://developer.mozilla.org/en-US/docs/Web/XSLT/Element/if)
 - [Variables](https://developer.mozilla.org/en-US/docs/Web/XSLT/Element/variable)
@@ -47,6 +49,7 @@ The core idea behind XSLT transformations is to map an input XML file to some ou
 Basically, what every modern developer wants from a templating language. The drawback is: it is cumbersome and weird to write.
 
 Here is an example of the link with a logo image on the header:
+
 ```xml
 <a id="logo">
 	<xsl:attribute name="href">
@@ -64,6 +67,7 @@ Here is an example of the link with a logo image on the header:
 ```
 
 Which outputs:
+
 ```html
 <a id="logo" href="https://madcampos.dev/blog/">
 	<img src="https://madcampos.dev/icons/transparent/manifest-icon-512.png" alt="Marco Campos' Blog">

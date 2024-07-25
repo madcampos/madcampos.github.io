@@ -21,6 +21,7 @@ relatedPosts:
   - blog-structure
   - pagespeed-score-bragging
 ---
+
 So, I migrated my blog and website to [Astro](https://astro.build)...
 
 ![Gif of a man on a costume of a rocket. He walks around like he is flying on the rocket](./assets/rocket.gif)

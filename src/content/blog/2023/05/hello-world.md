@@ -21,6 +21,7 @@ relatedPosts:
   - blog-structure
   - going-astro
 ---
+
 This is how I built this blog, or at least the first iteration of it. So please ride along on this journey of sweet success and sorrowful cryptic error messages.
 But first let me vent out on my frustrations on modern front-end tooling...
 
@@ -36,6 +37,7 @@ I was talking to a friend about building in the open and decided it would be a g
 One idea was to use a hosting service like [dev.to](https://dev.to/) or [WordPress](https://wordpress.org/) and hook my website to it, but I already have a static site and like to keep things as simple for people accessing it as it can be.
 
 So, that meant:
+
 1. Use the existing infrastructure
 2. No front-end frameworks (to keep things simple, it has static data only after all)
 3. Has to integrate well with vite
@@ -55,6 +57,7 @@ BOOM! Cryptic errors showed up.
 ## The Errors
 
 The error was:
+
 ```
 RollupError: The "fileName" or "name" properties of emitted files must be strings that are neither absolute nor relative paths, received <PATH_TO_FILE>
 ```
@@ -78,20 +81,21 @@ But after taking a step back it clicked to me:
 This time I tried the minimal approach first to find bugs and was able to build a working version in a couple of hours. Much of the logic was reused from the plugin fix attempt, I just had to literally write the files on disc and find a way to structure the logic.
 
 So, the "plugin" does the following steps:
+
 1. Walk the `blog` folder and find all the `.md` files
 2. Extract the metadata from the files
-	1. The folder name is the date
-		(e.g. `blog/2023-05-05/hello-world.md` is from May 5th, 2023)
-	2. The file name is the slug
-		(e.g. `blog/2023-05-05/hello-world.md` is `hello-world`)
-	3. The first header on the file is the title
-		```markdown
-		# Hello, World!
-		```
-	4. The first HTML comment is the metadata with some fields like `description` and `tags`
-		```html
-		<!-- description: Summary of the experience and hurdles of coding this blog. -->
-		```
+   1. The folder name is the date
+      (e.g. `blog/2023-05-05/hello-world.md` is from May 5th, 2023)
+   2. The file name is the slug
+      (e.g. `blog/2023-05-05/hello-world.md` is `hello-world`)
+   3. The first header on the file is the title
+      ```markdown
+      # Hello, World!
+      ```
+   4. The first HTML comment is the metadata with some fields like `description` and `tags`
+      ```html
+      <!-- description: Summary of the experience and hurdles of coding this blog. -->
+      ```
 3. Create a file structure on the `src` folder with templates for each page and the extracted metadata
 4. Export a list of files to be injected by Vite and Rollup
 5. Let vite do it's ✨ magic ✨
@@ -104,5 +108,6 @@ The result is this blog that you, dear reader, is reading right now. It is not p
 The code can be viewed on GitHub on the [`blog/index.ts`](https://github.com/madcampos/madcampos.github.io/blob/main/build/blog/index.ts) file.
 
 ## Next Steps
+
 There are still some point to improve. The next ones I intend to tackle are the styling of the blog (it is pretty barebones right now), and pagination.
 But those are for future posts.

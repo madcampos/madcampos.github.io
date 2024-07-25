@@ -22,23 +22,27 @@ export const getStaticPaths = (async ({ paginate }: { paginate: PaginateFunction
 const {
 	data: posts,
 	url,
-	currentPage, lastPage,
-	start, end, total, size
+	currentPage,
+	lastPage,
+	start,
+	end,
+	total,
+	size
 } = Astro.props.page;
 ---
 
 <BlogPostsLayout
-	posts={posts}
+	{posts}
 	baseUrl={BLOG.url}
 	currentUrl={url.current}
-	currentPage={currentPage}
-	lastPage={lastPage}
+	{currentPage}
+	{lastPage}
 	prevUrl={url.prev}
 	nextUrl={url.next}
-	start={start}
-	end={end}
-	total={total}
-	size={size}
+	{start}
+	{end}
+	{total}
+	{size}
 >
 	<a href={BLOG.url} aria-label="Blog" slot="logo">
 		<img

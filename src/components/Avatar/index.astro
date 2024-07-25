@@ -4,9 +4,9 @@ import { Image } from 'astro:assets';
 import './styles.css';
 
 interface Props {
-	image: ImageMetadata,
-	imageAlt: string,
-	loading?: 'eager' | 'lazy'
+	image: ImageMetadata;
+	imageAlt: string;
+	loading?: 'eager' | 'lazy';
 }
 
 const { image: avatar, imageAlt: avatarAlt, loading } = Astro.props;

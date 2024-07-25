@@ -1,11 +1,11 @@
 ---
 import type { Post } from '../utils/post';
 
-import BaseLayout from '../layouts/Base.astro';
-import PostCard from '../components/PostCard/index.astro';
-import Pagination from '../components/Pagination/index.astro';
 import PageHeader from '../components/PageHeader/index.astro';
+import Pagination from '../components/Pagination/index.astro';
+import PostCard from '../components/PostCard/index.astro';
 import SkipToContent from '../components/SkipToContent/index.astro';
+import BaseLayout from '../layouts/Base.astro';
 
 import { BLOG } from '../constants';
 import { join } from '../utils/path.ts';
@@ -15,27 +15,33 @@ import '../assets/css/pages/blog.css';
 import blogSocialImage from '../assets/images/social/social-blog.png';
 
 interface Props {
-	posts: Post[],
-	title?: string,
-	baseUrl: string,
-	currentUrl: string,
-	currentPage: number,
-	lastPage: number,
-	prevUrl?: string,
-	nextUrl?: string,
-	start: number,
-	end: number,
-	total: number,
-	size: number
+	posts: Post[];
+	title?: string;
+	baseUrl: string;
+	currentUrl: string;
+	currentPage: number;
+	lastPage: number;
+	prevUrl?: string;
+	nextUrl?: string;
+	start: number;
+	end: number;
+	total: number;
+	size: number;
 }
 
 const {
 	title = '',
 	posts,
-	baseUrl, currentUrl,
-	currentPage, lastPage,
-	prevUrl, nextUrl,
-	start, end, total, size
+	baseUrl,
+	currentUrl,
+	currentPage,
+	lastPage,
+	prevUrl,
+	nextUrl,
+	start,
+	end,
+	total,
+	size
 } = Astro.props;
 ---
 <BaseLayout
@@ -59,32 +65,33 @@ const {
 	</PageHeader>
 
 	<div id="posts-list">
-		{posts.map((post) => (
-			<PostCard
-				url={join([BLOG.url, post.url])}
-				title={post.data.title}
-				createdAt={post.data.createdAt.toISOString()}
-				image={post.data.image}
-				imageAlt={post.data.imageAlt}
-				tags={post.data.tags}
-			>
-				<span slot="title">{post.data.title}</span>
-				{post.data.summary}
-			</PostCard>
-		))}
+		{
+			posts.map((post) => (
+				<PostCard
+					url={join([BLOG.url, post.url])}
+					title={post.data.title}
+					createdAt={post.data.createdAt.toISOString()}
+					image={post.data.image}
+					imageAlt={post.data.imageAlt}
+					tags={post.data.tags}
+				>
+					<span slot="title">{post.data.title}</span> {post.data.summary}
+				</PostCard>
+			))
+		}
 	</div>
 
 	<footer slot="footer">
 		<Pagination
-			baseUrl={baseUrl}
-			currentPage={currentPage}
-			lastPage={lastPage}
-			prevUrl={prevUrl}
-			nextUrl={nextUrl}
-			start={start}
-			end={end}
-			total={total}
-			size={size}
+			{baseUrl}
+			{currentPage}
+			{lastPage}
+			{prevUrl}
+			{nextUrl}
+			{start}
+			{end}
+			{total}
+			{size}
 		/>
 	</footer>
 </BaseLayout>

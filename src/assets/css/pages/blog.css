@@ -1,4 +1,4 @@
 #posts-list {
-	width: clamp(var(--min-width), 70vw, var(--max-width));
 	margin-inline: auto;
+	width: clamp(var(--min-width), 70vw, var(--max-width));
 }

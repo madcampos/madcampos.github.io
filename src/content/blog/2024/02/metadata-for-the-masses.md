@@ -18,6 +18,7 @@ relatedPosts:
   - xml-is-not-dead
   - more-meta-more-data
 ---
+
 After my [explorations on RSS](https://madcampos.dev/blog/2023/06/xml-is-not-dead) I was dragged into yet another rabbit hole... Metadata!
 
 This is my journey on adding metadata to my website so it is compliant and tools are able to parse it nicely.
@@ -38,6 +39,7 @@ To give another example, my home page without metadata looks like this:
 > I have experience with both frontend and backend development, with focus on responsive and accessible design, typescript and node.js.
 >
 > You can find my projects, personal work, blog and some social networks on the links below:
+>
 > - [My Blog](http://localhost:3000/blog)
 > - [Project Highlights](http://localhost:3000/projects)
 > - [Talks I've given](http://localhost:3000/talks)
@@ -48,6 +50,7 @@ To give another example, my home page without metadata looks like this:
 For us _humans_, this is fairly easy to understand, but for a _computer_ it is just a bunch of scrambled zeroes and ones. And no, AI doesn't "understand" you, it is just a super fancy auto complete.
 
 So, how do we solve this problem and make computers understand things? We either tag parts of the content with special things that make them understand or we duplicate the data. Let's understand how all of this is done.
+
 ## It's all in your `<head>`
 
 HTML is a neat language and it has some basic functionality to add extra information to your content. It is all in the tags we put on the [`<head>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head).
@@ -104,11 +107,13 @@ Here is an example of the OpenGraph tags on the head of my home page:
 ```
 
 Most of the tags are duplicated, with the exception of the description that uses the original tag and only adds the `property` attribute.
+
 ### Other social networks
 
 Luckily for us most social media platforms use the OpenGraph tags and only add things if needed be.
 
 But for completeness sake, here are some links on documentation for other properties and social networks:
+
 - [Twitter](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started)
 - [Pinterest](https://developers.pinterest.com/docs/rich-pins/rich-pins/)
 - [LinkedIn](https://www.linkedin.com/post-inspector/)
@@ -184,6 +189,7 @@ I won't add an example here as it is quite similar to Microdata in the sense tha
 Google has an interesting library to help you annotate the data on your page so it shows nicely in search results. Here are their docs on all the formats available: https://developers.google.com/search/docs/appearance/structured-data/search-gallery
 
 And here is a tool to test the formats: https://search.google.com/test/rich-results
+
 ## The ignored ones
 
 There are two other formats usually references along with the ones before: [RDFa](https://en.wikipedia.org/wiki/RDFa) and [JSON-LD](https://en.wikipedia.org/wiki/JSON-LD).

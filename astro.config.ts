@@ -1,9 +1,6 @@
 import { readFileSync } from 'node:fs';
 
 import sitemap from '@astrojs/sitemap';
-import astroPWA, { type PwaOptions } from '@vite-pwa/astro';
-import astroIcon from 'astro-icon';
-import { defineConfig } from 'astro/config';
 import {
 	transformerMetaHighlight,
 	transformerMetaWordHighlight,
@@ -15,9 +12,12 @@ import {
 	transformerRenderWhitespace
 } from '@shikijs/transformers';
 import { transformerTwoslash } from '@shikijs/twoslash';
+import astroPWA, { type PwaOptions } from '@vite-pwa/astro';
+import astroIcon from 'astro-icon';
+import { defineConfig } from 'astro/config';
 import rehypeExternalLinks from 'rehype-external-links';
-import remarkBreaks from 'remark-breaks';
 import remarkBehead from 'remark-behead';
+import remarkBreaks from 'remark-breaks';
 import remarkDirective from 'remark-directive';
 
 import { assetsCache, externalResourcesCache, pagesCache, scriptsCache } from './src/sw-caching';

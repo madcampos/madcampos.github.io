@@ -1,16 +1,16 @@
 import { join } from './utils/path.ts';
 
 interface ConstantsMap {
-	url: string,
-	title: string[],
-	titleString: string,
-	description: string,
-	tags: string[],
+	url: string;
+	title: string[];
+	titleString: string;
+	description: string;
+	tags: string[];
 	logoAltText?: {
 		regular: string,
 		mini: string,
 		micro: string
-	}
+	};
 }
 
 export const GLOBALS: ConstantsMap = {
@@ -58,9 +58,12 @@ export const BLOG: ConstantsMap = {
 	description: "Marco Campos' Blog — A space where I talk about web development and other programming related (or not) things.",
 	tags: ['blog', ...GLOBALS.tags],
 	logoAltText: {
-		regular: `Logo for madcampos' blog consisting of my moniker, "madcampos", on a monospaced font, in blue, between curly braces. Below it, a subtext of "blog" in orange on the lower right corner.`,
-		mini: `Logo for madcampos' blog consisting of the letters "madc" on a monospaced font, in blue, between curly braces. Below it, a subtext of "blog" in orange on the lower right corner.`,
-		micro: `Logo for madcampos' blog consisting of the letter "m" on a monospaced font, in blue, between curly braces. Below it, a subtext of "blog" in orange on the lower right corner.`
+		regular:
+			`Logo for madcampos' blog consisting of my moniker, "madcampos", on a monospaced font, in blue, between curly braces. Below it, a subtext of "blog" in orange on the lower right corner.`,
+		mini:
+			`Logo for madcampos' blog consisting of the letters "madc" on a monospaced font, in blue, between curly braces. Below it, a subtext of "blog" in orange on the lower right corner.`,
+		micro:
+			`Logo for madcampos' blog consisting of the letter "m" on a monospaced font, in blue, between curly braces. Below it, a subtext of "blog" in orange on the lower right corner.`
 	}
 };
 
@@ -87,9 +90,12 @@ export const PROJECTS: ConstantsMap = {
 	description: "Marco Campos' Projects — A list of projects I've worked on, or am currently working on. Mostly web development",
 	tags: ['projects', ...GLOBALS.tags],
 	logoAltText: {
-		regular: `Logo for madcampos' projects consisting of my moniker, "madcampos", on a monospaced font, in blue, between curly braces. Below it, a subtext of "projects" in orange on the lower right corner.`,
-		mini: `Logo for madcampos' projects consisting of the letters "madc" on a monospaced font, in blue, between curly braces. Below it, a subtext of "projects" in orange on the lower right corner.`,
-		micro: `Logo for madcampos' projects consisting of the letter "m" on a monospaced font, in blue, between curly braces. Below it, a subtext of "projects" in orange on the lower right corner.`
+		regular:
+			`Logo for madcampos' projects consisting of my moniker, "madcampos", on a monospaced font, in blue, between curly braces. Below it, a subtext of "projects" in orange on the lower right corner.`,
+		mini:
+			`Logo for madcampos' projects consisting of the letters "madc" on a monospaced font, in blue, between curly braces. Below it, a subtext of "projects" in orange on the lower right corner.`,
+		micro:
+			`Logo for madcampos' projects consisting of the letter "m" on a monospaced font, in blue, between curly braces. Below it, a subtext of "projects" in orange on the lower right corner.`
 	}
 };
 
@@ -100,8 +106,11 @@ export const TALKS: ConstantsMap = {
 	description: "Marco Campos' Talks — A list of talks I've given on meetups, conferences, or other events.",
 	tags: ['talks', ...GLOBALS.tags],
 	logoAltText: {
-		regular: `Logo for madcampos' talks consisting of my moniker, "madcampos", on a monospaced font, in blue, between curly braces. Below it, a subtext of "talks" in orange on the lower right corner.`,
-		mini: `Logo for madcampos' talks consisting of the letters "madc" on a monospaced font, in blue, between curly braces. Below it, a subtext of "talks" in orange on the lower right corner.`,
-		micro: `Logo for madcampos' talks consisting of the letter "m" on a monospaced font, in blue, between curly braces. Below it, a subtext of "talks" in orange on the lower right corner.`
+		regular:
+			`Logo for madcampos' talks consisting of my moniker, "madcampos", on a monospaced font, in blue, between curly braces. Below it, a subtext of "talks" in orange on the lower right corner.`,
+		mini:
+			`Logo for madcampos' talks consisting of the letters "madc" on a monospaced font, in blue, between curly braces. Below it, a subtext of "talks" in orange on the lower right corner.`,
+		micro:
+			`Logo for madcampos' talks consisting of the letter "m" on a monospaced font, in blue, between curly braces. Below it, a subtext of "talks" in orange on the lower right corner.`
 	}
 };

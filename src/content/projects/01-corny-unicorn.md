@@ -12,6 +12,7 @@ techStack:
   - JavaScript
   - Hono
 ---
+
 A unicorn adoption website project for [Toronto JS'](https://torontojs.com) Code club event.
 
 It uses [Hono](https://hono.dev/) as the backend, with an SQLite database. For the frontend, it uses vanilla HTML, CSS and JavaScript.

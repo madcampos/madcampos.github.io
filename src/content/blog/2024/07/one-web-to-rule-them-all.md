@@ -11,6 +11,7 @@ tags:
   - html
   - FrontendDevelopment
 ---
+
 The web is accessible by default, we just screw it... over... and over... and over...
 
 ## The accessible side of life

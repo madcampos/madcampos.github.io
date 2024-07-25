@@ -20,6 +20,7 @@ techStack:
   - lit-html
   - Web Assembly
 ---
+
 A PWA for maintaining a library of content released for [Shadowrun](https://en.wikipedia.org/wiki/Shadowrun).
 
 It is a study on how to create an interactive app using only web technologies that can run completely offline.

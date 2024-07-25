@@ -4,9 +4,9 @@ import { getCollection } from 'astro:content';
 
 import { BLOG, BLOG_AUTHOR } from '../../../constants';
 
-import BaseLayout from '../../../layouts/Base.astro';
-import PageHeader from '../../../components/PageHeader/index.astro';
 import Avatar from '../../../components/Avatar/index.astro';
+import PageHeader from '../../../components/PageHeader/index.astro';
+import BaseLayout from '../../../layouts/Base.astro';
 
 import '../../../assets/css/pages/internal-page.css';
 import '../../../assets/css/pages/authors.css';
@@ -15,19 +15,20 @@ import logoBlog from '../../../assets/images/logo/logo-blog.svg';
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
-export const getStaticPaths = (async () => (await getCollection('authors')).map(((author) => ({
-	params: { author: author.slug },
-	props: { ...author.data, render: author.render, slug: author.slug }
-})))) satisfies GetStaticPaths;
+export const getStaticPaths = (async () =>
+	(await getCollection('authors')).map((author) => ({
+		params: { author: author.slug },
+		props: { ...author.data, render: author.render, slug: author.slug }
+	}))) satisfies GetStaticPaths;
 
 const {
 	name,
 	render,
-	avatar, avatarAlt
+	avatar,
+	avatarAlt
 } = Astro.props;
 
 const { Content } = await render();
-
 ---
 <BaseLayout
 	htmlTitle={[name, ...BLOG_AUTHOR.title]}

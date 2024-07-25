@@ -1,32 +1,36 @@
 ---
-import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
 
 import SiteNav from '../SiteNav/index.astro';
 
 import './styles.css';
 
 interface Props {
-	url: string,
-	title: string,
-	summary: string,
-	createdAt: Date,
-	updatedAt?: Date,
-	hasUpdates?: boolean,
-	image?: ImageMetadata,
-	imageAlt?: string,
-	readingTime?: number,
-	wordCount?: number,
-	letterCount?: number
+	url: string;
+	title: string;
+	summary: string;
+	createdAt: Date;
+	updatedAt?: Date;
+	hasUpdates?: boolean;
+	image?: ImageMetadata;
+	imageAlt?: string;
+	readingTime?: number;
+	wordCount?: number;
+	letterCount?: number;
 }
 
 const {
 	url,
-	title, summary,
-	createdAt, updatedAt,
+	title,
+	summary,
+	createdAt,
+	updatedAt,
 	hasUpdates,
-	image, imageAlt,
-	readingTime, wordCount
+	image,
+	imageAlt,
+	readingTime,
+	wordCount
 } = Astro.props;
 
 const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyle: 'long' });
@@ -38,15 +42,17 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 			<h1 class="p-name" itemprop="headline">{title}</h1>
 		</a>
 
-		{image && (
-			<Image
-				id="hero-image"
-				src={image}
-				alt={imageAlt ?? ''}
-				itemprop="image"
-				loading="eager"
-			/>
-		)}
+		{
+			image && (
+				<Image
+					id="hero-image"
+					src={image}
+					alt={imageAlt ?? ''}
+					itemprop="image"
+					loading="eager"
+				/>
+			)
+		}
 
 		<blockquote id="post-summary" class="p-summary" itemprop="description">
 			<p>{summary}</p>
@@ -58,28 +64,32 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 					Published on <time itemprop="datePublished" class="dt-published" datetime={createdAt.toISOString()}>{formatter.format(createdAt)}</time>.
 				</span>
 
-				{ updatedAt && (
-					<span>
-						Updated on <time itemprop="dateModified" class="dt-updated" datetime={updatedAt.toISOString()}>{formatter.format(updatedAt)}</time>
-						{hasUpdates && (
-							<a href="#update-history" aria-label="Go to updates section">
-								<Icon name="uil:sync-exclamation" />
-							</a>
-						)}
-					</span>
-				)}
+				{
+					updatedAt && (
+						<span>
+							Updated on <time itemprop="dateModified" class="dt-updated" datetime={updatedAt.toISOString()}>{formatter.format(updatedAt)}</time>
+							{
+								hasUpdates && (
+									<a href="#update-history" aria-label="Go to updates section">
+										<Icon name="uil:sync-exclamation" />
+									</a>
+								)
+							}
+						</span>
+					)
+				}
 			</small>
 
-			{readingTime && (
-				<small>
-					<time itemprop="timeRequired" class="dt-duration" datetime={`PT${readingTime}M`}>
-						{readingTime} minute read
-					</time>
-					{wordCount && (
-						<span> &mdash; {wordCount} words</span>
-					)}
-				</small>
-			)}
+			{
+				readingTime && (
+					<small>
+						<time itemprop="timeRequired" class="dt-duration" datetime={`PT${readingTime}M`}>
+							{readingTime} minute read
+						</time>
+						{wordCount && <span> &mdash; {wordCount} words</span>}
+					</small>
+				)
+			}
 		</aside>
 
 		<aside id="post-share" aria-label="Share options">

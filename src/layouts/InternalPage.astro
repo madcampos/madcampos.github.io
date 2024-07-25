@@ -1,49 +1,51 @@
 ---
 import '../assets/css/pages/internal-page.css';
 
-import BaseLayout from './Base.astro';
 import PageHeader from '../components/PageHeader/index.astro';
 import SkipToContent from '../components/SkipToContent/index.astro';
+import BaseLayout from './Base.astro';
 
 interface Props {
-	htmlTitle?: string[],
-	title: string,
-	url: string,
-	description: string,
-	tags?: string[],
-	image?: string,
-	imageAlt?: string,
-	createdAt?: Date,
-	updatedAt?: Date,
-	hasFeed?: boolean,
-	pageSchema?: string
+	htmlTitle?: string[];
+	title: string;
+	url: string;
+	description: string;
+	tags?: string[];
+	image?: string;
+	imageAlt?: string;
+	createdAt?: Date;
+	updatedAt?: Date;
+	hasFeed?: boolean;
+	pageSchema?: string;
 }
 
 const {
-	htmlTitle, title,
+	htmlTitle,
+	title,
 	description,
 	url,
 	tags,
-	image, imageAlt,
-	createdAt, updatedAt,
+	image,
+	imageAlt,
+	createdAt,
+	updatedAt,
 	hasFeed,
 	pageSchema
 } = Astro.props;
 ---
 <BaseLayout
-	htmlTitle={htmlTitle}
-	title={title}
-	description={description}
-	url={url}
-	tags={tags}
-	image={image}
-	imageAlt={imageAlt}
-	createdAt={createdAt}
-	updatedAt={updatedAt}
-	hasFeed={hasFeed}
-	pageSchema={pageSchema}
+	{htmlTitle}
+	{title}
+	{description}
+	{url}
+	{tags}
+	{image}
+	{imageAlt}
+	{createdAt}
+	{updatedAt}
+	{hasFeed}
+	{pageSchema}
 >
-
 	<SkipToContent slot="header" />
 	<PageHeader slot="header">
 		<slot name="logo" slot="logo"></slot>

@@ -16,6 +16,7 @@ techStack:
   - Vue
 repository: https://github.com/madcampos/noriture/
 ---
+
 This project is a prototype RSS feed reader. It uses [Vue](https://vuejs.org/) for the frontend and [Hono](https://hono.dev) for the backend.
 
 The frontend includes a parser for extracting the feed metadata and the articles and make them available for consumption. Metadata for the feed is extracted using numerous sources like favicons, web app manifest, or browser specific icons.

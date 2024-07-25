@@ -13,6 +13,7 @@ tags:
   - BuildingInPublic
   - FrontendDevelopment
 ---
+
 There was an interesting problem at work the other day. In short we have a dynamic list of things to display on the screen, all of them have a dotted border and coloured text. Those colours are picked dynamically from a cycling list of colours. But _**not** all of them_ have enough contrast with the background and some are really hard to see.
 
 How to fix that?
@@ -32,6 +33,7 @@ Basically it translates to: the contrast between the colour used for text and bo
 As I didn't want to manually check all colours and still wanted to pick between similar hues, I went out to gather a list of colours and check their contrasts. That was made possible thanks to [color.js](https://colorjs.io/) that provides some handy functions to calculate colour contrast.
 
 I used two criteria to check for the contrast:
+
 1. WCAG 2.2 contrast algorithm.
 2.  Accessible Perceptual Contrast Algorithm (APCA), the fancy new algorithm that will be used for WCAG 3.
 

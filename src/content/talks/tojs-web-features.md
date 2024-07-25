@@ -12,6 +12,7 @@ techStack:
   - CSS
   - JavaScript
 ---
+
 ![A picture of me talking to a microphone in front or a slide projection. The slide title read "Popover Attribute".](./assets/IMG_2978.jpg)
 
 A quick summary of 5 features on the web platform that may be lesser known. The features described are recent but fairly well supported in modern browsers.

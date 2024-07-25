@@ -1,6 +1,6 @@
 interface JoinOptions {
-	trailingSlash: boolean | undefined,
-	separator: '/' | '\\'
+	trailingSlash: boolean | undefined;
+	separator: '/' | '\\';
 }
 
 export function join(paths: string[], options?: Partial<JoinOptions>) {

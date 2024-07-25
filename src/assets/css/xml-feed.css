@@ -1,41 +1,37 @@
 #feed-header {
-	display: flex;
 	align-items: center;
+	display: flex;
 	flex-wrap: wrap;
 	text-align: center;
 }
 
-#feed-title {
-	flex-grow: 1;
-}
+#feed-title { flex-grow: 1; }
 
 #metadata {
-	width: clamp(var(--min-width), 80vw, var(--max-width));
 	margin-block: var(--spacing-large);
 	margin-inline: auto;
+	width: clamp(var(--min-width), 80vw, var(--max-width));
 }
 
 main {
-	width: clamp(var(--min-width), 80vw, var(--max-width));
 	margin-inline: auto;
+	width: clamp(var(--min-width), 80vw, var(--max-width));
 }
 
 .item {
 	--image-size: var(--avatar-size);
-
 	display: grid;
+	gap: var(--spacing-medium);
 	grid-template-areas:
 		'header header'
 		'picture content'
 		'footer footer';
 	grid-template-columns: var(--image-size) 1fr;
 	grid-template-rows: auto 1fr auto;
-	gap: var(--spacing-medium);
-
 	margin: var(--spacing-large) 0;
 }
 
-.item:not(:has( img)) {
+.item:not(:has(img)) {
 	grid-template-areas:
 		'header header'
 		'content content'
@@ -53,24 +49,21 @@ main {
 }
 
 .item picture {
+	display: block;
 	grid-area: picture;
-	place-self: center center;
-
-	overflow: hidden;
-
-	width: var(--image-size);
 	height: var(--image-size);
 	object-fit: cover;
 	object-position: center;
-
-	display: block;
+	overflow: hidden;
+	place-self: center center;
+	width: var(--image-size);
 }
 
 .item img {
-	width: 100%;
 	height: 100%;
 	object-fit: cover;
 	object-position: center;
+	width: 100%;
 }
 
 .item .item-content { grid-area: content; }
@@ -81,18 +74,18 @@ main {
 	flex-wrap: wrap;
 	gap: var(--spacing-large);
 	list-style: none;
-	padding: 0;
 	margin: var(--spacing-large) 0;
+	padding: 0;
 }
 
 .item .tag {
-	display: inline-block;
-	list-style: none;
-	padding: var(--spacing-small) var(--spacing-medium);
-	margin: var(--spacing-small);
-	font-size: var(--small-text);
 	background-color: var(--secondary-color);
 	color: #3c3c3c;
+	display: inline-block;
+	font-size: var(--small-text);
+	list-style: none;
+	margin: var(--spacing-small);
+	padding: var(--spacing-small) var(--spacing-medium);
 }
 
 .item .tag:hover {
@@ -103,7 +96,6 @@ main {
 @media (max-width: 500px) {
 	.item {
 		--image-size: var(--avatar-small-size);
-
 		grid-template-areas:
 			'header'
 			'picture'

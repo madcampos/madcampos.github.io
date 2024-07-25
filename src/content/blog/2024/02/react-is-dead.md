@@ -10,6 +10,7 @@ tags:
   - rant
   - hot-take
 ---
+
 This is a hot take on the current react situation, so brace yourselves.
 
 ## Papers, please...
@@ -47,6 +48,7 @@ So react is not the inventor of components, even the JSX syntax is not new, befo
 On this scenario and with all that context, react was created to solve Facebook's problem of their page being a pain to maintain and slow to render.
 
 A confluence of factors made react a viable option and helped it gain momentum:
+
 1. It resolved browser inconsistencies.
 2. It gave a sane model for data binding.
 3. It was lightweight.

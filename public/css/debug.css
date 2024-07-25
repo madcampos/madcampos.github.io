@@ -1,31 +1,18 @@
-:is(
-	main,
-	header,
-	footer,
-	aside,
-	form,
-	nav,
-	section,
-	article,
-	h1, h2, h3, h4, h5, h6,
-	img:not([alt]),
-	svg:not(> title),
-) {
+:is(main, header, footer, aside, form, nav, section, article, h1, h2, h3, h4, h5, h6, img:not([alt]), svg:not(> title)) {
 	--debug-outline-width: 0.1rem;
-
 	outline: var(--debug-outline-width) var(--debug-style, solid) var(--debug-color, black);
 	outline-offset: calc(var(--debug-outline-width) * -1);
 	position: relative;
 
 	&::after {
-		content: var(--debug-content, 'MISSING CONTENT');
-		font-size: 0.75rem;
-		position: absolute;
-		inset-inline-end: 0;
-		inset-block-start: 0;
 		background-color: var(--debug-color, black);
 		color: var(--debug-text-color, white);
+		content: var(--debug-content, 'MISSING CONTENT');
+		font-size: 0.75rem;
+		inset-block-start: 0;
+		inset-inline-end: 0;
 		padding: 0.1em;
+		position: absolute;
 	}
 }
 
@@ -63,7 +50,6 @@ footer {
 
 	&[aria-label] { --debug-content: 'footer: ' attr(aria-label); }
 	&[aria-labelledby] { --debug-content: 'footer: ' attr(aria-labelledby); }
-
 }
 
 body > footer {
@@ -74,7 +60,6 @@ body > footer {
 	&[aria-label] { --debug-content: 'contentinfo: ' attr(aria-label); }
 	&[aria-labelledby] { --debug-content: 'contentinfo: ' attr(aria-labelledby); }
 }
-
 
 aside {
 	--debug-color: blue;

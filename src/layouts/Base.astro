@@ -6,17 +6,17 @@ import HtmlHead from '../components/HtmlHead.astro';
 import RefreshBanner from '../components/RefreshBanner/index.astro';
 
 interface Props {
-	title: string,
-	htmlTitle?: string[],
-	url: string,
-	description: string,
-	tags?: string[],
-	image?: string,
-	imageAlt?: string,
-	createdAt?: Date,
-	updatedAt?: Date,
-	hasFeed?: boolean,
-	pageSchema?: string
+	title: string;
+	htmlTitle?: string[];
+	url: string;
+	description: string;
+	tags?: string[];
+	image?: string;
+	imageAlt?: string;
+	createdAt?: Date;
+	updatedAt?: Date;
+	hasFeed?: boolean;
+	pageSchema?: string;
 }
 
 const {
@@ -36,16 +36,16 @@ const {
 <!DOCTYPE html>
 <html lang="en-US" itemscope itemtype={`https://schema.org/${pageSchema}`}>
 	<HtmlHead
-		htmlTitle={htmlTitle}
-		title={title}
-		url={url}
-		description={description}
-		tags={tags}
-		image={image}
-		imageAlt={imageAlt}
-		createdAt={createdAt}
-		updatedAt={updatedAt}
-		hasFeed={hasFeed}
+		{htmlTitle}
+		{title}
+		{url}
+		{description}
+		{tags}
+		{image}
+		{imageAlt}
+		{createdAt}
+		{updatedAt}
+		{hasFeed}
 	/>
 	<body class:list={[{ 'h-entry': hasFeed }]}>
 		<RefreshBanner />

@@ -13,6 +13,7 @@ tags:
 relatedPosts:
   - going-astro
 ---
+
 [Now this is a story all about how I got a perfect score and assets size down...](https://youtu.be/1nCqRmx3Dnw?si=QhtnwGRPyCN0u_rE) 🎤🎶
 
 ![A gif of Will Smith sitting on a throne and rotating from the opening of "Fresh Prince of Bel-Air"](./assets/fresh-prince-of-bel-air.gif)
@@ -28,6 +29,7 @@ The two first tools cited, PageSpeed and Lighthouse, are performance analyzers t
 One of the core principles of the web is being accessible to all. Even in places with really good internet connection we are constantly in situations where things do not work quite so perfectly.
 
 To give a couple of very real examples on my day to day:
+
 - When taking the subway I get spotty connection. It was only in the end of 2023 that mobile carriers started having service in Toronto's underground.
 - When taking the elevator we are locked in a nice [Faraday cage](https://en.wikipedia.org/wiki/Faraday_cage) so connections are effectively blocked.
 - In my own home, when I'm at the office, the bathroom with all it's piping and water is between me and the Wi-Fi router. The connection can get bad if someone is showering.
@@ -39,6 +41,7 @@ It is interesting that even with super fast connection and cheap data plan we fa
 [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) is a tool developed by Google to automate testing how fast a page loads considering various metrics.
 
 The most interesting ones are:
+
 <dl>
 	<dt>First Contentful Paint</dt>
 	<dd>This shows how much time until something draws on the screen. If your CSS and HTML are small enough, this will be fast.</dd>

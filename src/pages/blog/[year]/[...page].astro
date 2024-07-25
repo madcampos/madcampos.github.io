@@ -6,8 +6,8 @@ import BlogPostsLayout from '../../../layouts/BlogPosts.astro';
 import { BLOG } from '../../../constants';
 import { join } from '../../../utils/path.ts';
 
-import { listPostPagesByYear, MAX_POSTS_PER_PAGE } from '../../../utils/post.ts';
 import logoBlog from '../../../assets/images/logo/logo-blog.svg';
+import { listPostPagesByYear, MAX_POSTS_PER_PAGE } from '../../../utils/post.ts';
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -15,35 +15,41 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 export const getStaticPaths = (async ({ paginate }: { paginate: PaginateFunction }) => {
 	const postsList = await listPostPagesByYear();
 
-	return Object.entries(postsList).flatMap(([yearKey, yearPosts]) => paginate(yearPosts, {
-		params: {
-			year: yearKey
-		},
-		pageSize: MAX_POSTS_PER_PAGE
-	}));
+	return Object.entries(postsList).flatMap(([yearKey, yearPosts]) =>
+		paginate(yearPosts, {
+			params: {
+				year: yearKey
+			},
+			pageSize: MAX_POSTS_PER_PAGE
+		})
+	);
 }) satisfies GetStaticPaths;
 
 const {
 	data: posts,
 	url,
-	currentPage, lastPage,
-	start, end, total, size
+	currentPage,
+	lastPage,
+	start,
+	end,
+	total,
+	size
 } = Astro.props.page;
 const { year } = Astro.params;
 ---
 <BlogPostsLayout
-	posts={posts}
+	{posts}
 	title={`Posts from ${year}`}
 	currentUrl={url.current}
-	currentPage={currentPage}
-	lastPage={lastPage}
+	{currentPage}
+	{lastPage}
 	prevUrl={url.prev}
 	nextUrl={url.next}
 	baseUrl={join([BLOG.url, year])}
-	start={start}
-	end={end}
-	total={total}
-	size={size}
+	{start}
+	{end}
+	{total}
+	{size}
 >
 	<a href={BLOG.url} slot="logo">
 		<img

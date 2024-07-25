@@ -6,8 +6,8 @@ import { join } from '../../utils/path.ts';
 
 import { listAllTalks } from '../../utils/talks';
 
-import InternalPageLayout from '../../layouts/InternalPage.astro';
 import { Icon } from 'astro-icon/components';
+import InternalPageLayout from '../../layouts/InternalPage.astro';
 
 import '../../assets/css/pages/talks.css';
 
@@ -16,7 +16,8 @@ import logoTalks from '../../assets/images/logo/logo-talks.svg';
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
-export const getStaticPaths = (async () => (await listAllTalks()).map((talk) => ({
+export const getStaticPaths = (async () =>
+	(await listAllTalks()).map((talk) => ({
 		params: {
 			talk: talk.slug
 		},
@@ -27,11 +28,17 @@ export const getStaticPaths = (async () => (await listAllTalks()).map((talk) => 
 const {
 	render,
 	data: {
-		title, summary,
+		title,
+		summary,
 		date,
-		event, eventUrl,
-		image, imageAlt,
-		slides, video, code, demo,
+		event,
+		eventUrl,
+		image,
+		imageAlt,
+		slides,
+		video,
+		code,
+		demo,
 		relatedContent,
 		techStack
 	}
@@ -42,16 +49,15 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 ---
 <InternalPageLayout
 	htmlTitle={[title, ...TALKS.title]}
-	title={title}
+	{title}
 	description={summary}
 	url={join([TALKS.url, slug])}
 	tags={TALKS.tags}
 	image={image?.src}
-	imageAlt={imageAlt}
+	{imageAlt}
 	createdAt={date}
 	pageSchema="EducationEvent"
 >
-
 	<a href={TALKS.url} slot="logo">
 		<img
 			src={logoTalks.src}
@@ -69,17 +75,19 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 		Talk info
 	</h2>
 	<ul id="talk-info">
-		{event && (
-			<li>
-				<strong>
-					<Icon name="uil:presentation-play" title="Icon of a presentation board with a play symbol in it&apos;s center." />
-					Event:
-				</strong>
-				<span itemprop="superEvent">
-					{eventUrl ? (<a href={eventUrl} rel="noopener noreferrer">{event}</a>) : event}
-				</span>
-			</li>
-		)}
+		{
+			event && (
+				<li>
+					<strong>
+						<Icon name="uil:presentation-play" title="Icon of a presentation board with a play symbol in it&apos;s center." />
+						Event:
+					</strong>
+					<span itemprop="superEvent">
+						{eventUrl ? <a href={eventUrl} rel="noopener noreferrer">{event}</a> : event}
+					</span>
+				</li>
+			)
+		}
 
 		<li>
 			<strong>
@@ -89,79 +97,89 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 			<time datetime={date.toISOString()} itemprop="startDate">{formatter.format(date)}</time>
 		</li>
 
-		{slides && (
-			<li>
-				<strong>
-					<Icon name="uil:clapper-board" title="Icon of a clapper board, representing a slide presentation." />
-					Slides:
-				</strong>
-				<a href={slides} rel="noopener noreferrer">{slides}</a>
-			</li>
-		)}
+		{
+			slides && (
+				<li>
+					<strong>
+						<Icon name="uil:clapper-board" title="Icon of a clapper board, representing a slide presentation." />
+						Slides:
+					</strong>
+					<a href={slides} rel="noopener noreferrer">{slides}</a>
+				</li>
+			)
+		}
 
-		{video && (
-			<li>
-				<strong>
-					<Icon name="uil:video" title="Icon of a video camera" />
-					Video:
-				</strong>
-				<a href={video} rel="noopener noreferrer">{video}</a>
-			</li>
-		)}
+		{
+			video && (
+				<li>
+					<strong>
+						<Icon name="uil:video" title="Icon of a video camera" />
+						Video:
+					</strong>
+					<a href={video} rel="noopener noreferrer">{video}</a>
+				</li>
+			)
+		}
 
-		{code && (
-			<li>
-				<strong>
-					<Icon name="uil:brackets-curly" title="Icon of a code snippet" />
-					Code:
-				</strong>
-				<a href={code} rel="noopener noreferrer">{code}</a>
-			</li>
-		)}
+		{
+			code && (
+				<li>
+					<strong>
+						<Icon name="uil:brackets-curly" title="Icon of a code snippet" />
+						Code:
+					</strong>
+					<a href={code} rel="noopener noreferrer">{code}</a>
+				</li>
+			)
+		}
 	</ul>
 
-	{relatedContent && (
-		<Fragment>
-			<h2>
-				<Icon name="uil:file-share-alt" title="Icon of a file with a sharing badge" />
-				Related content
-			</h2>
-			<ul id="related-content">
-				{relatedContent?.map(({ url: contentUrl, title: contentTitle }) => (
-					<li>
-						<a href={contentUrl} rel="noopener noreferrer">{contentTitle}</a>
-					</li>
-				))}
-			</ul>
-		</Fragment>
-	)}
+	{
+		relatedContent && (
+			<Fragment>
+				<h2>
+					<Icon name="uil:file-share-alt" title="Icon of a file with a sharing badge" />
+					Related content
+				</h2>
+				<ul id="related-content">
+					{
+						relatedContent?.map(({ url: contentUrl, title: contentTitle }) => (
+							<li>
+								<a href={contentUrl} rel="noopener noreferrer">{contentTitle}</a>
+							</li>
+						))
+					}
+				</ul>
+			</Fragment>
+		)
+	}
 
 	<h2>
 		<Icon name="uil:cog" title="Icon of a cog" />
 		Technologies used
 	</h2>
 	<ul id="technology-tags">
-		{techStack?.map((tech) => (
-			<li class="tag">{tech}</li>
-		))}
+		{techStack?.map((tech) => <li class="tag">{tech}</li>)}
 	</ul>
 
-	{demo && (
-		<Fragment>
-			<h2>
-				<Icon name="uil:flask" title="Icon of a chemistry flask" />
-				Demo
-			</h2>
+	{
+		demo && (
+			<Fragment>
+				<h2>
+					<Icon name="uil:flask" title="Icon of a chemistry flask" />
+					Demo
+				</h2>
 
-			<iframe
-				src={demo}
-				loading="lazy"
-				referrerpolicy="no-referrer"
-				sandbox="allow-forms allow-scripts allow-same-origin"
-				title={`Demo for ${title}`}
-			>
-				A local running demo of the project.
-			</iframe>
-		</Fragment>
-	)}
+				<iframe
+					src={demo}
+					loading="lazy"
+					referrerpolicy="no-referrer"
+					sandbox="allow-forms allow-scripts allow-same-origin"
+					title={`Demo for ${title}`}
+				>
+					A local running demo of the project.
+				</iframe>
+			</Fragment>
+		)
+	}
 </InternalPageLayout>

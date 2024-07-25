@@ -5,11 +5,11 @@
 }
 
 #todo-list label:has(input[aria-disabled]) {
-	text-decoration-style: double;
 	text-decoration-line: line-through;
+	text-decoration-style: double;
 }
 
 #todo-list input[aria-disabled] {
-	pointer-events: none;
 	filter: grayscale(1);
+	pointer-events: none;
 }

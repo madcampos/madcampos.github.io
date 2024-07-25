@@ -1,8 +1,8 @@
 import type { APIRoute, MarkdownInstance } from 'astro';
 
 import rss, { type RSSFeedItem } from '@astrojs/rss';
-import { getCollection } from 'astro:content';
 import { getImage } from 'astro:assets';
+import { getCollection } from 'astro:content';
 
 import { BLOG } from '../constants';
 import { join } from '../utils/path.ts';
@@ -24,7 +24,7 @@ export const GET: APIRoute = async (context) => {
 
 	return rss({
 		title: "Marco Campos' Site Changelog",
-		description: 'Changelog (Version History) for Marco Campos\' Website, containing all recent changes.',
+		description: "Changelog (Version History) for Marco Campos' Website, containing all recent changes.",
 		site: baseUrl.toString(),
 		items: (await getCollection('changelog')).map((changelog) => {
 			const versionNumber = changelog.id.replace('.md', '');

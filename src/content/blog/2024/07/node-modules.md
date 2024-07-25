@@ -11,6 +11,7 @@ tags:
   - JavaScript
   - rant
 ---
+
 Node has a module problem, a large, [neutron star](https://en.wikipedia.org/wiki/Neutron_star) sized one and we all know it...
 
 \[cue joke about node modules size.\]
@@ -27,7 +28,7 @@ As a semi-aside: I think it is a hard problem without an easy solution. I've wor
 
 ## What happened sweetheart?
 
-My pain began with how hard it is to build monorepos! On Windows! On my specific setup![^1]
+My pain began with how hard it is to build monorepos! On Windows! On my specific setup[^1]
 
 My problem is _**specifically**_ with the state of node, the heinous crime against humanity it calls module resolution and all of the tooling built around it. If you have anything a little bit more complex than a project with a _very_ flat dependency list. It is akin to purgatory.
 
@@ -51,6 +52,7 @@ Save the file? Do everything again... Debugging was painful that day...
 
 Luckily, I'm on a fast machine and it _only_ takes about 7 minutes to do this whole ordeal...
 Here is the breakdown:
+
 - 1:30 minute to delete all `node_modules` folders
 - 1 minute to install all modules (cached)
 - 4 minutes to build the project
@@ -64,6 +66,7 @@ In the end I resorted to the classic [solution proposed by XKCD](https://xkcd.co
 ![A comic from XKCD about git. Transcript below.](./assets/xkcd.png)
 
 Transcript of the comic:
+
 > \[Cueball points to a computer on a desk while Ponytail and Hairy are standing further away behind an office chair.\]
 >
 > Cueball: This is git. It tracks collaborative work on projects through a beautiful distributed graph theory tree model.

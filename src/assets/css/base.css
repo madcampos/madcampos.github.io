@@ -4,29 +4,24 @@
 :not(:defined) { display: none; }
 
 html, body {
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	width: 100%;
+	align-items: stretch;
+	background: var(--dark-bg-color);
 	box-sizing: border-box;
-
+	color: var(--text-color);
+	display: flex;
+	flex-direction: column;
 	font-family: var(--sans-serif-font-family);
 	font-size: var(--body-text);
 	font-weight: normal;
-	line-height: 1.5;
-
-	display: flex;
-	flex-direction: column;
+	height: 100%;
 	justify-content: stretch;
-	align-items: stretch;
-
-	background: var(--dark-bg-color);
-	color: var(--text-color);
-
-	scrollbar-width: thin;
-	scrollbar-color: var(--theme-color) var(--scrollbar-bg);
+	line-height: 1.5;
+	margin: 0;
 	overscroll-behavior-y: contain;
-
+	padding: 0;
+	scrollbar-color: var(--theme-color) var(--scrollbar-bg);
+	scrollbar-width: thin;
+	width: 100%;
 }
 
 *, *::after, *::before {
@@ -36,16 +31,16 @@ html, body {
 }
 
 *:has(> svg) {
-	display: inline-flex;
 	align-items: center;
+	display: inline-flex;
 	gap: 0.3em;
 	overflow-wrap: break-word;
 	word-break: break-word;
 }
 
 *:has(> svg) svg {
-	min-width: 1em;
 	min-height: 1em;
+	min-width: 1em;
 }
 
 ::selection {
@@ -59,19 +54,19 @@ html, body {
 }
 
 :focus-visible {
-	outline: var(--theme-color) solid var(--border-width);
-	outline-offset: var(--spacing-small);
 	background-color: var(--bg-color);
 	color: var(--text-color);
+	outline: var(--theme-color) solid var(--border-width);
+	outline-offset: var(--spacing-small);
 }
 
 a {
 	color: var(--link-color);
 	overflow-wrap: break-word;
-	word-break: break-word;
-	text-underline-offset: 0.15em;
 	text-decoration-skip-ink: auto;
 	text-decoration-thickness: 0.08em;
+	text-underline-offset: 0.15em;
+	word-break: break-word;
 }
 
 a:visited { color: var(--link-visited-color); }
@@ -87,19 +82,15 @@ a:active {
 	outline-color: var(--link-active-color);
 }
 
-a:has(img) {
-	display: inline-flex;
-}
+a:has(img) { display: inline-flex; }
 
-a:focus-visible:has(img) {
-	background-color: var(--bg-color);
-}
+a:focus-visible:has(img) { background-color: var(--bg-color); }
 
 h1 {
-	text-align: center;
 	color: var(--theme-color);
 	margin-block: 0;
 	margin-inline: auto;
+	text-align: center;
 }
 
 h1 img {
@@ -109,21 +100,19 @@ h1 img {
 }
 
 h1, h2, h3, h4, h5, h6, summary {
+	color: var(--theme-color);
 	font-family: var(--monospace-font-family);
 	font-weight: bold;
-	color: var(--theme-color);
 	line-height: 1.2;
 }
 
-main {
-	flex-grow: 1;
-}
+main { flex-grow: 1; }
 
 summary {
-	list-style: none;
-	display: flex;
 	align-items: center;
+	display: flex;
 	gap: var(--spacing-small);
+	list-style: none;
 }
 
 summary::-webkit-details-marker { display: none; }
@@ -131,20 +120,17 @@ summary::marker { display: none; }
 
 summary::before {
 	--icon-size: 1.2em;
-
-	content: '';
-	display: inline-block;
-	width: var(--icon-size);
-	height: var(--icon-size);
 	background-image: var(--details-icon);
-	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
+	background-size: contain;
+	content: '';
+	display: inline-block;
+	height: var(--icon-size);
+	width: var(--icon-size);
 }
 
-details[open] summary::before {
-	transform: rotate(90deg);
-}
+details[open] summary::before { transform: rotate(90deg); }
 
 ul { list-style: '◆ '; }
 ul ul { list-style: '◇ '; }
@@ -157,40 +143,38 @@ ol ol ol { list-style: lower-roman; }
 nav ul {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
 	gap: var(--spacing-large);
-	padding: 0 var(--spacing-large);
+	justify-content: center;
+	list-style-type: '';
 	margin: var(--spacing-large) auto;
-	list-style-type: "";
+	padding: 0 var(--spacing-large);
 	width: 100%;
 }
 
 iframe {
+	aspect-ratio: 3 / 2;
 	border: solid var(--border-width) var(--theme-color);
 	display: block;
-	margin-inline: auto;
-	min-width: var(--iframe-size);
-	min-height: var(--iframe-size);
-	width: clamp(var(--iframe-size), 100%, var(--max-width));
 	height: auto;
+	margin-inline: auto;
 	max-height: 100%;
-	aspect-ratio: 3 / 2;
+	min-height: var(--iframe-size);
+	min-width: var(--iframe-size);
+	width: clamp(var(--iframe-size), 100%, var(--max-width));
 }
 
 .visually-hidden {
-	position: absolute;
-	width: 1px;
+	border: 0;
+	clip: rect(0, 0, 0, 0);
 	height: 1px;
 	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	border: 0;
 	opacity: 0;
+	overflow: hidden;
+	padding: 0;
 	pointer-events: none;
+	position: absolute;
+	width: 1px;
 	z-index: -1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-	a { text-decoration-style: dashed; }
-}
+@media (prefers-reduced-motion: no-preference) { a { text-decoration-style: dashed; } }

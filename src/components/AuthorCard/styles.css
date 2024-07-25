@@ -1,21 +1,21 @@
 .author-card {
 	display: grid;
-	padding-inline: var(--spacing-large);
+	gap: var(--spacing-large);
+	grid-template-areas:
+		'avatar name'
+		'avatar bio';
 	grid-template-columns: 1fr auto;
 	grid-template-rows: 1fr auto;
-	gap: var(--spacing-large);
-	place-items: center;
-	grid-template-areas:
-		"avatar name"
-		"avatar bio";
 	margin: var(--spacing-large) 0;
+	padding-inline: var(--spacing-large);
+	place-items: center;
 }
 
 .author-card .author-name * { margin: 0; }
 
 .author-card .author-picture {
-	grid-area: avatar;
 	align-self: start;
+	grid-area: avatar;
 }
 
 .author-card .author-name {
@@ -26,17 +26,15 @@
 
 @media (max-width: 768px) {
 	.author-card {
+		grid-template-areas:
+			'avatar'
+			'name'
+			'bio';
 		grid-template-columns: 1fr;
 		grid-template-rows: 1fr auto auto;
-		grid-template-areas:
-			"avatar"
-			"name"
-			"bio";
 	}
 
-	.author-card .author-picture {
-		place-self: center center;
-	}
+	.author-card .author-picture { place-self: center center; }
 
 	.author-card .author-name { justify-self: center; }
 }

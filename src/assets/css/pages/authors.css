@@ -1,9 +1,9 @@
 #author-list, #contents {
+	align-items: center;
 	display: flex;
 	flex-flow: column wrap;
-	align-items: center;
-	list-style-type: "";
-	padding: 0;
-	margin-block: 0;
 	gap: var(--spacing-large);
+	list-style-type: '';
+	margin-block: 0;
+	padding: 0;
 }

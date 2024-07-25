@@ -13,6 +13,7 @@ tags:
   - html
   - web
 ---
+
 I was reading a newsletter the other day[^1] and an article caught my attention: [My CSS Resets](https://keithjgrant.com/posts/2024/01/my-css-resets/).
 This reminded me of a couple of articles I read last year.
 
@@ -43,18 +44,14 @@ Here is the full reset file, following is a breakdown of each part.
 
 ```css
 :root {
+	accent-color: #0080ff;
+	box-sizing: border-box;
+	color-scheme: dark light;
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	font-size: 20px;
-
-	accent-color: #0080ff;
-	color-scheme: dark light;
-
-	box-sizing: border-box;
 }
 
-*, *::before, *::after {
-	box-sizing: inherit;
-}
+*, *::before, *::after { box-sizing: inherit; }
 
 :not(:defined) { display: none; }
 
@@ -64,9 +61,9 @@ body { margin: 0; }
 button, input, textarea, select { font: inherit; }
 
 img, picture, svg, canvas, audio, video {
+	block-size: auto;
 	display: block;
 	max-inline-size: 100%;
-	block-size: auto;
 }
 ```
 
@@ -82,15 +79,14 @@ Okay, now for each part and _why_ it is there.
 ```
 
 The default font part here is two fold:
+
 1. It sets the `font-family` to be the sans-serif font used for the browser UI, it is decent enough. But depending on the project I set the font here to some other that I may be using.
 2. The `font-size` is so we don't have to deal with tiny text. As much as my myopic eyes love a tiny font, it is more comfortable to have a larger one, specially on mobile. Remember folks: we all have temporary disabilities at some point, so think accessibly _as a baseline_!
 
 ### Styling forms is finally nice
 
 ```css
-:root {
-	accent-color: #0080ff;
-}
+:root { accent-color: #0080ff; }
 ```
 
 When you set the [`accent-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/accent-color) for your page, all controls will render with that colour instead of whichever default the browser uses. Checkboxes, radio buttons, selects and other widgets will look nicer without much effort. Here I'm just setting it to my theme colour because branding is important.
@@ -98,9 +94,7 @@ When you set the [`accent-color`](https://developer.mozilla.org/en-US/docs/Web/C
 ### Come to the dark side
 
 ```css
-:root {
-	color-scheme: dark light;
-}
+:root { color-scheme: dark light; }
 ```
 
 The [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme) is used to set the page to render first in dark mode, and then in light mode. Note that it means that the page _can_ be rendered in both modes because it lists both values, but _prefers_ dark over light.
@@ -108,13 +102,9 @@ The [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/color-sche
 ### The infamous CSS box-model
 
 ```css
-:root {
-	box-sizing: border-box;
-}
+:root { box-sizing: border-box; }
 
-*, *::before, *::after {
-	box-sizing: inherit;
-}
+*, *::before, *::after { box-sizing: inherit; }
 ```
 
 So... let's address [the box model](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model) in the room.
@@ -181,9 +171,9 @@ By default, forms use the system font, size and other characteristics. This rule
 
 ```css
 img, picture, svg, canvas, audio, video {
+	block-size: auto;
 	display: block;
 	max-inline-size: 100%;
-	block-size: auto;
 }
 ```
 

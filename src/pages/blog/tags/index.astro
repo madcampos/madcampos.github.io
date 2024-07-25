@@ -1,9 +1,9 @@
 ---
-import { BLOG_TAGS, BLOG } from '../../../constants';
+import { BLOG, BLOG_TAGS } from '../../../constants';
 import { join } from '../../../utils/path.ts';
 
-import BaseLayout from '../../../layouts/Base.astro';
 import PageHeader from '../../../components/PageHeader/index.astro';
+import BaseLayout from '../../../layouts/Base.astro';
 
 import { listTags } from '../../../utils/post';
 
@@ -42,16 +42,17 @@ const tags = await listTags();
 		{BLOG_TAGS.titleString}
 	</PageHeader>
 
-
 	<div id="contents">
 		<ul id="tag-list">
-			{tags.map((tag) => (
-				<li class="tag">
-					<a href={join([BLOG_TAGS.url, tag])} itemprop="url">
-						<span itemprop="itemListElement">{tag}</span>
-					</a>
-				</li>
-			))}
+			{
+				tags.map((tag) => (
+					<li class="tag">
+						<a href={join([BLOG_TAGS.url, tag])} itemprop="url">
+							<span itemprop="itemListElement">{tag}</span>
+						</a>
+					</li>
+				))
+			}
 		</ul>
 	</div>
 </BaseLayout>

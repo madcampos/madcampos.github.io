@@ -1,75 +1,59 @@
 .user-avatar {
 	--image-size: var(--avatar-size);
-
-	display: block;
-
-	width: var(--image-size);
-	height: var(--image-size);
-	border-radius: 100vmax;
-	overflow: hidden;
 	border: var(--theme-color) solid var(--border-width);
+	border-radius: 100vmax;
+	display: block;
+	height: var(--image-size);
+	overflow: hidden;
 	position: relative;
+	width: var(--image-size);
 }
 
 .user-avatar img {
-	width: 100%;
 	height: 100%;
 	object-fit: cover;
 	object-position: center;
+	width: 100%;
 }
 
 .user-avatar::after {
+	background: radial-gradient(circle at bottom, var(--accent-color), var(--theme-color));
 	content: '';
 	display: block;
-	width: 100%;
 	height: 100%;
-	position: absolute;
-	background: radial-gradient(
-		circle at bottom,
-		var(--accent-color),
-		var(--theme-color)
-	);
 	inset: 0;
 	opacity: 0.2;
+	position: absolute;
 	transition: all 0.2s ease-in-out;
+	width: 100%;
 }
 
-.user-avatar:hover::after {
-	opacity: 0.4;
-}
+.user-avatar:hover::after { opacity: 0.4; }
 
-@media (max-width: 768px) {
-	.user-avatar { --image-size: var(--avatar-small-size); }
-}
+@media (max-width: 768px) { .user-avatar { --image-size: var(--avatar-small-size); } }
 
 @media (prefers-contrast: more) {
 	.user-avatar::after {
-		background: radial-gradient(
-			circle at bottom,
-			transparent,
-			var(--theme-color)
-		);
 		backdrop-filter: contrast(200%);
+		background: radial-gradient(circle at bottom, transparent, var(--theme-color));
 		opacity: 0.4;
 	}
 }
 
 @media (forced-colors: active) {
-	.user-avatar {
-		filter: grayscale(1) contrast(120%) brightness(110%);
-	}
+	.user-avatar { filter: grayscale(1) contrast(120%) brightness(110%); }
 
 	.user-avatar::after {
-		background: none;
 		backdrop-filter: none;
+		background: none;
 		opacity: 0;
 	}
 }
 
 @media (prefers-reduced-transparency: reduce) {
 	.user-avatar::after {
-		background: none;
 		backdrop-filter: none;
+		background: none;
 		opacity: 0;
 	}
 }

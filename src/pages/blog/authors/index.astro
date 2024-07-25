@@ -1,12 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
 
-import { BLOG_AUTHOR, BLOG } from '../../../constants';
+import { BLOG, BLOG_AUTHOR } from '../../../constants';
 import { join } from '../../../utils/path.ts';
 
-import BaseLayout from '../../../layouts/Base.astro';
-import PageHeader from '../../../components/PageHeader/index.astro';
 import AuthorCard from '../../../components/AuthorCard/index.astro';
+import PageHeader from '../../../components/PageHeader/index.astro';
+import BaseLayout from '../../../layouts/Base.astro';
 
 import '../../../assets/css/pages/internal-page.css';
 import '../../../assets/css/pages/authors.css';
@@ -15,7 +15,6 @@ import logoBlog from '../../../assets/images/logo/logo-blog.svg';
 import blogSocialImage from '../../../assets/images/social/social-blog.png';
 
 const authors = await getCollection('authors');
-
 ---
 <BaseLayout
 	htmlTitle={BLOG_AUTHOR.title}
@@ -44,17 +43,18 @@ const authors = await getCollection('authors');
 		{BLOG_AUTHOR.titleString}
 	</PageHeader>
 
-
 	<div id="contents">
 		<ul id="author-list">
-			{authors.map(({ slug }) => (
-				<li itemprop="itemListElement">
-					<AuthorCard
-						author={slug}
-						url={join([BLOG_AUTHOR.url, slug])}
-					/>
-				</li>
-			))}
+			{
+				authors.map(({ slug }) => (
+					<li itemprop="itemListElement">
+						<AuthorCard
+							author={slug}
+							url={join([BLOG_AUTHOR.url, slug])}
+						/>
+					</li>
+				))
+			}
 		</ul>
 	</div>
 </BaseLayout>

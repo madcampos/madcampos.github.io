@@ -6,8 +6,8 @@ import { join } from '../../../../utils/path.ts';
 
 import BlogPostsLayout from '../../../../layouts/BlogPosts.astro';
 
-import { listPostsPagesByMonth, MAX_POSTS_PER_PAGE } from '../../../../utils/post.ts';
 import logoBlog from '../../../../assets/images/logo/logo-blog.svg';
+import { listPostsPagesByMonth, MAX_POSTS_PER_PAGE } from '../../../../utils/post.ts';
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -15,37 +15,45 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 export const getStaticPaths = (async ({ paginate }: { paginate: PaginateFunction }) => {
 	const postsList = await listPostsPagesByMonth();
 
-	return Object.entries(postsList).flatMap(([yearKey, months]) => Object.entries(months).flatMap(([monthKey, monthPosts]) => paginate(monthPosts, {
-		params: {
-			year: yearKey,
-			month: monthKey
-		},
-		pageSize: MAX_POSTS_PER_PAGE
-	})));
+	return Object.entries(postsList).flatMap(([yearKey, months]) =>
+		Object.entries(months).flatMap(([monthKey, monthPosts]) =>
+			paginate(monthPosts, {
+				params: {
+					year: yearKey,
+					month: monthKey
+				},
+				pageSize: MAX_POSTS_PER_PAGE
+			})
+		)
+	);
 }) satisfies GetStaticPaths;
 
 const {
 	data: posts,
 	url,
-	currentPage, lastPage,
-	start, end, total, size
+	currentPage,
+	lastPage,
+	start,
+	end,
+	total,
+	size
 } = Astro.props.page;
 const { year, month } = Astro.params;
 const formatter = new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric' });
 ---
 <BlogPostsLayout
-	posts={posts}
+	{posts}
 	title={`Posts from ${formatter.format(new Date(`${year}-${month}-01T00:00:00`))}`}
 	currentUrl={url.current}
-	currentPage={currentPage}
-	lastPage={lastPage}
+	{currentPage}
+	{lastPage}
 	prevUrl={url.prev}
 	nextUrl={url.next}
 	baseUrl={join([BLOG.url, year, month])}
-	start={start}
-	end={end}
-	total={total}
-	size={size}
+	{start}
+	{end}
+	{total}
+	{size}
 >
 	<a href={BLOG.url} slot="logo">
 		<img

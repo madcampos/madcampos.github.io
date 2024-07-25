@@ -73,7 +73,7 @@
 		"lineBreak": "lf",
 		"hexCase": "lower",
 		"hexColorLength": "long",
-		"quotes": "preferDouble",
+		"quotes": "preferSingle",
 		"operatorLinebreak": "after",
 		"blockSelectorLinebreak": "consistent",
 		"omitNumberLeadingZero": false,

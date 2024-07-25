@@ -3,16 +3,16 @@ title: The Shells of Power
 summary: One shell to sudo them all, One shell to grep them, One shell to fork and in vt-100 display them
 image: ./assets/ring-of-power.jpg
 imageAlt: A low poly silver ring, burning with a volcano behind it. This image is inside an old TV set made up of a green wire mesh.
-createdAt: 2024-06-01T03:46:16.746-04:00
-draft: true
+createdAt: 2024-07-25T17:46:16
 tags:
   - coding
   - personal
   - protip
 ---
+
 Let's talk about PowerShell...
 
-The other day during an event people asked me why I like it so much to the point of having it installed on a Mac.
+The other day during an event people asked me why I like PowerShell so much to the point of having it installed on a Mac, tainting a perfect operating system with the shadow of evil. [\[cue Lord of The Rings theme for the one ring\]](https://www.youtube.com/watch?v=Dw6BCAZqkaQ)
 
 ## Three shells for the kings on all PCs
 

@@ -29,24 +29,28 @@ This post is a deeper dive into Web Components, with a focus on building a tab n
 As I'm not an expert in accessibility, but I do care about it, I'll be using the [ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/) as a reference. Particularly the [Tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) section.
 
 The whole tabs are actually 3 components:
+
 1. **The tabs container**
 
-	It is where everything will go and the component responsible for controlling the interaction between the tabs list and the tabs panels, as well as keyboard and pointer events.
+   It is where everything will go and the component responsible for controlling the interaction between the tabs list and the tabs panels, as well as keyboard and pointer events.
 2. **The tabs list**
 
-	It is the list of buttons that will represent each individual tab.
+   It is the list of buttons that will represent each individual tab.
 3. **The tabs panels**
 
-	The actual content of each tab.
+   The actual content of each tab.
 
 ### The Tabs Panel
 
 It is the simplest of the components, containing only an `<article>` with a `<slot>` inside where the content will go.
 
 Here is the code:
+
 ```typescript
 class CustomTabPanel extends HTMLElement {
-	static get observedAttributes() { return ['selected', 'tab']; }
+	static get observedAttributes() {
+		return ['selected', 'tab'];
+	}
 
 	declare shadowRoot: ShadowRoot;
 	#internals: ElementInternals;
@@ -116,9 +120,12 @@ Those properties are kept in sync with the attributes using the `attributeChange
 The tab component is very similar to the panel, the only difference is the property `panel` that associates the tab to a panel.
 
 Here is the code:
+
 ```typescript
 export class CustomTab extends HTMLElement {
-	static get observedAttributes() { return ['selected', 'panel']; }
+	static get observedAttributes() {
+		return ['selected', 'panel'];
+	}
 
 	declare shadowRoot: ShadowRoot;
 	#internals: ElementInternals;
@@ -182,16 +189,20 @@ export class CustomTab extends HTMLElement {
 Now, here is where things start to get interesting. The container is the component that will control the interaction between the tabs list and the tabs panels. It will also ensure they all are connected.
 
 The interactions we will be handling are:
+
 - Keyboard navigation
-	- Left and Right arrow keys
-	- Home and End keys
+  - Left and Right arrow keys
+  - Home and End keys
 - Focus management
 - Tab assignment
 
 Here is the full code:
+
 ```typescript
 export class CustomTabs extends HTMLElement {
-	static get observedAttributes() { return ['selected']; }
+	static get observedAttributes() {
+		return ['selected'];
+	}
 
 	declare shadowRoot: ShadowRoot;
 	#internals: ElementInternals;
@@ -292,16 +303,16 @@ export class CustomTabs extends HTMLElement {
 				switch (evt.key) {
 					case 'ArrowLeft':
 						tabs[(index - 1 + tabs.length) % tabs.length].focus();
-					break;
+						break;
 					case 'ArrowRight':
 						tabs[(index + 1) % tabs.length].focus();
-					break;
+						break;
 					case 'Home':
 						tabs[0].focus();
-					break;
+						break;
 					case 'End':
 						tabs[tabs.length - 1].focus();
-					break;
+						break;
 					default:
 				}
 			}
@@ -316,7 +327,7 @@ export class CustomTabs extends HTMLElement {
 		switch (name) {
 			case 'selected':
 				this.selected = newValue;
-			break;
+				break;
 			default:
 		}
 	}
@@ -324,15 +335,16 @@ export class CustomTabs extends HTMLElement {
 ```
 
 Let's break down the code.
+
 1. The `constructor` is pretty straightforward, we set the `role` and `aria-label` attributes, create the HTML structure, keep references of the slots. We also generate an id if one is not provided.
 2. The `selected` property is used to keep track of the selected tab. It is also used to set the initial selected tab. It's setter will also find the selected tab and call the `#selectTab` method to update the selected tab.
 3. The `#associateTabs` method is used to associate the tabs with the panels. It will also generate an id for the tab and panel if one is not provided. We do this based on the tabs instead of panels because tabs will be interactive where panels are hidden by default and can be "orphans".
 4. The `#selectTab` method is used to update the selected tab and panel based on the tab element passed as argument.
 5. The `connectedCallback` is where we set up the event listeners.
-	- We listen to the `slotchange` event on the tabs slot to call the `#associateTabs` method and update all tabs and panels. This event is fired every time the content of the `<slot>` changes.
-	- The `#associateTabs` method is called once to update all tabs and panels when the component is first inserted on the page.
-	- Next, we find the `selected` tab, if there is one, or set it to be the first one on the list.
-	- Finally, we set up the keyboard navigation and focus management. More on that below.
+   - We listen to the `slotchange` event on the tabs slot to call the `#associateTabs` method and update all tabs and panels. This event is fired every time the content of the `<slot>` changes.
+   - The `#associateTabs` method is called once to update all tabs and panels when the component is first inserted on the page.
+   - Next, we find the `selected` tab, if there is one, or set it to be the first one on the list.
+   - Finally, we set up the keyboard navigation and focus management. More on that below.
 
 ### (Keyboard) Navigation
 

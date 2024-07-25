@@ -3,25 +3,25 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 export const MAX_POSTS_PER_PAGE = 10;
 
 export interface RelatedPost {
-	slug: string,
-	url: string,
-	title: string,
-	summary: string,
-	image?: ImageMetadata,
-	imageAlt?: string,
-	createdAt: Date
+	slug: string;
+	url: string;
+	title: string;
+	summary: string;
+	image?: ImageMetadata;
+	imageAlt?: string;
+	createdAt: Date;
 }
 
 export interface Post extends Omit<CollectionEntry<'blog'>, 'relatedPosts' | 'slug'> {
-	slug: string,
-	year: string,
-	month: string,
-	day: string,
-	url: string,
-	relatedPosts: RelatedPost[],
-	readingTime: number,
-	wordCount: number,
-	letterCount: number
+	slug: string;
+	year: string;
+	month: string;
+	day: string;
+	url: string;
+	relatedPosts: RelatedPost[];
+	readingTime: number;
+	wordCount: number;
+	letterCount: number;
 }
 
 function sortPostsByDate(first: Post, second: Post) {

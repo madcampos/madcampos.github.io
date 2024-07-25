@@ -1,15 +1,15 @@
 [
-  "file-explorer",
-  "global-search",
-  "switcher",
-  "outgoing-link",
-  "tag-pane",
-  "properties",
-  "page-preview",
-  "templates",
-  "command-palette",
-  "slash-command",
-  "outline",
-  "word-count",
-  "file-recovery"
+	"file-explorer",
+	"global-search",
+	"switcher",
+	"outgoing-link",
+	"tag-pane",
+	"properties",
+	"page-preview",
+	"templates",
+	"command-palette",
+	"slash-command",
+	"outline",
+	"word-count",
+	"file-recovery"
 ]

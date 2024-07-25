@@ -1,15 +1,15 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-import BaseLayout from '../layouts/Base.astro';
 import Avatar from '../components/Avatar/index.astro';
+import BaseLayout from '../layouts/Base.astro';
 
 import '../assets/css/pages/home.css';
 
-import avatar from '../assets/images/me.jpg';
 import logo from '../assets/images/logo/logo.svg';
+import avatar from '../assets/images/me.jpg';
 
-import { GLOBALS, BLOG, PROJECTS, TALKS } from '../constants';
+import { BLOG, GLOBALS, PROJECTS, TALKS } from '../constants';
 ---
 <BaseLayout
 	htmlTitle={GLOBALS.title}
@@ -42,9 +42,17 @@ import { GLOBALS, BLOG, PROJECTS, TALKS } from '../constants';
 			<div>
 				<div class="p-note note" itemprop="description">
 					<p>
-						Hi there! My name is <em class="p-name fn n" itemprop="name"><span class="p-given-name given-name" itemprop="givenName">Marco</span> <span class="p-family-name family-name" itemprop="familyName">Campos</span></em> (<em>@</em><em class="p-nickname nickname" itemprop="alternateName">madcampos</em> on most social networks) and my pronouns are he/him!
+						Hi there! My name is <em class="p-name fn n" itemprop="name"><span class="p-given-name given-name" itemprop="givenName">Marco</span>
+							<span class="p-family-name family-name" itemprop="familyName">Campos</span></em> (<em>@</em>
+						<em class="p-nickname nickname" itemprop="alternateName">madcampos</em> on most social networks) and my pronouns are he/him!
 						<br />
-						I'm a <span class="p-category category p-job-title" itemprop="jobTitle">Senior Web Developer</span> based in <span class="p-adr adr" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span class="p-locality locality" itemprop="addressLocality">Toronto</span>, <span class="p-country-name country-name" itemprop="addressCountry">Canada</span></span>.
+						I'm a <span class="p-category category p-job-title" itemprop="jobTitle">Senior Web Developer</span> based in <span
+							class="p-adr adr"
+							itemprop="address"
+							itemscope
+							itemtype="https://schema.org/PostalAddress"
+						><span class="p-locality locality" itemprop="addressLocality">Toronto</span>, <span class="p-country-name country-name" itemprop="addressCountry"
+							>Canada</span></span>.
 					</p>
 
 					<p>I have experience with both frontend and backend development, with focus on responsive and accessible design, typescript and node.js.</p>

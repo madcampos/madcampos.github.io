@@ -35,6 +35,6 @@
 		"newLine": "LF",
 		"composite": true,
 		"incremental": true,
-		"baseUrl": ".",
+		"baseUrl": "."
 	}
 }
