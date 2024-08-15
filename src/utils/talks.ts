@@ -3,7 +3,9 @@ import { getCollection } from 'astro:content';
 export async function listAllTalks() {
 	const talkEntries = await getCollection('talks');
 
-	const talks = talkEntries.filter((talk) => !talk.data.draft).sort((first, second) => first.data.date.getTime() - second.data.date.getTime());
+	const talks = talkEntries.filter((talk) => !talk.data.draft).sort((first, second) =>
+		(first.data.date?.getTime() ?? 0) - (second.data.date?.getTime() ?? 0) || first.data.title.localeCompare(second.data.title, 'en-US')
+	);
 
 	return talks;
 }
