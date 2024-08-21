@@ -8,12 +8,12 @@ eventUrl: https://guild.host/events/torontojs-online-techtalk-z9gqim
 date: 2024-08-29
 slides: https://1drv.ms/p/s!AivyfQGK_lAiysNtXGfNfJvYfM8edA?e=aFtBFR
 code: https://github.com/madcampos/dnh
-demo: https://dnh.madcampos.dev/
 techStack:
   - HTML
   - CSS
   - Almost no JS
 ---
+
 In this talk I go over forms and the things we can do with them without needing JS and how far we can get with only HTML and CSS.
 
 ## Forms are hard
@@ -33,6 +33,7 @@ We should stick to the least powerful tool to the job, that makes our applicatio
 Start with a basic HTML form and then add features _as needed_!
 
 HTML attributes get you very far, here is a non exhaustive list of attributes to use:
+
 - [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required): that makes your field be required and the form stop from submitting without it being filled;
 - [Input `type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types): provides useful ergonomics and UI for different types of data, like numbers or dates;
 - [`min`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/min) and [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/max): the minimum and maximum values for dates and numbers;
@@ -48,14 +49,12 @@ There was a time when we couldn't do any input validation or hint to that in CSS
 Then we found some clever hacks like:
 
 ```css
-input:not(:placeholder-shown):not(:focus):invalid ~ .error-message {
-	display: block;
-}
+input:not(:placeholder-shown):not(:focus):invalid ~ .error-message { display: block; }
 ```
 
 Breaking it down this monstrosity selector means:
 
-> Style an `error message` that _comes  immediately after_ (`~`) an `input` that does `not` have a `placeholder visible`, and is `not` `focus`ed, and is `invalid`.
+> Style an `error message` that _comes immediately after_ (`~`) an `input` that does `not` have a `placeholder visible`, and is `not` `focus`ed, and is `invalid`.
 
 That is a mouthful and a hack!
 
@@ -64,15 +63,15 @@ Now we have better solutions like the [`:user-invalid`](https://developer.mozill
 If we combine with a wrapper element and the [`:has`](https://developer.mozilla.org/en-US/docs/Web/CSS/:has) selector this gives us something like:
 
 ```css
-.wrapper:has( :user-invalid) .error-message {
-	display: block;
-}
+.wrapper:has(:user-invalid) .error-message { display: block; }
 ```
 
 That translates to:
+
 > When a `wrapper` has an element that is `invalid after user interaction`, style the `error message` inside the `wrapper`.
 
 Easier to understand and less hacky!
+
 ## JS Validation API
 
 The JavaScript validation API is... bad...
