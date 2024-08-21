@@ -31,14 +31,16 @@ html, body {
 }
 
 *:has(> svg) {
-	align-items: center;
+	align-items: baseline;
 	display: inline-flex;
 	gap: 0.3em;
+	line-height: 1;
 	overflow-wrap: break-word;
 	word-break: break-word;
 }
 
 *:has(> svg) svg {
+	align-self: center;
 	min-height: 1em;
 	min-width: 1em;
 }
