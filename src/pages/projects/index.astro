@@ -9,7 +9,14 @@ import { listAllProjects } from '../../utils/projects';
 import logoProjects from '../../assets/images/logo/logo-proj.svg';
 import projectsSocialImage from '../../assets/images/social/social-proj.png';
 
-const projects = await listAllProjects();
+const projects = await Promise.all((await listAllProjects()).map(async (project) => {
+	const { Content } = await project.render();
+
+	return {
+		data: project.data,
+		Content
+	};
+}));
 ---
 <InternalPageLayout
 	htmlTitle={PROJECTS.title}
@@ -32,30 +39,22 @@ const projects = await listAllProjects();
 	</Fragment>
 
 	{
-		(
-		<>
-			{projects.map(async (project) => {
-				const { Content } = await project.render();
-
-				return (
+		projects.map(({ Content, data }) => (
 			<ProjectCard
-				status={project.data.status}
-				createdAt={project.data.createdAt}
-				updatedAt={project.data.updatedAt}
-				version={project.data.version}
-				url={project.data.url}
-				image={project.data.image}
-				imageAlt={project.data.imageAlt}
-				techStack={project.data.techStack}
-				repository={project.data.repository}
+				status={data.status}
+				createdAt={data.createdAt}
+				updatedAt={data.updatedAt}
+				version={data.version}
+				url={data.url}
+				image={data.image}
+				imageAlt={data.imageAlt}
+				techStack={data.techStack}
+				repository={data.repository}
 			>
-				<span slot="title">{project.data.title}</span>
+				<span slot="title">{data.title}</span>
 
 				<Content />
 			</ProjectCard>
-		);
-				})}
-			</>
-		)
+		))
 	}
 </InternalPageLayout>

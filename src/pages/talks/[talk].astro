@@ -94,9 +94,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 				<Icon name="uil:calendar-alt" title="Icon of a calendar" />
 				Date:
 			</strong>
-			{date && (
-				<time datetime={date.toISOString()} itemprop="startDate">{formatter.format(date)}</time>
-			)}
+			{date && <time datetime={date.toISOString()} itemprop="startDate">{formatter.format(date)}</time>}
 		</li>
 
 		{

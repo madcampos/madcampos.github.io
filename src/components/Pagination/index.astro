@@ -1,47 +1,60 @@
 ---
 import { Icon } from 'astro-icon/components';
 import './styles.css';
+import { join } from '../../utils/path.ts';
 
 interface Props {
-	baseUrl: string,
-	currentPage: number,
-	lastPage: number,
-	prevUrl?: string,
-	nextUrl?: string,
-	start: number,
-	end: number,
-	total: number,
-	size: number
+	baseUrl: string;
+	currentPage: number;
+	lastPage: number;
+	prevUrl?: string;
+	nextUrl?: string;
+	start: number;
+	end: number;
+	total: number;
+	size: number;
 }
 
 const {
-	currentPage, lastPage,
+	currentPage,
+	lastPage,
 	baseUrl,
-	prevUrl, nextUrl,
-	start, end, total, size
+	prevUrl,
+	nextUrl,
+	start,
+	end,
+	total,
+	size
 } = Astro.props;
 
 const TRIM_PAGE_NUMBER = 2;
 const firstPageInNav = Math.max(1, currentPage - TRIM_PAGE_NUMBER);
 const lastPageInNav = Math.min(lastPage, currentPage + TRIM_PAGE_NUMBER);
+
+const navLinks = Array(lastPageInNav - firstPageInNav + 1).fill(null).map((_, i) => {
+	const currentPageNumber = firstPageInNav + i;
+	const href = currentPageNumber === 1 ? '' : currentPageNumber;
+
+	return {
+		label: currentPageNumber.toString(),
+		url: join([baseUrl, href.toString()]),
+		isCurrentPage: currentPageNumber === currentPage
+	};
+});
 ---
 <nav aria-label="Post list pages">
 	<div id="pagination">
 		<a
-			{...(currentPage > 1
-				? { href: `${baseUrl}/` }
-				: { 'aria-disabled': 'true' }
-			)}
+			href={currentPage > 1 ? join([baseUrl, '/']) : null}
+			aria-disabled={currentPage > 1 ? null : 'true'}
 			id="first-page"
 		>
 			<Icon name="uil:angle-double-left" title="Two chevrons pointing to the left" />
 			<span class="pagination-link-text">First<span class="visually-hidden"> page</span></span>
 		</a>
 		<a
-			{...(prevUrl
-					? { href: prevUrl }
-					: { 'aria-disabled': 'true' }
-			)}
+			href={prevUrl ?? null}
+			aria-disabled={prevUrl ? null : 'true'}
 			id="prev-page"
 		>
 			<Icon name="uil:angle-left" title="A chevron pointing to the left" />
@@ -49,52 +62,49 @@ const lastPageInNav = Math.min(lastPage, currentPage + TRIM_PAGE_NUMBER);
 		</a>
 
 		<ol>
-			{firstPageInNav > 1 && (
-				<Fragment>
-					<li><a href={`${baseUrl}/`}>1</a></li>
-					<li><span>…</span></li>
-				</Fragment>
-			)}
+			{
+				firstPageInNav > 1 && (
+					<>
+						<li><a href={join([baseUrl, '/'])}>1</a></li>
+						<li><span>…</span></li>
+					</>
+				)
+			}
 
-			{Array(lastPageInNav - firstPageInNav + 1).fill(null).map((_, i) => {
-				const currentPageNumber = firstPageInNav + i;
-				const href = currentPageNumber === 1 ? '' : currentPageNumber;
+			{
+				navLinks.map(({ url, label, isCurrentPage }) => isCurrentPage ? (
+					<li aria-current="page">
+						<span>{label}</span>
+						<span class="visually-hidden">(Current page)</span>
+					</li>
+				) : (
+					<li>
+						<a href={url}>{label}</a>
+					</li>
+				))
+			}
 
-				if (currentPageNumber === currentPage) {
-					return (
-						<li aria-current="page">
-							<span>{currentPageNumber}</span>
-							<span class="visually-hidden">(Current page)</span>
-						</li>
-					);
-				}
-
-				return <li><a href={`${baseUrl}/${href}`}>{currentPageNumber}</a></li>;
-			})}
-
-			{lastPageInNav < lastPage && (
-				<Fragment>
-					<li><span>…</span></li>
-					<li><a href={`${baseUrl}/${lastPage}`}>{lastPage}</a></li>
-				</Fragment>
-			)}
+			{
+				lastPageInNav < lastPage && (
+					<>
+						<li><span>…</span></li>
+						<li><a href={join([baseUrl, lastPage.toString()])}>{lastPage}</a></li>
+					</>
+				)
+			}
 		</ol>
 
 		<a
-			{...(nextUrl
-				? { href: nextUrl }
-				: { 'aria-disabled': 'true' }
-			)}
+			href={nextUrl ?? null}
+			aria-disabled={nextUrl ? null : 'true'}
 			id="next-page"
 		>
 			<span class="pagination-link-text">Next<span class="visually-hidden"> page</span></span>
 			<Icon name="uil:angle-right" title="A chevron pointing to the right" />
 		</a>
 		<a
-			{...(currentPage < lastPage
-				? { href: `${baseUrl}/${lastPage}` }
-				: { 'aria-disabled': 'true' }
-			)}
+			href={currentPage < lastPage ? join([baseUrl, lastPage.toString()]) : null}
+			aria-disabled={currentPage < lastPage ? null : 'true'}
 			id="last-page"
 		>
 			<span class="pagination-link-text">Last<span class="visually-hidden"> page</span></span>

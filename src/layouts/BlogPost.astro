@@ -32,6 +32,11 @@ interface Props {
 
 const { url, title, summary, image, imageAlt, createdAt, updatedAt, updates, tags, readingTime, wordCount, letterCount, relatedPosts } = Astro.props;
 const postUrl = join([BLOG.url, url]);
+const formatUpdateDate = (date: Date) =>
+	new Intl.DateTimeFormat('en-US', {
+		dateStyle: 'long',
+		timeStyle: 'short'
+	}).format(date);
 ---
 <BaseLayout
 	htmlTitle={[title, 'Blog', 'Marco Campos']}
@@ -80,16 +85,7 @@ const postUrl = join([BLOG.url, url]);
 											datetime={update.date.toISOString()}
 											title={update.date.toISOString()}
 										>
-											{
-												(
-													<>
-														{new Intl.DateTimeFormat('en-US', {
-															dateStyle: 'long',
-															timeStyle: 'short'
-														}).format(update.date)}
-													</>
-												)
-											}
+											{formatUpdateDate(update.date)}
 										</time>
 										<span>&mdash;</span>
 										<span>{update.changes}</span>
