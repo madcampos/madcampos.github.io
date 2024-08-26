@@ -30,7 +30,7 @@ export const GET: APIRoute = async (context) => {
 			const [, changelogMarkdown] = Object.entries(changelogFiles).find(([filePath]) => filePath.includes(changelog.id)) ?? [];
 
 			const item: RSSFeedItem = {
-				// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+				 
 				title: `${versionNumber}${versionName ? ` (${versionName})` : ''}`,
 				description: changelogMarkdown?.compiledContent(),
 				content: changelogMarkdown?.compiledContent(),
