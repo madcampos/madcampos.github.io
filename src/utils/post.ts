@@ -1,4 +1,5 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
+import { join } from './path.ts';
 
 export const MAX_POSTS_PER_PAGE = 10;
 
@@ -57,7 +58,7 @@ function getPostUrl(post: CollectionEntry<'blog'>) {
 	const slug = formatPostSlug(post);
 	const { year, month } = getPostDate(post);
 
-	return `/${year}/${month}/${slug}`;
+	return join([year, month, slug]);
 }
 
 async function getRelatedPosts(post: CollectionEntry<'blog'>) {

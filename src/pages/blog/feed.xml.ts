@@ -33,7 +33,7 @@ export const GET: APIRoute = async (context) => {
 			media: 'http://search.yahoo.com/mrss/',
 			dc: 'http://purl.org/dc/elements/1.1/'
 		},
-		stylesheet: `${blogUrl}/feed.xsl`,
+		stylesheet: '/blog/feed.xsl',
 		customData: `
 			<language>en-us</language>
 			<atom:link href="${new URL(blogImage.src, baseUrl).toString()}" rel="self" type="application/rss+xml" />

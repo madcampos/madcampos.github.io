@@ -51,12 +51,12 @@ const socialImage = join([GLOBALS.url, image ?? defaultSocialImage.src]);
 
 	<!-- URLs -->
 	<link rel="canonical" href={fullUrl} />
-	<link rel="sitemap" href={join([GLOBALS.url, 'sitemap-index.xml'])} />
-	{hasFeed && <link rel="alternate" type="application/rss+xml" href={join([BLOG.url, 'feed.xml'])} title={BLOG.titleString} />}
+	<link rel="sitemap" href={join([GLOBALS.url, 'sitemap-index.xml'], { trailingSlash: false })} />
+	{hasFeed && <link rel="alternate" type="application/rss+xml" href={join([BLOG.url, 'feed.xml'], { trailingSlash: false })} title={BLOG.titleString} />}
 
 	<!-- App Metadata -->
-	<link rel="icon" href={join([GLOBALS.url, 'icons/icon.svg'])} sizes="any" type="image/svg+xml" />
-	<link rel="icon" href={join([GLOBALS.url, 'favicon.ico'])} sizes="48x48" type="image/x-icon" />
+	<link rel="icon" href={join([GLOBALS.url, 'icons/icon.svg'], { trailingSlash: false })} sizes="any" type="image/svg+xml" />
+	<link rel="icon" href={join([GLOBALS.url, 'favicon.ico'], { trailingSlash: false })} sizes="48x48" type="image/x-icon" />
 	<meta name="theme-color" content="#0080ff" />
 	<link rel="license" href={join([GLOBALS.url, 'license'])} />
 
@@ -105,7 +105,7 @@ const socialImage = join([GLOBALS.url, image ?? defaultSocialImage.src]);
 	<link rel="pingback" href="https://webmention.io/madcampos.dev/xmlrpc" />
 
 	<!-- Changelog -->
-	<link rel="alternate" type="application/rss+xml" href={join([GLOBALS.url, 'changelog.xml'])} title="Changelog (Version History)" />
+	<link rel="alternate" type="application/rss+xml" href={join([GLOBALS.url, 'changelog.xml'], { trailingSlash: false })} title="Changelog (Version History)" />
 
 	<!-- Apple icons -->
 	<meta name="apple-mobile-web-app-capable" content="yes" />
