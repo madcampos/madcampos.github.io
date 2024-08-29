@@ -12,7 +12,7 @@
 	},
 	"scripts": {
 		"prepare": "husky",
-		"start": "npm run build",
+		"start": "npm run dev",
 		"dev": "astro dev --site=http://localhost:3000/",
 		"build": "astro check && astro build",
 		"prepreview": "npm run build",
@@ -35,11 +35,11 @@
 		"@shikijs/twoslash": "^1.14.1",
 		"@types/hast": "^3.0.4",
 		"@types/mdast": "^4.0.4",
-		"@types/node": "^22.5.0",
+		"@types/node": "^22.5.1",
 		"@typescript-eslint/eslint-plugin": "^8.3.0",
 		"@typescript-eslint/parser": "^8.3.0",
 		"@vite-pwa/astro": "^0.4.0",
-		"astro": "^4.14.5",
+		"astro": "^4.15.1",
 		"astro-icon": "^1.1.1",
 		"eslint": "^9.9.1",
 		"eslint-plugin-astro": "^1.2.3",
@@ -52,7 +52,7 @@
 		"remark-directive": "^3.0.0",
 		"typescript": "^5.5.4",
 		"unist-util-visit": "^5.0.0",
-		"vfile": "^6.0.2"
+		"vfile": "^6.0.3"
 	},
 	"overrides": {
 		"hasown": "npm:@nolyfill/hasown@latest",
