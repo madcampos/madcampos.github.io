@@ -28,3 +28,30 @@ main img {
 	object-fit: contain;
 	width: clamp(var(--min-width), 100%, var(--medium-width));
 }
+
+a[rel~='external']::after {
+	--external-icon-size: 0.65em;
+	background-image: var(--external-link-icon);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	content: '';
+	display: inline-block;
+	height: var(--external-icon-size);
+	vertical-align: super;
+	width: var(--external-icon-size);
+}
+
+blockquote {
+	border: var(--border-width) solid var(--border-color);
+	border-block-end-color: var(--theme-color);
+	border-inline-end-color: var(--theme-color);
+	font-style: italic;
+	margin: var(--spacing-medium);
+	padding-inline: var(--spacing-medium);
+}
+
+blockquote > p {
+	margin-block: 0;
+	padding-block: var(--spacing-large);
+}

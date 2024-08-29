@@ -34,8 +34,9 @@ html, body {
 	align-items: center;
 	display: inline-flex;
 	gap: 0.3em;
-	line-height: 1;
+	line-height: 1.5;
 	overflow-wrap: break-word;
+	vertical-align: bottom;
 	word-break: break-word;
 }
 
