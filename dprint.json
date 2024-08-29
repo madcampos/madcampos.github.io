@@ -138,7 +138,8 @@
 	"excludes": [
 		"dist/**",
 		"**/node_modules",
-		"**/*-lock.json"
+		"**/*-lock.json",
+		"**/.obsidian/**"
 	],
 	"plugins": [
 		"https://plugins.dprint.dev/typescript-0.91.4.wasm",
