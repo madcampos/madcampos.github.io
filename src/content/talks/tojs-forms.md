@@ -13,7 +13,6 @@ techStack:
   - CSS
   - Almost no JS
 ---
-
 In this talk I go over forms and the things we can do with them without needing JS and how far we can get with only HTML and CSS.
 
 ## Forms are hard
@@ -27,6 +26,8 @@ Yeah, you found a bad form... Unfortunately, they are the majority, but with a l
 ## Rule of the least Powerful
 
 We should stick to the least powerful tool to the job, that makes our applications more resilient, accessible, and lighter.
+
+The web works well and is compatible because it builds it's foundation on the simplest tools for the job, that is, structuring content with HTML, styling it with CSS, and only then adding behaviors with JS.
 
 ## HTML Base
 
@@ -78,7 +79,15 @@ The JavaScript validation API is... bad...
 
 It is not extensible, had awful accessibility, and is very weird to work with. But we can leverage that to be only used when we absolutely need extra powers that are not provided already by HTML and CSS, so we can keep that to a minimum.
 
-One example is when we need to apply logic like "check at most 3 options".
+One example is when we need to apply logic like "check at most 3 options". That is a case that is complex enough that it is not covered by the built-in validation on HTML and have to be implemented in JavaScript. But one question is, how often are those kinds of validation really needed?
+
+## It has to go to the server anyways
+
+Yes, client side validation is cool and we should provide it as a tool to help users recover from errors sooner.
+
+One example is number input, by default, they don't block users from entering text, and that is okay. But on places like mobile, where a different keyboard is shown to users, they help by _providing guardrails_ to users.
+
+But even with those guardrails users can still send invalid data in a myriad of ways, so we still need to validate data on the server. The point is that client side navigation won't and should prevent all errors, but it helps mitigate those by _guiding_ users to the correct path.
 
 ## References
 
