@@ -5,6 +5,7 @@ image: ./assets/tojs-forms.png
 imageAlt: A parchement page showing a drawing of Tiamat, the god dragon from Dungeons & Dragons on the left side.
 event: "TorontoJS [ ONLINE ] TechTalk /w Evert Pot & Marco Campos: Choosing Arhitecture For Small Projects / Form Validation With Almost No Javascript"
 eventUrl: https://guild.host/events/torontojs-online-techtalk-z9gqim
+isOnline: true
 date: 2024-08-29
 slides: https://1drv.ms/p/s!AivyfQGK_lAiysNtXGfNfJvYfM8edA?e=aFtBFR
 code: https://github.com/madcampos/dnh
@@ -13,6 +14,7 @@ techStack:
   - CSS
   - Almost no JS
 ---
+
 In this talk I go over forms and the things we can do with them without needing JS and how far we can get with only HTML and CSS.
 
 ## Forms are hard

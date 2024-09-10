@@ -1,6 +1,7 @@
 ---
 title: Press X to pay respects
 summary: A workshop on how to use the Gamepad API
+isOnline: true
 draft: true
 ---
 

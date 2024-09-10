@@ -4,6 +4,8 @@ summary: A quick summary of 5 features the web platform has that you might not k
 event: Toronto JS Lightning Talk Event
 eventUrl: https://guild.host/events/toronto-js-lightning-hctn0n
 date: 2024-04-30
+isOnline: false
+address: "260 Queen St W, Toronto, ON M5V 1Z4"
 image: ./assets/web-features.jpg
 imageAlt: A black background with an orange blob and the text "The Web Can do That?!" in beige.
 slides: https://1drv.ms/p/s!AivyfQGK_lAiw-Rn3UKdAgOuH8YnRA

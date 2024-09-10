@@ -6,7 +6,9 @@ export const talksSchema = ({ image }: SchemaContext) =>
 		summary: zod.string().describe('A summary for the talk that will show in the talks list pages.'),
 		event: zod.string().optional().describe('The event the talk was given.'),
 		eventUrl: zod.string().url().optional().describe('The event URL.'),
+		isOnline: zod.boolean().describe('If the event is an online event.'),
 		date: zod.date().optional().describe('The talk date.'),
+		address: zod.string().optional().describe('The event address, if it is in-person.'),
 		draft: zod.boolean().optional().describe('Whether the is a draft or not.'),
 
 		image: image().optional().describe('The talk main image path, relative to the site root.'),
