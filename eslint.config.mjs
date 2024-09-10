@@ -500,7 +500,7 @@ const astroLanguageOptions = {
 	}
 };
 
-const ignores = ['node_modules/**/*', 'dist/**/*', 'public/**/*', 'dev-dist/**/*'];
+const ignores = ['node_modules/**/*', 'dist/**/*', 'public/**/*', 'dev-dist/**/*', 'src/content/**/*'];
 
 /** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.Plugins} */
 const plugins = {
