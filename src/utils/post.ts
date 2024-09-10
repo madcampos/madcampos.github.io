@@ -1,5 +1,5 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
-import { join } from './path.ts';
+import { join } from './path.js';
 
 export const MAX_POSTS_PER_PAGE = 10;
 
@@ -197,7 +197,7 @@ export async function listPostPagesByTag() {
 	}
 
 	for (const tag of Object.keys(tags)) {
-		 
+
 		tags[tag]?.sort(sortPostsByDate);
 	}
 

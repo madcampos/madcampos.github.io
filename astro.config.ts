@@ -21,7 +21,7 @@ import remarkBreaks from 'remark-breaks';
 import remarkDirective from 'remark-directive';
 
 import { assetsCache, externalResourcesCache, pagesCache, scriptsCache } from './src/sw-caching';
-import { codepenEmbed, youtubeEmbed } from './src/utils/markdown.ts';
+import { codepenEmbed, youtubeEmbed } from './src/utils/markdown.js';
 
 import hcShikiTheme from './src/assets/css/hc-shiki-theme.json';
 

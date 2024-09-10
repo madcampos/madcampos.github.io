@@ -3,11 +3,11 @@ import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from '
 
 import BlogPostsLayout from '../../../layouts/BlogPosts.astro';
 
-import { BLOG } from '../../../constants';
-import { join } from '../../../utils/path.ts';
+import { BLOG } from '../../../constants.js';
+import { join } from '../../../utils/path.js';
 
 import logoBlog from '../../../assets/images/logo/logo-blog.svg';
-import { listPostPagesByYear, MAX_POSTS_PER_PAGE } from '../../../utils/post.ts';
+import { listPostPagesByYear, MAX_POSTS_PER_PAGE } from '../../../utils/post.js';
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;

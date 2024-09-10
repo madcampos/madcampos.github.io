@@ -3,8 +3,8 @@ import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from '
 
 import BlogPostsLayout from '../../layouts/BlogPosts.astro';
 
-import { BLOG } from '../../constants';
-import { listAllPosts, MAX_POSTS_PER_PAGE } from '../../utils/post.ts';
+import { BLOG } from '../../constants.js';
+import { listAllPosts, MAX_POSTS_PER_PAGE } from '../../utils/post.js';
 
 import logoBlog from '../../assets/images/logo/logo-blog.svg';
 

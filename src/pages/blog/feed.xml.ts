@@ -3,8 +3,8 @@ import type { APIRoute, MarkdownInstance } from 'astro';
 import rss, { type RSSFeedItem } from '@astrojs/rss';
 import { getImage } from 'astro:assets';
 
-import { BLOG } from '../../constants';
-import { listAllPosts } from '../../utils/post';
+import { BLOG } from '../../constants.js';
+import { listAllPosts } from '../../utils/post.js';
 
 import defaultImage from '../../assets/images/logo/logo-blog-micro.png';
 

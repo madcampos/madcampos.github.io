@@ -1,10 +1,10 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 
-import { TALKS } from '../../constants';
-import { join } from '../../utils/path.ts';
+import { TALKS } from '../../constants.js';
+import { join } from '../../utils/path.js';
 
-import { listAllTalks } from '../../utils/talks';
+import { listAllTalks } from '../../utils/talks.js';
 
 import { Icon } from 'astro-icon/components';
 import InternalPageLayout from '../../layouts/InternalPage.astro';

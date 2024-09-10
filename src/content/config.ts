@@ -1,10 +1,10 @@
 import { defineCollection } from 'astro:content';
 
-import { authorsSchema } from '../schemas/authors.ts';
-import { blogSchema } from '../schemas/blog.ts';
-import { changelogSchema } from '../schemas/changelog.ts';
-import { projectsSchema } from '../schemas/projects.ts';
-import { talksSchema } from '../schemas/talks.ts';
+import { authorsSchema } from '../schemas/authors.js';
+import { blogSchema } from '../schemas/blog.js';
+import { changelogSchema } from '../schemas/changelog.js';
+import { projectsSchema } from '../schemas/projects.js';
+import { talksSchema } from '../schemas/talks.js';
 
 const blogCollection = defineCollection({
 	type: 'content',

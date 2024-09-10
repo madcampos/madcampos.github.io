@@ -1,8 +1,8 @@
 {
-	"include": ["globals.d.ts", "astro.config.ts", "src/**/*.ts", "src/**/*.d.ts"],
-	"exclude": ["node_modules/**/*", "dist/**/*", ".astro/**/*"],
+	"include": [ "globals.d.ts", "astro.config.ts", "src/**/*.ts", "src/**/*.d.ts", ".astro/**/*.d.ts" ],
+	"exclude": [ "node_modules/**/*", "dist/**/*" ],
 	"compilerOptions": {
-		"allowImportingTsExtensions": true,
+		"allowImportingTsExtensions": false,
 		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
 		"allowUnreachableCode": false,
@@ -13,7 +13,7 @@
 		"experimentalDecorators": true,
 		"forceConsistentCasingInFileNames": true,
 		"incremental": true,
-		"lib": ["DOM", "DOM.Iterable", "ESNext"],
+		"lib": [ "DOM", "DOM.Iterable", "ESNext" ],
 		"module": "ESNext",
 		"moduleResolution": "Node",
 		"newLine": "LF",
