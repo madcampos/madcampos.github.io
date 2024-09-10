@@ -32,8 +32,10 @@ const {
 		title,
 		summary,
 		date,
+		isOnline,
 		event,
 		eventUrl,
+		address,
 		image,
 		imageAlt,
 		slides,
@@ -57,7 +59,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 	image={image?.src}
 	{imageAlt}
 	createdAt={date}
-	pageSchema="EducationEvent"
+	pageSchema="Event"
 >
 	<a href={TALKS.url} slot="logo">
 		<img
@@ -75,6 +77,13 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 		<Icon name="uil:info-circle" title="Info sign" />
 		Talk info
 	</h2>
+
+	<div itemprop="location" itemscope itemtype={isOnline ? 'https://schema.org/VirtualLocation' : 'https://schema.org/Place'} hidden>
+		<meta itemprop={isOnline ? 'url' : 'address'} content={isOnline ? eventUrl : address} />
+		<meta itemprop="eventAttendanceMode" content={isOnline ? 'https://schema.org/OnlineEventAttendanceMode' : 'https://schema.org/OfflineEventAttendanceMode'}/>
+		<meta itemprop="eventStatus" content="https://schema.org/EventScheduled" />
+	</div>
+
 	<ul id="talk-info">
 		{
 			event && (
@@ -83,8 +92,8 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 						<Icon name="uil:presentation-play" title="Icon of a presentation board with a play symbol in it&apos;s center." />
 						Event:
 					</strong>
-					<span itemprop="superEvent">
-						{eventUrl ? <a href={eventUrl} rel="noopener noreferrer">{event}</a> : event}
+					<span>
+						{eventUrl ? <a href={eventUrl} rel="noopener noreferrer" itemprop="url">{event}</a> : event}
 					</span>
 				</li>
 			)
@@ -95,7 +104,8 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 				<Icon name="uil:calendar-alt" title="Icon of a calendar" />
 				Date:
 			</strong>
-			{date && <time datetime={date.toISOString()} itemprop="startDate">{formatter.format(date)}</time>}
+			<meta itemprop="startDate" content={date ? date.toISOString() : '0000-01-01T00:00:00.000Z'} />
+			{date ? <time datetime={date.toISOString()}>{formatter.format(date)}</time> : <span>&mdash;</span>}
 		</li>
 
 		{
