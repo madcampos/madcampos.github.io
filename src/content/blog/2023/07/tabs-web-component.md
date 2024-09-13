@@ -22,7 +22,7 @@ relatedPosts:
   - web-components-basics
 ---
 
-This post is a deeper dive into Web Components, with a focus on building a tab navigation that is accessible. If you are not familiar with Web Components, I recommend you read my [previous post](../06/web-components-basics) on the topic.
+This post is a deeper dive into Web Components, with a focus on building a tab navigation that is accessible. If you are not familiar with Web Components, I recommend you read my [previous post](https://madcampos.dev/blog/2023/06/web-components-basics/) on the topic.
 
 ## Accessible Tabs
 

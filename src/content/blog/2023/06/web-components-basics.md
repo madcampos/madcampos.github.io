@@ -181,4 +181,4 @@ You can check out the full code on CodePen: https://codepen.io/madcampos/pen/WNx
 ::codepen[Dad Jokes - Infinite Scroller]{#WNxYoPv username=madcampos}
 
 I intentionally left styling and some complexities related to components to make the post brief and easy to follow.
-The API is extremely powerful and let's us do a lot... but that is for [other posts](../07/tabs-web-component).
+The API is extremely powerful and let's us do a lot... but that is for [other posts](https://madcampos.dev/blog/2023/07/tabs-web-component/).
