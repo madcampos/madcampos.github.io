@@ -8,7 +8,7 @@
 		"node": ">=20.0.0"
 	},
 	"volta": {
-		"node": "20.17.0"
+		"node": "22.8.0"
 	},
 	"scripts": {
 		"prepare": "husky",
@@ -31,42 +31,44 @@
 		"@iconify-json/brandico": "^1.2.0",
 		"@iconify-json/fa6-brands": "^1.2.0",
 		"@iconify-json/uil": "^1.2.0",
-		"@shikijs/transformers": "^1.16.1",
-		"@shikijs/twoslash": "^1.16.1",
+		"@shikijs/transformers": "^1.17.5",
+		"@shikijs/twoslash": "^1.17.5",
 		"@types/hast": "^3.0.4",
 		"@types/mdast": "^4.0.4",
-		"@types/node": "^22.5.1",
-		"@typescript-eslint/eslint-plugin": "^8.4.0",
-		"@typescript-eslint/parser": "^8.4.0",
-		"@vite-pwa/astro": "^0.4.0",
-		"astro": "^4.15.1",
+		"@types/node": "^22.5.4",
+		"@typescript-eslint/eslint-plugin": "^8.5.0",
+		"@typescript-eslint/parser": "^8.5.0",
+		"@vite-pwa/astro": "^0.4.3",
+		"astro": "^4.15.4",
 		"astro-icon": "^1.1.1",
-		"eslint": "^9.9.1",
-		"eslint-plugin-astro": "^1.2.3",
+		"eslint": "^9.10.0",
+		"eslint-plugin-astro": "^1.2.4",
 		"globals": "15.9.0",
-		"husky": "^9.1.5",
+		"husky": "^9.1.6",
 		"mdast-util-directive": "^3.0.0",
 		"rehype-external-links": "^3.0.0",
 		"remark-behead": "^3.1.0",
 		"remark-breaks": "^4.0.0",
 		"remark-directive": "^3.0.0",
-		"typescript": "^5.5.4",
+		"typescript": "5.6.2",
 		"unist-util-visit": "^5.0.0",
 		"vfile": "^6.0.3"
 	},
 	"overrides": {
-		"hasown": "npm:@nolyfill/hasown@latest",
-		"string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@latest",
-		"array-includes": "npm:@nolyfill/array-includes@latest",
-		"array.prototype.flat": "npm:@nolyfill/array.prototype.flat@latest",
-		"array.prototype.flatmap": "npm:@nolyfill/array.prototype.flatmap@latest",
-		"es-iterator-helpers": "npm:@nolyfill/es-iterator-helpers@latest",
-		"object.assign": "npm:@nolyfill/object.assign@latest",
-		"object.entries": "npm:@nolyfill/object.entries@latest",
-		"object.fromentries": "npm:@nolyfill/object.fromentries@latest",
-		"object.values": "npm:@nolyfill/object.values@latest"
+		"hasown": "npm:@nolyfill/hasown@^1",
+		"string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@^1",
+		"array-includes": "npm:@nolyfill/array-includes@^1",
+		"array.prototype.flat": "npm:@nolyfill/array.prototype.flat@^1",
+		"array.prototype.flatmap": "npm:@nolyfill/array.prototype.flatmap@^1",
+		"es-iterator-helpers": "npm:@nolyfill/es-iterator-helpers@^1",
+		"object.assign": "npm:@nolyfill/object.assign@^1",
+		"object.entries": "npm:@nolyfill/object.entries@^1",
+		"object.fromentries": "npm:@nolyfill/object.fromentries@^1",
+		"object.values": "npm:@nolyfill/object.values@^1",
+		"is-core-module": "npm:@nolyfill/is-core-module@^1"
 	},
 	"dependencies": {
+		"@astrojs/check": "0.9.3",
 		"inapp-spy": "3.0.0"
 	}
 }
