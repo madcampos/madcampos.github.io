@@ -8,6 +8,7 @@ eventUrl: https://guild.host/events/torontojs-online-techtalk-z9gqim
 isOnline: true
 date: 2024-08-29
 slides: https://1drv.ms/p/s!AivyfQGK_lAiysNtXGfNfJvYfM8edA?e=aFtBFR
+video: https://www.youtube.com/watch?v=1DtWgmMAI60
 code: https://github.com/madcampos/dnh
 techStack:
   - HTML
