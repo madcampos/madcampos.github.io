@@ -10,16 +10,16 @@ export function join(paths: string[], options?: Partial<JoinOptions>) {
 		...options
 	};
 
-	const joinedPath = paths.join(opts.separator).replaceAll(`${opts.separator}${opts.separator}`, opts.separator);
+	const joinedPath = paths.join(opts.separator).replaceAll(new RegExp(`(?<!:)${opts.separator}{2,}`, 'giu'), opts.separator);
 
 	let normalizedPath = joinedPath;
 
 	switch (opts.trailingSlash) {
 		case true:
-			normalizedPath = `${joinedPath}${opts.separator}`.replaceAll(`${opts.separator}${opts.separator}`, opts.separator);
+			normalizedPath = `${joinedPath}${opts.separator}`.replaceAll(new RegExp(`(?<!:)${opts.separator}{2,}`, 'giu'), opts.separator);
 			break;
 		case false:
-			normalizedPath = joinedPath.replace(new RegExp(`${opts.separator}$`, 'u'), '');
+			normalizedPath = joinedPath.replace(new RegExp(`${opts.separator}$`, 'iu'), '');
 			break;
 		default:
 	}
