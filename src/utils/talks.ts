@@ -1,4 +1,4 @@
-import { getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 
 export async function listAllTalks() {
 	const talkEntries = await getCollection('talks');
@@ -7,5 +7,5 @@ export async function listAllTalks() {
 		(second.data.date?.getTime() ?? 0) - (first.data.date?.getTime() ?? 0) || first.data.title.localeCompare(second.data.title, 'en-US')
 	);
 
-	return talks;
+	return talks as unknown as CollectionEntry<'talks'>[];
 }

@@ -1,9 +1,8 @@
 ---
-import { getEntry } from 'astro:content';
-
 import Avatar from '../Avatar/index.astro';
 
 import './styles.css';
+import { getAuthor } from '../../utils/authors.js';
 
 interface Props {
 	author: string;
@@ -13,7 +12,7 @@ interface Props {
 const { author, url } = Astro.props;
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const { data: { avatar, avatarAlt, name, website }, render } = (await getEntry('authors', author))!;
+const { data: { avatar, avatarAlt, name, website }, render } = (await getAuthor(author))!;
 const { Content } = await render();
 ---
 <div class="author-card" itemprop="author" itemscope itemtype="https://schema.org/Person">

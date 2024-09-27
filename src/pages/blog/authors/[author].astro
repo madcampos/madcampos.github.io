@@ -1,6 +1,6 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
-import { getCollection } from 'astro:content';
+import { listAllAuthors } from '../../../utils/authors.js';
 
 import { BLOG, BLOG_AUTHOR } from '../../../constants.js';
 
@@ -16,7 +16,7 @@ import logoBlog from '../../../assets/images/logo/logo-blog.svg';
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 export const getStaticPaths = (async () =>
-	(await getCollection('authors')).map((author) => ({
+	(await listAllAuthors()).map((author) => ({
 		params: { author: author.slug },
 		props: { ...author.data, render: author.render, slug: author.slug }
 	}))) satisfies GetStaticPaths;
