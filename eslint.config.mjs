@@ -475,7 +475,8 @@ const languageOptions = {
 	parser: tsParser,
 	parserOptions: {
 		ecmaFeatures: { impliedStrict: true },
-		projectService: true
+		project: true,
+		tsconfigRootDir: import.meta.dirname
 	}
 };
 
@@ -495,7 +496,8 @@ const astroLanguageOptions = {
 	parserOptions: {
 		parser: tsParser,
 		ecmaFeatures: { impliedStrict: true },
-		projectService: true,
+		project: true,
+		tsconfigRootDir: import.meta.dirname,
 		extraFileExtensions: ['.astro']
 	}
 };
@@ -517,30 +519,31 @@ export default [
 		languageOptions,
 		plugins,
 		rules
-		// TODO: reenable eslint in astro files
-		// },
-		// {
-		// 	name: 'Astro files',
-		// 	files: ['src/**/*.astro'],
-		// 	ignores,
-		// 	languageOptions: astroLanguageOptions,
-		// 	plugins,
-		// 	rules
-		// },
-		// {
-		// 	name: 'Astro JS files',
-		// 	files: ['**/*.astro/*.js', '*.astro/*.js'],
-		// 	ignores,
-		// 	languageOptions,
-		// 	plugins,
-		// 	rules
-		// },
-		// {
-		// 	name: 'Astro TS files',
-		// 	files: ['**/*.astro/*.ts', '*.astro/*.ts'],
-		// 	ignores,
-		// 	languageOptions,
-		// 	plugins,
-		// 	rules
 	}
+	// TODO: reenable astro linting
+	// {
+	// 	name: 'Astro files',
+	// 	files: ['src/**/*.astro'],
+	// 	ignores,
+	// 	languageOptions: astroLanguageOptions,
+	// 	plugins,
+	// 	rules,
+	// 	processor: 'astro/client-side-ts'
+	// },
+	// {
+	// 	name: 'Astro JS files',
+	// 	files: ['**/*.astro/*.js', '*.astro/*.js'],
+	// 	ignores,
+	// 	languageOptions,
+	// 	plugins,
+	// 	rules
+	// },
+	// {
+	// 	name: 'Astro TS files',
+	// 	files: ['**/*.astro/*.ts', '*.astro/*.ts'],
+	// 	ignores,
+	// 	languageOptions,
+	// 	plugins,
+	// 	rules
+	// }
 ];
