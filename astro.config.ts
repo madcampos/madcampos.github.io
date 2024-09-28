@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { readFileSync } from 'node:fs';
 
 import sitemap from '@astrojs/sitemap';
@@ -95,8 +93,6 @@ export default defineConfig({
 			includeAssets: ['/icons/icon.svg', '/offline/index.html'],
 			manifest,
 			workbox: {
-				// No precache
-				globPatterns: [],
 				// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 				maximumFileSizeToCacheInBytes: 1024 * 128,
 				cleanupOutdatedCaches: true,

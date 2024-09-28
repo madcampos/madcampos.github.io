@@ -6,25 +6,9 @@ type Unpacked<T> = NonNullable<T extends (infer U)[] ? U : T>;
 
 type RuntimeCaching = Unpacked<VitePWAOptions['workbox']['runtimeCaching']>;
 
-export const pageRedirect: RuntimeCaching = {
-	urlPattern: ({ sameOrigin, request }) => sameOrigin && request.destination === 'document' && request.url.endsWith('/'),
-	handler: async ({ request }) => {
-		console.log(request);
-		// TODO: respond with a redirect
-		const response = new Response();
-
-		return Promise.resolve(response);
-	}
-};
-
 export const pagesCache: RuntimeCaching = {
 	urlPattern: ({ sameOrigin, request }) => {
 		const isCacheHit = sameOrigin && request.destination === 'document';
-
-		if (isCacheHit) {
-			console.log('Pages cache hit');
-			console.log(request);
-		}
 
 		return isCacheHit;
 	},
@@ -47,11 +31,6 @@ export const assetsCache: RuntimeCaching = {
 	urlPattern: ({ request, sameOrigin }) => {
 		const isCacheHit = sameOrigin && ['font', 'image'].includes(request.destination);
 
-		if (isCacheHit) {
-			console.log('Assets cache hit');
-			console.log(request);
-		}
-
 		return isCacheHit;
 	},
 	handler: 'CacheFirst',
@@ -71,11 +50,6 @@ export const assetsCache: RuntimeCaching = {
 export const scriptsCache: RuntimeCaching = {
 	urlPattern: ({ request, sameOrigin }) => {
 		const isCacheHit = sameOrigin && ['script', 'style'].includes(request.destination);
-
-		if (isCacheHit) {
-			console.log('Scripts cache hit');
-			console.log(request);
-		}
 
 		return isCacheHit;
 	},
@@ -99,13 +73,8 @@ export const scriptsCache: RuntimeCaching = {
 };
 
 export const externalResourcesCache: RuntimeCaching = {
-	urlPattern: ({ sameOrigin, request }) => {
+	urlPattern: ({ sameOrigin }) => {
 		const isCacheHit = !sameOrigin;
-
-		if (isCacheHit) {
-			console.log('External cache hit');
-			console.log(request);
-		}
 
 		return isCacheHit;
 	},
