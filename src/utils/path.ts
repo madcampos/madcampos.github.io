@@ -3,9 +3,11 @@ interface JoinOptions {
 	separator: '/' | '\\';
 }
 
+const DEFAULT_TRAILING_SLASHES = true;
+
 export function join(paths: string[], options?: Partial<JoinOptions>) {
 	const opts: JoinOptions = {
-		trailingSlash: true,
+		trailingSlash: DEFAULT_TRAILING_SLASHES,
 		separator: '/',
 		...options
 	};

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { readFileSync } from 'node:fs';
 
 import sitemap from '@astrojs/sitemap';
@@ -89,23 +91,32 @@ export default defineConfig({
 			registerType: 'prompt',
 			experimental: { directoryAndTrailingSlashHandler: true },
 			minify: true,
-			includeAssets: ['/icons/icon.svg'],
+			showMaximumFileSizeToCacheInBytesWarning: true,
+			includeAssets: ['/icons/icon.svg', '/offline/index.html'],
 			manifest,
 			workbox: {
+				// No precache
+				globPatterns: [],
 				// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 				maximumFileSizeToCacheInBytes: 1024 * 128,
 				cleanupOutdatedCaches: true,
 				clientsClaim: true,
-				skipWaiting: false,
-				navigateFallback: '/offline/',
+				skipWaiting: true,
+				navigateFallback: '/offline/index.html',
 				navigateFallbackDenylist: [/\.(?:png|gif|jpg|jpeg|webp|svg|ico)$/iu],
 				directoryIndex: 'index.html',
-				runtimeCaching: [externalResourcesCache, assetsCache, scriptsCache, pagesCache]
+				runtimeCaching: [
+					externalResourcesCache,
+					assetsCache,
+					scriptsCache,
+					pagesCache
+				],
+				disableDevLogs: false
 			},
 			devOptions: {
 				enabled: false
 			},
-			selfDestroying: true
+			selfDestroying: false
 		}),
 		sitemap({
 			changefreq: 'weekly',

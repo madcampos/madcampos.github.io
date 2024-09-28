@@ -6,12 +6,32 @@ type Unpacked<T> = NonNullable<T extends (infer U)[] ? U : T>;
 
 type RuntimeCaching = Unpacked<VitePWAOptions['workbox']['runtimeCaching']>;
 
+export const pageRedirect: RuntimeCaching = {
+	urlPattern: ({ sameOrigin, request }) => sameOrigin && request.destination === 'document' && request.url.endsWith('/'),
+	handler: async ({ request }) => {
+		console.log(request);
+		// TODO: respond with a redirect
+		const response = new Response();
+
+		return Promise.resolve(response);
+	}
+};
+
 export const pagesCache: RuntimeCaching = {
-	urlPattern: ({ url }) => url.origin === location.origin && !(/\.(?:png|gif|jpg|jpeg|webp|svg|ico|woff2|js|json|xml|xsl|webmanifest|css)$/iu).test(url.pathname),
+	urlPattern: ({ sameOrigin, request }) => {
+		const isCacheHit = sameOrigin && request.destination === 'document';
+
+		if (isCacheHit) {
+			console.log('Pages cache hit');
+			console.log(request);
+		}
+
+		return isCacheHit;
+	},
 	handler: 'NetworkFirst',
 	options: {
 		matchOptions: { ignoreSearch: true },
-		precacheFallback: { fallbackURL: '/offline/' },
+		precacheFallback: { fallbackURL: '/offline/index.html' },
 		cacheName: 'pages-cache',
 		expiration: {
 			maxAgeSeconds: 60 * 60 * 24,
@@ -24,7 +44,16 @@ export const pagesCache: RuntimeCaching = {
 };
 
 export const assetsCache: RuntimeCaching = {
-	urlPattern: ({ url }) => url.origin === location.origin && (/\.(?:png|gif|jpg|jpeg|webp|svg|ico|woff2)$/iu).test(url.pathname),
+	urlPattern: ({ request, sameOrigin }) => {
+		const isCacheHit = sameOrigin && ['font', 'image'].includes(request.destination);
+
+		if (isCacheHit) {
+			console.log('Assets cache hit');
+			console.log(request);
+		}
+
+		return isCacheHit;
+	},
 	handler: 'CacheFirst',
 	options: {
 		cacheName: 'assets-cache',
@@ -40,7 +69,16 @@ export const assetsCache: RuntimeCaching = {
 };
 
 export const scriptsCache: RuntimeCaching = {
-	urlPattern: ({ url }) => url.origin === location.origin && (/\.(?:js|json|xml|xsl|webmanifest|css)$/iu).test(url.pathname),
+	urlPattern: ({ request, sameOrigin }) => {
+		const isCacheHit = sameOrigin && ['script', 'style'].includes(request.destination);
+
+		if (isCacheHit) {
+			console.log('Scripts cache hit');
+			console.log(request);
+		}
+
+		return isCacheHit;
+	},
 	handler: 'StaleWhileRevalidate',
 	options: {
 		cacheName: 'scripts-cache',
@@ -61,6 +99,15 @@ export const scriptsCache: RuntimeCaching = {
 };
 
 export const externalResourcesCache: RuntimeCaching = {
-	urlPattern: ({ url }) => url.origin !== location.origin,
+	urlPattern: ({ sameOrigin, request }) => {
+		const isCacheHit = !sameOrigin;
+
+		if (isCacheHit) {
+			console.log('External cache hit');
+			console.log(request);
+		}
+
+		return isCacheHit;
+	},
 	handler: 'NetworkOnly'
 };
