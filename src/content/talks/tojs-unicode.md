@@ -18,7 +18,7 @@ techStack:
 
 What happens when you are faced with some of the most mind bending things in computer history? Does the abyss stare back at you?
 
-## Undestanding Unicode
+## Understanding Unicode
 
 In the ancient times, there was no standard on how to represent text by computers. Then IBM created ASCII, a way to represent text by computers. It was good but only represented latin scripts, so everything else was excluded.
 
