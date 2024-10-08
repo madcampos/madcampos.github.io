@@ -49,10 +49,11 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 				<slot name="title"></slot>
 			</h2>
 		</a>
+
+		<meta itemprop="eventAttendanceMode" content={isOnline ? 'https://schema.org/OnlineEventAttendanceMode' : 'https://schema.org/OfflineEventAttendanceMode'} />
+		<meta itemprop="eventStatus" content="https://schema.org/EventScheduled" />
 		<div itemprop="location" itemscope itemtype={isOnline ? 'https://schema.org/VirtualLocation' : 'https://schema.org/Place'} hidden>
 			<meta itemprop={isOnline ? 'url' : 'address'} content={isOnline ? url : address} />
-			<meta itemprop="eventAttendanceMode" content={isOnline ? 'https://schema.org/OnlineEventAttendanceMode' : 'https://schema.org/OfflineEventAttendanceMode'}/>
-			<meta itemprop="eventStatus" content="https://schema.org/EventScheduled" />
 		</div>
 		<aside>
 			{
@@ -67,7 +68,18 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 			{
 				event && (
 					<small itemprop="superEvent">
-						<Icon name="uil:presentation-play" title="Icon of a presentation board with a play symbol in it&apos;s center." /> {event}
+						<meta itemprop="startDate" content={date ? date.toISOString() : '0000-01-01T00:00:00.000Z'} />
+						<meta
+							itemprop="eventAttendanceMode"
+							content={isOnline ? 'https://schema.org/OnlineEventAttendanceMode' : 'https://schema.org/OfflineEventAttendanceMode'}
+						/>
+						<meta itemprop="eventStatus" content="https://schema.org/EventScheduled" />
+						<div itemprop="location" itemscope itemtype={isOnline ? 'https://schema.org/VirtualLocation' : 'https://schema.org/Place'} hidden>
+							<meta itemprop={isOnline ? 'url' : 'address'} content={isOnline ? url : address} />
+						</div>
+
+						<Icon name="uil:presentation-play" title="Icon of a presentation board with a play symbol in it&apos;s center." />
+						<span>{event}</span>
 					</small>
 				)
 			}
