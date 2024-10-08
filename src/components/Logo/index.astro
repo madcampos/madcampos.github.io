@@ -1,0 +1,51 @@
+---
+type LogoStyles = 'full' | 'mini' | 'micro';
+
+interface Props {
+	style: LogoStyles;
+	subtitle: string;
+	shortSubtitle: string;
+	altText: string;
+	url?: URL | string;
+}
+
+const sizes = {
+	full: { width: 0, height: 0, subtitle: { length: 21, padEnd: 4 } },
+	mini: { width: 0, height: 0, subtitle: { length: 12, padEnd: 4 } },
+	micro: { width: 0, height: 0, subtitle: { length: 9, padEnd: 2 } }
+} as const;
+
+function formatSubttile(subtitle: string, shortSubtitle: string, style: LogoStyles) {
+	const { subtitle: { length, padEnd } } = sizes[style];
+	const MIN_START_PADDING = 2;
+	const MIN_END_PADDING = 2;
+
+	let formattedSubtitle = subtitle;
+
+	if (formattedSubtitle.length + MIN_END_PADDING + MIN_START_PADDING >= length) {
+		formattedSubtitle = shortSubtitle;
+	}
+
+	if (formattedSubtitle.length + padEnd < length) {
+		formattedSubtitle = `${formattedSubtitle}${'-'.repeat(padEnd)}`;
+	} else {
+		formattedSubtitle = `${formattedSubtitle}${'-'.repeat(MIN_END_PADDING)}`;
+	}
+
+	return formattedSubtitle.padStart(length, '-');
+}
+
+const { style, url, altText, subtitle, shortSubtitle } = Astro.props;
+const { width, height } = sizes[style];
+---
+<a href={url} slot="logo">
+	<svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`}>
+		<title>{altText}</title>
+		<!-- TODO: align text to the right -->
+		<!-- TODO: move CSS to css file -->
+		<text x="335.05px" y="790px" style="font-family:'Mecano-Light', 'Mecano';font-weight:300;font-size:150px;fill:#ff8000;">
+			{formatSubttile(subtitle, shortSubtitle, style)}
+		</text>
+		<!-- TODO: add logo paths based on styles -->
+	</svg>
+</a>
