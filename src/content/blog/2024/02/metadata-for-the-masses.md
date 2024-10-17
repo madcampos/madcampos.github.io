@@ -19,7 +19,7 @@ relatedPosts:
   - more-meta-more-data
 ---
 
-After my [explorations on RSS](https://madcampos.dev/blog/2023/06/xml-is-not-dead) I was dragged into yet another rabbit hole... Metadata!
+After my [explorations on RSS](/blog/2023/06/xml-is-not-dead/) I was dragged into yet another rabbit hole... Metadata!
 
 This is my journey on adding metadata to my website so it is compliant and tools are able to parse it nicely.
 

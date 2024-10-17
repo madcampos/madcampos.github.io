@@ -34,7 +34,7 @@ Vite is really good to write single page apps and the kings of applications that
 
 This site, and blog, is mostly static and can be generated based on data and a set of templates.
 
-My first attempt was to write the tooling myself to see how that worked (you can read about it on the posts ["Hello, World!"](https://madcampos.dev/blog/2023/05/hello-world/) and ["The Semantics of Blogging"](https://madcampos.dev/blog/2023/06/blog-structure/)), but that proved to be more difficult than expected.
+My first attempt was to write the tooling myself to see how that worked (you can read about it on the posts ["Hello, World!"](/blog/2023/05/hello-world/) and ["The Semantics of Blogging"](/blog/2023/06/blog-structure/)), but that proved to be more difficult than expected.
 
 In short, I had to write a lot of code to tell [parcel](https://parceljs.org/), the bundler that vite uses underneath to tell it what files to process. It got compounded because this was a hacky way to do things. I should have wrapped the code into a vite plugin and not a process to run before vite does it's thing.
 
@@ -64,7 +64,7 @@ Migrating the blog was a couple days of light work, not very hard to do and I wa
 
 ![AI generated image of a long road leading to a city. The road has multiple police lines and some cars parked along the way creating a blocade.](./assets/road-block.jpeg)
 
-I'm _extremely_ particular about my XMLs, [RSS](https://madcampos.dev/blog/2023/06/xml-is-not-dead/) and [SVGs](https://codepen.io/madcampos/pen/NWRdOeW) and I'd like to keep it that way. One issue that kept me going in circles for a while was generating the post images for the RSS feeds.
+I'm _extremely_ particular about my XMLs, [RSS](/blog/2023/06/xml-is-not-dead/) and [SVGs](https://codepen.io/madcampos/pen/NWRdOeW) and I'd like to keep it that way. One issue that kept me going in circles for a while was generating the post images for the RSS feeds.
 
 The problem with that is that the RSS specification requires that you specify the image size in bytes. And as much as Astro is helpful it doesn't provide a way to get the image size at build time.
 

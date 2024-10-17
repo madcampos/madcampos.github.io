@@ -66,7 +66,7 @@ If you want, you can repost your data to those silos, and consume updates from t
 
 Unfortunately right now it seems a little bit contrived to put everything together, but with a little bit of love you can put everything together, for almost free!
 
-I'll be following up on this subject with a post on [webmentions](https://indieweb.org/Webmention), once I get that working properly. You can also read for now on the [basics of metadata](https://madcampos.dev/blog/2024/02/metadata-for-the-masses/).
+I'll be following up on this subject with a post on [webmentions](https://indieweb.org/Webmention), once I get that working properly. You can also read for now on the [basics of metadata](/blog/2024/02/metadata-for-the-masses/).
 
 Until then let's retake the web from FAANG's fangs!
 

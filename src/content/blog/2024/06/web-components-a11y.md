@@ -27,8 +27,8 @@ The Shadow DOM is a way to encapsulate and hide the implementation of your compo
 
 You can read more about web components on those two posts:
 
-- [Web Component: A (Not So) Gentle Introduction](https://madcampos.dev/blog/2023/06/web-components-basics/)
-- [Tabs, Tabs, Tabs](https://madcampos.dev/blog/2023/07/tabs-web-component/)
+- [Web Component: A (Not So) Gentle Introduction](/blog/2023/06/web-components-basics/)
+- [Tabs, Tabs, Tabs](/blog/2023/07/tabs-web-component/)
 
 Okay, back to the Shadow DOM, you can either use it, or not. Below are two examples, the first without a Shadow DOM and the second one with it (using [Declarative Shadow DOM](https://developer.chrome.com/docs/css-ui/declarative-shadow-dom)).
 
@@ -121,7 +121,7 @@ For forms it means you can implement all of the cool form validations and expose
 
 Now for the part we care more here, the accessibility of `attachInternals`. It exposes programatic equivalents to `role` and all of the static `aria-*` attributes. That means we can set that information when creating or manipulating the element.
 
-I've wrote a full featured example for that on the post "[Tabs, Tabs, Tabs](https://madcampos.dev/blog/2023/07/tabs-web-component/)". The code example is here: https://codepen.io/madcampos/pen/NWEzogQ.
+I've wrote a full featured example for that on the post "[Tabs, Tabs, Tabs](/blog/2023/07/tabs-web-component/)". The code example is here: https://codepen.io/madcampos/pen/NWEzogQ.
 
 As an aside, this is the best reference ever for how to implement complex interactions on the web: [https://www.w3.org/WAI/ARIA/apg/patterns/](https://www.w3.org/WAI/ARIA/apg/patterns/). The pattern I used to implement the tabs web component is straight from this list and I got positive feedback that it is indeed accessible.
 

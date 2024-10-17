@@ -17,9 +17,9 @@ techStack:
   - Vite
 relatedContent:
   - title: "Web Components: A (Not So) Gentle Introduction"
-    url: https://madcampos.dev/blog/2023/06/web-components-basics/
+    url: /blog/2023/06/web-components-basics/
   - title: Tabs, Tabs, Tabs
-    url: https://madcampos.dev/blog/2023/07/tabs-web-component/
+    url: /blog/2023/07/tabs-web-component/
 ---
 
 ![A photo of me presenting to an audience. I'm on the background holding a microphone next to a projector with large windows behind me showing a great view of Toronto's summer. On the foreground there is a group of people viewed from the back turned at the presentation on the background.](./assets/web-components-talk.jpg)
