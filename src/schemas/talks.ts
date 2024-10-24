@@ -20,7 +20,7 @@ export const talksSchema = ({ image }: SchemaContext) =>
 		demo: zod.string().url().optional().describe('The talk demo.'),
 		relatedContent: zod.object({
 			title: zod.string().describe('The related content title.'),
-			url: zod.string().url().describe('The related content URL.')
+			url: zod.string().describe('The related content URL.')
 		}).array().nonempty().optional().describe('The related content.'),
 		techStack: zod.array(zod.string()).optional().describe('The talk technologies used.')
 	});
