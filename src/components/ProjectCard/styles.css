@@ -1,94 +1,96 @@
-.project-card {
-	--image-size: var(--avatar-size);
-	background-color: var(--bg-color);
-	border: solid var(--highlight-border-color) var(--border-width);
-	display: grid;
-	gap: var(--spacing-large);
-	grid-template-areas:
-		'header header'
-		'picture content'
-		'picture links'
-		'footer footer';
-	grid-template-columns: var(--image-size) 1fr;
-	grid-template-rows: auto 1fr auto auto;
-	margin: var(--spacing-large);
-	padding: var(--spacing-large);
-}
-
-.project-card:not(:has(picture)) {
-	grid-template-areas:
-		'header'
-		'content'
-		'links'
-		'footer';
-	grid-template-columns: 1fr;
-	grid-template-rows: auto 1fr auto auto;
-}
-
-.project-card .project-icon {
-	grid-area: picture;
-	max-width: 50vmin;
-	place-self: start center;
-}
-
-.project-card header { grid-area: header; }
-.project-card header h2 { margin: 0; }
-
-.project-card header aside {
-	align-items: center;
-	display: flex;
-	flex-wrap: wrap;
-	font-size: var(--small-text);
-	gap: var(--spacing-large);
-	margin-block-start: var(--spacing-small);
-}
-
-.project-card .project-status {
-	color: var(--dark-bg-color);
-	padding: var(--spacing-small) var(--spacing-medium);
-}
-
-.project-card .project-status.finished { background-color: limegreen; }
-
-.project-card .project-status.ongoing { background-color: orange; }
-
-.project-card .project-content { grid-area: content; }
-.project-card .project-content > *:first-child { margin-block-start: 0; }
-
-.project-card .project-links { grid-area: links; }
-.project-card .project-info { grid-area: footer; }
-
-.project-card .technology-tags {
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--spacing-large);
-	list-style-type: '';
-	margin: var(--spacing-large) 0;
-	padding: 0;
-}
-
-.project-card .tag {
-	background-color: var(--tag-bg);
-	color: var(--tag-color);
-	display: inline-block;
-	font-size: var(--small-text);
-	list-style-type: '';
-	margin: 0;
-	padding: var(--spacing-small) var(--spacing-medium);
-}
-
-@media (max-width: 550px) {
+@layer components {
 	.project-card {
-		--image-size: var(--avatar-small-size);
+		--image-size: var(--avatar-size);
+		background-color: var(--bg-color);
+		border: solid var(--highlight-border-color) var(--border-width);
+		display: grid;
+		gap: var(--spacing-large);
+		grid-template-areas:
+			'header header'
+			'picture content'
+			'picture links'
+			'footer footer';
+		grid-template-columns: var(--image-size) 1fr;
+		grid-template-rows: auto 1fr auto auto;
+		margin: var(--spacing-large);
+		padding: var(--spacing-large);
+	}
+
+	.project-card:not(:has(picture)) {
 		grid-template-areas:
 			'header'
-			'picture'
 			'content'
 			'links'
 			'footer';
 		grid-template-columns: 1fr;
-		grid-template-rows: auto var(--image-size) auto auto auto;
+		grid-template-rows: auto 1fr auto auto;
 	}
 
-	.project-card .project-icon { place-self: center center; }
+	.project-card .project-icon {
+		grid-area: picture;
+		max-width: 50vmin;
+		place-self: start center;
+	}
+
+	.project-card header { grid-area: header; }
+	.project-card header h2 { margin: 0; }
+
+	.project-card header aside {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		font-size: var(--small-text);
+		gap: var(--spacing-large);
+		margin-block-start: var(--spacing-small);
+	}
+
+	.project-card .project-status {
+		color: var(--dark-bg-color);
+		padding: var(--spacing-small) var(--spacing-medium);
+	}
+
+	.project-card .project-status.finished { background-color: limegreen; }
+
+	.project-card .project-status.ongoing { background-color: orange; }
+
+	.project-card .project-content { grid-area: content; }
+	.project-card .project-content > *:first-child { margin-block-start: 0; }
+
+	.project-card .project-links { grid-area: links; }
+	.project-card .project-info { grid-area: footer; }
+
+	.project-card .technology-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-large);
+		list-style-type: '';
+		margin: var(--spacing-large) 0;
+		padding: 0;
+	}
+
+	.project-card .tag {
+		background-color: var(--tag-bg);
+		color: var(--tag-color);
+		display: inline-block;
+		font-size: var(--small-text);
+		list-style-type: '';
+		margin: 0;
+		padding: var(--spacing-small) var(--spacing-medium);
+	}
+
+	@media (max-width: 550px) {
+		.project-card {
+			--image-size: var(--avatar-small-size);
+			grid-template-areas:
+				'header'
+				'picture'
+				'content'
+				'links'
+				'footer';
+			grid-template-columns: 1fr;
+			grid-template-rows: auto var(--image-size) auto auto auto;
+		}
+
+		.project-card .project-icon { place-self: center center; }
+	}
 }

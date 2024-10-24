@@ -1,9 +1,11 @@
-#author-list, #contents {
-	align-items: center;
-	display: flex;
-	flex-flow: column wrap;
-	gap: var(--spacing-large);
-	list-style-type: '';
-	margin-block: 0;
-	padding: 0;
+@layer pages {
+	#author-list, #contents {
+		align-items: center;
+		display: flex;
+		flex-flow: column wrap;
+		gap: var(--spacing-large);
+		list-style-type: '';
+		margin-block: 0;
+		padding: 0;
+	}
 }

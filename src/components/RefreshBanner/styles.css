@@ -1,66 +1,68 @@
-#pwa-toast {
-	align-items: center;
-	background-color: var(--bg-color);
-	border: solid var(--highlight-border-color) var(--border-width);
-	display: flex;
-	gap: var(--spacing-medium);
-	inset-block-end: var(--spacing-small);
-	inset-inline: 0;
-	justify-content: space-between;
-	margin-inline: auto;
-	padding: var(--spacing-medium) var(--spacing-large);
-	position: fixed;
-	visibility: hidden;
-	width: clamp(var(--min-width), 100%, var(--medium-width));
-	z-index: calc(1 * infinity);
+@layer components {
+	#pwa-toast {
+		align-items: center;
+		background-color: var(--bg-color);
+		border: solid var(--highlight-border-color) var(--border-width);
+		display: flex;
+		gap: var(--spacing-medium);
+		inset-block-end: var(--spacing-small);
+		inset-inline: 0;
+		justify-content: space-between;
+		margin-inline: auto;
+		padding: var(--spacing-medium) var(--spacing-large);
+		position: fixed;
+		visibility: hidden;
+		width: clamp(var(--min-width), 100%, var(--medium-width));
+		z-index: calc(1 * infinity);
+	}
+
+	#pwa-toast:is([data-offline], [data-refresh]) { visibility: visible; }
+
+	#pwa-toast div {
+		flex-basis: min-content;
+		flex-grow: 1;
+	}
+
+	#pwa-toast button {
+		background-color: transparent;
+		border: var(--border-width) solid var(--border-color);
+		border-radius: 100vmax;
+		color: var(--text-color);
+		cursor: pointer;
+		display: none;
+		height: var(--button-size);
+		padding: var(--spacing-small);
+		place-items: center;
+		width: var(--button-size);
+	}
+
+	#pwa-toast button:focus-visible {
+		background-color: var(--theme-color);
+		border-color: var(--text-color);
+		color: var(--text-color);
+	}
+
+	#pwa-toast button:hover {
+		background-color: var(--dark-bg-color);
+		border-color: var(--accent-color);
+		color: var(--accent-color);
+		outline-color: var(--accent-color);
+	}
+
+	#pwa-toast button:active {
+		background-color: var(--accent-color);
+		border-color: var(--text-color);
+		color: var(--text-color);
+		outline-color: var(--text-color);
+	}
+
+	#pwa-toast button svg {
+		height: 100%;
+		pointer-events: none;
+		width: 100%;
+	}
+
+	#pwa-toast[data-offline] #pwa-close { display: grid; }
+
+	#pwa-toast[data-refresh] #pwa-refresh { display: grid; }
 }
-
-#pwa-toast:is([data-offline], [data-refresh]) { visibility: visible; }
-
-#pwa-toast div {
-	flex-basis: min-content;
-	flex-grow: 1;
-}
-
-#pwa-toast button {
-	background-color: transparent;
-	border: var(--border-width) solid var(--border-color);
-	border-radius: 100vmax;
-	color: var(--text-color);
-	cursor: pointer;
-	display: none;
-	height: var(--button-size);
-	padding: var(--spacing-small);
-	place-items: center;
-	width: var(--button-size);
-}
-
-#pwa-toast button:focus-visible {
-	background-color: var(--theme-color);
-	border-color: var(--text-color);
-	color: var(--text-color);
-}
-
-#pwa-toast button:hover {
-	background-color: var(--dark-bg-color);
-	border-color: var(--accent-color);
-	color: var(--accent-color);
-	outline-color: var(--accent-color);
-}
-
-#pwa-toast button:active {
-	background-color: var(--accent-color);
-	border-color: var(--text-color);
-	color: var(--text-color);
-	outline-color: var(--text-color);
-}
-
-#pwa-toast button svg {
-	height: 100%;
-	pointer-events: none;
-	width: 100%;
-}
-
-#pwa-toast[data-offline] #pwa-close { display: grid; }
-
-#pwa-toast[data-refresh] #pwa-refresh { display: grid; }

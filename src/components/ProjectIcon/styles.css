@@ -1,19 +1,21 @@
-.project-icon {
-	aspect-ratio: 1 / 1;
-	display: block;
-	height: auto;
-	mask: url('../../assets/images/squircle.svg');
-	mask-position: center;
-	mask-repeat: no-repeat;
-	mask-size: contain;
-	max-height: 100%;
-	overflow: hidden;
-	width: 100%;
-}
+@layer components {
+	.project-icon {
+		aspect-ratio: 1 / 1;
+		display: block;
+		height: auto;
+		mask: url('../../assets/images/squircle.svg');
+		mask-position: center;
+		mask-repeat: no-repeat;
+		mask-size: contain;
+		max-height: 100%;
+		overflow: hidden;
+		width: 100%;
+	}
 
-.project-icon img {
-	height: 100%;
-	object-fit: contain;
-	object-position: top center;
-	width: 100%;
+	.project-icon img {
+		height: 100%;
+		object-fit: contain;
+		object-position: top center;
+		width: 100%;
+	}
 }

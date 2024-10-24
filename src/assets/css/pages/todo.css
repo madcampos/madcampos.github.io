@@ -1,15 +1,17 @@
-#todo-list label:has(input:checked) {
-	text-decoration: line-through;
-	text-decoration-style: solid;
-	text-decoration-thickness: calc(var(--border-width) * 0.5);
-}
+@layer pages {
+	#todo-list label:has(input:checked) {
+		text-decoration: line-through;
+		text-decoration-style: solid;
+		text-decoration-thickness: calc(var(--border-width) * 0.5);
+	}
 
-#todo-list label:has(input[aria-disabled]) {
-	text-decoration-line: line-through;
-	text-decoration-style: double;
-}
+	#todo-list label:has(input[aria-disabled]) {
+		text-decoration-line: line-through;
+		text-decoration-style: double;
+	}
 
-#todo-list input[aria-disabled] {
-	filter: grayscale(1);
-	pointer-events: none;
+	#todo-list input[aria-disabled] {
+		filter: grayscale(1);
+		pointer-events: none;
+	}
 }

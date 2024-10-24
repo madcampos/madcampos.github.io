@@ -1,71 +1,73 @@
-.talk-card {
-	--image-size: var(--avatar-size);
-	background-color: var(--bg-color);
-	border: solid var(--highlight-border-color) var(--border-width);
-	display: grid;
-	gap: var(--spacing-large);
-	grid-template-areas:
-		'header header'
-		'picture content'
-		'picture links';
-	grid-template-columns: var(--image-size) 1fr;
-	grid-template-rows: auto 1fr auto;
-	margin: var(--spacing-large);
-	padding: var(--spacing-large);
-}
-
-.talk-card:not(:has(picture)) {
-	grid-template-areas:
-		'header'
-		'content'
-		'links';
-	grid-template-columns: 1fr;
-	grid-template-rows: auto 1fr auto;
-}
-
-.talk-card header { grid-area: header; }
-
-.talk-card header h2 {
-	margin: 0;
-	margin-block-end: var(--spacing-medium);
-}
-
-.talk-card header aside small { display: flex; }
-
-.talk-card picture {
-	display: block;
-	grid-area: picture;
-	height: var(--image-size);
-	object-fit: cover;
-	object-position: center;
-	overflow: hidden;
-	place-self: center center;
-	width: var(--image-size);
-}
-
-.talk-card img {
-	height: 100%;
-	object-fit: cover;
-	object-position: center;
-	width: 100%;
-}
-
-.talk-card .talk-content { grid-area: content; }
-.talk-card .talk-content > *:first-child { margin-block-start: 0; }
-
-.talk-card .talk-links { grid-area: links; }
-
-@media (max-width: 850px) {
+@layer components {
 	.talk-card {
-		--image-size: var(--avatar-small-size);
+		--image-size: var(--avatar-size);
+		background-color: var(--bg-color);
+		border: solid var(--highlight-border-color) var(--border-width);
+		display: grid;
+		gap: var(--spacing-large);
+		grid-template-areas:
+			'header header'
+			'picture content'
+			'picture links';
+		grid-template-columns: var(--image-size) 1fr;
+		grid-template-rows: auto 1fr auto;
+		margin: var(--spacing-large);
+		padding: var(--spacing-large);
+	}
+
+	.talk-card:not(:has(picture)) {
 		grid-template-areas:
 			'header'
-			'picture'
 			'content'
 			'links';
 		grid-template-columns: 1fr;
-		grid-template-rows: auto var(--image-size) auto auto;
+		grid-template-rows: auto 1fr auto;
 	}
 
-	.talk-card picture { align-self: center center; }
+	.talk-card header { grid-area: header; }
+
+	.talk-card header h2 {
+		margin: 0;
+		margin-block-end: var(--spacing-medium);
+	}
+
+	.talk-card header aside small { display: flex; }
+
+	.talk-card picture {
+		display: block;
+		grid-area: picture;
+		height: var(--image-size);
+		object-fit: cover;
+		object-position: center;
+		overflow: hidden;
+		place-self: center center;
+		width: var(--image-size);
+	}
+
+	.talk-card img {
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		width: 100%;
+	}
+
+	.talk-card .talk-content { grid-area: content; }
+	.talk-card .talk-content > *:first-child { margin-block-start: 0; }
+
+	.talk-card .talk-links { grid-area: links; }
+
+	@media (max-width: 850px) {
+		.talk-card {
+			--image-size: var(--avatar-small-size);
+			grid-template-areas:
+				'header'
+				'picture'
+				'content'
+				'links';
+			grid-template-columns: 1fr;
+			grid-template-rows: auto var(--image-size) auto auto;
+		}
+
+		.talk-card picture { align-self: center center; }
+	}
 }

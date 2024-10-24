@@ -1,34 +1,36 @@
-#glitched-logo-svg {
-	height: var(--avatar-size);
-	width: var(--avatar-size);
-}
+@layer components {
+	#glitched-logo-svg {
+		height: var(--avatar-size);
+		width: var(--avatar-size);
+	}
 
-#glitched-logo-svg #logo {
-	fill: currentcolor;
-	image-rendering: pixelated;
-	transform: scale(1.4);
-	transform-origin: center;
-}
+	#glitched-logo-svg #logo {
+		fill: currentcolor;
+		image-rendering: pixelated;
+		transform: scale(1.4);
+		transform-origin: center;
+	}
 
-#glitched-logo-svg #pixelated-logo {
-	color: var(--bg-color);
-	filter: url('#pixelate-filter');
-}
+	#glitched-logo-svg #pixelated-logo {
+		color: var(--bg-color);
+		filter: url('#pixelate-filter');
+	}
 
-#glitched-logo-svg #glitch-logo {
-	color: var(--accent-color);
-	/* filter: url("#glitch-filter"); */
-}
+	#glitched-logo-svg #glitch-logo {
+		color: var(--accent-color);
+		/* filter: url("#glitch-filter"); */
+	}
 
-#glitched-logo-svg #overlay-logo {
-	color: var(--complementary-color);
-	mix-blend-mode: overlay;
-	opacity: 0.6;
-}
+	#glitched-logo-svg #overlay-logo {
+		color: var(--complementary-color);
+		mix-blend-mode: overlay;
+		opacity: 0.6;
+	}
 
-#glitched-logo-svg #noise-logo {
-	color: var(--theme-color);
-	filter: url('#noise-filter');
-}
+	#glitched-logo-svg #noise-logo {
+		color: var(--theme-color);
+		filter: url('#noise-filter');
+	}
 
-@media (prefers-reduced-motion: no-preference) { #glitched-logo-svg #glitch-logo { filter: url('#animated-glitch-filter'); } }
+	@media (prefers-reduced-motion: no-preference) { #glitched-logo-svg #glitch-logo { filter: url('#animated-glitch-filter'); } }
+}

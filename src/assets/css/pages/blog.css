@@ -1,4 +1,6 @@
-#posts-list {
-	margin-inline: auto;
-	width: clamp(var(--min-width), 70vw, var(--max-width));
+@layer pages {
+	#posts-list {
+		margin-inline: auto;
+		width: clamp(var(--min-width), 70vw, var(--max-width));
+	}
 }

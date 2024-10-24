@@ -1,18 +1,20 @@
-#skip-to-main {
-	background-color: var(--text-color);
-	color: var(--bg-color);
-	display: block;
-	inset-block-start: -100%;
-	inset-inline: var(--spacing-medium);
-	padding: var(--spacing-medium);
-	position: absolute;
-	text-align: center;
-	z-index: 9999;
-}
+@layer components {
+	#skip-to-main {
+		background-color: var(--text-color);
+		color: var(--bg-color);
+		display: block;
+		inset-block-start: -100%;
+		inset-inline: var(--spacing-medium);
+		padding: var(--spacing-medium);
+		position: absolute;
+		text-align: center;
+		z-index: 9999;
+	}
 
-#skip-to-main:focus-visible { inset-block-start: var(--spacing-medium); }
+	#skip-to-main:focus-visible { inset-block-start: var(--spacing-medium); }
 
-:target {
-	scroll-margin: var(--spacing-large);
-	scroll-snap-align: start;
+	:target {
+		scroll-margin: var(--spacing-large);
+		scroll-snap-align: start;
+	}
 }

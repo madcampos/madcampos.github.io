@@ -1,59 +1,61 @@
-.user-avatar {
-	--image-size: var(--avatar-size);
-	border: var(--theme-color) solid var(--border-width);
-	border-radius: 100vmax;
-	display: block;
-	height: var(--image-size);
-	overflow: hidden;
-	position: relative;
-	width: var(--image-size);
-}
-
-.user-avatar img {
-	height: 100%;
-	object-fit: cover;
-	object-position: center;
-	width: 100%;
-}
-
-.user-avatar::after {
-	background: radial-gradient(circle at bottom, var(--accent-color), var(--theme-color));
-	content: '';
-	display: block;
-	height: 100%;
-	inset: 0;
-	opacity: 0.2;
-	position: absolute;
-	transition: all 0.2s ease-in-out;
-	width: 100%;
-}
-
-.user-avatar:hover::after { opacity: 0.4; }
-
-@media (max-width: 768px) { .user-avatar { --image-size: var(--avatar-small-size); } }
-
-@media (prefers-contrast: more) {
-	.user-avatar::after {
-		backdrop-filter: contrast(200%);
-		background: radial-gradient(circle at bottom, transparent, var(--theme-color));
-		opacity: 0.4;
+@layer components {
+	.user-avatar {
+		--image-size: var(--avatar-size);
+		border: var(--theme-color) solid var(--border-width);
+		border-radius: 100vmax;
+		display: block;
+		height: var(--image-size);
+		overflow: hidden;
+		position: relative;
+		width: var(--image-size);
 	}
-}
 
-@media (forced-colors: active) {
-	.user-avatar { filter: grayscale(1) contrast(120%) brightness(110%); }
-
-	.user-avatar::after {
-		backdrop-filter: none;
-		background: none;
-		opacity: 0;
+	.user-avatar img {
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		width: 100%;
 	}
-}
 
-@media (prefers-reduced-transparency: reduce) {
 	.user-avatar::after {
-		backdrop-filter: none;
-		background: none;
-		opacity: 0;
+		background: radial-gradient(circle at bottom, var(--accent-color), var(--theme-color));
+		content: '';
+		display: block;
+		height: 100%;
+		inset: 0;
+		opacity: 0.2;
+		position: absolute;
+		transition: all 0.2s ease-in-out;
+		width: 100%;
+	}
+
+	.user-avatar:hover::after { opacity: 0.4; }
+
+	@media (max-width: 768px) { .user-avatar { --image-size: var(--avatar-small-size); } }
+
+	@media (prefers-contrast: more) {
+		.user-avatar::after {
+			backdrop-filter: contrast(200%);
+			background: radial-gradient(circle at bottom, transparent, var(--theme-color));
+			opacity: 0.4;
+		}
+	}
+
+	@media (forced-colors: active) {
+		.user-avatar { filter: grayscale(1) contrast(120%) brightness(110%); }
+
+		.user-avatar::after {
+			backdrop-filter: none;
+			background: none;
+			opacity: 0;
+		}
+	}
+
+	@media (prefers-reduced-transparency: reduce) {
+		.user-avatar::after {
+			backdrop-filter: none;
+			background: none;
+			opacity: 0;
+		}
 	}
 }

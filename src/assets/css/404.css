@@ -1,11 +1,13 @@
-header div:has(> svg) {
-	justify-content: center;
-	width: 100%;
-}
+@layer pages {
+	header div:has(> svg) {
+		justify-content: center;
+		width: 100%;
+	}
 
-main { text-align: center; }
+	main { text-align: center; }
 
-ul {
-	display: inline-block;
-	text-align: start;
+	ul {
+		display: inline-block;
+		text-align: start;
+	}
 }
