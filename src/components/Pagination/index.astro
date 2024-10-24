@@ -33,31 +33,31 @@ const lastPageInNav = Math.min(lastPage, currentPage + TRIM_PAGE_NUMBER);
 
 const navLinks = Array(lastPageInNav - firstPageInNav + 1).fill(null).map((_, i) => {
 	const currentPageNumber = firstPageInNav + i;
-	const href = currentPageNumber === 1 ? '' : currentPageNumber;
+	const href = currentPageNumber === 1 ? '' : currentPageNumber.toString();
 
 	return {
 		label: currentPageNumber.toString(),
-		url: join([baseUrl, href.toString()]),
+		url: join([baseUrl, href]),
 		isCurrentPage: currentPageNumber === currentPage
 	};
 });
 ---
-<nav aria-label="Post list pages">
+<nav aria-label="Pagination">
 	<div id="pagination">
 		<a
-			href={currentPage > 1 ? join([baseUrl, '/']) : null}
-			aria-disabled={currentPage > 1 ? null : 'true'}
+			href={join([baseUrl])}
 			id="first-page"
 		>
-			<Icon name="uil:angle-double-left" title="Two chevrons pointing to the left" />
+			<Icon name="uil:angle-double-left" title="" role="presentation" />
 			<span class="pagination-link-text">First<span class="visually-hidden"> page</span></span>
 		</a>
+
 		<a
-			href={prevUrl ?? null}
-			aria-disabled={prevUrl ? null : 'true'}
+			href={prevUrl ? join([prevUrl]) : null}
+			aria-disabled={!prevUrl ? 'true' : null}
 			id="prev-page"
 		>
-			<Icon name="uil:angle-left" title="A chevron pointing to the left" />
+			<Icon name="uil:angle-left" title="" role="presentation" />
 			<span class="pagination-link-text">Previous<span class="visually-hidden"> page</span></span>
 		</a>
 
@@ -65,21 +65,19 @@ const navLinks = Array(lastPageInNav - firstPageInNav + 1).fill(null).map((_, i)
 			{
 				firstPageInNav > 1 && (
 					<>
-						<li><a href={join([baseUrl, '/'])}>1</a></li>
+						<li><a href={join([baseUrl, '/'])}><span class="visually-hidden">Page </span>1</a></li>
 						<li><span>…</span></li>
 					</>
 				)
 			}
 
 			{
-				navLinks.map(({ url, label, isCurrentPage }) => isCurrentPage ? (
-					<li aria-current="page">
-						<span>{label}</span>
-						<span class="visually-hidden">(Current page)</span>
-					</li>
-				) : (
+				navLinks.map(({ url, label, isCurrentPage }) => (
 					<li>
-						<a href={url}>{label}</a>
+						<a
+							href={`${url}${isCurrentPage ? '#' : ''}`}
+							aria-current={isCurrentPage ? 'page' : null}
+						><span class="visually-hidden">Page </span>{label}</a>
 					</li>
 				))
 			}
@@ -88,27 +86,27 @@ const navLinks = Array(lastPageInNav - firstPageInNav + 1).fill(null).map((_, i)
 				lastPageInNav < lastPage && (
 					<>
 						<li><span>…</span></li>
-						<li><a href={join([baseUrl, lastPage.toString()])}>{lastPage}</a></li>
+						<li><a href={join([baseUrl, lastPage.toString()])}><span class="visually-hidden">Page </span>{lastPage}</a></li>
 					</>
 				)
 			}
 		</ol>
 
 		<a
-			href={nextUrl ?? null}
-			aria-disabled={nextUrl ? null : 'true'}
+			href={nextUrl ? join([nextUrl]) : null}
+			aria-disabled={!nextUrl ? 'true' : null}
 			id="next-page"
 		>
 			<span class="pagination-link-text">Next<span class="visually-hidden"> page</span></span>
-			<Icon name="uil:angle-right" title="A chevron pointing to the right" />
+			<Icon name="uil:angle-right" title="" role="presentation" />
 		</a>
+
 		<a
-			href={currentPage < lastPage ? join([baseUrl, lastPage.toString()]) : null}
-			aria-disabled={currentPage < lastPage ? null : 'true'}
+			href={join([baseUrl, lastPage.toString()])}
 			id="last-page"
 		>
 			<span class="pagination-link-text">Last<span class="visually-hidden"> page</span></span>
-			<Icon name="uil:angle-double-right" title="Two chevrons pointing to the right" />
+			<Icon name="uil:angle-double-right" title="" role="presentation" />
 		</a>
 	</div>
 	<aside id="pagination-info">
