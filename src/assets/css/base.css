@@ -96,7 +96,7 @@ h1 {
 	text-align: center;
 }
 
-h1 img {
+h1 :is(img, svg) {
 	height: 100%;
 	object-fit: contain;
 	width: clamp(var(--min-width), 70vmin, var(--medium-width));

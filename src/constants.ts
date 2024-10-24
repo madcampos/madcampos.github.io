@@ -6,11 +6,6 @@ interface ConstantsMap {
 	titleString: string;
 	description: string;
 	tags: string[];
-	logoAltText?: {
-		regular: string,
-		mini: string,
-		micro: string
-	};
 }
 
 export const GLOBALS: ConstantsMap = {
@@ -27,12 +22,7 @@ export const GLOBALS: ConstantsMap = {
 		'javascript',
 		'typescript',
 		'webdev'
-	],
-	logoAltText: {
-		regular: 'My moniker, "madcampos", on a monospaced font, in blue, between curly braces.',
-		mini: 'The letters "madc" on a monospaced font, in blue, between curly braces.',
-		micro: 'The letter "m" on a monospaced font, in blue, between curly braces.'
-	}
+	]
 };
 
 export const ERROR: ConstantsMap = {
@@ -56,15 +46,7 @@ export const BLOG: ConstantsMap = {
 	title: ['Blog', ...GLOBALS.title],
 	titleString: "Marco Campos' Blog",
 	description: "Marco Campos' Blog — A space where I talk about web development and other programming related (or not) things.",
-	tags: ['blog', ...GLOBALS.tags],
-	logoAltText: {
-		regular:
-			`Logo for madcampos' blog consisting of my moniker, "madcampos", on a monospaced font, in blue, between curly braces. Below it, a subtext of "blog" in orange on the lower right corner.`,
-		mini:
-			`Logo for madcampos' blog consisting of the letters "madc" on a monospaced font, in blue, between curly braces. Below it, a subtext of "blog" in orange on the lower right corner.`,
-		micro:
-			`Logo for madcampos' blog consisting of the letter "m" on a monospaced font, in blue, between curly braces. Below it, a subtext of "blog" in orange on the lower right corner.`
-	}
+	tags: ['blog', ...GLOBALS.tags]
 };
 
 export const BLOG_TAGS: ConstantsMap = {
@@ -88,15 +70,7 @@ export const PROJECTS: ConstantsMap = {
 	title: ['Projects', ...GLOBALS.title],
 	titleString: 'Project Highlight',
 	description: "Marco Campos' Projects — A list of projects I've worked on, or am currently working on. Mostly web development",
-	tags: ['projects', ...GLOBALS.tags],
-	logoAltText: {
-		regular:
-			`Logo for madcampos' projects consisting of my moniker, "madcampos", on a monospaced font, in blue, between curly braces. Below it, a subtext of "projects" in orange on the lower right corner.`,
-		mini:
-			`Logo for madcampos' projects consisting of the letters "madc" on a monospaced font, in blue, between curly braces. Below it, a subtext of "projects" in orange on the lower right corner.`,
-		micro:
-			`Logo for madcampos' projects consisting of the letter "m" on a monospaced font, in blue, between curly braces. Below it, a subtext of "projects" in orange on the lower right corner.`
-	}
+	tags: ['projects', ...GLOBALS.tags]
 };
 
 export const TALKS: ConstantsMap = {
@@ -104,13 +78,5 @@ export const TALKS: ConstantsMap = {
 	title: ['Talks', ...GLOBALS.title],
 	titleString: 'Talks, Presentations & Workshops',
 	description: "Marco Campos' Talks — A list of talks I've given on meetups, conferences, or other events.",
-	tags: ['talks', ...GLOBALS.tags],
-	logoAltText: {
-		regular:
-			`Logo for madcampos' talks consisting of my moniker, "madcampos", on a monospaced font, in blue, between curly braces. Below it, a subtext of "talks" in orange on the lower right corner.`,
-		mini:
-			`Logo for madcampos' talks consisting of the letters "madc" on a monospaced font, in blue, between curly braces. Below it, a subtext of "talks" in orange on the lower right corner.`,
-		micro:
-			`Logo for madcampos' talks consisting of the letter "m" on a monospaced font, in blue, between curly braces. Below it, a subtext of "talks" in orange on the lower right corner.`
-	}
+	tags: ['talks', ...GLOBALS.tags]
 };

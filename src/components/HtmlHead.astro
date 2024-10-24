@@ -41,8 +41,7 @@ const {
 const baseUrl = new URL(GLOBALS.url, Astro.site).toString();
 const fullUrl = join([new URL(url, baseUrl).toString()], { trailingSlash: true });
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const socialImageAlt = imageAlt ?? GLOBALS.logoAltText!.micro;
+const socialImageAlt = imageAlt ?? 'The letter "m" on a monospaced font, in blue, between curly braces.';
 const socialImage = join([baseUrl, image ?? defaultSocialImage.src], { trailingSlash: false });
 ---
 <head>

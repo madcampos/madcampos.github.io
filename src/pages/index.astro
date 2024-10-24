@@ -2,11 +2,11 @@
 import { Icon } from 'astro-icon/components';
 
 import Avatar from '../components/Avatar/index.astro';
+import Logo from '../components/Logo/index.astro';
 import BaseLayout from '../layouts/Base.astro';
 
 import '../assets/css/pages/home.css';
 
-import logo from '../assets/images/logo/logo.svg';
 import avatar from '../assets/images/me.jpg';
 
 import { BLOG, GLOBALS, PROJECTS, TALKS } from '../constants.js';
@@ -21,15 +21,13 @@ import { BLOG, GLOBALS, PROJECTS, TALKS } from '../constants.js';
 >
 	<div class="h-card vcard">
 		<h1>
-			<a class="u-url url" href="/">
-				<img
-					class="u-logo"
-					src={logo.src}
-					width={logo.width}
-					height={logo.height}
-					alt={GLOBALS.logoAltText?.regular}
-				/>
-			</a>
+			<Logo
+				style="full"
+				title="Marco Campos' Logo"
+				subtitle=""
+				shortSubtitle=""
+				url="/"
+			/>
 		</h1>
 		<article id="about" itemprop="mainEntity" itemtype="https://schema.org/Person" itemscope>
 			<aside>
