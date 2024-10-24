@@ -1,12 +1,14 @@
 ---
 title: Structural vs Behavioral components
 summary: Two different, but complimentary points of view for components and how they should work.
-image: 
-imageAlt: 
 createdAt: 2024-10-17T17:04:09.966-04:00
 draft: true
 tags:
+  - WebDevelopment
+  - Components
+  - React
 ---
+
 Since working with web components more and more, and getting to understand better the `<slot>` element, I came to appreciate it. Using slots allow us to create purely structural components.
 
 ## Debating components _ad nauseum_
@@ -28,4 +30,3 @@ This is what we, as users of a component may see:
   ...
 </Accordion>
 ```
-
