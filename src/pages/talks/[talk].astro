@@ -7,12 +7,11 @@ import { join } from '../../utils/path.js';
 import { listAllTalks } from '../../utils/talks.js';
 
 import { Icon } from 'astro-icon/components';
+import Logo from '../../components/Logo/index.astro';
 import InternalPageLayout from '../../layouts/InternalPage.astro';
 
 import '../../assets/css/pages/talks.css';
 import '../../assets/css/code.css';
-
-import logoTalks from '../../assets/images/logo/logo-talks.svg';
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -61,14 +60,14 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 	createdAt={date}
 	pageSchema="Event"
 >
-	<a href={TALKS.url} slot="logo">
-		<img
-			src={logoTalks.src}
-			width={logoTalks.width}
-			height={logoTalks.height}
-			alt={TALKS.logoAltText?.regular}
-		/>
-	</a>
+	<Logo
+		style="full"
+		title="Marco Campos' - Talks"
+		subtitle="Talks"
+		shortSubtitle="Talks"
+		url={TALKS.url}
+		slot="logo"
+	/>
 	<Fragment slot="header" itemprop="name">{title}</Fragment>
 
 	<Content />
@@ -80,7 +79,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 
 	<div itemprop="location" itemscope itemtype={isOnline ? 'https://schema.org/VirtualLocation' : 'https://schema.org/Place'} hidden>
 		<meta itemprop={isOnline ? 'url' : 'address'} content={isOnline ? eventUrl : address} />
-		<meta itemprop="eventAttendanceMode" content={isOnline ? 'https://schema.org/OnlineEventAttendanceMode' : 'https://schema.org/OfflineEventAttendanceMode'}/>
+		<meta itemprop="eventAttendanceMode" content={isOnline ? 'https://schema.org/OnlineEventAttendanceMode' : 'https://schema.org/OfflineEventAttendanceMode'} />
 		<meta itemprop="eventStatus" content="https://schema.org/EventScheduled" />
 	</div>
 

@@ -1,5 +1,5 @@
 ---
-import logo from '../assets/images/logo/logo.svg';
+import Logo from '../components/Logo/index.astro';
 import { GLOBALS } from '../constants.js';
 import InternalPageLayout from '../layouts/InternalPage.astro';
 ---
@@ -8,17 +8,17 @@ import InternalPageLayout from '../layouts/InternalPage.astro';
 	htmlTitle={['Accessibility Statement', ...GLOBALS.title]}
 	title="Accessibility Statement"
 	description="Accesibility Statement for Marco Campos website."
-	url="/accessibility"
+	url="/accessibility/"
 	tags={['accessibility', 'a11y', ...GLOBALS.tags]}
 >
-	<a href={GLOBALS.url} slot="logo">
-		<img
-			src={logo.src}
-			width={logo.width}
-			height={logo.height}
-			alt={GLOBALS.logoAltText?.regular}
-		/>
-	</a>
+	<Logo
+		style="full"
+		title="Marco Campos' Logo - Accessibility"
+		subtitle="Accessibility"
+		shortSubtitle="A11y"
+		url="/accessibility/"
+		slot="logo"
+	/>
 	<Fragment slot="header">Accessibility Statement</Fragment>
 
 	<p>

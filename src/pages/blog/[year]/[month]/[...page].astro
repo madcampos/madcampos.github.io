@@ -4,9 +4,9 @@ import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from '
 import { BLOG } from '../../../../constants.js';
 import { join } from '../../../../utils/path.js';
 
+import Logo from '../../../../components/Logo/index.astro';
 import BlogPostsLayout from '../../../../layouts/BlogPosts.astro';
 
-import logoBlog from '../../../../assets/images/logo/logo-blog.svg';
 import { listPostsPagesByMonth, MAX_POSTS_PER_PAGE } from '../../../../utils/post.js';
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
@@ -55,14 +55,14 @@ const formatter = new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric'
 	{total}
 	{size}
 >
-	<a href={BLOG.url} slot="logo">
-		<img
-			src={logoBlog.src}
-			width={logoBlog.width}
-			height={logoBlog.height}
-			alt={BLOG.logoAltText?.regular}
-		/>
-	</a>
+	<Logo
+		style="full"
+		title="Marco Campos' Blog"
+		subtitle="blog"
+		shortSubtitle="Blog"
+		url={BLOG.url}
+		slot="logo"
+	/>
 	<Fragment slot="header">
 		{`Posts from ${formatter.format(new Date(`${year}-${month}-01T00:00:00`))}`}
 	</Fragment>

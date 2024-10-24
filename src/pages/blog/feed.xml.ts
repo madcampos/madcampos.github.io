@@ -40,7 +40,7 @@ export const GET: APIRoute = async (context) => {
 			<image>
 				<url>${new URL(blogImage.src, baseUrl).toString()}</url>
 				<title>Marco Campos' Blog</title>
-				<description>${BLOG.logoAltText?.micro}</description>
+				<description>The letter &quot;m&quot; on a monospaced font, in blue, between curly braces.Below it, a subtext of &quot;Blog&quot; in orange on the lower right corner.</description>
 				<link>${blogUrl}</link>
 				<width>142</width>
 				<height>116</height>

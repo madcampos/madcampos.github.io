@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import logo from '../assets/images/logo/logo.svg';
+import Logo from '../components/Logo/index.astro';
 import { GLOBALS } from '../constants.js';
 import InternalPageLayout from '../layouts/InternalPage.astro';
 ---
@@ -9,17 +9,17 @@ import InternalPageLayout from '../layouts/InternalPage.astro';
 	htmlTitle={['License & Disclaimer', ...GLOBALS.title]}
 	title="License & Disclaimer"
 	description="License & Disclaimer for Marco Campos website."
-	url="/license"
+	url="/license/"
 	tags={['legal', 'license', ...GLOBALS.tags]}
 >
-	<a href={GLOBALS.url} slot="logo">
-		<img
-			src={logo.src}
-			width={logo.width}
-			height={logo.height}
-			alt={GLOBALS.logoAltText?.regular}
-		/>
-	</a>
+	<Logo
+		style="full"
+		title="Marco Campos' Logo - License"
+		subtitle="License"
+		shortSubtitle="Lic."
+		url="/license"
+		slot="logo"
+	/>
 	<Fragment slot="header">
 		<Icon name="fa6-brands:creative-commons" title="The Creative Commons icon, with two letters &quot;c&quot; inside." />
 		License &amp; Disclaimer

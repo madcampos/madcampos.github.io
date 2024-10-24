@@ -1,5 +1,5 @@
 ---
-import logo from '../assets/images/logo/logo.svg';
+import Logo from '../components/Logo/index.astro';
 import { GLOBALS } from '../constants.js';
 import InternalPageLayout from '../layouts/InternalPage.astro';
 ---
@@ -8,17 +8,17 @@ import InternalPageLayout from '../layouts/InternalPage.astro';
 	htmlTitle={['Now', ...GLOBALS.title]}
 	title="What I'm doing now"
 	description="What I'm doing now, my current focus and priorities."
-	url="/now"
+	url="/now/"
 	tags={['now', ...GLOBALS.tags]}
 >
-	<a href={GLOBALS.url} slot="logo">
-		<img
-			src={logo.src}
-			width={logo.width}
-			height={logo.height}
-			alt={GLOBALS.logoAltText?.regular}
-		/>
-	</a>
+	<Logo
+		style="full"
+		title="Marco Campos' Logo - Now"
+		subtitle="Now"
+		shortSubtitle="Now"
+		url="/now/"
+		slot="logo"
+	/>
 	<Fragment slot="header">What I'm doing now?</Fragment>
 
 	<p>Here’s what I’m currently focused on, in no particular order:</p>

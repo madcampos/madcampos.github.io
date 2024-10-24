@@ -2,6 +2,7 @@
 import { BLOG, BLOG_TAGS } from '../../../constants.js';
 import { join } from '../../../utils/path.js';
 
+import Logo from '../../../components/Logo/index.astro';
 import PageHeader from '../../../components/PageHeader/index.astro';
 import BaseLayout from '../../../layouts/Base.astro';
 
@@ -10,7 +11,6 @@ import { listTags } from '../../../utils/post';
 import '../../../assets/css/pages/internal-page.css';
 import '../../../assets/css/pages/tags.css';
 
-import logoBlog from '../../../assets/images/logo/logo-blog.svg';
 import blogSocialImage from '../../../assets/images/social/social-blog.png';
 
 const tags = await listTags();
@@ -24,21 +24,21 @@ const tags = await listTags();
 	hasFeed={true}
 	pageSchema="ItemList"
 	image={blogSocialImage.src}
-	imageAlt={BLOG.logoAltText?.micro}
+	imageAlt="The letter &quot;m&quot; on a monospaced font, in blue, between curly braces.Below it, a subtext of &quot;Blog&quot; in orange on the lower right corner."
 >
 	<meta itemprop="name" content={BLOG_TAGS.titleString} />
 	<link itemprop="itemListOrder" href="https://schema.org/ItemListUnordered" />
 	<meta itemprop="numberOfItems" content={tags.length.toString()} />
 
 	<PageHeader slot="header">
-		<a href={BLOG.url} slot="logo">
-			<img
-				src={logoBlog.src}
-				width={logoBlog.width}
-				height={logoBlog.height}
-				alt={BLOG.logoAltText?.regular}
-			/>
-		</a>
+		<Logo
+			style="full"
+			title="Marco Campos' Blog"
+			subtitle="Blog"
+			shortSubtitle="Blog"
+			url={BLOG.url}
+			slot="logo"
+		/>
 		{BLOG_TAGS.titleString}
 	</PageHeader>
 

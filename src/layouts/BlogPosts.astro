@@ -5,7 +5,7 @@ import PageHeader from '../components/PageHeader/index.astro';
 import Pagination from '../components/Pagination/index.astro';
 import PostCard from '../components/PostCard/index.astro';
 import SkipToContent from '../components/SkipToContent/index.astro';
-import BaseLayout from '../layouts/Base.astro';
+import BaseLayout from './Base.astro';
 
 import { BLOG } from '../constants.js';
 import { join } from '../utils/path.js';
@@ -52,7 +52,7 @@ const {
 	url={currentUrl}
 	hasFeed={true}
 	image={blogSocialImage.src}
-	imageAlt={BLOG.logoAltText?.micro}
+	imageAlt="The letter &quot;m&quot; on a monospaced font, in blue, between curly braces.Below it, a subtext of &quot;Blog&quot; in orange on the lower right corner."
 	pageSchema="Blog"
 >
 	<SkipToContent

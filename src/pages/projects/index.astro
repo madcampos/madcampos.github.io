@@ -1,4 +1,5 @@
 ---
+import Logo from '../../components/Logo/index.astro';
 import ProjectCard from '../../components/ProjectCard/index.astro';
 import InternalPageLayout from '../../layouts/InternalPage.astro';
 
@@ -6,7 +7,6 @@ import { PROJECTS } from '../../constants.js';
 
 import { listAllProjects } from '../../utils/projects.js';
 
-import logoProjects from '../../assets/images/logo/logo-proj.svg';
 import projectsSocialImage from '../../assets/images/social/social-proj.png';
 
 const projects = await Promise.all((await listAllProjects()).map(async (project) => {
@@ -24,16 +24,16 @@ const projects = await Promise.all((await listAllProjects()).map(async (project)
 	description={PROJECTS.description}
 	url={PROJECTS.url}
 	image={projectsSocialImage.src}
-	imageAlt={PROJECTS.logoAltText?.micro}
+	imageAlt="The letter &quot;m&quot; on a monospaced font, in blue, between curly braces.Below it, a subtext of &quot;Proj.&quot; in orange on the lower right corner."
 >
-	<a href={PROJECTS.url} slot="logo">
-		<img
-			src={logoProjects.src}
-			width={logoProjects.width}
-			height={logoProjects.height}
-			alt={PROJECTS.logoAltText?.regular}
-		/>
-	</a>
+	<Logo
+		style="full"
+		title="Marco Campos' - Projects"
+		subtitle="Projects"
+		shortSubtitle="Proj."
+		url={PROJECTS.url}
+		slot="logo"
+	/>
 	<Fragment slot="header">
 		{PROJECTS.titleString}
 	</Fragment>

@@ -1,4 +1,5 @@
 ---
+import Logo from '../../components/Logo/index.astro';
 import TalkCard from '../../components/TalkCard/index.astro';
 import InternalPageLayout from '../../layouts/InternalPage.astro';
 
@@ -7,7 +8,6 @@ import { join } from '../../utils/path.js';
 
 import { listAllTalks } from '../../utils/talks.js';
 
-import logoTalks from '../../assets/images/logo/logo-talks.svg';
 import talksSocialImage from '../../assets/images/social/social-talks.png';
 
 const talks = await listAllTalks();
@@ -19,16 +19,16 @@ const talks = await listAllTalks();
 	description={TALKS.description}
 	url={TALKS.url}
 	image={talksSocialImage.src}
-	imageAlt={TALKS.logoAltText?.micro}
+	imageAlt="The letter &quot;m&quot; on a monospaced font, in blue, between curly braces.Below it, a subtext of &quot;Talks&quot; in orange on the lower right corner."
 >
-	<a href={TALKS.url} slot="logo">
-		<img
-			src={logoTalks.src}
-			width={logoTalks.width}
-			height={logoTalks.height}
-			alt={TALKS.logoAltText?.regular}
-		/>
-	</a>
+	<Logo
+		style="full"
+		title="Marco Campos' - Talks"
+		subtitle="Talks"
+		shortSubtitle="Talks"
+		url={TALKS.url}
+		slot="logo"
+	/>
 	<Fragment slot="header">
 		{TALKS.titleString}
 	</Fragment>

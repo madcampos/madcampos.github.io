@@ -76,6 +76,12 @@ const logoLabelId = generateUniqueId();
 	>
 		<title id={`logo-label-${logoLabelId}`}>{title}</title>
 		<style>
+			.logo-graphics {
+				height: 100%;
+				object-fit: contain;
+				width: clamp(var(--min-width, 5rem), 70vmin, var(--medium-width, 30rem));
+			}
+
 			.logo-graphics text {
 				fill: var(--accent-color, #ff8000);
 				font-family: 'Mecano-Light', 'Mecano', monospace;

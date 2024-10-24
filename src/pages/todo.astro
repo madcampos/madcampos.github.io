@@ -1,5 +1,5 @@
 ---
-import logo from '../assets/images/logo/logo.svg';
+import Logo from '../components/Logo/index.astro';
 import { GLOBALS } from '../constants.js';
 import InternalPageLayout from '../layouts/InternalPage.astro';
 
@@ -13,14 +13,14 @@ import '../assets/css/pages/todo.css';
 	url="/todo/"
 	tags={['todo', 'wip', 'work in progress', ...GLOBALS.tags]}
 >
-	<a href={GLOBALS.url} slot="logo">
-		<img
-			src={logo.src}
-			width={logo.width}
-			height={logo.height}
-			alt={GLOBALS.logoAltText?.regular}
-		/>
-	</a>
+	<Logo
+		style="full"
+		title="Marco Campos' Logo - TODO"
+		subtitle="TODO"
+		shortSubtitle="TODO"
+		url="/todo/"
+		slot="logo"
+	/>
 	<Fragment slot="header">To-Do</Fragment>
 
 	<p>
@@ -31,7 +31,7 @@ import '../assets/css/pages/todo.css';
 	<ul id="todo-list">
 		<li>
 			<label id="label-todo-1" for="todo-1">
-				<input type="checkbox" id="todo-1" name="todo-1" aria-labelledby="label-todo-1" />
+				<input type="checkbox" id="todo-1" name="todo-1" aria-labelledby="label-todo-1" checked />
 				<span>Make logos an svg component so it can be styled with CSS</span>
 			</label>
 		</li>
@@ -88,19 +88,19 @@ import '../assets/css/pages/todo.css';
 			<ul>
 				<li>
 					<label id="label-todo-6-1" for="todo-6-1">
-						<input type="checkbox" id="todo-6-1" name="todo-6-1" aria-labelledby="label-todo-6-1" />
+						<input type="checkbox" id="todo-6-1" name="todo-6-1" aria-labelledby="label-todo-6-1" checked />
 						<span>Light mode (AAA contrast)</span>
 					</label>
 				</li>
 				<li>
 					<label id="label-todo-6-2" for="todo-6-2">
-						<input type="checkbox" id="todo-6-2" name="todo-6-2" aria-labelledby="label-todo-6-2" />
+						<input type="checkbox" id="todo-6-2" name="todo-6-2" aria-labelledby="label-todo-6-2" checked />
 						<span>Dark mode (AAA contrast)</span>
 					</label>
 				</li>
 				<li>
 					<label id="label-todo-6-3" for="todo-6-3">
-						<input type="checkbox" id="todo-6-3" name="todo-6-3" aria-labelledby="label-todo-6-3" />
+						<input type="checkbox" id="todo-6-3" name="todo-6-3" aria-labelledby="label-todo-6-3" checked />
 						<span>High contrast yellow on black (AAA contrast)</span>
 					</label>
 				</li>
@@ -432,8 +432,8 @@ import '../assets/css/pages/todo.css';
 				</li>
 				<li>
 					<label id="label-todo-34-4" for="todo-34-4">
-						<input type="checkbox" id="todo-34-4" name="todo-34-4" aria-labelledby="label-todo-34-4" />
-						<span>Code theme: Dracula at Night</span>
+						<input type="checkbox" id="todo-34-4" name="todo-34-4" aria-labelledby="label-todo-34-4" checked />
+						<span>Code theme: High Contrast</span>
 					</label>
 				</li>
 				<li>

@@ -1,12 +1,11 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType, PaginateFunction } from 'astro';
 
+import Logo from '../../components/Logo/index.astro';
 import BlogPostsLayout from '../../layouts/BlogPosts.astro';
 
 import { BLOG } from '../../constants.js';
 import { listAllPosts, MAX_POSTS_PER_PAGE } from '../../utils/post.js';
-
-import logoBlog from '../../assets/images/logo/logo-blog.svg';
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -44,14 +43,14 @@ const {
 	{total}
 	{size}
 >
-	<a href={BLOG.url} aria-label="Blog" slot="logo">
-		<img
-			src={logoBlog.src}
-			width={logoBlog.width}
-			height={logoBlog.height}
-			alt={BLOG.logoAltText?.regular}
-		/>
-	</a>
+	<Logo
+		slot="logo"
+		style="full"
+		title="Marco Campos' Blog"
+		subtitle="Blog"
+		shortSubtitle="Blog"
+		url="/"
+	/>
 
 	<Fragment slot="header">
 		{BLOG.titleString}
