@@ -98,6 +98,7 @@ export default defineConfig({
 				cleanupOutdatedCaches: true,
 				clientsClaim: true,
 				skipWaiting: true,
+				globIgnores: ['**/blog/**/**'],
 				navigateFallback: '/offline/index.html',
 				navigateFallbackDenylist: [/\.(?:png|gif|jpg|jpeg|webp|svg|ico)$/iu],
 				directoryIndex: 'index.html',
