@@ -1,22 +1,35 @@
 @layer code {
+	pre {
+		background-color: var(--shiki-light-bg, var(--bg-color));
+		border: solid var(--border-color) var(--border-width);
+		font-family: var(--monospace-font-family);
+		font-size: smaller;
+		padding: var(--spacing-medium) var(--spacing-small);
+		tab-size: 2;
+	}
+
+	pre:focus-visible {
+		background-color: var(--shiki-light-bg, var(--bg-color));
+		border-color: transparent;
+	}
+
+	pre span {
+		color: var(--shiki-light, var(--text-color));
+		font-family: var(--monospace-font-family);
+		font-style: var(--shiki-light-font-style, normal);
+		font-weight: var(--shiki-light-font-weight, normal);
+		text-decoration: var(--shiki-light-text-decoration, none);
+	}
+
 	code {
 		--line-counter-width: 2em;
 		--line-counter-margin-right: 1em;
 		counter-increment: step 0;
 		counter-reset: step;
-		font-family: 'Cascadia Code', Monaco, 'Courier New', Courier, monospace;
-		font-size: smaller;
 		line-height: 1.2;
 		overflow-wrap: break-word;
-		tab-size: 2;
 		white-space: normal;
 		word-break: break-word;
-	}
-
-	pre {
-		background-color: var(--bg-color);
-		border: solid var(--border-color) var(--border-width);
-		padding: var(--spacing-medium) var(--spacing-small);
 	}
 
 	code .line::before {
@@ -38,70 +51,185 @@
 
 	code .line:empty { display: none; }
 
-	code .line.diff.add { background-color: rgba(0, 100, 0, 0.3); }
+	code .line.diff.add { background-color: var(--diff-add-bg); }
+	code .line.diff.add::before {
+		color: var(--diff-add-color);
+		content: '++';
+	}
 
-	code .line.diff.remove { background-color: rgba(139, 0, 0, 0.3); }
+	code .line.diff.remove { background-color: var(--diff-remove-bg); }
+	code .line.diff.remove::before {
+		color: var(--diff-remove-color);
+		content: '--';
+	}
 
 	code .line.highlighted {
-		background-color: rgba(255, 255, 0, 0.2);
-		/* filter: contrast(0.5) brightness(1.2); */
+		background-color: var(--highlight-default-bg);
+		filter: contrast(0.9) brightness(1.2);
 	}
 
-	code .line.highlighted span { /* stylelint-disable-next-line declaration-no-important */ background-color: transparent !important; }
+	code .line.highlighted.error { background-color: var(--highlight-error-bg); }
 
-	code .line.highlighted.error { background-color: rgba(255, 99, 71, 0.3); }
-
-	code .line.highlighted.warning { background-color: rgba(255, 217, 0, 0.3); }
+	code .line.highlighted.warning { background-color: var(--highlight-warning-bg); }
 
 	code .line .highlighted-word {
-		background-color: rgba(255, 255, 0, 0.2);
+		background-color: var(--highlight-default-bg);
 		filter: contrast(0.5) brightness(1.2);
-		outline: 0.05rem solid rgba(255, 255, 0, 0.5);
+		outline: var(--border-width) solid var(--highlight-color);
+		padding-inline: var(--spacing-small);
 	}
 
+	code .line :is(.tab, .space)::before { opacity: 0.1; }
+
+	code .line .tab::before { content: '⇥\00A0\00A0'; }
+
+	code .line .space::before { content: '·'; }
+
 	pre.has-focused .line {
-		filter: contrast(0.5) brightness(0.5);
-		opacity: 0.7;
+		filter: contrast(0.8) brightness(0.8);
+		opacity: 0.8;
 	}
 
 	pre.has-focused .line.focused {
+		filter: contrast(1.2) brightness(1.2);
+		opacity: 1;
+	}
+
+	pre.has-focused:focus .line {
 		filter: none;
 		opacity: 1;
 	}
 
-	.line :is(.tab, .space)::before { opacity: 0.1; }
-
-	.line .tab::before { content: '⇥\00A0\00A0'; }
-
-	.line .space::before { content: '·'; }
-
 	@media screen and (prefers-color-scheme: dark) {
-		pre { /* stylelint-disable-next-line declaration-no-important */ background-color: var(--shiki-dark-bg) !important; }
+		pre { background-color: var(--shiki-dark-bg, var(--bg-color)); }
+
+		pre:focus-visible {
+			background-color: var(--shiki-dark-bg, var(--bg-color));
+			border-color: transparent;
+		}
 
 		pre span {
-			/* stylelint-disable-next-line declaration-no-important */
-			color: var(--shiki-dark) !important;
-			/* stylelint-disable-next-line declaration-no-important */
-			font-style: var(--shiki-dark-font-style) !important;
-			/* stylelint-disable-next-line declaration-no-important */
-			font-weight: var(--shiki-dark-font-weight) !important;
-			/* stylelint-disable-next-line declaration-no-important */
-			text-decoration: var(--shiki-dark-text-decoration) !important;
+			color: var(--shiki-dark, var(--text-color));
+			font-style: var(--shiki-dark-font-style, normal);
+			font-weight: var(--shiki-dark-font-weight, normal);
+			text-decoration: var(--shiki-dark-text-decoration, none);
 		}
 	}
 
 	@media (prefers-contrast: more) {
-		pre, pre span {
-			/* stylelint-disable-next-line declaration-no-important */
-			background-color: var(--shiki-contrast-bg) !important;
-			/* stylelint-disable-next-line declaration-no-important */
-			color: var(--shiki-contrast) !important;
-			/* stylelint-disable-next-line declaration-no-important */
-			font-style: var(--shiki-contrast-font-style) !important;
-			/* stylelint-disable-next-line declaration-no-important */
-			font-weight: var(--shiki-contrast-font-weight) !important;
-			/* stylelint-disable-next-line declaration-no-important */
-			text-decoration: var(--shiki-contrast-text-decoration) !important;
+		:root {
+			/* Code colors */
+			--diff-add-color: darkgreen;
+			--diff-add-bg: rgba(0, 194, 0, 0.3);
+			--diff-remove-color: maroon;
+			--diff-remove-bg: rgba(255, 68, 68, 0.3);
+			--highlight-color: darkgray;
+			--highlight-default-bg: rgba(105, 105, 105, 0.35);
+			--highlight-error-color: maroon;
+			--highlight-error-bg: rgba(255, 99, 71, 0.3);
+			--highlight-warning-color: goldenrod;
+			--highlight-warning-bg: rgba(218, 165, 32, 0.3);
+		}
+
+		pre { background-color: var(--shiki-contrast-bg, var(--bg-color)); }
+
+		pre span {
+			color: var(--shiki-contrast, var(--text-color));
+			font-style: var(--shiki-contrast-font-style, normal);
+			font-weight: var(--shiki-contrast-font-weight, normal);
+			text-decoration: var(--shiki-contrast-text-decoration, none);
+		}
+
+		code .line.diff {
+			border-block-width: var(--border-width);
+			border-inline-width: 0;
+			border-style: solid;
+		}
+
+		code .line.diff.add { border-color: var(--diff-add-color); }
+		code .line.diff.remove { border-color: var(--diff-remove-color); }
+
+		code .line.highlighted {
+			border: var(--border-width) solid var(--highlight-color);
+			border-inline-width: 0;
+		}
+
+		code .line.highlighted.error { border-color: var(--highlight-error-color); }
+		code .line.highlighted.warning { border-color: var(--highlight-warning-color); }
+
+		code .line.highlighted:not(:is(.error, .warning)):has(+ .line.highlighted) { border-block-end-width: 0; }
+		code .line.highlighted:not(:is(.error, .warning)) + .line.highlighted:not(:is(.error, .warning)) { border-block-start-width: 0; }
+	}
+
+	@media (forced-colors: active) {
+		code .line.diff {
+			background-color: transparent;
+			border-block-width: var(--border-width);
+			border-inline-width: 0;
+			border-style: solid;
+		}
+
+		code .line.diff span { color: inherit; }
+
+		code .line.diff.add {
+			border-color: currentColor;
+			color: LinkText;
+		}
+
+		code .line.diff.remove {
+			border-color: currentColor;
+			color: GrayText;
+		}
+
+		code .line .highlighted-word {
+			background-color: Highlight;
+			color: HighlightText;
+			filter: none;
+			outline: var(--border-width) solid currentColor;
+		}
+
+		code .line.highlighted {
+			background-color: Highlight;
+			border: var(--border-width) solid currentColor;
+			border-inline-width: 0;
+			color: HighlightText;
+			filter: none;
+		}
+
+		code .line.highlighted span {
+			background-color: inherit;
+			color: inherit;
+		}
+
+		code .line.highlighted.error {
+			background-color: Field;
+			border-color: currentColor;
+			color: GrayText;
+		}
+
+		code .line.highlighted.warning {
+			background-color: Canvas;
+			border-color: LinkText;
+			color: LinkText;
+		}
+
+		code .line.highlighted:not(:is(.error, .warning)):has(+ .line.highlighted) { border-block-end-width: 0; }
+		code .line.highlighted:not(:is(.error, .warning)) + .line.highlighted:not(:is(.error, .warning)) { border-block-start-width: 0; }
+
+		pre.has-focused .line {
+			color: LinkText;
+			filter: none;
+			opacity: 0.5;
+		}
+
+		pre.has-focused .line span {
+			background-color: inherit;
+			color: inherit;
+		}
+
+		pre.has-focused .line.focused {
+			color: CanvasText;
+			opacity: 1;
 		}
 	}
 }
