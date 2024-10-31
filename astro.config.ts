@@ -100,7 +100,7 @@ export default defineConfig({
 				skipWaiting: true,
 				globIgnores: ['**/blog/**/**'],
 				navigateFallback: '/offline/index.html',
-				navigateFallbackDenylist: [/\.(?:png|gif|jpg|jpeg|webp|svg|ico)$/iu],
+				navigateFallbackDenylist: [/\.(?:png|gif|jpg|jpeg|webp|svg|ico)$/iu, /\/blog\//iu],
 				directoryIndex: 'index.html',
 				runtimeCaching: [
 					externalResourcesCache,
