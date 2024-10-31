@@ -29,6 +29,24 @@
 		src: url('./fonts/selawik.woff2') format('woff2-variations');
 	}
 
+	@font-face {
+		font-display: optional;
+		font-family: 'Mecano-Light';
+		font-style: normal;
+		font-variant-ligatures: common-ligatures;
+		font-weight: 100;
+		src: url('./fonts/Mecano-Light.woff2') format('woff2');
+	}
+
+	@font-face {
+		font-display: optional;
+		font-family: 'Mecano';
+		font-style: normal;
+		font-variant-ligatures: common-ligatures;
+		font-weight: 500;
+		src: url('./fonts/Mecano.woff2') format('woff2');
+	}
+
 	:root {
 		--monospace-font-family: 'Cascadia Code', 'Fira Code', 'Roboto Mono', 'Monaco', 'Courier New', 'Courier', monospace;
 		--sans-serif-font-family: 'Selawik Variable', 'Selawik', 'Segoe UI', 'Roboto', 'Open Sans', 'Arial', system-ui, sans-serif;
