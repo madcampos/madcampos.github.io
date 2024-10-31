@@ -17,6 +17,8 @@
 		padding: 0;
 	}
 
+	#pagination li { list-style-type: ''; }
+
 	#pagination:has(li:only-child), #pagination:has(li:only-child) + * { display: none; }
 
 	#pagination svg {
