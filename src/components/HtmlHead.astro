@@ -112,6 +112,14 @@ const socialImage = join([baseUrl, image ?? defaultSocialImage.src], { trailingS
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
+	<!-- Default CSS layers -->
+	{
+		(
+			<style>
+				@layer fonts, vars, base, pages, components, code, print, contrast;
+			</style>
+		)
+	}
 	<!-- Print Stylesheet -->
 	<link rel="stylesheet" type="text/css" href={printStylesheet} media="print" />
 </head>
