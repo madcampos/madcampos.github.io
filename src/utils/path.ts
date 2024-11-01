@@ -30,6 +30,7 @@ export function join(paths: string[], options?: Partial<JoinOptions>) {
 		case false:
 			normalizedPath = joinedPath.replace(new RegExp(trailingSlashesRegex, 'iu'), '');
 			break;
+		case undefined:
 		default:
 	}
 
