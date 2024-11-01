@@ -24,7 +24,7 @@
 		"lint": "npm run typecheck && npm run lint:js && npm run lint:md"
 	},
 	"devDependencies": {
-		"@astrojs/check": "^0.9.4",
+		"@astrojs/check": "^0.9.3",
 		"@astrojs/rss": "^4.0.9",
 		"@astrojs/sitemap": "^3.2.1",
 		"@iconify-json/brandico": "^1.2.1",
