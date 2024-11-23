@@ -36,11 +36,11 @@ This site, and blog, is mostly static and can be generated based on data and a s
 
 My first attempt was to write the tooling myself to see how that worked (you can read about it on the posts ["Hello, World!"](/blog/2023/05/hello-world/) and ["The Semantics of Blogging"](/blog/2023/06/blog-structure/)), but that proved to be more difficult than expected.
 
-In short, I had to write a lot of code to tell [parcel](https://parceljs.org/), the bundler that vite uses underneath to tell it what files to process. It got compounded because this was a hacky way to do things. I should have wrapped the code into a vite plugin and not a process to run before vite does it's thing.
+In short, I had to write a lot of code to tell [parcel](https://parceljs.org/), the bundler that Vite uses underneath to tell it what files to process. It got compounded because this was a hacky way to do things. I should have wrapped the code into a Vite plugin and not a process to run before vite does it's thing.
 
 Well, it could be worse... I could have to configure [webpack](https://webpack.js.org/) from scratch; and _that_ requires a PhD in _rocket science_ (#foreshadowing).
 
-## Moving from vite
+## Moving from Vite
 
 My first attempt was to use [11ty](https://www.11ty.dev/). It is an interesting tool and provided me a way to reorganize the templates for the blog and dynamic content.
 

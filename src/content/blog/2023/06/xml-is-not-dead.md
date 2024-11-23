@@ -19,7 +19,7 @@ tags:
   - FrontendDevelopment
 ---
 
-While building this blog I included one of my favourite yet underrated features: [RSS feeds](https://aboutfeeds.com/) ([RSS Specification](https://www.rssboard.org/rss-specification)) support.
+While building this blog I included one of my favorite yet underrated features: [RSS feeds](https://aboutfeeds.com/) ([RSS Specification](https://www.rssboard.org/rss-specification)) support.
 
 While RSS feeds are old and I feel like a boomer to use it, they are a nice way to consume content _directly_ from the source. No ads, no tracking, no selling your soul to the [FAANG](https://en.wikipedia.org/wiki/Big_Tech) overlords.
 

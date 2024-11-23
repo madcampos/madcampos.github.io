@@ -20,7 +20,7 @@ Putting aside all the bad puns related to typography and the fountain of youth, 
 
 ## What a time to be alive!
 
-Typography has never been so easy and fun, we have an influx of high quality, free and feature full fonts. Those range from [colour](https://caniuse.com/colr-v1) to [variables](https://caniuse.com/variable-fonts) with every [emoji](https://en.wikipedia.org/wiki/Emoji) and [unicode code point](https://en.wikipedia.org/wiki/Code_point) in between!
+Typography has never been so easy and fun, we have an influx of high quality, free and feature full fonts. Those range from [color](https://caniuse.com/colr-v1) to [variables](https://caniuse.com/variable-fonts) with every [emoji](https://en.wikipedia.org/wiki/Emoji) and [Unicode code point](https://en.wikipedia.org/wiki/Code_point) in between!
 
 ## Variations on a theme
 
@@ -28,7 +28,7 @@ From those, the better supported and most interesting are _variable fonts_. They
 
 The problem is most web font generator kits online are a little bit old and don't support those new features. Some of them don't even support the much smaller and newer [`woff2`](https://caniuse.com/woff2) format, even though all browsers support it for quite a while.
 
-## Not quite the rosetta stone
+## Not quite the Rosetta Stone
 
 Even with the file size reduction of having a single file instead of two or more, there is still the problem of _subsetting_.
 

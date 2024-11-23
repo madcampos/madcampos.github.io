@@ -27,11 +27,11 @@ Well, in short meta tags don't work with react. Good night and thank you for com
 
 ## Seriously, it doesn't
 
-Jokes aside, tools that read your page and parse metadata like the [schema.org validator](https://validator.schema.org/) or [Facebook's Open Graph debugger](https://developers.facebook.com/tools/debug/) will only read your page's _static_ HTML and **won't** execute any Javascript. That means react won't even run so whatever you put on the meta tags for your page must be part of the initial html send down the wire, meaning it is either statically generated or server rendered.
+Jokes aside, tools that read your page and parse metadata like the [schema.org validator](https://validator.schema.org/) or [Facebook's Open Graph debugger](https://developers.facebook.com/tools/debug/) will only read your page's _static_ HTML and **won't** execute any JavaScript. That means react won't even run so whatever you put on the meta tags for your page must be part of the initial html send down the wire, meaning it is either statically generated or server rendered.
 
 ## Static noise
 
-The easies way to get react to play nice with meta tags is to use one of the many flavours of meta frameworks, like [Next](https://nextjs.org/), [Remix](https://remix.run/) or [Astro](https://astro.build/). That solves the problem without many issues, and honestly, unless you need super specific dynamic applications, then your site or app should be statically build.
+The easiest way to get react to play nice with meta tags is to use one of the many flavors of meta frameworks, like [Next](https://nextjs.org/), [Remix](https://remix.run/) or [Astro](https://astro.build/). That solves the problem without many issues, and honestly, unless you need super specific dynamic applications, then your site or app should be statically build.
 
 Which leads me to the next point...
 

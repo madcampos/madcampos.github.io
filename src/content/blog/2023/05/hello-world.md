@@ -27,7 +27,7 @@ But first let me vent out on my frustrations on modern front-end tooling...
 
 ## #rant
 
-I know that vite is amazing. It helps in getting a nice and optimized project all the way and having a "no build" development environment is really refreshing and is lovely to work on. _However_, I still hate that I’m required to have a build step when generating my files. That _is_ a good idea for big projects full of small files and libraries but I’d still like to have the option to opt out of bundling just to have a website that is readable _by people_ and a good place to learn even though it is not as optimal. I hate to be locked in and have to go out of my way to deal with [Rollup](https://rollupjs.org/) (or [Webpack](https://webpack.js.org/)) shenanigans instead of just compiling typescript and be done with it.
+I know that Vite is amazing. It helps in getting a nice and optimized project all the way and having a "no build" development environment is really refreshing and is lovely to work on. _However_, I still hate that I’m required to have a build step when generating my files. That _is_ a good idea for big projects full of small files and libraries but I’d still like to have the option to opt out of bundling just to have a website that is readable _by people_ and a good place to learn even though it is not as optimal. I hate to be locked in and have to go out of my way to deal with [Rollup](https://rollupjs.org/) (or [Webpack](https://webpack.js.org/)) shenanigans instead of just compiling typescript and be done with it.
 
 Okay, #rant over, back to the post.
 
@@ -40,17 +40,17 @@ So, that meant:
 
 1. Use the existing infrastructure
 2. No front-end frameworks (to keep things simple, it has static data only after all)
-3. Has to integrate well with vite
+3. Has to integrate well with Vite
 4. I can build it myself if no tools already exist
 
 ## The How
 
-My investigation began, as usual, with typing "vite blog plugin" on Bing and Google and seeing what that lead me.
-Unfortunately there were no existing plugins for that. The only option was [VitePress](https://vitepress.dev/), it is a good one but when I tried it was doing too much magic and altering the existing project a lot, so not a "plugin" and more of a "full featured system built _on top of_ vite".
+My investigation began, as usual, with typing "Vite blog plugin" on Bing and Google and seeing what that lead me.
+Unfortunately there were no existing plugins for that. The only option was [VitePress](https://vitepress.dev/), it is a good one but when I tried it was doing too much magic and altering the existing project a lot, so not a "plugin" and more of a "full featured system built _on top of_ Vite".
 
 That meant I was about to build a plugin or at least write _some_ code myself.
 
-The investigation followed with some Multi-page application (MPA) plugins for vite. As it was born from the Vue community it's main purpose is to build Single-page applications (SPA) and it's not the best at building MPAs, but it can be done. The one that caught my attention was [`vite-plugin-virtual-mpa`](https://github.com/emosheeep/vite-plugin-virtual-mpa/). I configured it, wrote a lot of code and then went to test...
+The investigation followed with some Multi-page application (MPA) plugins for Vite. As it was born from the Vue community it's main purpose is to build Single-page applications (SPA) and it's not the best at building MPAs, but it can be done. The one that caught my attention was [`vite-plugin-virtual-mpa`](https://github.com/emosheeep/vite-plugin-virtual-mpa/). I configured it, wrote a lot of code and then went to test...
 
 BOOM! Cryptic errors showed up.
 
