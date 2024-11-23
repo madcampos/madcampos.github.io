@@ -95,9 +95,11 @@
 	},
 	"markup": {
 		"printWidth": 180,
+		"useTabs": true,
+		"indentWidth": 4,
 		"lineBreak": "lf",
 		"quotes": "double",
-		"formatComments": false,
+		"formatComments": true,
 		"scriptIndent": true,
 		"styleIndent": true,
 		"closingBracketSameLine": false,
@@ -117,7 +119,9 @@
 		"vForDelimiterStyle": "of",
 		"vSlotStyle": "short",
 		"vBindSameNameShortHand": false,
-		"astroAttrShorthand": true
+		"astroAttrShorthand": true,
+		"ignoreCommentDirective": "dprint-ignore",
+		"ignoreFileCommentDirective": "dprint-ignore-file"
 	},
 	"yaml": {
 		"printWidth": 180,
@@ -142,11 +146,11 @@
 		"**/.obsidian/**"
 	],
 	"plugins": [
-		"https://plugins.dprint.dev/typescript-0.91.4.wasm",
-		"https://plugins.dprint.dev/json-0.19.3.wasm",
-		"https://plugins.dprint.dev/g-plane/malva-v0.5.1.wasm",
-		"https://plugins.dprint.dev/g-plane/markup_fmt-v0.11.0.wasm",
-		"https://plugins.dprint.dev/markdown-0.17.1.wasm",
-		"https://plugins.dprint.dev/g-plane/pretty_yaml-v0.4.0.wasm"
+		"https://plugins.dprint.dev/typescript-0.93.2.wasm",
+		"https://plugins.dprint.dev/json-0.19.4.wasm",
+		"https://plugins.dprint.dev/g-plane/malva-v0.11.0.wasm",
+		"https://plugins.dprint.dev/g-plane/markup_fmt-v0.16.0.wasm",
+		"https://plugins.dprint.dev/markdown-0.17.8.wasm",
+		"https://plugins.dprint.dev/g-plane/pretty_yaml-v0.5.0.wasm"
 	]
 }
