@@ -1,0 +1,52 @@
+License
+=======
+
+This website and its content are licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0) (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+This means you are free to:
+- Share: copy and redistribute the material in any medium or format.
+- Adapt: remix, transform, and build upon the material.
+
+As long as you follow these terms:
+- Attribution: You must give appropriate credit to the original author(s) and the website, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+- NonCommercial: You may not use the material for commercial purposes, such as selling, advertising, or promoting products or services.
+- ShareAlike: If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+
+You may not apply any additional restrictions or legal terms that prevent others from doing anything the license permits.
+
+For more information, please visit the license page (https://creativecommons.org/licenses/by-nc-sa/4.0/) or read the full legal code (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
+
+Disclaimer
+==========
+
+The information provided by Marco Campos (“We,” “Us” or “Our”) on madcampos.dev (the “Website”) is for general informational purposes only. All information on the Website is provided in good faith, however, We make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability or completeness of any information on the Website.
+
+Under no circumstance shall We have any liability to You for any loss or damage of any kind incurred as a result of the use of the Website or reliance on any information provided on the Website. Your use of the Website and Your reliance on any information on the Website is solely at Your own risk.
+
+Consent
+-------
+
+By using the Website, You hereby consent to this Disclaimer and agree to its terms.
+
+We will not be liable for any damages experienced in connection with the use of Our Website.
+
+If You do not agree with this Disclaimer, STOP now and do not access or use this Website.
+
+External Links Disclaimer
+-------------------------
+
+The Website may contain or You may be sent through the Website links to other sites or content belonging to or originating from third parties or links to sites and features in banners or other advertising. We do not investigate, monitor, or check such external links for accuracy, adequacy, validity, reliability, availability or completeness.
+
+We do not warrant, endorse, guarantee, or assume responsibility for the accuracy or reliability of any information offered by third-party websites linked through the Website or any site or feature linked in any banner or other advertising. We will not be a party to or in any way be responsible for monitoring any transaction between You and third-party providers of products or services.
+
+Fair Use Notice
+---------------
+
+The Website contains copyrighted material the use of which has not always been specifically authorized by the copyright owner. We believe this constitutes a “fair use” of any such copyrighted material as provided for in section 107 of the US Copyright Law. If You wish to use copyrighted material from the Website for purposes of Your own that go beyond fair use, You must obtain permission from the copyright owner.
+
+Personal Responsibility
+-----------------------
+
+You acknowledge You are using Our Website voluntarily and that any choices, actions and results now and in the future are solely Your responsibility.
+
+We will not be liable to You or any other party for any decision made or action taken in reliance on the information given in the Website.

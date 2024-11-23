@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import Logo from '../components/Logo/index.astro';
+import { GLOBALS } from '../constants';
+import InternalPageLayout from '../layouts/InternalPage.astro';
+
+const changelogs = await getCollection('changelog');
+
+---
+
+<InternalPageLayout
+	htmlTitle={['Changelog', ...GLOBALS.title]}
+	title="Changelog"
+	description="List of changes in diferent versions of the website."
+	url="/changelog/"
+	tags={['changelog', ...GLOBALS.tags]}
+>
+	<Logo
+		style="full"
+		title="Marco Campos' Logo - Changelog"
+		subtitle="Changelog"
+		shortSubtitle="Log"
+		url="/changelog/"
+		slot="logo"
+	/>
+	<Fragment slot="header">Changelog</Fragment>
+</InternalPageLayout>
