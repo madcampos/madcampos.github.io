@@ -56,7 +56,7 @@ const socialImage = join([baseUrl, image ?? defaultSocialImage.src], { trailingS
 	{hasFeed && <link rel="alternate" type="application/rss+xml" href={join([BLOG.url, 'feed.xml'], { trailingSlash: false })} title={BLOG.titleString} />}
 
 	<!-- App Metadata -->
-	<link rel="icon" href={join([GLOBALS.url, 'icons/icon.svg'], { trailingSlash: false })} sizes="any" type="image/svg+xml" />
+	<link rel="icon" href={join([GLOBALS.url, '/assets/icons/icon.svg'], { trailingSlash: false })} sizes="any" type="image/svg+xml" />
 	<link rel="icon" href={join([GLOBALS.url, 'favicon.ico'], { trailingSlash: false })} sizes="48x48" type="image/x-icon" />
 	<meta name="theme-color" content="#0080ff" />
 	<link rel="license" href={join([GLOBALS.url, 'license'])} />
