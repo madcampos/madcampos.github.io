@@ -2,6 +2,8 @@
 @import './fonts.css';
 
 @layer base {
+	:root { interpolate-size: allow-keywords; }
+
 	:not(:defined) { display: none; }
 
 	html, body {
