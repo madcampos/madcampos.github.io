@@ -1,9 +1,170 @@
 ---
 import Logo from '../components/Logo/index.astro';
-import { GLOBALS } from '../constants.js';
+import { GLOBALS } from '../constants';
 import InternalPageLayout from '../layouts/InternalPage.astro';
 
 import '../assets/css/pages/todo.css';
+
+interface Task {
+	isDone: boolean;
+	text: string;
+	children?: Task[];
+}
+
+function formatText(text: string) {
+	return text.replaceAll(/\[(?<text>.+?)\]\((?<url>.+?)\)/giu, '<a href="$<url>">$<text></a>');
+}
+
+function renderTask(task: Task) {
+	const taskId = crypto.randomUUID();
+	let childTasks = '';
+
+	if (task.children) {
+		childTasks = `
+			<ul>
+				${task.children.map((childTask) => renderTask(childTask)).join('\n')}
+			</ul>
+		`;
+	}
+
+	return `
+		<li>
+			<label id="label-${taskId}" for="${taskId}">
+				<input
+					type="checkbox"
+					id="${taskId}"
+					name="${taskId}"
+					aria-labelledby="label-${taskId}"
+					${task.isDone ? 'checked' : ''}
+				/>
+				<span>${formatText(task.text)}</span>
+			</label>
+			${childTasks}
+		</li>
+	`;
+}
+
+const tasks: Task[] = [
+	{ isDone: true, text: 'Make logos an svg component so it can be styled with CSS' },
+	{ isDone: false, text: 'Add vintage buttons with SVG for better text fitting/styling' },
+	{ isDone: false, text: 'Add [webmention badges](https://webmention.io/docs/badges)' },
+	{ isDone: false, text: 'Improve [print style](https://voussoir.net/writing/css_for_printing)' },
+	{
+		isDone: true,
+		text: 'Improve [high contrast mode](https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/) (fix things that are in the wrong colors)',
+		children: [
+			{ isDone: true, text: 'Keep orange but make it brighter (add white)' },
+			{ isDone: true, text: 'Small text should not be so small' },
+			{ isDone: true, text: 'Medium dark grey background should be darker (add black). (Maybe add a border instead)' },
+		]
+	},
+	{
+		isDone: false,
+		text: 'Implement themes + theme selector',
+		children: [
+			{ isDone: true, text: 'Dark mode (AAA contrast)' },
+			{ isDone: true, text: 'Light mode (AAA contrast)' },
+			{
+				isDone: true,
+				text: 'High contrast yellow on black (AAA contrast)',
+				children: [
+					{ isDone: true, text: 'Make underline solid' },
+					{ isDone: true, text: 'Make underline distance from text larger' },
+					{ isDone: true, text: 'Make tags text bold' },
+					{ isDone: true, text: 'Special "code theme" for high contrast' },
+					{ isDone: true, text: 'Increase line height and letter spacing' },
+				]
+			},
+			{
+				isDone: true,
+				text: 'Forced colors (AAA contrast)',
+				children: [
+					{ isDone: true, text: 'Fix tags and grayscale filter for avatars' },
+					{ isDone: true, text: 'SVGs added by css need to change color' },
+				]
+			},
+			{ isDone: false, text: 'Old interwebs' },
+			{ isDone: false, text: 'Skeuomorphic cork board' },
+			{ isDone: false, text: '"Zen"' },
+			{ isDone: false, text: '"Hacker" (green on black)' },
+		]
+	},
+	{
+		isDone: false,
+		text: 'Finish integrating web mentions',
+		children: [
+			{ isDone: true, text: 'Move to cloudflare' },
+			{ isDone: false, text: 'Add cloudflare function to handle sending webmentions' },
+			{ isDone: false, text: 'Add cloudflare function to handle receiving webmentions' },
+			{ isDone: false, text: 'Add webmention to posts as a comment system' },
+			{ isDone: false, text: 'Add form to send webmention as comment from the blog' },
+			{ isDone: false, text: 'Add guestbook as webmentions' },
+		]
+	},
+	{ isDone: true, text: 'Add "about" page (based on <a href="https://slashpages.net/">slash pages</a>)' },
+	{ isDone: true, text: 'Add "ai" page (based on <a href="https://slashpages.net/">slash pages</a>)' },
+	{ isDone: false, text: 'Add "blogroll" page (based on <a href="https://slashpages.net/">slash pages</a>)' },
+	{ isDone: false, text: 'Add "carry" page (based on <a href="https://slashpages.net/">slash pages</a>)' },
+	{ isDone: false, text: 'Add "changelog" page (based on <a href="https://slashpages.net/">slash pages</a>)' },
+	{ isDone: true, text: 'Add "ARCHITECTURE.md" file <strong>N/A</strong>' },
+	{ isDone: true, text: 'Add noop "change password" page' },
+	{ isDone: false, text: 'Add dnt/dnt policy' },
+	{ isDone: false, text: 'Add ko-fi donation page' },
+	{ isDone: false, text: 'Add feeds page listing all available feeds' },
+	{ isDone: false, text: 'Make projects and talks available as feeds' },
+	{ isDone: false, text: 'Improve rss styles' },
+	{ isDone: false, text: 'Add humans.txt' },
+	{ isDone: false, text: 'Add indieweb.txt' },
+	{ isDone: false, text: 'Add pgp key?' },
+	{
+		isDone: false,
+		text: 'Add Resume',
+		children: [
+			{ isDone: false, text: '[JSON resume format](https://jsonresume.org/schema/)' },
+			{ isDone: false, text: 'HTML format' },
+			{ isDone: false, text: 'PDF Format' },
+			{ isDone: false, text: '[DOCX](https://www.npmjs.com/package/docx) [format](https://www.npmjs.com/package/docxtemplater)' },
+		]
+	},
+	{
+		isDone: true,
+		text: 'Add Roadmap page',
+		children: [
+			{ isDone: true, text: 'Make items tooglable' },
+			{ isDone: true, text: 'Save to local storage' },
+		]
+	},
+	{ isDone: false, text: 'Add [search functionality](https://pagefind.app/docs/)' },
+	{ isDone: false, text: 'Add security.txt' },
+	{ isDone: false, text: 'Add stats board' },
+	{ isDone: false, text: 'Add styleguide page' },
+	{
+		isDone: false,
+		text: 'Add debug mode',
+		children: [
+			{ isDone: false, text: 'Make debug css togglable' },
+			{ isDone: false, text: 'Add JS report for issues (?)' },
+		]
+	},
+	{ isDone: false, text: 'Add [webauthn](https://webauthn.io/) (?)' },
+	{ isDone: false, text: 'Add [web monetization](https://webmonetization.org/docs/) (?)' },
+	{ isDone: false, text: 'Add a "uses" page' },
+	{ isDone: false, text: 'Add webfinger endpoint' },
+	{
+		isDone: false,
+		text: 'Add webrings',
+		children: [
+			{ isDone: false, text: '[Queer Coded](https://isaacfish.neocities.org/webring/)' },
+			{ isDone: false, text: '[CSS Joy](https://cs.sjoy.lol/)' },
+			{ isDone: false, text: '[Bucketfish](https://webring.bucketfish.me/)' },
+			{ isDone: false, text: '[Indieweb](https://indieweb.org/webring)' },
+		]
+	},
+	{ isDone: false, text: 'Add a [CSS Naked day](https://css-naked-day.github.io/)' },
+	{ isDone: false, text: 'Add a [JS Naked day](https://meiert.com/en/blog/april-24-is-js-naked-day/)' },
+	{ isDone: false, text: 'Have a [brag document](https://uxdesign.cc/why-you-should-have-a-brag-document-eb6cc82ec80a)' },
+];
+
 ---
 
 <InternalPageLayout
@@ -29,448 +190,7 @@ import '../assets/css/pages/todo.css';
 	</p>
 
 	<ul id="todo-list">
-		<li>
-			<label id="label-todo-1" for="todo-1">
-				<input type="checkbox" id="todo-1" name="todo-1" aria-labelledby="label-todo-1" checked />
-				<span>Make logos an svg component so it can be styled with CSS</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-2" for="todo-2">
-				<input type="checkbox" id="todo-2" name="todo-2" aria-labelledby="label-todo-2" />
-				<span>Add vintage buttons with SVG for better text fitting/styling</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-3" for="todo-3">
-				<input type="checkbox" id="todo-3" name="todo-3" aria-labelledby="label-todo-3" />
-				<span>Add <a href="https://webmention.io/docs/badges">webmention badges</a></span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-4" for="todo-4">
-				<input type="checkbox" id="todo-4" name="todo-4" aria-labelledby="label-todo-4" />
-				<span>Improve <a href="https://voussoir.net/writing/css_for_printing">print style</a></span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-5" for="todo-5">
-				<input type="checkbox" id="todo-5" name="todo-5" aria-labelledby="label-todo-5" checked />
-				<span>Improve <a href="https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/"
-					>high contrast mode</a> (fix things that are in the wrong colors)</span>
-			</label>
-			<ul>
-				<li>
-					<label id="label-todo-5-1" for="todo-5-1">
-						<input type="checkbox" id="todo-5-1" name="todo-5-1" aria-labelledby="label-todo-5-1" checked />
-						<span>Keep orange but make it brighter (add white)</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-5-2" for="todo-5-2">
-						<input type="checkbox" id="todo-5-2" name="todo-5-2" aria-labelledby="label-todo-5-2" checked />
-						<span>Small text should not be so small</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-5-3" for="todo-5-3">
-						<input type="checkbox" id="todo-5-3" name="todo-5-3" aria-labelledby="label-todo-5-3" checked />
-						<span>Medium dark grey background should be darker (add black). (Maybe add a border instead)</span>
-					</label>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<label id="label-todo-6" for="todo-6">
-				<input type="checkbox" id="todo-6" name="todo-6" aria-labelledby="label-todo-6" />
-				<span>Implement themes + theme selector</span>
-			</label>
-			<ul>
-				<li>
-					<label id="label-todo-6-1" for="todo-6-1">
-						<input type="checkbox" id="todo-6-1" name="todo-6-1" aria-labelledby="label-todo-6-1" checked />
-						<span>Light mode (AAA contrast)</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-6-2" for="todo-6-2">
-						<input type="checkbox" id="todo-6-2" name="todo-6-2" aria-labelledby="label-todo-6-2" checked />
-						<span>Dark mode (AAA contrast)</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-6-3" for="todo-6-3">
-						<input type="checkbox" id="todo-6-3" name="todo-6-3" aria-labelledby="label-todo-6-3" checked />
-						<span>High contrast yellow on black (AAA contrast)</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-6-4" for="todo-6-4">
-						<input type="checkbox" id="todo-6-4" name="todo-6-4" aria-labelledby="label-todo-6-4" />
-						<span>Old interwebs</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-6-5" for="todo-6-5">
-						<input type="checkbox" id="todo-6-5" name="todo-6-5" aria-labelledby="label-todo-6-5" />
-						<span>Skeuomorphic cork board</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-6-6" for="todo-6-6">
-						<input type="checkbox" id="todo-6-6" name="todo-6-6" aria-labelledby="label-todo-6-6" />
-						<span>"Zen"</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-6-7" for="todo-6-7">
-						<input type="checkbox" id="todo-6-7" name="todo-6-7" aria-labelledby="label-todo-6-7" />
-						<span>"Hacker" (green on black)</span>
-					</label>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<label id="label-todo-7" for="todo-7">
-				<input type="checkbox" id="todo-7" name="todo-7" aria-labelledby="label-todo-7" />
-				<span>Finish integrating web mentions</span>
-			</label>
-			<ul>
-				<li>
-					<label id="label-todo-7-1" for="todo-7-1">
-						<input type="checkbox" id="todo-7-1" name="todo-7-1" aria-labelledby="label-todo-7-1" checked />
-						<span>Move to cloudflare</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-7-2" for="todo-7-2">
-						<input type="checkbox" id="todo-7-2" name="todo-7-2" aria-labelledby="label-todo-7-2" />
-						<span>Add cloudflare function to handle <em>sending</em> webmentions</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-7-3" for="todo-7-3">
-						<input type="checkbox" id="todo-7-3" name="todo-7-3" aria-labelledby="label-todo-7-3" />
-						<span>Add cloudflare function to handle <em>receiving</em> webmentions</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-7-4" for="todo-7-4">
-						<input type="checkbox" id="todo-7-4" name="todo-7-4" aria-labelledby="label-todo-7-4" />
-						<span>Add webmention to posts as a comment system</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-7-5" for="todo-7-5">
-						<input type="checkbox" id="todo-7-5" name="todo-7-5" aria-labelledby="label-todo-7-5" />
-						<span>Add form to send webmention as comment from the blog</span>
-					</label>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<label id="label-todo-8" for="todo-8">
-				<input type="checkbox" id="todo-8" name="todo-8" aria-labelledby="label-todo-8" />
-				<span>Add "about" page (based on <a href="https://slashpages.net/">slash pages</a>)</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-9" for="todo-9">
-				<input type="checkbox" id="todo-9" name="todo-9" aria-labelledby="label-todo-9" />
-				<span>Add "ARCHITECTURE.md" file</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-10" for="todo-10">
-				<input type="checkbox" id="todo-10" name="todo-10" aria-labelledby="label-todo-10" />
-				<span>Add noop "change password" page</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-11" for="todo-11">
-				<input type="checkbox" id="todo-11" name="todo-11" aria-labelledby="label-todo-11" />
-				<span>Add dnt/dnt policy</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-12" for="todo-12">
-				<input type="checkbox" id="todo-12" name="todo-12" aria-labelledby="label-todo-12" />
-				<span>Add ko-fi donation page</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-13" for="todo-13">
-				<input type="checkbox" id="todo-13" name="todo-13" aria-labelledby="label-todo-13" />
-				<span>Add feeds page listing all available feeds</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-14" for="todo-14">
-				<input type="checkbox" id="todo-14" name="todo-14" aria-labelledby="label-todo-14" />
-				<span>Make projects and talks available as feeds</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-15" for="todo-15">
-				<input type="checkbox" id="todo-15" name="todo-15" aria-labelledby="label-todo-15" />
-				<span>Improve rss styles</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-16" for="todo-16">
-				<input type="checkbox" id="todo-16" name="todo-16" aria-labelledby="label-todo-16" />
-				<span>Add guestbook as webmentions</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-17" for="todo-17">
-				<input type="checkbox" id="todo-17" name="todo-17" aria-labelledby="label-todo-17" />
-				<span>Add humans.txt</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-18" for="todo-18">
-				<input type="checkbox" id="todo-18" name="todo-18" aria-labelledby="label-todo-18" />
-				<span>Add indieweb.txt</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-19" for="todo-19">
-				<input type="checkbox" id="todo-19" name="todo-19" aria-labelledby="label-todo-19" />
-				<span>Add pgp key?</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-20" for="todo-20">
-				<input type="checkbox" id="todo-20" name="todo-20" aria-labelledby="label-todo-20" />
-				<span>Add resume</span>
-			</label>
-			<ul>
-				<li>
-					<label id="label-todo-20-1" for="todo-20-1">
-						<input type="checkbox" id="todo-20-1" name="todo-20-1" aria-labelledby="label-todo-20-1" />
-						<span><a href="https://jsonresume.org/schema/">JSON resume format</a></span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-20-2" for="todo-20-2">
-						<input type="checkbox" id="todo-20-2" name="todo-20-2" aria-labelledby="label-todo-20-2" />
-						<span>HTML format</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-20-3" for="todo-20-3">
-						<input type="checkbox" id="todo-20-3" name="todo-20-3" aria-labelledby="label-todo-20-3" />
-						<span>PDF format</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-20-4" for="todo-20-4">
-						<input type="checkbox" id="todo-20-4" name="todo-20-4" aria-labelledby="label-todo-20-4" />
-						<span><a href="https://www.npmjs.com/package/docx">DOCX</a>
-							<a href="https://www.npmjs.com/package/docxtemplater">format</a></span>
-					</label>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<label id="label-todo-21" for="todo-21">
-				<input type="checkbox" id="todo-21" name="todo-21" aria-labelledby="label-todo-21" checked />
-				<span>Add roadmap page/board</span>
-			</label>
-			<ul>
-				<li>
-					<label id="label-todo-21-1" for="todo-21-1">
-						<input type="checkbox" id="todo-21-1" name="todo-21-1" aria-labelledby="label-todo-21-1" checked />
-						<span>Make roadmap items togglable</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-21-2" for="todo-21-2">
-						<input type="checkbox" id="todo-21-2" name="todo-21-2" aria-labelledby="label-todo-21-2" checked />
-						<span>Save in local storage</span>
-					</label>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<label id="label-todo-22" for="todo-22">
-				<input type="checkbox" id="todo-22" name="todo-22" aria-labelledby="label-todo-22" />
-				<span>Add <a href="https://pagefind.app/docs/">search functionality</a></span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-23" for="todo-23">
-				<input type="checkbox" id="todo-23" name="todo-23" aria-labelledby="label-todo-23" />
-				<span>Add security.txt</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-24" for="todo-24">
-				<input type="checkbox" id="todo-24" name="todo-24" aria-labelledby="label-todo-24" />
-				<span>Add stats board</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-25" for="todo-25">
-				<input type="checkbox" id="todo-25" name="todo-25" aria-labelledby="label-todo-25" />
-				<span>Add styleguide page</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-26" for="todo-26">
-				<input type="checkbox" id="todo-26" name="todo-26" aria-labelledby="label-todo-26" />
-				<span>Add debug mode</span>
-			</label>
-			<ul>
-				<li>
-					<label id="label-todo-26-1" for="todo-26-1">
-						<input type="checkbox" id="todo-26-1" name="todo-26-1" aria-labelledby="label-todo-26-1" />
-						<span>Make debug css togglable</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-26-2" for="todo-26-2">
-						<input type="checkbox" id="todo-26-2" name="todo-26-2" aria-labelledby="label-todo-26-2" />
-						<span>Add JS report for issues (?)</span>
-					</label>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<label id="label-todo-27" for="todo-27">
-				<input type="checkbox" id="todo-27" name="todo-27" aria-labelledby="label-todo-27" />
-				<span>Add <a href="https://webauthn.io/">webauthn</a></span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-28" for="todo-28">
-				<input type="checkbox" id="todo-28" name="todo-28" aria-labelledby="label-todo-28" />
-				<span>Add <a href="https://webmonetization.org/docs/">web monetization</a></span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-29" for="todo-29">
-				<input type="checkbox" id="todo-29" name="todo-29" aria-labelledby="label-todo-29" />
-				<span>Add a "uses" page</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-30" for="todo-30">
-				<input type="checkbox" id="todo-30" name="todo-30" aria-labelledby="label-todo-30" />
-				<span>Add a webfinger endpoint</span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-31" for="todo-31">
-				<input type="checkbox" id="todo-31" name="todo-31" aria-labelledby="label-todo-31" />
-				<span>Add webrings</span>
-			</label>
-			<ul>
-				<li>
-					<label id="label-todo-31-1" for="todo-31-1">
-						<input type="checkbox" id="todo-31-1" name="todo-31-1" aria-labelledby="label-todo-31-1" />
-						<span><a href="https://isaacfish.neocities.org/webring/">Queer coded</a></span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-31-2" for="todo-31-2">
-						<input type="checkbox" id="todo-31-2" name="todo-31-2" aria-labelledby="label-todo-31-2" />
-						<span><a href="https://cs.sjoy.lol/">CSS Joy</a></span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-31-3" for="todo-31-3">
-						<input type="checkbox" id="todo-31-3" name="todo-31-3" aria-labelledby="label-todo-31-3" />
-						<span><a href="https://webring.bucketfish.me/">Bucketfish</a></span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-31-4" for="todo-31-4">
-						<input type="checkbox" id="todo-31-4" name="todo-31-4" aria-labelledby="label-todo-31-4" />
-						<span><a href="https://indieweb.org/webring">Indieweb</a></span>
-					</label>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<label id="label-todo-32" for="todo-32">
-				<input type="checkbox" id="todo-32" name="todo-32" aria-labelledby="label-todo-32" />
-				<span>Add <a href="https://css-naked-day.github.io/">CSS Naked day</a></span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-33" for="todo-33">
-				<input type="checkbox" id="todo-33" name="todo-33" aria-labelledby="label-todo-33" />
-				<span>Add <a href="https://meiert.com/en/blog/april-24-is-js-naked-day/">JS Naked day</a></span>
-			</label>
-		</li>
-		<li>
-			<label id="label-todo-34" for="todo-34">
-				<input type="checkbox" id="todo-34" name="todo-34" aria-labelledby="label-todo-34" />
-				<span>High Contrast Theme</span>
-			</label>
-
-			<ul>
-				<li>
-					<label id="label-todo-34-1" for="todo-34-1">
-						<input type="checkbox" id="todo-34-1" name="todo-34-1" aria-labelledby="label-todo-34-1" checked />
-						<span>Make underline solid</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-34-2" for="todo-34-2">
-						<input type="checkbox" id="todo-34-2" name="todo-34-2" aria-labelledby="label-todo-34-2" checked />
-						<span>Make underline distance from text larger</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-34-3" for="todo-34-3">
-						<input type="checkbox" id="todo-34-3" name="todo-34-3" aria-labelledby="label-todo-34-3" checked />
-						<span>Make "tags" text bold</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-34-4" for="todo-34-4">
-						<input type="checkbox" id="todo-34-4" name="todo-34-4" aria-labelledby="label-todo-34-4" checked />
-						<span>Code theme: High Contrast</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-34-5" for="todo-34-5">
-						<input type="checkbox" id="todo-34-5" name="todo-34-5" aria-labelledby="label-todo-34-5" checked />
-						<span>Increase line height and letter spacing</span>
-					</label>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<label id="label-todo-35" for="todo-35">
-				<input type="checkbox" id="todo-35" name="todo-35" aria-labelledby="label-todo-35" checked />
-				<span>Forced colors</span>
-			</label>
-
-			<ul>
-				<li>
-					<label id="label-todo-35-1" for="todo-35-1">
-						<input type="checkbox" id="todo-35-1" name="todo-35-1" aria-labelledby="label-todo-35-1" checked />
-						<span>Fix tagsand add grayscale filter to avatars</span>
-					</label>
-				</li>
-				<li>
-					<label id="label-todo-35-2" for="todo-35-2">
-						<input type="checkbox" id="todo-35-2" name="todo-35-2" aria-labelledby="label-todo-35-2" checked />
-						<span>SVGs added by CSS need to change color</span>
-					</label>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<label id="label-todo-36" for="todo-36">
-				<input type="checkbox" id="todo-36" aria-labelledby="label-todo-36" />
-				<span>Have a <a href="https://uxdesign.cc/why-you-should-have-a-brag-document-eb6cc82ec80a">brag document</a></span>
-			</label>
-		</li>
+		<Fragment set:html={tasks.map((task) => renderTask(task)).join('\n')} />
 	</ul>
 
 	<h2>Webmention references</h2>
