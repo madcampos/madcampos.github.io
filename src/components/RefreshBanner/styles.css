@@ -2,7 +2,7 @@
 	#pwa-toast {
 		align-items: center;
 		background-color: var(--bg-color);
-		border: solid var(--highlight-border-color) var(--border-width);
+		border: var(--border-style) var(--highlight-border-color) var(--border-width);
 		display: flex;
 		gap: var(--spacing-medium);
 		inset-block-end: var(--spacing-small);
@@ -25,7 +25,7 @@
 
 	#pwa-toast button {
 		background-color: transparent;
-		border: var(--border-width) solid var(--border-color);
+		border: var(--border-width) var(--border-style) var(--border-color);
 		border-radius: 100vmax;
 		color: var(--text-color);
 		cursor: pointer;

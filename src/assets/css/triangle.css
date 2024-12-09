@@ -44,7 +44,7 @@
 
 	#triangle-content input {
 		background-color: var(--dark-bg-color);
-		border: solid var(--theme-color) var(--border-width);
+		border: var(--border-style) var(--theme-color) var(--border-width);
 		border-radius: var(--spacing-large);
 		color: var(--text-color);
 		font-size: 1.5em;
@@ -54,7 +54,7 @@
 
 	#triangle-content button {
 		background-color: var(--theme-color);
-		border: solid transparent var(--border-width);
+		border: var(--border-style) transparent var(--border-width);
 		border-radius: var(--spacing-large);
 		color: var(--text-color);
 		font-size: 1.5em;

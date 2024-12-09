@@ -44,9 +44,10 @@
 	}
 
 	blockquote {
-		border: var(--border-width) solid var(--border-color);
+		border: var(--border-width) var(--border-style) var(--border-color);
 		border-block-end-color: var(--theme-color);
 		border-inline-end-color: var(--theme-color);
+		border-radius: var(--border-radius);
 		font-style: italic;
 		margin: var(--spacing-medium);
 		padding-inline: var(--spacing-medium);

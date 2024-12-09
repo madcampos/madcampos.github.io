@@ -2,7 +2,8 @@
 	.project-card {
 		--image-size: var(--avatar-size);
 		background-color: var(--bg-color);
-		border: solid var(--highlight-border-color) var(--border-width);
+		border: var(--border-style) var(--highlight-border-color) var(--border-width);
+		border-radius: var(--border-radius);
 		display: grid;
 		gap: var(--spacing-large);
 		grid-template-areas:
@@ -29,7 +30,6 @@
 	.project-card .project-icon {
 		grid-area: picture;
 		max-width: 50vmin;
-		place-self: start center;
 	}
 
 	.project-card header { grid-area: header; }

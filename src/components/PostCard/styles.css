@@ -2,7 +2,8 @@
 	.post-card {
 		--image-size: var(--avatar-size);
 		background-color: var(--bg-color);
-		border: solid var(--highlight-border-color) var(--border-width);
+		border: var(--border-style) var(--highlight-border-color) var(--border-width);
+		border-radius: var(--border-radius);
 		display: grid;
 		gap: var(--spacing-large);
 		grid-template-areas:
@@ -31,12 +32,13 @@
 	.post-card time { font-size: small; }
 
 	.post-card picture {
+		border-radius: var(--border-radius);
 		display: block;
 		grid-area: picture;
 		height: var(--image-size);
 		object-fit: cover;
 		object-position: center;
-		overflow: hidden;
+		overflow: clip;
 		place-self: center center;
 		width: var(--image-size);
 	}

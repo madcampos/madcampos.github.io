@@ -18,6 +18,8 @@
 		--spacing-small: 0.2rem;
 		/* Border */
 		--border-width: 0.1rem;
+		--border-style: solid;
+		--border-radius: 0;
 		/* Theme colors */
 		--theme-color: #0080ff;
 		--secondary-color: lightblue;

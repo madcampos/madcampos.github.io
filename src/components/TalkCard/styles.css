@@ -2,7 +2,7 @@
 	.talk-card {
 		--image-size: var(--avatar-size);
 		background-color: var(--bg-color);
-		border: solid var(--highlight-border-color) var(--border-width);
+		border: var(--border-style) var(--highlight-border-color) var(--border-width);
 		display: grid;
 		gap: var(--spacing-large);
 		grid-template-areas:
@@ -34,12 +34,13 @@
 	.talk-card header aside small { display: flex; }
 
 	.talk-card picture {
+		border-radius: var(--border-radius);
 		display: block;
 		grid-area: picture;
 		height: var(--image-size);
 		object-fit: cover;
 		object-position: center;
-		overflow: hidden;
+		overflow: clip;
 		place-self: center center;
 		width: var(--image-size);
 	}

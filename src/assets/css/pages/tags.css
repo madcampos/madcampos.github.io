@@ -48,8 +48,9 @@
 	#tag-list .tag:hover::before { background-color: var(--text-color); }
 
 	#tag-list .tag:focus-within {
+		border-radius: var(--border-radius);
 		color: var(--dark-bg-color);
-		outline: var(--theme-color) solid var(--border-width);
+		outline: var(--theme-color) var(--border-style) var(--border-width);
 		outline-offset: var(--spacing-small);
 	}
 

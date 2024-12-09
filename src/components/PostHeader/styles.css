@@ -7,7 +7,8 @@
 
 	#post-header-wrapper {
 		background: var(--bg-color);
-		border: solid var(--highlight-border-color) var(--border-width);
+		border: var(--border-style) var(--highlight-border-color) var(--border-width);
+		border-radius: var(--border-radius);
 		display: grid;
 		gap: var(--spacing-large);
 		grid-template-areas:
@@ -58,10 +59,11 @@
 	#post-header #post-title { grid-area: title; }
 
 	#post-header #hero-image {
+		border-radius: var(--border-radius);
 		grid-area: hero-image;
 		height: 100%;
 		object-fit: contain;
-		overflow: hidden;
+		overflow: clip;
 		width: 100%;
 	}
 
@@ -100,7 +102,7 @@
 	#post-share button {
 		align-items: center;
 		background: var(--bg-color);
-		border: solid var(--border-width) var(--theme-color);
+		border: var(--border-style) var(--border-width) var(--theme-color);
 		border-radius: 100vmax;
 		color: var(--theme-color);
 		display: flex;

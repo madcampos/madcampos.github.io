@@ -1,9 +1,11 @@
 @layer code {
 	pre {
 		background-color: var(--shiki-light-bg, var(--bg-color));
-		border: solid var(--border-color) var(--border-width);
+		border: var(--border-style) var(--border-color) var(--border-width);
+		border-radius: var(--border-radius);
 		font-family: var(--monospace-font-family);
 		font-size: smaller;
+		overflow: clip;
 		padding: var(--spacing-medium) var(--spacing-small);
 		tab-size: 2;
 	}
@@ -75,7 +77,7 @@
 	code .line .highlighted-word {
 		background-color: var(--highlight-default-bg);
 		filter: contrast(0.5) brightness(1.2);
-		outline: var(--border-width) solid var(--highlight-color);
+		outline: var(--border-width) var(--border-style) var(--highlight-color);
 		padding-inline: var(--spacing-small);
 	}
 

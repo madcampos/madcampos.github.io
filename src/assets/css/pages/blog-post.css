@@ -35,9 +35,10 @@
 	}
 
 	blockquote {
-		border: var(--border-width) solid var(--border-color);
+		border: var(--border-width) var(--border-style) var(--border-color);
 		border-block-end-color: var(--theme-color);
 		border-inline-end-color: var(--theme-color);
+		border-radius: var(--border-radius);
 		font-style: italic;
 		margin: var(--spacing-medium);
 		padding-inline: var(--spacing-medium);
@@ -75,7 +76,7 @@
 	}
 
 	hr::after {
-		border-top: var(--border-width) solid var(--theme-color);
+		border-top: var(--border-width) var(--border-style) var(--theme-color);
 		content: '';
 		display: block;
 	}
@@ -126,10 +127,4 @@
 
 		#post-contents p > img:only-child { --image-size: 70vw; }
 	}
-
-	@media (prefers-reduced-motion: no-preference) { hr::after { border-top-style: dashed; } }
-
-	@media (prefers-contrast: more) { hr::after { border-top-style: solid; } }
-
-	@media (forced-colors: active) { hr::after { border-top-style: solid; } }
 }

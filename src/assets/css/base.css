@@ -59,8 +59,9 @@
 
 	:focus-visible {
 		background-color: var(--bg-color);
+		border-radius: var(--border-radius);
 		color: var(--text-color);
-		outline: var(--theme-color) solid var(--border-width);
+		outline: var(--theme-color) var(--border-style) var(--border-width);
 		outline-offset: var(--spacing-small);
 	}
 
@@ -157,13 +158,15 @@
 
 	iframe {
 		aspect-ratio: 3 / 2;
-		border: solid var(--border-width) var(--theme-color);
+		border: var(--border-style) var(--border-width) var(--theme-color);
+		border-radius: var(--border-radius);
 		display: block;
 		height: auto;
 		margin-inline: auto;
 		max-height: 100%;
 		min-height: var(--iframe-size);
 		min-width: var(--iframe-size);
+		overflow: clip;
 		width: clamp(var(--iframe-size), 100%, var(--max-width));
 	}
 

@@ -1,7 +1,9 @@
 @layer components {
 	#site-nav {
 		background-color: var(--bg-color);
-		border-block-end: solid var(--highlight-border-color) var(--border-width);
+		border-block-end: var(--border-style) var(--highlight-border-color) var(--border-width);
+		border-end-end-radius: var(--border-radius);
+		border-end-start-radius: var(--border-radius);
 		display: flex;
 		margin-inline: auto;
 		max-width: var(--max-width);

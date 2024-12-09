@@ -1,7 +1,7 @@
 @layer components {
 	.user-avatar {
 		--image-size: var(--avatar-size);
-		border: var(--theme-color) solid var(--border-width);
+		border: var(--theme-color) var(--border-style) var(--border-width);
 		border-radius: 100vmax;
 		display: block;
 		height: var(--image-size);
