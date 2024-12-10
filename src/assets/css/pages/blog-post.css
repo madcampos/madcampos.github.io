@@ -117,6 +117,7 @@
 
 	#post-license {
 		background: var(--bg-color);
+		border-radius: var(--border-radius);
 		font-size: smaller;
 		margin-block-start: var(--spacing-large);
 		padding: var(--spacing-large);

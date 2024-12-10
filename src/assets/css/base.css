@@ -3,25 +3,27 @@
 
 	:not(:defined) { display: none; }
 
-	html, body {
-		align-items: stretch;
-		background: var(--dark-bg-color);
+	html {
 		box-sizing: border-box;
 		color: var(--text-color);
-		display: flex;
-		flex-direction: column;
 		font-family: var(--sans-serif-font-family);
 		font-size: var(--body-text);
 		font-weight: normal;
 		height: 100%;
-		justify-content: stretch;
 		line-height: 1.5;
-		margin: 0;
 		overscroll-behavior-y: contain;
-		padding: 0;
 		scrollbar-color: var(--theme-color) var(--scrollbar-bg);
-		scrollbar-width: thin;
 		width: 100%;
+	}
+
+	body {
+		align-items: stretch;
+		background: var(--dark-bg-color);
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		justify-content: stretch;
+		margin: 0;
 	}
 
 	*, *::after, *::before {
