@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	for (const [setting, value] of Object.entries(settings)) {
 		if (value !== undefined) {
-			document.body.dataset[setting] = value;
+			document.documentElement.dataset[setting] = value;
 		}
 	}
 });

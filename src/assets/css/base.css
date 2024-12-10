@@ -1,5 +1,6 @@
 @import './vars.css';
 @import './fonts.css';
+@import './themes/index.css';
 
 @layer base {
 	:root { interpolate-size: allow-keywords; }
