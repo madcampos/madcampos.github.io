@@ -59,6 +59,12 @@
 	width: 100%;
 }
 
+#theme-switcher-dialog button {
+	height: fit-content;
+	margin-block-start: var(--spacing-large);
+	width: fit-content;
+}
+
 #theme-list {
 	display: flex;
 	flex-grow: 1;
