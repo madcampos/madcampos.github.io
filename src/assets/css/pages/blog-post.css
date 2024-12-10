@@ -97,13 +97,16 @@
 	}
 
 	#related-posts ul {
+		display: flex;
 		flex-wrap: nowrap;
 		gap: var(--spacing-large);
 		justify-content: start;
+		list-style-type: '';
 		margin: 0;
 		padding: 0;
 		scroll-behavior: smooth;
 		scroll-snap-type: x mandatory;
+		width: 100%;
 	}
 
 	#related-posts li {

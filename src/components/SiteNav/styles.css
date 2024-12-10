@@ -9,4 +9,16 @@
 		max-width: var(--max-width);
 		width: 100%;
 	}
+
+	#site-nav ul {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-large);
+		justify-content: center;
+		list-style-type: '';
+		margin: var(--spacing-large) auto;
+		padding: 0 var(--spacing-large);
+		width: 100%;
+	}
 }

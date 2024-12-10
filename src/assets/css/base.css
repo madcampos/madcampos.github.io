@@ -147,17 +147,6 @@
 	ol ol { list-style: lower-latin; }
 	ol ol ol { list-style: lower-roman; }
 
-	nav ul {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--spacing-large);
-		justify-content: center;
-		list-style-type: '';
-		margin: var(--spacing-large) auto;
-		padding: 0 var(--spacing-large);
-		width: 100%;
-	}
-
 	iframe {
 		aspect-ratio: 3 / 2;
 		border: var(--border-style) var(--border-width) var(--theme-color);
