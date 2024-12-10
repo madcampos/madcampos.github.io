@@ -18,7 +18,7 @@
 		"prepreview": "npm run build",
 		"preview": "astro preview --site=http://localhost:3000/",
 		"typecheck": "tsc --noEmit",
-		"format": "dprint",
+		"format": "dprint fmt",
 		"lint:js": "eslint --fix",
 		"lint:md": "astro check",
 		"lint": "npm run typecheck && npm run lint:js && npm run lint:md"
