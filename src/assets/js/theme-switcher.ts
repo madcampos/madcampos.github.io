@@ -1,14 +1,12 @@
-document.addEventListener('DOMContentLoaded', () => {
-	const selectedTheme = new URLSearchParams(document.location.search).get('theme') ?? localStorage.getItem('theme');
+import { SiteSettings } from './settings.ts';
 
-	if (selectedTheme) {
-		const themeInput = document.querySelector<HTMLInputElement>(`#theme-switcher input[type="radio"][value="${selectedTheme}"]`);
+document.addEventListener('DOMContentLoaded', () => {
+	if (SiteSettings.theme) {
+		const themeInput = document.querySelector<HTMLInputElement>(`#theme-switcher input[type="radio"][value="${SiteSettings.theme}"]`);
 
 		if (themeInput) {
 			themeInput.checked = true;
 		}
-
-		document.documentElement.dataset['theme'] = selectedTheme;
 	}
 
 	document.querySelector('#theme-switcher form')?.addEventListener('submit', (evt) => {

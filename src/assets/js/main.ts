@@ -1,6 +1,5 @@
 import { registerSW } from 'virtual:pwa-register';
-
-const params = new URLSearchParams(document.location.search.substring(1));
+import { SiteSettings } from './settings.ts';
 
 function setPwaMessage(type: 'offline' | 'refresh') {
 	const pwaToast = document.querySelector('#pwa-toast') as HTMLDivElement;
@@ -12,7 +11,7 @@ function setPwaMessage(type: 'offline' | 'refresh') {
 			pwaToast.dataset['refresh'] = 'true';
 			break;
 		case 'offline':
-			pwaToastMessage.innerHTML = 'App ready to work offline.';
+			pwaToastMessage.innerHTML = 'Site ready to work offline. Navigate to blog pages to save them.';
 			pwaToast.dataset['offline'] = 'true';
 			break;
 		default:
@@ -42,27 +41,19 @@ window.addEventListener('DOMContentLoaded', () => {
 				document.body.removeEventListener('click', pwaEventListener);
 				document.querySelector('#pwa-toast')?.remove();
 
-				params.delete('debug');
-
-				if (params.size > 0) {
-					document.location.search = params.toString();
-				}
+				SiteSettings.pwa = undefined;
 			});
 		}
 
 		if (target.matches('#pwa-refresh')) {
-			params.delete('debug');
-
-			if (params.size > 0) {
-				document.location.search = params.toString();
-			}
+			SiteSettings.pwa = undefined;
 
 			requestAnimationFrame(async () => refreshSW(true));
 		}
 	};
 
-	if (params.get('debug')?.startsWith('pwa-')) {
-		setPwaMessage((params.get('debug')?.replace('pwa-', '') ?? '') as 'offline' | 'refresh');
+	if (SiteSettings.pwa !== 'none') {
+		setPwaMessage(SiteSettings.pwa as 'offline' | 'refresh');
 	}
 
 	document.body.addEventListener('click', pwaEventListener);
