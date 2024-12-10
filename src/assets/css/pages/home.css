@@ -30,6 +30,13 @@
 		margin: var(--spacing-medium);
 	}
 
+	footer {
+		align-items: center;
+		display: flex;
+		justify-content: end;
+		padding: var(--spacing-large);
+	}
+
 	@media (max-width: 650px) {
 		#about {
 			align-items: center;
