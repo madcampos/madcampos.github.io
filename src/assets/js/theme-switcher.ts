@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		const theme = new FormData(evt.target as HTMLFormElement).get('theme') as string;
 
-		document.documentElement.dataset['theme'] = theme;
-		localStorage.setItem('theme', theme);
+		SiteSettings.theme = theme;
 	});
 });
