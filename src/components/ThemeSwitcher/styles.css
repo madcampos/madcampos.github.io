@@ -61,7 +61,6 @@
 
 #theme-switcher-dialog button {
 	height: fit-content;
-	margin-block-start: var(--spacing-large);
 	width: fit-content;
 }
 
@@ -96,7 +95,7 @@
 	border: transparent var(--border-width) var(--border-style);
 	display: flex;
 	flex-direction: column;
-	height: var(--avatar-size);
+	height: fit-content;
 	justify-content: start;
 	margin: var(--spacing-medium);
 	padding: var(--spacing-medium);
@@ -110,7 +109,11 @@
 	width: 100%;
 }
 
-#theme-switcher .theme-label small { font-size: 0.7em; }
+#theme-switcher .theme-label small {
+	display: block;
+	font-size: 0.7em;
+}
+#theme-switcher .theme-label small svg { width: 1em; }
 
 #theme-switcher .theme-label input[type='radio'] {
 	height: 100%;
@@ -119,7 +122,7 @@
 	width: 100%;
 }
 
-#theme-switcher .theme-label:hover {
+#theme-switcher .theme-label:is(:hover, :focus-within) {
 	background-color: var(--text-color);
 	border-color: var(--accent-color);
 	color: var(--bg-color);

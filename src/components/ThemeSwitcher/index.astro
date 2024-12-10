@@ -7,33 +7,39 @@ interface SiteTheme {
 	id: string;
 	name: string;
 	description: string;
+	accessible: boolean;
 }
 
 const themes: SiteTheme[] = [
 	{
 		id: 'system',
 		name: 'System Default',
-		description: 'The default theme for the operating system, either light or dark.'
+		description: 'The default theme for the operating system, either light or dark.',
+		accessible: true
 	},
 	{
 		id: 'light',
 		name: 'Light',
-		description: 'The default light theme.'
+		description: 'The default light theme.',
+		accessible: true
 	},
 	{
 		id: 'dark',
 		name: 'Dark',
-		description: 'The default dark theme.'
+		description: 'The default dark theme.',
+		accessible: true
 	},
 	{
 		id: 'high-contrast',
 		name: 'High Contrast',
-		description: 'A high contrast dark and yellow theme.'
+		description: 'A high contrast dark and yellow theme.',
+		accessible: true
 	},
 	{
 		id: 'uwu',
 		name: 'UwU Theme',
-		description: 'A cute anime inspired theme.'
+		description: 'A cute anime inspired theme.',
+		accessible: false
 	}
 ];
 ---
@@ -103,6 +109,14 @@ const themes: SiteTheme[] = [
 
 							<strong>{theme.name}</strong>
 							<small><em>{theme.description}</em></small>
+							{
+								!theme.accessible && (
+									<small>
+										<Icon name="uil:exclamation-triangle" title="Warning icon" />
+										<strong>Warning: Theme is not fully accessible</strong>
+									</small>
+								)
+							}
 						</label>
 					))
 				}
