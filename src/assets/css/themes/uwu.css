@@ -64,4 +64,12 @@
 	}
 
 	[data-theme='uwu'] :is(a, button, input, select) { cursor: url('./cursor-hand.gif'), auto; }
+
+	[data-theme='uwu'] .logo-graphics > g:not([data-theme='uwu']) { display: none; }
+	[data-theme='uwu'] .logo-graphics > g[data-theme='uwu'] { display: block; }
+	[data-theme='uwu'] .logo-graphics > text {
+		font-family: var(--sans-serif-font-family);
+		transform: translateY(50px) rotate(-4.7deg);
+		transform-origin: center;
+	}
 }

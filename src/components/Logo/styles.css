@@ -1,0 +1,25 @@
+@layer components {
+	.logo-graphics {
+		height: 100%;
+		object-fit: contain;
+		paint-order: stroke;
+		width: clamp(var(--min-width, 5rem), 70vmin, var(--medium-width, 30rem));
+	}
+
+	.logo-graphics text {
+		fill: var(--accent-color, #ff8000);
+		fill-rule: nonzero;
+		font-family: 'Mecano-Light', 'Mecano', monospace;
+		font-size: 8rem;
+		font-weight: 300;
+		text-rendering: optimizeLegibility;
+	}
+
+	.logo-graphics g {
+		fill: var(--theme-color, #0080ff);
+		shape-rendering: geometricPrecision;
+	}
+
+	.logo-graphics [data-theme] { display: none; }
+	.logo-graphics [data-theme='system'] { display: block; }
+}
