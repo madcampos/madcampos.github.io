@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-	const selectedTheme = localStorage.getItem('theme') ?? new URLSearchParams(document.location.search).get('theme');
+	const selectedTheme = new URLSearchParams(document.location.search).get('theme') ?? localStorage.getItem('theme');
 
 	if (selectedTheme) {
 		const themeInput = document.querySelector<HTMLInputElement>(`#theme-switcher input[type="radio"][value="${selectedTheme}"]`);
@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (themeInput) {
 			themeInput.checked = true;
 		}
+
+		document.documentElement.dataset['theme'] = selectedTheme;
 	}
 
 	document.querySelector('#theme-switcher form')?.addEventListener('submit', (evt) => {
