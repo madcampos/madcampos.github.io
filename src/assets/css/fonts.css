@@ -46,9 +46,4 @@
 		font-weight: 500;
 		src: url('./fonts/Mecano.woff2') format('woff2');
 	}
-
-	:root {
-		--monospace-font-family: 'Cascadia Code', 'Fira Code', 'Roboto Mono', 'Monaco', 'Courier New', 'Courier', monospace;
-		--sans-serif-font-family: 'Selawik Variable', 'Selawik', 'Segoe UI', 'Roboto', 'Open Sans', 'Arial', system-ui, sans-serif;
-	}
 }

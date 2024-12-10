@@ -119,20 +119,6 @@
 	}
 
 	@media (prefers-contrast: more) {
-		:root {
-			/* Code colors */
-			--diff-add-color: darkgreen;
-			--diff-add-bg: rgba(0, 194, 0, 0.3);
-			--diff-remove-color: maroon;
-			--diff-remove-bg: rgba(255, 68, 68, 0.3);
-			--highlight-color: darkgray;
-			--highlight-default-bg: rgba(105, 105, 105, 0.35);
-			--highlight-error-color: maroon;
-			--highlight-error-bg: rgba(255, 99, 71, 0.3);
-			--highlight-warning-color: goldenrod;
-			--highlight-warning-bg: rgba(218, 165, 32, 0.3);
-		}
-
 		pre { background-color: var(--shiki-contrast-bg, var(--bg-color)); }
 
 		pre span {
