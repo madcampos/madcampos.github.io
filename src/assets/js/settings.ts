@@ -9,6 +9,7 @@ export class SiteSettings {
 		SiteSettings.#searchParams = new URLSearchParams(document.location.search);
 
 		const settings = Object.getOwnPropertyNames(SiteSettings).filter((key) => !['name', 'length', 'prototype'].includes(key)) as (keyof typeof SiteSettings)[];
+
 		for (const setting of settings) {
 			SiteSettings.#updateSetting(setting, SiteSettings[setting]?.toString());
 		}
@@ -17,36 +18,32 @@ export class SiteSettings {
 	static #getSetting(setting: string) {
 		SiteSettings.#initializeSettings();
 
-		return SiteSettings.#searchParams?.get(setting) ?? localStorage.getItem('setting') ?? undefined;
+		return SiteSettings.#searchParams?.get(setting) ?? localStorage.getItem(setting) ?? undefined;
 	}
 
 	static #updateSetting(setting: string, value: string | undefined) {
 		SiteSettings.#initializeSettings();
 
-		// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-		delete document.documentElement.dataset[setting];
-		SiteSettings.#searchParams?.delete(setting);
-		localStorage.removeItem(setting);
-
 		if (value) {
 			document.documentElement.dataset[setting] = value;
 			SiteSettings.#searchParams?.set(setting, value);
-
-			if (SiteSettings.shouldSaveSettings) {
-				localStorage.setItem(setting, value);
-			}
+			localStorage.setItem(setting, value);
+		} else {
+			// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+			delete document.documentElement.dataset[setting];
+			SiteSettings.#searchParams?.delete(setting);
+			localStorage.removeItem(setting);
 		}
 
-		const shouldShareSettings = SiteSettings.debug || SiteSettings.shouldShareSettings;
+		const shouldUpdateUrl = SiteSettings.debug || SiteSettings.shouldShareSettings;
 		const hasSearchParams = SiteSettings.#searchParams !== undefined && SiteSettings.#searchParams.size > 0;
 
-		if (shouldShareSettings && hasSearchParams) {
-			document.location.search = SiteSettings.#searchParams?.toString() ?? '';
-		}
-	}
+		if (shouldUpdateUrl && hasSearchParams) {
+			const newUrl = new URL(document.location.href);
 
-	static get shouldSaveSettings() {
-		return SiteSettings.#getSetting('saveSettings') === 'true';
+			newUrl.search = SiteSettings.#searchParams?.toString() ?? '';
+			history.replaceState(null, '', newUrl);
+		}
 	}
 
 	static get shouldShareSettings() {
