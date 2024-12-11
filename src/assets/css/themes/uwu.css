@@ -48,13 +48,14 @@
 	}
 
 	[data-theme='uwu'] body {
+		animation: 1s steps(5) infinite uwu-cursor-normal;
 		background: linear-gradient(
 			to right,
 			mistyrose var(--spacing-small),
 			lavenderblush var(--spacing-small)
 		);
 		background-size: calc(var(--spacing-small) * 2);
-		cursor: url('./cursor-normal.gif'), auto;
+		cursor: url('./uwu-cursors/normal/1.svg'), auto;
 	}
 
 	[data-theme='uwu'] .user-avatar::after {
@@ -63,7 +64,10 @@
 		opacity: 1;
 	}
 
-	[data-theme='uwu'] :is(a, button, input, select) { cursor: url('./cursor-hand.gif'), auto; }
+	[data-theme='uwu'] :is(a, button, input, select) {
+		animation: 1s steps(5) infinite uwu-cursor-hand;
+		cursor: url('./uwu-cursors/hand/1.svg'), auto;
+	}
 
 	[data-theme='uwu'] .logo-graphics > g:not([data-theme='uwu']) { display: none; }
 	[data-theme='uwu'] .logo-graphics > g[data-theme='uwu'] { display: block; }
@@ -71,5 +75,23 @@
 		font-family: var(--sans-serif-font-family);
 		transform: translateY(50px) rotate(-4.7deg);
 		transform-origin: center;
+	}
+
+	@keyframes uwu-cursor-normal {
+		0% { cursor: url('./uwu-cursors/normal/1.svg'), auto; }
+		20% { cursor: url('./uwu-cursors/normal/2.svg'), auto; }
+		40% { cursor: url('./uwu-cursors/normal/3.svg'), auto; }
+		60% { cursor: url('./uwu-cursors/normal/4.svg'), auto; }
+		80% { cursor: url('./uwu-cursors/normal/5.svg'), auto; }
+		100% { cursor: url('./uwu-cursors/normal/1.svg'), auto; }
+	}
+
+	@keyframes uwu-cursor-hand {
+		0% { cursor: url('./uwu-cursors/hand/1.svg'), auto; }
+		20% { cursor: url('./uwu-cursors/hand/2.svg'), auto; }
+		40% { cursor: url('./uwu-cursors/hand/3.svg'), auto; }
+		60% { cursor: url('./uwu-cursors/hand/4.svg'), auto; }
+		80% { cursor: url('./uwu-cursors/hand/5.svg'), auto; }
+		100% { cursor: url('./uwu-cursors/hand/1.svg'), auto; }
 	}
 }
