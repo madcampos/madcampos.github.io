@@ -55,7 +55,7 @@
 			lavenderblush var(--spacing-small)
 		);
 		background-size: calc(var(--spacing-small) * 2);
-		cursor: url('./uwu-cursors/normal/1.svg'), auto;
+		cursor: url('./uwu/cursors/normal/1.svg'), auto;
 	}
 
 	[data-theme='uwu'] .user-avatar::after {
@@ -66,7 +66,7 @@
 
 	[data-theme='uwu'] :is(a, button, input, select) {
 		animation: 1s steps(5) infinite uwu-cursor-hand;
-		cursor: url('./uwu-cursors/hand/1.svg'), auto;
+		cursor: url('./uwu/cursors/hand/1.svg'), auto;
 	}
 
 	[data-theme='uwu'] .logo-graphics > g:not([data-theme='uwu']) { display: none; }
@@ -77,21 +77,81 @@
 		transform-origin: center;
 	}
 
+	[data-theme='uwu'] #site-nav {
+		--edge-size: 3rem;
+		background: url('/src/assets/css/themes/uwu/border.svg'), linear-gradient(to top, lightpink, lightpink);
+		background-position: center bottom, center top;
+		background-repeat: repeat no-repeat;
+		background-size: auto var(--edge-size), auto calc(100% - var(--edge-size));
+		max-width: 100%;
+		padding-block-end: var(--edge-size);
+	}
+
+	[data-theme='uwu'] :is(.post-card, .project-card, .talk-card) { position: relative; }
+	[data-theme='uwu'] :is(.post-card, .project-card, .talk-card)::after {
+		--details-size: 5rem;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		display: block;
+		height: var(--details-size);
+		pointer-events: none;
+		position: absolute;
+		width: var(--details-size);
+	}
+
+	[data-theme='uwu'] :is(.post-card, .project-card, .talk-card):nth-of-type(2n)::after {
+		background-image: url('./uwu/details1.svg');
+		content: '';
+		inset-block-start: calc(var(--details-size) * 0.3 * -1);
+		inset-inline-end: calc(var(--details-size) * 0.3 * -1);
+	}
+
+	[data-theme='uwu'] :is(.post-card, .project-card, .talk-card):nth-of-type(3n)::after {
+		background-image: url('./uwu/details2.svg');
+		content: '';
+		inset: auto;
+		inset-block-end: calc(var(--details-size) * 0.4 * -1);
+		inset-inline-start: calc(var(--details-size) * 0.3 * -1);
+	}
+
+	[data-theme='uwu'] .project-icon {
+		mask: none;
+		overflow: visible;
+		position: relative;
+	}
+
+	[data-theme='uwu'] .project-icon img { border-radius: 100vmax; }
+
+	[data-theme='uwu'] .project-icon::after {
+		background-image: url('./uwu/mask.svg');
+		background-position: top left;
+		background-repeat: no-repeat;
+		background-size: contain;
+		content: '';
+		display: block;
+		inset: 0;
+		inset-block-end: -20%;
+		inset-inline-end: -20%;
+		pointer-events: none;
+		position: absolute;
+	}
+
 	@keyframes uwu-cursor-normal {
-		0% { cursor: url('./uwu-cursors/normal/1.svg'), auto; }
-		20% { cursor: url('./uwu-cursors/normal/2.svg'), auto; }
-		40% { cursor: url('./uwu-cursors/normal/3.svg'), auto; }
-		60% { cursor: url('./uwu-cursors/normal/4.svg'), auto; }
-		80% { cursor: url('./uwu-cursors/normal/5.svg'), auto; }
-		100% { cursor: url('./uwu-cursors/normal/1.svg'), auto; }
+		0% { cursor: url('./uwu/cursors/normal/1.svg'), auto; }
+		20% { cursor: url('./uwu/cursors/normal/2.svg'), auto; }
+		40% { cursor: url('./uwu/cursors/normal/3.svg'), auto; }
+		60% { cursor: url('./uwu/cursors/normal/4.svg'), auto; }
+		80% { cursor: url('./uwu/cursors/normal/5.svg'), auto; }
+		100% { cursor: url('./uwu/cursors/normal/1.svg'), auto; }
 	}
 
 	@keyframes uwu-cursor-hand {
-		0% { cursor: url('./uwu-cursors/hand/1.svg'), auto; }
-		20% { cursor: url('./uwu-cursors/hand/2.svg'), auto; }
-		40% { cursor: url('./uwu-cursors/hand/3.svg'), auto; }
-		60% { cursor: url('./uwu-cursors/hand/4.svg'), auto; }
-		80% { cursor: url('./uwu-cursors/hand/5.svg'), auto; }
-		100% { cursor: url('./uwu-cursors/hand/1.svg'), auto; }
+		0% { cursor: url('./uwu/cursors/hand/1.svg'), auto; }
+		20% { cursor: url('./uwu/cursors/hand/2.svg'), auto; }
+		40% { cursor: url('./uwu/cursors/hand/3.svg'), auto; }
+		60% { cursor: url('./uwu/cursors/hand/4.svg'), auto; }
+		80% { cursor: url('./uwu/cursors/hand/5.svg'), auto; }
+		100% { cursor: url('./uwu/cursors/hand/1.svg'), auto; }
 	}
 }
