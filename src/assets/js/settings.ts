@@ -11,6 +11,7 @@ export class SiteSettings {
 		const settings = Object.getOwnPropertyNames(SiteSettings).filter((key) => !['name', 'length', 'prototype'].includes(key)) as (keyof typeof SiteSettings)[];
 
 		for (const setting of settings) {
+			// eslint-disable-next-line @typescript-eslint/no-base-to-string
 			SiteSettings.#updateSetting(setting, SiteSettings[setting]?.toString());
 		}
 	}
