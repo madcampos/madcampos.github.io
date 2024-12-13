@@ -59,7 +59,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 			{
 				date && (
 					<small>
-						<Icon name="uil:calendar-alt" title="An icon of a calendar" />
+						<Icon name="uil:calendar-alt" title="Event Date" />
 						<meta itemprop="startDate" content={date ? date.toISOString() : '0000-01-01T00:00:00.000Z'} />
 						{date ? <time datetime={date.toISOString()}>{formatter.format(date)}</time> : <span>&mdash;</span>}
 					</small>
@@ -78,7 +78,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 							<meta itemprop={isOnline ? 'url' : 'address'} content={isOnline ? url : address} />
 						</div>
 
-						<Icon name="uil:presentation-play" title="Icon of a presentation board with a play symbol in it&apos;s center." />
+						<Icon name="uil:presentation-play" title="Event name" />
 						<span>{event}</span>
 					</small>
 				)
@@ -93,7 +93,7 @@ const formatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyl
 		{
 			url && (
 				<a href={url} itemprop="url">
-					<Icon name="uil:presentation-plus" title="Icon of a presentation board with a plus symbol in it&apos;s center." />
+					<Icon name="uil:presentation-plus" title="" />
 					View Talk Info
 				</a>
 			)

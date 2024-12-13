@@ -5,30 +5,27 @@ type LogoStyles = 'full' | 'mini' | 'micro';
 
 interface Props {
 	style: LogoStyles;
-	title: string;
 	subtitle: string;
 	shortSubtitle: string;
 	url?: URL | string;
+	urlTitle?: string;
 }
 
 const sizes = {
 	full: {
 		width: 3500,
 		height: 900,
-		subtitle: { length: 21, padEnd: 4 },
-		altText: 'My moniker, "madcampos", on a monospaced font, in blue, between curly braces.'
+		subtitle: { length: 21, padEnd: 4 }
 	},
 	mini: {
 		width: 2000,
 		height: 900,
-		subtitle: { length: 12, padEnd: 4 },
-		altText: 'The letters "madc" on a monospaced font, in blue, between curly braces.'
+		subtitle: { length: 12, padEnd: 4 }
 	},
 	micro: {
 		width: 1100,
 		height: 900,
-		subtitle: { length: 9, padEnd: 2 },
-		altText: 'The letter "m" on a monospaced font, in blue, between curly braces.'
+		subtitle: { length: 9, padEnd: 2 }
 	}
 } as const;
 
@@ -60,10 +57,9 @@ function generateUniqueId() {
 	return Math.trunc(Math.random() * 1000000).toString(16);
 }
 
-const { style, url, title, subtitle, shortSubtitle } = Astro.props;
-const { width, height, altText: baseAltText } = sizes[style];
+const { style, url, urlTitle, subtitle, shortSubtitle } = Astro.props;
+const { width, height } = sizes[style];
 
-const altText = `${baseAltText} Below it, a subtext of "${subtitle}" in orange on the lower right corner.`;
 const logoLabelId = generateUniqueId();
 ---
 <a href={url} class="u-url url">
@@ -74,9 +70,8 @@ const logoLabelId = generateUniqueId();
 		viewBox={`0 0 ${width} ${height}`}
 		role="img"
 		aria-labeledby={`logo-label-${logoLabelId}`}
-		aria-details={altText}
 	>
-		<title id={`logo-label-${logoLabelId}`}>{title}</title>
+		<title id={`logo-label-${logoLabelId}`}>Marco Campos' Logo{url ? `, to ${urlTitle ?? ''}` : ''}</title>
 		<text
 			alignment-baseline="middle"
 			dominant-baseline="middle"
