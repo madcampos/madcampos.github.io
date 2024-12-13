@@ -11,6 +11,7 @@ tags:
   - gaming
   - diablo
 ---
+
 One of my favorite games is Diablo, I've played all entries on the franchise to the point where one of my core memories is: of me playing a werewolf druid and making way through the jungles of Act 3 on Diablo 2.
 All there with [the best electronic music record](https://open.spotify.com/album/4fdgcEVMdJe0KVgupMNJAP?si=wLTwbrl7Ty6QRY5je9UP8Q) as the soundtrack. It was a frenzied clicking while ravaging through the hordes of hell.
 

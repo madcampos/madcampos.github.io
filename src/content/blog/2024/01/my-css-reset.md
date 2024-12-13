@@ -188,4 +188,5 @@ Usually all those elements are used as block level elements that span the whole 
 And that is it for my CSS reset. Although browsers are much better and more compatible with each other there are some small quality of life improvements that help us suffer less when debugging.
 
 [^1]: I guess reading newsletters is the millennial version of the boomer who reads the newspaper.
+
 [^2]: By "similar enough", it doesn't mean they will be _pixel perfect_, just that things will behave mostly the same and generate results that, given some wiggle room, are so close to each other that the differences don't matter.

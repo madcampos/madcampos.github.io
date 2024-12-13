@@ -11,6 +11,7 @@ tags:
 image: ./assets/rose-colored-glasses.jpg
 imageAlt: A close shot of a smiling man, he is wearing opaque rose colored glasses with the universal accessibility icon overlaid on each lens
 ---
+
 If you don't know what an Accessibility overlay is here is a quick description from [Overlay Fact Sheet](https://overlayfactsheet.com/en/) :
 
 > Overlays are a broad term for technologies that aim to improve the accessibility of a website. They apply third-party source code (typically JavaScript) to make improvements to the front-end code of the website.
@@ -24,7 +25,6 @@ Basically they are a piece of code stamped on top that promises to make a websit
 They add some tools to website, but the interesting thing is most of them are achieved easily and more robustly by other means.
 
 I'll go through the list of features from an example[^1] overlay product, then breakdown every feature, what it does, and their built-in alternative.
-
 
 ## The list of features
 
@@ -55,6 +55,7 @@ This is an option with 3 levels to make text bigger. I guess you could call them
 This is the first "what the heck?!" moment as browsers do provide zoom features already, in fact, they provide a couple ways to change how big or small a text is... Why do you need it in a way that is redundant, flaky, and reduces user freedom?
 
 To list the alternatives, here they are:
+
 - Browsers provide page zoom, you can make everything, not only text big or small
 - Browsers provide means to control how large the overall base font size is
 - Operating systems provide ways to control how large the overall base font size is
@@ -80,7 +81,7 @@ Why should I, as a website and brand owner, impose such a bad thing to my _custo
 
 This one is _(foreshadowing)_ tricky and confusing... It will show tooltips for images, but only for those that already provide an _alternative text_.
 
-It is _allegedly_  meant to be compliant with the [Web Accessibility Guidelines (WCAG), version 2.1, succession criteria 2.5.3](https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html). Which states:
+It is _allegedly_ meant to be compliant with the [Web Accessibility Guidelines (WCAG), version 2.1, succession criteria 2.5.3](https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html). Which states:
 
 > For [user interface components](https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html#dfn-user-interface-component) with [labels](https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html#dfn-label) that include [text](https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html#dfn-text) or [images of text](https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html#dfn-image-of-text), the [name](https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html#dfn-name) contains the text that is presented visually.
 

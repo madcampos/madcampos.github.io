@@ -94,5 +94,7 @@ Having state reflected in the DOM and letting other parts of the browser deal wi
 This fundamental idea makes logic to handle children component easier. You define a contract, that is the boundary between your component internals and the outside world. Those attributes exposed there are a way to communicate between components without a hierarchical and tightly coupled structure, and _that_ is powerful.
 
 [^1]: React's rendering system does not have granular control on small changes and will re-render everything, even if no changes have happened, which causes performance issues. This is more pronounced on slow devices or large lists, using the `key` prop helps with lists but doesn't solve all problems.
+
 [^2]: You can actually use [custom events](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent) _reliably_ since Internet Explorer 10 days, but react just didn't make the jump and decided to keep using it's synthetic events because _reasons_... 🤷‍♂️
+
 [^3]: I'm using [lit](https://lit.dev) just to skip some of the custom elements boilerplate and make it _look more like_ what react devs may be used to. _BUT_, it could be implemented in plain js without much hassle.

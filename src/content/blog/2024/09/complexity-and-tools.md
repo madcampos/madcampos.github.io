@@ -8,6 +8,7 @@ tags:
   - meta
   - web
 ---
+
 It is interesting how cyclical the tech world is and some things seem to "slow cook" and then all of a sudden come to a "boil". Let me expand on that...
 
 ## The end is nigh
@@ -47,7 +48,7 @@ There was something there for me, but I didn't know what yet. And this whole arc
 Then when you look to JavaScript, your code is just:
 
 ```js
-console.log("Hello, World");
+console.log('Hello, World');
 ```
 
 It is much more accessible, much _easier_ to get started!

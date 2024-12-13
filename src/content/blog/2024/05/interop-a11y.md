@@ -54,6 +54,9 @@ We should all be writing our code in an accessible way, it _helps everyone_! Inc
 And to close this post, here is a #protip use accessible patterns when developing complex interactions: https://www.w3.org/WAI/ARIA/apg/patterns/
 
 [^1]: How to write alt text for SVGs: https://www.deque.com/blog/creating-accessible-svgs/
+
 [^2]: Kudos to this wonderful talk by Rachel DiTullio: https://racheleditullio.com/talks/accessible-forms/
+
 [^3]: Post on form errors: https://adrianroselli.com/2023/04/exposing-field-errors.html
+
 [^4]: Post on the search element: https://www.scottohara.me/blog/2023/03/24/search-element.html

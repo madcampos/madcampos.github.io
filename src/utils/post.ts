@@ -197,7 +197,6 @@ export async function listPostPagesByTag() {
 	}
 
 	for (const tag of Object.keys(tags)) {
-
 		tags[tag]?.sort(sortPostsByDate);
 	}
 

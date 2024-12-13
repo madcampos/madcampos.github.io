@@ -109,5 +109,7 @@ History tends to repeat itself so react will probably go a slow death and possib
 What is interesting about all the current situation is how people got polarized and it is trendy to bash on react. It is just is a product of a context, _a point in time_, that helped push the web forward but got stuck to the way of doing things without a path forward. We have to thank react for all it's contributions but not forget that everything comes to an end.
 
 [^1]: E4X was one of the ideas that showed up on "ECMAScript 4", the dead version of JavaScript that never came to be.
+
 [^2]: It seems to me that react only forces people to write immutable code because it doesn't work with proxies.
+
 [^3]: In the beginning there was some problems with react's licensing and how Facebook was handling the project, that caused the community to be weary of things from the get go. And also functional components, class based components and hooks. All those changes were a pain to follow along.
