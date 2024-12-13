@@ -3,8 +3,8 @@ import { Icon } from 'astro-icon/components';
 
 import Avatar from '../components/Avatar/index.astro';
 import Logo from '../components/Logo/index.astro';
-import BaseLayout from '../layouts/Base.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher/index.astro';
+import BaseLayout from '../layouts/Base.astro';
 
 import '../assets/css/pages/home.css';
 
@@ -23,7 +23,7 @@ import { BLOG, GLOBALS, PROJECTS, TALKS } from '../constants.js';
 	<div class="h-card vcard">
 		<h1>
 			<Logo
-				style="full"
+				size="full"
 				subtitle=""
 				shortSubtitle=""
 				url="/"
@@ -108,5 +108,5 @@ import { BLOG, GLOBALS, PROJECTS, TALKS } from '../constants.js';
 		</article>
 	</div>
 
-	<ThemeSwitcher slot="footer"/>
+	<ThemeSwitcher slot="footer" />
 </BaseLayout>

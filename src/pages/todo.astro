@@ -51,11 +51,12 @@ const tasks: Task[] = [
 	{ isDone: false, text: 'Improve [print style](https://voussoir.net/writing/css_for_printing)' },
 	{
 		isDone: true,
-		text: 'Improve [high contrast mode](https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/) (fix things that are in the wrong colors)',
+		text:
+			'Improve [high contrast mode](https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/) (fix things that are in the wrong colors)',
 		children: [
 			{ isDone: true, text: 'Keep orange but make it brighter (add white)' },
 			{ isDone: true, text: 'Small text should not be so small' },
-			{ isDone: true, text: 'Medium dark grey background should be darker (add black). (Maybe add a border instead)' },
+			{ isDone: true, text: 'Medium dark grey background should be darker (add black). (Maybe add a border instead)' }
 		]
 	},
 	{
@@ -72,7 +73,7 @@ const tasks: Task[] = [
 					{ isDone: true, text: 'Make underline distance from text larger' },
 					{ isDone: true, text: 'Make tags text bold' },
 					{ isDone: true, text: 'Special "code theme" for high contrast' },
-					{ isDone: true, text: 'Increase line height and letter spacing' },
+					{ isDone: true, text: 'Increase line height and letter spacing' }
 				]
 			},
 			{
@@ -80,14 +81,14 @@ const tasks: Task[] = [
 				text: 'Forced colors (AAA contrast)',
 				children: [
 					{ isDone: true, text: 'Fix tags and grayscale filter for avatars' },
-					{ isDone: true, text: 'SVGs added by css need to change color' },
+					{ isDone: true, text: 'SVGs added by css need to change color' }
 				]
 			},
 			{ isDone: true, text: 'UwU theme' },
 			{ isDone: false, text: 'Old interwebs' },
 			{ isDone: false, text: 'Skeuomorphic cork board' },
 			{ isDone: false, text: '"Zen"' },
-			{ isDone: false, text: '"Hacker" (green on black)' },
+			{ isDone: false, text: '"Hacker" (green on black)' }
 		]
 	},
 	{
@@ -99,7 +100,7 @@ const tasks: Task[] = [
 			{ isDone: false, text: 'Add cloudflare function to handle receiving webmentions' },
 			{ isDone: false, text: 'Add webmention to posts as a comment system' },
 			{ isDone: false, text: 'Add form to send webmention as comment from the blog' },
-			{ isDone: false, text: 'Add guestbook as webmentions' },
+			{ isDone: false, text: 'Add guestbook as webmentions' }
 		]
 	},
 	{ isDone: true, text: 'Add "about" page (based on <a href="https://slashpages.net/">slash pages</a>)' },
@@ -124,7 +125,7 @@ const tasks: Task[] = [
 			{ isDone: false, text: '[JSON resume format](https://jsonresume.org/schema/)' },
 			{ isDone: false, text: 'HTML format' },
 			{ isDone: false, text: 'PDF Format' },
-			{ isDone: false, text: '[DOCX](https://www.npmjs.com/package/docx) [format](https://www.npmjs.com/package/docxtemplater)' },
+			{ isDone: false, text: '[DOCX](https://www.npmjs.com/package/docx) [format](https://www.npmjs.com/package/docxtemplater)' }
 		]
 	},
 	{
@@ -132,7 +133,7 @@ const tasks: Task[] = [
 		text: 'Add Roadmap page',
 		children: [
 			{ isDone: true, text: 'Make items tooglable' },
-			{ isDone: true, text: 'Save to local storage' },
+			{ isDone: true, text: 'Save to local storage' }
 		]
 	},
 	{ isDone: false, text: 'Add [search functionality](https://pagefind.app/docs/)' },
@@ -144,7 +145,7 @@ const tasks: Task[] = [
 		text: 'Add debug mode',
 		children: [
 			{ isDone: false, text: 'Make debug css togglable' },
-			{ isDone: false, text: 'Add JS report for issues (?)' },
+			{ isDone: false, text: 'Add JS report for issues (?)' }
 		]
 	},
 	{ isDone: false, text: 'Add [webauthn](https://webauthn.io/) (?)' },
@@ -158,14 +159,13 @@ const tasks: Task[] = [
 			{ isDone: false, text: '[Queer Coded](https://isaacfish.neocities.org/webring/)' },
 			{ isDone: false, text: '[CSS Joy](https://cs.sjoy.lol/)' },
 			{ isDone: false, text: '[Bucketfish](https://webring.bucketfish.me/)' },
-			{ isDone: false, text: '[Indieweb](https://indieweb.org/webring)' },
+			{ isDone: false, text: '[Indieweb](https://indieweb.org/webring)' }
 		]
 	},
 	{ isDone: false, text: 'Add a [CSS Naked day](https://css-naked-day.github.io/)' },
 	{ isDone: false, text: 'Add a [JS Naked day](https://meiert.com/en/blog/april-24-is-js-naked-day/)' },
-	{ isDone: false, text: 'Have a [brag document](https://uxdesign.cc/why-you-should-have-a-brag-document-eb6cc82ec80a)' },
+	{ isDone: false, text: 'Have a [brag document](https://uxdesign.cc/why-you-should-have-a-brag-document-eb6cc82ec80a)' }
 ];
-
 ---
 
 <InternalPageLayout
@@ -176,7 +176,7 @@ const tasks: Task[] = [
 	tags={['todo', 'wip', 'work in progress', ...GLOBALS.tags]}
 >
 	<Logo
-		style="full"
+		size="full"
 		subtitle="TODO"
 		shortSubtitle="TODO"
 		url="/todo/"

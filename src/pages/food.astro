@@ -2,7 +2,6 @@
 import Logo from '../components/Logo/index.astro';
 import { GLOBALS } from '../constants';
 import InternalPageLayout from '../layouts/InternalPage.astro';
-
 ---
 
 <InternalPageLayout
@@ -13,7 +12,7 @@ import InternalPageLayout from '../layouts/InternalPage.astro';
 	tags={['food', 'order', ...GLOBALS.tags]}
 >
 	<Logo
-		style="full"
+		size="full"
 		subtitle="Food Order"
 		shortSubtitle="Food"
 		url="/food/"
