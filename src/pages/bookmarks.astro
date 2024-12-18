@@ -1,0 +1,44 @@
+---
+import Logo from '../components/Logo/index.astro';
+import { GLOBALS } from '../constants';
+import InternalPageLayout from '../layouts/InternalPage.astro';
+---
+
+<InternalPageLayout
+	htmlTitle={['Bookmarks', ...GLOBALS.title]}
+	title="Bookmarks"
+	description="List of resources I reference often."
+	url="/bookmarks/"
+	tags={['bookmarks', ...GLOBALS.tags]}
+>
+	<Logo
+		size="full"
+		subtitle="Bookmarks"
+		shortSubtitle="BM."
+		url="/bookmarks/"
+		urlTitle="Bookmark page"
+		slot="logo"
+	/>
+	<Fragment slot="header">Bookmarks</Fragment>
+	<h2>Accessibility</h2>
+	<ul>
+		<li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/">ARIA Authoring Practices - Patterns</a></li>
+		<li><a href="https://inclusive-components.design/">Inclusive Components</a></li>
+		<li><a href="https://www.erikkroes.nl/blog/accessibility/the-guide-to-accessible-web-components-draft/">The Guide to Accessible Web Components</a></li>
+		<li><a href="https://www.w3.org/WAI/tutorials/forms/">Forms Tutorial - Web Accessibility Intiative</a></li>
+		<li><a href="https://adrianroselli.com/2020/03/stop-using-drop-down.html">Stop Using "Drop-Down"</a></li>
+		<li><a href="https://racheleditullio.com/talks/accessible-forms/">Structuring Accessible Forms</a></li>
+		<li><a href="https://html5accessibility.com/stuff/2024/11/23/old-alt-text-advice/">Old Alt Text Advice</a></li>
+	</ul>
+
+	<h2>Semantic HTML</h2>
+	<ul>
+		<li><a href="https://heydonworks.com/article/the-blockquote-element/">The Blockquote Element</a></li>
+	</ul>
+
+	<h2>CSS</h2>
+	<ul>
+		<li><a href="https://every-layout.dev/layouts/stack/">The Stack - Every Layout</a></li>
+		<li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS Grid Layout Guide</a></li>
+	</ul>
+</InternalPageLayout>
