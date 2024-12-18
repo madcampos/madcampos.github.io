@@ -4,12 +4,8 @@
 	"version": "3.5.0",
 	"license": "MIT",
 	"type": "module",
-	"engines": {
-		"node": ">=20.0.0"
-	},
-	"volta": {
-		"node": "22.11.0"
-	},
+	"engines": { "node": ">=22.0.0" },
+	"volta": { "node": "22.11.0" },
 	"scripts": {
 		"prepare": "husky",
 		"postinstall": "astro sync",
@@ -54,17 +50,18 @@
 		"vfile": "^6.0.3"
 	},
 	"overrides": {
-		"hasown": "npm:@nolyfill/hasown@^1",
-		"string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@^1",
 		"array-includes": "npm:@nolyfill/array-includes@^1",
 		"array.prototype.flat": "npm:@nolyfill/array.prototype.flat@^1",
 		"array.prototype.flatmap": "npm:@nolyfill/array.prototype.flatmap@^1",
 		"es-iterator-helpers": "npm:@nolyfill/es-iterator-helpers@^1",
+		"hasown": "npm:@nolyfill/hasown@^1",
+		"is-core-module": "npm:@nolyfill/is-core-module@^1",
 		"object.assign": "npm:@nolyfill/object.assign@^1",
 		"object.entries": "npm:@nolyfill/object.entries@^1",
 		"object.fromentries": "npm:@nolyfill/object.fromentries@^1",
 		"object.values": "npm:@nolyfill/object.values@^1",
-		"is-core-module": "npm:@nolyfill/is-core-module@^1"
+		"string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@^1",
+		"yaml-language-server": { "prettier": ">=2.8.7" }
 	},
 	"dependencies": {
 		"inapp-spy": "4.1.1"
